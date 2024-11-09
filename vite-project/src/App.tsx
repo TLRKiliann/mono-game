@@ -2,62 +2,102 @@ import { useState } from "react";
 import Dices from "./components/Dices";
 import './App.css';
 
+type PlayerProps = {
+  id: number;
+  name: string;
+  caseNumber: number;
+};
+
 function App(): JSX.Element {
 
+  const [count, setCount] = useState<number>(0);
+
   const [value, setValue] = useState<number>(1);
+
+  console.log(value, "value");
+
+  //let counter = count + value;
+
+  const [playerOne, setPlayerOne] = useState<PlayerProps>({
+    id: 1,
+    name: "Nora",
+    caseNumber: count
+  });
+
+  console.log(count);
 
   return (
     <div className='frame'>
 
       <div className='top-frame'>
         <div className='squares square-top'>
+          
           <p>0</p>
+
+          <p>{playerOne.name}</p>
+          <p>{playerOne.caseNumber}</p>
+
         </div>
+        
         <div className='squares square-top'>
           <p>55</p>
         </div>
+
         <div className='squares square-top'>
           <p>54</p>
         </div>
+        
         <div className='squares square-top'>
           <p>53</p>
         </div>
+        
         <div className='squares square-top quiz-color'>
           <p>52</p>
           <h4>Quiz</h4>
         </div>
+        
         <div className='squares square-top'>
           <p>51</p>
         </div>
+        
         <div className='squares square-top'>
           <p>50</p>
         </div>
+        
         <div className='squares square-top'>
           <p>49</p>
         </div>
+        
         <div className='squares square-top sanction-color'>
           <p>48</p>
           <h4>Sanction</h4> 
         </div>
+        
         <div className='squares square-top'>
           <p>47</p>
         </div>
+        
         <div className='squares square-top'>
           <p>46</p>
         </div>
+        
         <div className='squares square-top'>
           <p>45</p>
         </div>
+        
         <div className='squares square-top action-color'>
           <p>44</p>
           <h4>Bonne Action</h4>
         </div>
+        
         <div className='squares square-top'>
           <p>43</p>
         </div>
+        
         <div className='squares square-top'>
           <p>42</p>
         </div>
+        
         <div className='squares square-top'>
           <p>41</p>
         </div>
@@ -73,42 +113,36 @@ function App(): JSX.Element {
       <div className="middle-frames">
         <div className='left-frame'>
           <div className='squares-side squares-lside'>
-            <p>1</p>
+            <p>1 {playerOne.caseNumber === 1 ? "player one" : null}</p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>2</p>
+            <p>2 {playerOne.caseNumber === 2 ? "player one" : null}</p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>3</p>
+            <p>3 {playerOne.caseNumber === 3 ? "player one" : null}</p>
           </div>
           <div className='squares-side squares-lside quiz-color'>
-            <p>4</p>
+            <p>4 {playerOne.caseNumber === 4 ? "player one" : null}</p>
             <h4>Quiz</h4>
           </div>
           <div className='squares-side squares-lside'>
-            <p>5</p>
+            <p>5 {playerOne.caseNumber === 5 ? "player one" : null}</p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>6</p>
+            <p>6 {playerOne.caseNumber === 6 ? "player one" : null}</p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>7</p>
+            <p>7 {playerOne.caseNumber === 7 ? "player one" : null}</p>
           </div>
           <div className='squares-side squares-lside defi-color'>
-            <p>8</p>
+            <p>8 {playerOne.caseNumber === 8 ? "player one" : null}</p>
             <h4>Defi</h4>
           </div>
           <div className='squares-side squares-lside'>
-            <p>9</p>
+            <p>9 {playerOne.caseNumber === 9 ? "player one" : null}</p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>10</p>
-          </div>
-          <div className='squares-side squares-lside'>
-            <p>11</p>
-          </div>
-          <div className='squares-side squares-lside'>
-            <p>12</p>
+            <p>10 {playerOne.caseNumber === 10 ? "player one" : null}</p>
           </div>
         </div>
 
@@ -119,7 +153,13 @@ function App(): JSX.Element {
           </div>
           
           <div className="div-dice">
-            <Dices value={value} setValue={setValue} />
+            <Dices 
+              value={value} 
+              setValue={setValue} 
+              setCount={setCount}
+              playerOne={playerOne} 
+              setPlayerOne={setPlayerOne}
+            />
           </div>
 
           <div className='cards-box cards-box-right'>

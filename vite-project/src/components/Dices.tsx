@@ -3,22 +3,34 @@ import { useSpring, animated } from 'react-spring';
 import gifDice from "../assets/dice.gif";
 import './Dices.css'
 
+type PlayerProps = {
+    id: number;
+    name: string;
+    caseNumber: number;
+};
+
 type ValProps = {
+    playerOne: PlayerProps;
+    setPlayerOne: React.Dispatch<React.SetStateAction<PlayerProps>>;
+    setCount: React.Dispatch<React.SetStateAction<number>>;
     value: number;
     setValue: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const Dices = ({value, setValue}: ValProps): JSX.Element => {
+const Dices = ({playerOne, setPlayerOne, setCount, value, setValue}: ValProps): JSX.Element => {
 
   //const [value, setValue] = useState<number>(1);
   const [isRolling, setIsRolling] = useState<boolean>(false);
 
   const rollDice = (): void | number => {
     setIsRolling(true);
-    setValue(Math.floor(Math.random() * 6) + 1);
+    let newVal = Math.floor(Math.random() * 6) + 1;
+    setValue(newVal);
     setTimeout(() => {
         setIsRolling(false);
-        setValue(Math.floor(Math.random() * 6) + 1);
+        setValue(newVal);
+        setCount((prev) => prev + newVal);
+        setPlayerOne({ ...playerOne, caseNumber: playerOne.caseNumber + newVal});
     }, 1000);
   };
 
