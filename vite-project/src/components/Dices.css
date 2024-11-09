@@ -1,0 +1,17 @@
+.dice-gif {
+    border-radius: 7px;
+}
+
+.dice {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    border: 2px solid #333;
+    border-radius: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
