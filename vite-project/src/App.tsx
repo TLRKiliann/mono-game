@@ -17,8 +17,8 @@ function App(): JSX.Element {
   const [countPlayerTwo, setCountPlayerTwo] = useState<number>(0);
 
   // counter by player
-  const [activePlayerId, setActivePlayerId] = useState<number>(1); // Commence avec le joueur 1
-
+  const [activePlayerId, setActivePlayerId] = useState<number>(1);
+  
   // retrieve user's data from db
   const [players, setPlayers] = useState<PlayerProps[]>([
     {
@@ -33,21 +33,9 @@ function App(): JSX.Element {
     },
   ]);
 
-
-  /* const startGame = (): void => {
-    if (countPlayerOne === 0) {
-      setCountPlayerOne((prev) => prev + 1);
-    } else {
-      setCountPlayerTwo((prev) => prev + 1);
-    }
-    if (countPlayerTwo === 0) {
-      setCountPlayerTwo((prev) => prev + 1);
-    } else {
-      setCountPlayerOne((prev) => prev + 1);
-    }
-  }
-  startGame; */
-
+  console.log(countPlayerOne, "countPlayerOne");
+  console.log(countPlayerTwo, "countPlayerTwo");
+  
   //console.log(count, "count");
   //console.log(value, "value");
 

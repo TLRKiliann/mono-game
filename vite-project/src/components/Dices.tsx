@@ -11,7 +11,6 @@ type PlayerProps = {
 
 type ValProps = {
   players: PlayerProps[];
-
   setPlayers: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
   setCount: React.Dispatch<React.SetStateAction<number>>;
   value: number;
@@ -31,34 +30,37 @@ const Dices = ({
   setCountPlayerTwo,
   setCount,
   value,
-  setValue}: ValProps): JSX.Element => {
+  setValue
+}: ValProps): JSX.Element => {
 
   const [isRolling, setIsRolling] = useState<boolean>(false);
 
-  // throw dice & set count with a new value 
-  const rollDice = (id: number): void | number => {
+  const rollDice = (id: number): void => {
+    if (isRolling) return;
     setIsRolling(true);
-    let newVal = Math.floor(Math.random() * 6) + 1;
+    const newVal = Math.floor(Math.random() * 6) + 1;
     setValue(newVal);
     setTimeout(() => {
       setIsRolling(false);
-      setValue(newVal);
       setCount((prev) => prev + newVal);
+      // update score to current player
       setPlayers((prevPlayers) => 
         prevPlayers.map((p: PlayerProps) => p.id === id 
           ? { ...p, caseNumber: p.caseNumber + newVal } 
           : p)
       );
+      // change score
       if (activePlayerId === 1) {
         setActivePlayerId(2);
-        setCountPlayerOne((prev) => prev + 1);
+        setCountPlayerOne((prev) => prev + newVal);
       } else {
         setActivePlayerId(1);
-        setCountPlayerTwo((prev) => prev + 1);
+        setCountPlayerTwo((prev) => prev + newVal);
       }
     }, 1000);
   };
 
+  // dice animation
   const props = useSpring({
     transform: isRolling ? 'rotate3d(3, -1, -3, 360deg)' : 'rotate3d(0, 1, 0, 0deg)',
     config: { tension: 200, friction: 10 },
@@ -66,30 +68,31 @@ const Dices = ({
 
   return (
     <div>
-    {isRolling ? ( // Vérifiez que isRolling est true
-      <div>
-        <img src={gifDice} width={120} height={120} className="dice-gif" alt="dice anim" />
-        {players.map((play: PlayerProps) => (
-          play.id === activePlayerId ? (
-            <animated.div 
-              key={play.id} 
-              style={props} 
-              onClick={() => rollDice(play.id)} 
-              className="dice"
-            >
-              {play.name} {value}
-            </animated.div>
-          ) : (
-            <div key={play.id} className="dice">
-              {play.name} {play.caseNumber}
-            </div>
-          )
-        ))}
-      </div>
-    ) : (
-      <p>Click on the active player to roll the dice!</p> // Message d'instruction
-    )}
-  </div>
+      {isRolling === true ? (
+        <div>
+          <img src={gifDice} width={120} height={120} className="dice-gif" alt="dice anim" />
+        </div>
+      ) : (
+        <div>
+          {players.map((play: PlayerProps) => (
+            play.id === activePlayerId ? (
+              <animated.div 
+                key={play.id} 
+                style={props} 
+                onClick={() => rollDice(play.id)} 
+                className="dice"
+              >
+                {value}
+              </animated.div>
+            ) : (
+              <div key={play.id} className='dice-indicator'>
+                <p style={{"color": "blue"}}>{play.name} {play.caseNumber}</p>
+              </div>
+            )
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 
