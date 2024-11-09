@@ -1,6 +1,11 @@
-import './App.css'
+import { useState } from "react";
+import Dices from "./components/Dices";
+import './App.css';
 
 function App(): JSX.Element {
+
+  const [value, setValue] = useState<number>(1);
+
   return (
     <div className='frame'>
 
@@ -17,7 +22,7 @@ function App(): JSX.Element {
         <div className='squares square-top'>
           <p>53</p>
         </div>
-        <div className='squares square-top'>
+        <div className='squares square-top quiz-color'>
           <p>52</p>
           <h4>Quiz</h4>
         </div>
@@ -30,7 +35,7 @@ function App(): JSX.Element {
         <div className='squares square-top'>
           <p>49</p>
         </div>
-        <div className='squares square-top'>
+        <div className='squares square-top sanction-color'>
           <p>48</p>
           <h4>Sanction</h4> 
         </div>
@@ -43,7 +48,7 @@ function App(): JSX.Element {
         <div className='squares square-top'>
           <p>45</p>
         </div>
-        <div className='squares square-top'>
+        <div className='squares square-top action-color'>
           <p>44</p>
           <h4>Bonne Action</h4>
         </div>
@@ -56,7 +61,7 @@ function App(): JSX.Element {
         <div className='squares square-top'>
           <p>41</p>
         </div>
-        <div className='squares square-top'>
+        <div className='squares square-top defi-color'>
           <p>40</p>
           <h4>Defi</h4>
         </div>
@@ -66,7 +71,6 @@ function App(): JSX.Element {
       </div>
 
       <div className="middle-frames">
-
         <div className='left-frame'>
           <div className='squares-side squares-lside'>
             <p>1</p>
@@ -77,7 +81,7 @@ function App(): JSX.Element {
           <div className='squares-side squares-lside'>
             <p>3</p>
           </div>
-          <div className='squares-side squares-lside'>
+          <div className='squares-side squares-lside quiz-color'>
             <p>4</p>
             <h4>Quiz</h4>
           </div>
@@ -90,7 +94,7 @@ function App(): JSX.Element {
           <div className='squares-side squares-lside'>
             <p>7</p>
           </div>
-          <div className='squares-side squares-lside'>
+          <div className='squares-side squares-lside defi-color'>
             <p>8</p>
             <h4>Defi</h4>
           </div>
@@ -113,6 +117,11 @@ function App(): JSX.Element {
             <div className="card">Defis</div>
             <div className="card">Quiz</div>
           </div>
+          
+          <div className="div-dice">
+            <Dices value={value} setValue={setValue} />
+          </div>
+
           <div className='cards-box cards-box-right'>
             <div className="card">Sanctions</div>
             <div className="card">Bonnes Actions</div>
@@ -123,7 +132,7 @@ function App(): JSX.Element {
           <div className='squares-side squares-rside'>
             <p>38</p>
           </div>
-          <div className='squares-side squares-rside'>
+          <div className='squares-side squares-rside quiz-color'>
             <p>37</p>
             <h4>Quiz</h4>
           </div>
@@ -136,7 +145,7 @@ function App(): JSX.Element {
           <div className='squares-side squares-rside'>
             <p>34</p>
           </div>
-          <div className='squares-side squares-rside'>
+          <div className='squares-side squares-rside defi-color'>
             <p>33</p>
             <h4>Defi</h4>
           </div>
@@ -153,14 +162,13 @@ function App(): JSX.Element {
             <p>29</p>
           </div>
         </div>
-
       </div>
 
       <div className='bottom-frame'>
         <div className="squares square-bottom">
           <p>11</p>
         </div>
-        <div className="squares square-bottom">
+        <div className="squares square-bottom action-color">
           <p>12</p>
           <h4>Bonne Action</h4>
         </div>
@@ -173,7 +181,7 @@ function App(): JSX.Element {
         <div className="squares square-bottom">
           <p>15</p>
         </div>
-        <div className="squares square-bottom">
+        <div className="squares square-bottom sanction-color">
           <p>16</p>
           <h4>Sanction</h4>
         </div>
@@ -186,7 +194,7 @@ function App(): JSX.Element {
         <div className="squares square-bottom">
           <p>19</p>
         </div>
-        <div className="squares square-bottom">
+        <div className="squares square-bottom quiz-color">
           <p>20</p>
           <h4>Quiz</h4>
         </div>
@@ -199,7 +207,7 @@ function App(): JSX.Element {
         <div className="squares square-bottom">
           <p>23</p>
         </div>
-        <div className="squares square-bottom">
+        <div className="squares square-bottom defi-color">
           <p>24</p>
           <h4>Defi</h4>
         </div>
@@ -212,7 +220,7 @@ function App(): JSX.Element {
         <div className="squares square-bottom">
           <p>27</p>
         </div>
-        <div className="squares square-bottom">
+        <div className="squares square-bottom action-color">
           <p>28</p>
           <h4>Bonne Action</h4>
         </div>
@@ -220,6 +228,6 @@ function App(): JSX.Element {
 
     </div>
   )
-}
+};
 
-export default App
+export default App;

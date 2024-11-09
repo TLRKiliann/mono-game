@@ -19,7 +19,6 @@
   justify-content: space-between;
 
   height: 80vh;
-
   /* border: 1px solid #333; */
 }
 
@@ -72,10 +71,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  height: 20%;
-  text-wrap: nowrap;
-  text-align: justify;
+  height: 50%;
+  margin: auto;
 
   /* border: 1px solid #333; */
 }
@@ -106,13 +103,15 @@
   align-items: center;
   justify-content: center;
 
-  height: 20%;
+  height: 50%;
+  margin: auto;
   text-wrap: nowrap;
   text-align: justify;
 
   /* border: 1px solid #333; */
 }
 
+/*Cards*/
 .container-cards {  
   display: flex;
 
@@ -145,12 +144,36 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
   font-size: x-large;
   font-weight: 400;
-
+  
   background: linear-gradient(30deg, rgba(0, 128, 0, 0.5) 10%, rgba(0, 128, 0, 1) 90%);
   border: none;
   border-radius: 5px;
   box-shadow: 0 0 10px #777;
+}
+
+/*Dice*/
+.div-dice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid #333; */
+}
+
+.sanction-color {
+  background: orangered;
+}
+
+.action-color {
+  background: yellowgreen;
+}
+
+.quiz-color {
+  background: gold;
+}
+
+.defi-color {
+  background: lightblue;
 }
