@@ -11,20 +11,45 @@ type PlayerProps = {
 function App(): JSX.Element {
 
   const [count, setCount] = useState<number>(0);
-
   const [value, setValue] = useState<number>(1);
 
-  console.log(value, "value");
+  const [countPlayerOne, setCountPlayerOne] = useState<number>(0);
+  const [countPlayerTwo, setCountPlayerTwo] = useState<number>(0);
 
-  //let counter = count + value;
+  // counter by player
+  const [activePlayerId, setActivePlayerId] = useState<number>(1); // Commence avec le joueur 1
 
-  const [playerOne, setPlayerOne] = useState<PlayerProps>({
-    id: 1,
-    name: "Nora",
-    caseNumber: count
-  });
+  // retrieve user's data from db
+  const [players, setPlayers] = useState<PlayerProps[]>([
+    {
+      id: 1,
+      name: "Player one",
+      caseNumber: count
+    },
+    {
+      id: 2,
+      name: "Player two",
+      caseNumber: count
+    },
+  ]);
 
-  console.log(count);
+
+  /* const startGame = (): void => {
+    if (countPlayerOne === 0) {
+      setCountPlayerOne((prev) => prev + 1);
+    } else {
+      setCountPlayerTwo((prev) => prev + 1);
+    }
+    if (countPlayerTwo === 0) {
+      setCountPlayerTwo((prev) => prev + 1);
+    } else {
+      setCountPlayerOne((prev) => prev + 1);
+    }
+  }
+  startGame; */
+
+  //console.log(count, "count");
+  //console.log(value, "value");
 
   return (
     <div className='frame'>
@@ -34,9 +59,9 @@ function App(): JSX.Element {
           
           <p>0</p>
 
-          <p>{playerOne.name}</p>
-          <p>{playerOne.caseNumber}</p>
-
+          {players.map((players: PlayerProps) => (
+            <p key={players.id}>{players.name} - {players.caseNumber}</p>
+          ))}
         </div>
         
         <div className='squares square-top'>
@@ -113,36 +138,36 @@ function App(): JSX.Element {
       <div className="middle-frames">
         <div className='left-frame'>
           <div className='squares-side squares-lside'>
-            <p>1 {playerOne.caseNumber === 1 ? "player one" : null}</p>
+            <p>1 {players.map((player) => player.caseNumber === 1 ? player.name : null)}</p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>2 {playerOne.caseNumber === 2 ? "player one" : null}</p>
+            <p>2 {players.map((player) => player.caseNumber === 2 ? player.name : null)}</p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>3 {playerOne.caseNumber === 3 ? "player one" : null}</p>
+            <p>3 {players.map((player) => player.caseNumber === 3 ? player.name : null)}</p>
           </div>
           <div className='squares-side squares-lside quiz-color'>
-            <p>4 {playerOne.caseNumber === 4 ? "player one" : null}</p>
+            <p>4 {players.map((player) => player.caseNumber === 4 ? player.name : null)}</p>
             <h4>Quiz</h4>
           </div>
           <div className='squares-side squares-lside'>
-            <p>5 {playerOne.caseNumber === 5 ? "player one" : null}</p>
+            <p>5 {players.map((player) => player.caseNumber === 5 ? player.name : null)}</p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>6 {playerOne.caseNumber === 6 ? "player one" : null}</p>
+            <p>6 {players.map((player) => player.caseNumber === 6 ? player.name : null)}</p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>7 {playerOne.caseNumber === 7 ? "player one" : null}</p>
+            <p>7 {players.map((player) => player.caseNumber === 7 ? player.name : null)}</p>
           </div>
           <div className='squares-side squares-lside defi-color'>
-            <p>8 {playerOne.caseNumber === 8 ? "player one" : null}</p>
+            <p>8 {players.map((player) => player.caseNumber === 8 ? player.name : null)}</p>
             <h4>Defi</h4>
           </div>
           <div className='squares-side squares-lside'>
-            <p>9 {playerOne.caseNumber === 9 ? "player one" : null}</p>
+            <p>9 {players.map((player) => player.caseNumber === 9 ? player.name : null)}</p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>10 {playerOne.caseNumber === 10 ? "player one" : null}</p>
+            <p>10 {players.map((player) => player.caseNumber === 10 ? player.name : null)}</p>
           </div>
         </div>
 
@@ -157,8 +182,12 @@ function App(): JSX.Element {
               value={value} 
               setValue={setValue} 
               setCount={setCount}
-              playerOne={playerOne} 
-              setPlayerOne={setPlayerOne}
+              players={players}
+              setPlayers={setPlayers}
+              setCountPlayerOne={setCountPlayerOne}
+              setCountPlayerTwo={setCountPlayerTwo}
+              activePlayerId={activePlayerId}
+              setActivePlayerId={setActivePlayerId}
             />
           </div>
 
