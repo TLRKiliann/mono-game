@@ -67,20 +67,20 @@ const Dices = ({
   });
 
   return (
-    <div>
+    <div className='dice-container'>
       {isRolling === true ? (
         <div>
           <img src={gifDice} width={120} height={120} className="dice-gif" alt="dice anim" />
         </div>
       ) : (
-        <div>
+        <div className="dice">
           {players.map((play: PlayerProps) => (
             play.id === activePlayerId ? (
               <animated.div 
                 key={play.id} 
                 style={props} 
                 onClick={() => rollDice(play.id)} 
-                className="dice"
+                
               >
                 {value}
               </animated.div>

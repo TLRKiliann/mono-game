@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Dices from "./components/Dices";
-import mascotte from "./assets/mascotte-logo.png";
+import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
 import './App.css';
 
@@ -168,7 +168,7 @@ function App(): JSX.Element {
 
             <div className="div-jeudesociete">
               <h2>JEU DE SOCIETE</h2>
-              <img src={mascotte} width={5345} height={7133} alt="img mascotte" className="mascotte-img" />
+              <img src={mascotte} width={564} height={564} alt="img mascotte" className="mascotte-img" />
             </div>
 
             <div className="card">Quiz</div>
