@@ -13,11 +13,11 @@
 
 .middle-frames {
   width: 100%;
+  height: 80vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  height: 80vh;
   /* border: 1px solid #333; */
 }
 
@@ -121,7 +121,7 @@
 
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 100, 0.1);
+  background: #F2CEC0;
 }
 
 .cards-box {
@@ -146,14 +146,15 @@
 }
 
 .card {
-  width: 200px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  font-size: x-large;
+
+  text-wrap: nowrap;
+  font-size: 1.2rem;
   font-weight: 400;
   
   background: linear-gradient(30deg, rgba(17, 83, 72, 0.5) 10%, rgba(17, 83, 72, 1) 90%);
@@ -162,10 +163,10 @@
   box-shadow: 0 0 10px #777;
 }
 
-/*Dice*/
+/*main div for dice*/
 .div-dice {
-/*   width: 120px;
-  height: 120px; */
+  width: 400px;
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,8 +180,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
 
   border: 1px solid #999;
 }
@@ -195,9 +195,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
+  align-items: end;
+  
   border: 1px solid #999;
 }
 
@@ -206,21 +205,22 @@
   margin: auto;
 }
 
-/* img logo center place (!!! to resize to same px !!!) */
+/* img logo */
 .mascotte-img {
-  width: 80%;
-  height: 80%;
-  margin: 5% 0;
-
-  border: 1px solid grey;
+  width: 50%;
+  height: 50%;
+  margin-bottom: 15%;
+  margin-left: 25%;
+  /* border: 1px solid grey; */
 }
 
 .myecobestfriend-img {
-  width: 80%;
-  height: 80%;
-  margin: 5% 0;
+  width: 50%;
+  height: 50%;
+  margin-bottom: 15%;
+  margin-right: 25%;
 
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
 }
 
 /* colors special cases */

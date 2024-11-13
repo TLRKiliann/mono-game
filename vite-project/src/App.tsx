@@ -18,6 +18,11 @@ function App(): JSX.Element {
   const [countPlayerOne, setCountPlayerOne] = useState<number>(0);
   const [countPlayerTwo, setCountPlayerTwo] = useState<number>(0);
 
+  const [countPlayerThree, setCountPlayerThree] = useState<number>(0);
+  const [countPlayerFour, setCountPlayerFour] = useState<number>(0);
+  const [countPlayerFive, setCountPlayerFive] = useState<number>(0);
+  const [countPlayerSix, setCountPlayerSix] = useState<number>(0);
+
   // counter by player
   const [activePlayerId, setActivePlayerId] = useState<number>(1);
   
@@ -33,11 +38,35 @@ function App(): JSX.Element {
       name: "Player two",
       caseNumber: count
     },
+    {
+      id: 3,
+      name: "Player three",
+      caseNumber: count
+    },
+    {
+      id: 4,
+      name: "Player four",
+      caseNumber: count
+    },
+    {
+      id: 5,
+      name: "Player five",
+      caseNumber: count
+    },
+    {
+      id: 6,
+      name: "Player six",
+      caseNumber: count
+    }
   ]);
 
   console.log(countPlayerOne, "countPlayerOne");
   console.log(countPlayerTwo, "countPlayerTwo");
-  
+  console.log(countPlayerThree, "countPlayerThree");
+  console.log(countPlayerFour, "countPlayerFour");
+  console.log(countPlayerFive, "countPlayerFive");
+  console.log(countPlayerSix, "countPlayerSix");
+
   //console.log(count, "count");
   //console.log(value, "value");
 
@@ -164,6 +193,7 @@ function App(): JSX.Element {
         <div className="container-cards">
           
           <div className='cards-box cards-box-left'>
+            
             <div className="card">Defis</div>
 
             <div className="div-jeudesociete">
@@ -172,6 +202,7 @@ function App(): JSX.Element {
             </div>
 
             <div className="card">Quiz</div>
+          
           </div>
           
           <div className="div-dice">
@@ -181,8 +212,14 @@ function App(): JSX.Element {
               setCount={setCount}
               players={players}
               setPlayers={setPlayers}
+
               setCountPlayerOne={setCountPlayerOne}
               setCountPlayerTwo={setCountPlayerTwo}
+              setCountPlayerThree={setCountPlayerThree}
+              setCountPlayerFour={setCountPlayerFour}
+              setCountPlayerFive={setCountPlayerFive}
+              setCountPlayerSix={setCountPlayerSix}
+
               activePlayerId={activePlayerId}
               setActivePlayerId={setActivePlayerId}
             />
