@@ -1,5 +1,10 @@
 # React + TypeScript + Vite
 
+- toutes les 3 cases il faut un challenge
+- logo dans le signet en-haut
+- cards aux 4 coins
+- Des pions !
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
