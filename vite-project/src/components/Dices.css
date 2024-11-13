@@ -6,37 +6,52 @@
     border-radius: 7px;
 }
 
-.dice {
-    width: 120px;
-    height: 120px;
+.dice-container {
+    width: 100%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    border: 12px solid violet;
+
+    /* border: 5px solid violet; */
+}
+
+.dice-box {
+    align-items: center;
+    justify-content: center;
+}
+
+.dice {
+    width: 120px;
+    height: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     background-color: red;
     border: 2px solid #333;
     border-radius: 10px;
+    
     font-size: 2rem;
     cursor: pointer;
     user-select: none;
-}
-
-.dice-container {
-    width: 100%;
-    /* width: 120px;
-    height: 120px; */
-    border: 2px solid #333;
-    /* border: 5px solid violet; */
 }
 
 .dice-indicator {
     position: absolute;
     top: 20%;
     width: 400px;
-
-    /* border: 1px solid violet; */
+    text-align: center;
+    text-shadow: 1px 1px 1px #555;
+    
+    border: 1px solid violet;
 }
 
 .dice-indicator p {
     font-size: 2rem;
     font-weight: 600;
+    color: greenyellow;
 }

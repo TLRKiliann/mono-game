@@ -15,8 +15,15 @@ type ValProps = {
   setCount: React.Dispatch<React.SetStateAction<number>>;
   value: number;
   setValue: React.Dispatch<React.SetStateAction<number>>;
+
   setCountPlayerOne: React.Dispatch<React.SetStateAction<number>>;
   setCountPlayerTwo: React.Dispatch<React.SetStateAction<number>>;
+
+  setCountPlayerThree: React.Dispatch<React.SetStateAction<number>>;
+  setCountPlayerFour: React.Dispatch<React.SetStateAction<number>>;
+  setCountPlayerFive: React.Dispatch<React.SetStateAction<number>>;
+  setCountPlayerSix: React.Dispatch<React.SetStateAction<number>>;
+
   activePlayerId: number;
   setActivePlayerId: React.Dispatch<React.SetStateAction<number>>;
 };
@@ -28,6 +35,12 @@ const Dices = ({
   setActivePlayerId,
   setCountPlayerOne,
   setCountPlayerTwo,
+
+  setCountPlayerThree,
+  setCountPlayerFour,
+  setCountPlayerFive,
+  setCountPlayerSix,
+
   setCount,
   value,
   setValue
@@ -53,9 +66,21 @@ const Dices = ({
       if (activePlayerId === 1) {
         setActivePlayerId(2);
         setCountPlayerOne((prev) => prev + newVal);
+      } else if (activePlayerId === 2) {
+        setActivePlayerId(3);
+        setCountPlayerTwo((prev) => prev + newVal);
+      } else if (activePlayerId === 3) {
+        setActivePlayerId(4);
+        setCountPlayerThree((prev) => prev + newVal);
+      } else if (activePlayerId === 4) {
+        setActivePlayerId(5);
+        setCountPlayerFour((prev) => prev + newVal);
+      } else if (activePlayerId === 5) {
+        setActivePlayerId(6);
+        setCountPlayerFive((prev) => prev + newVal);
       } else {
         setActivePlayerId(1);
-        setCountPlayerTwo((prev) => prev + newVal);
+        setCountPlayerSix((prev) => prev + newVal);
       }
     }, 1000);
   };
@@ -73,25 +98,28 @@ const Dices = ({
           <img src={gifDice} width={120} height={120} className="dice-gif" alt="dice anim" />
         </div>
       ) : (
-        <div className="dice">
+        <div className='dice-box'>
           {players.map((play: PlayerProps) => (
             play.id === activePlayerId ? (
               <animated.div 
-                key={play.id} 
-                style={props} 
+                key={play.id}
+                style={props}
+                className="dice"
                 onClick={() => rollDice(play.id)} 
-                
               >
                 {value}
               </animated.div>
-            ) : (
-              <div key={play.id} className='dice-indicator'>
-                <p style={{"color": "blue"}}>{play.name} {play.caseNumber}</p>
-              </div>
-            )
+            ) : null
           ))}
         </div>
       )}
+      {players.slice(0, 6).map((play: PlayerProps) => (
+        play.id === activePlayerId ? (
+          <div key={play.id} className='dice-indicator'>
+            <p>{play.name} {play.caseNumber}</p>
+          </div> 
+        ) : null
+      ))}
     </div>
   );
 };
