@@ -6,6 +6,7 @@ import './Dices.css';
 type PlayerProps = {
   id: number;
   name: string;
+  color: string;
   caseNumber: number;
 };
 
