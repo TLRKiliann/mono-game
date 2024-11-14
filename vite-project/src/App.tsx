@@ -7,6 +7,7 @@ import './App.css';
 type PlayerProps = {
   id: number;
   name: string;
+  color: string;
   caseNumber: number;
 };
 
@@ -26,36 +27,42 @@ function App(): JSX.Element {
   // counter by player
   const [activePlayerId, setActivePlayerId] = useState<number>(1);
   
-  // retrieve user's data from db
+  // simulation user's data from db
   const [players, setPlayers] = useState<PlayerProps[]>([
     {
       id: 1,
       name: "Player one",
+      color: "lightblue",
       caseNumber: count
     },
     {
       id: 2,
       name: "Player two",
+      color: "yellow",
       caseNumber: count
     },
     {
       id: 3,
       name: "Player three",
+      color: "red",
       caseNumber: count
     },
     {
       id: 4,
       name: "Player four",
+      color: "violet",
       caseNumber: count
     },
     {
       id: 5,
       name: "Player five",
+      color: "orange",
       caseNumber: count
     },
     {
       id: 6,
       name: "Player six",
+      color: "green",
       caseNumber: count
     }
   ]);
@@ -74,7 +81,8 @@ function App(): JSX.Element {
     <div className='frame'>
 
       <div className='top-frame'>
-        <div className='squares square-top'>
+
+        <div className='squares square-top first-square'>
           
           <p>0</p>
 
@@ -87,27 +95,26 @@ function App(): JSX.Element {
           <p>55</p>
         </div>
 
-        <div className='squares square-top'>
+        <div className='squares square-top defi-color'>
           <p>54</p>
+          <h4>Defi</h4>
         </div>
         
         <div className='squares square-top'>
           <p>53</p>
         </div>
-        
-        <div className='squares square-top quiz-color'>
+        <div className='squares square-top'>
           <p>52</p>
-          <h4>Quiz</h4>
         </div>
         
-        <div className='squares square-top'>
+        <div className='squares square-top quiz-color'>
           <p>51</p>
+          <h4>Quiz</h4>
         </div>
         
         <div className='squares square-top'>
           <p>50</p>
         </div>
-        
         <div className='squares square-top'>
           <p>49</p>
         </div>
@@ -120,74 +127,115 @@ function App(): JSX.Element {
         <div className='squares square-top'>
           <p>47</p>
         </div>
-        
         <div className='squares square-top'>
           <p>46</p>
         </div>
         
-        <div className='squares square-top'>
-          <p>45</p>
-        </div>
-        
         <div className='squares square-top action-color'>
-          <p>44</p>
+          <p>45</p>
           <h4>Bonne Action</h4>
         </div>
         
         <div className='squares square-top'>
+          <p>44</p>
+        </div>
+        <div className='squares square-top'>
           <p>43</p>
         </div>
         
-        <div className='squares square-top'>
+        <div className='squares square-top defi-color'>
           <p>42</p>
+          <h4>Defi</h4>
         </div>
         
         <div className='squares square-top'>
           <p>41</p>
         </div>
-        <div className='squares square-top defi-color'>
-          <p>40</p>
-          <h4>Defi</h4>
-        </div>
         <div className='squares square-top'>
+          <p>40</p>  
+        </div>
+
+        <div className='squares square-top quiz-color'>
           <p>39</p>
-        </div>      
+          <h4>Quiz</h4>
+        </div>
+
       </div>
 
       <div className="middle-frames">
+
         <div className='left-frame'>
+
           <div className='squares-side squares-lside'>
-            <p>1 {players.map((player) => player.caseNumber === 1 ? player.name : null)}</p>
+            <p>1 {players.map((player) => player.caseNumber === 1 ? (
+               <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
+              ) : null)}
+            </p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>2 {players.map((player) => player.caseNumber === 2 ? player.name : null)}</p>
+            <p>2 {players.map((player) => player.caseNumber === 2 ? (
+                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
+              ) : null)}
+            </p>
           </div>
-          <div className='squares-side squares-lside'>
-            <p>3 {players.map((player) => player.caseNumber === 3 ? player.name : null)}</p>
-          </div>
+          
           <div className='squares-side squares-lside quiz-color'>
-            <p>4 {players.map((player) => player.caseNumber === 4 ? player.name : null)}</p>
+            <p>3 {players.map((player) => player.caseNumber === 3 ? (
+                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
+              ) : null)}
+            </p>
             <h4>Quiz</h4>
           </div>
+
           <div className='squares-side squares-lside'>
-            <p>5 {players.map((player) => player.caseNumber === 5 ? player.name : null)}</p>
+            <p>4 {players.map((player) => player.caseNumber === 4 ? (
+                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
+              ) : null)}
+            </p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>6 {players.map((player) => player.caseNumber === 6 ? player.name : null)}</p>
+            <p>5 {players.map((player) => player.caseNumber === 5 ? (
+                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
+              ) : null)}
+            </p>
           </div>
-          <div className='squares-side squares-lside'>
-            <p>7 {players.map((player) => player.caseNumber === 7 ? player.name : null)}</p>
-          </div>
+
           <div className='squares-side squares-lside defi-color'>
-            <p>8 {players.map((player) => player.caseNumber === 8 ? player.name : null)}</p>
+            <p>6 {players.map((player) => player.caseNumber === 6 ? (
+                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
+              ) : null)}
+            </p>
             <h4>Defi</h4>
           </div>
+
           <div className='squares-side squares-lside'>
-            <p>9 {players.map((player) => player.caseNumber === 9 ? player.name : null)}</p>
+            <p>7 {players.map((player) => player.caseNumber === 7 ? (
+                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
+              ) : null)}
+            </p>
           </div>
           <div className='squares-side squares-lside'>
-            <p>10 {players.map((player) => player.caseNumber === 10 ? player.name : null)}</p>
+            <p>8 {players.map((player) => player.caseNumber === 8 ? (
+                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
+              ) : null)}
+            </p>
           </div>
+
+          <div className='squares-side squares-lside action-color'>
+            <p>9 {players.map((player) => player.caseNumber === 9 ? (
+                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
+              ) : null)}
+            </p>
+            <h4>Bonne Action</h4>
+          </div>
+
+          <div className='squares-side squares-lside'>
+            <p>10 {players.map((player) => player.caseNumber === 10 ? (
+                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
+              ) : null)}
+            </p>
+          </div>
+
         </div>
 
         <div className="container-cards">
@@ -226,6 +274,7 @@ function App(): JSX.Element {
           </div>
 
           <div className='cards-box cards-box-right'>
+          
             <div className="card">Sanctions</div>
             
             <div className="div-monecopote">
@@ -234,105 +283,132 @@ function App(): JSX.Element {
             </div>
 
             <div className="card">Bonnes Actions</div>
+
           </div>
+
         </div>
 
         <div className='right-frame'>
+
           <div className='squares-side squares-rside'>
             <p>38</p>
           </div>
-          <div className='squares-side squares-rside quiz-color'>
-            <p>37</p>
-            <h4>Quiz</h4>
-          </div>
           <div className='squares-side squares-rside'>
-            <p>36</p>
+            <p>37</p>
           </div>
+
+          <div className='squares-side squares-rside sanction-color'>
+            <p>36</p>
+            <h4>Sanction</h4>
+          </div>
+          
           <div className='squares-side squares-rside'>
             <p>35</p>
           </div>
           <div className='squares-side squares-rside'>
             <p>34</p>
           </div>
-          <div className='squares-side squares-rside defi-color'>
+          
+          <div className='squares-side squares-rside action-color'>
             <p>33</p>
-            <h4>Defi</h4>
+            <h4>Bonne Action</h4>
           </div>
+
           <div className='squares-side squares-rside'>
             <p>32</p>
           </div>
           <div className='squares-side squares-rside'>
             <p>31</p>
           </div>
-          <div className='squares-side squares-rside'>
+          
+          <div className='squares-side squares-rside defi-color'>
             <p>30</p>
+            <h4>Defi</h4>
           </div>
+          
           <div className='squares-side squares-rside'>
             <p>29</p>
           </div>
+
         </div>
+
       </div>
 
       <div className='bottom-frame'>
+        
         <div className="squares square-bottom">
           <p>11</p>
         </div>
-        <div className="squares square-bottom action-color">
+        
+        <div className="squares square-bottom sanction-color">
           <p>12</p>
-          <h4>Bonne Action</h4>
+          <h4>Sanction</h4>
         </div>
+        
         <div className="squares square-bottom">
           <p>13</p>
         </div>
         <div className="squares square-bottom">
           <p>14</p>
         </div>
-        <div className="squares square-bottom">
+
+        <div className="squares square-bottom quiz-color">
           <p>15</p>
+          <h4>Quiz</h4>
         </div>
-        <div className="squares square-bottom sanction-color">
-          <p>16</p>
-          <h4>Sanction</h4>
+        
+        <div className="squares square-bottom">
+          <p>16</p>  
         </div>
         <div className="squares square-bottom">
           <p>17</p>
         </div>
-        <div className="squares square-bottom">
+
+        <div className="squares square-bottom defi-color">
           <p>18</p>
+          <h4>Defi</h4>
         </div>
+        
         <div className="squares square-bottom">
           <p>19</p>
         </div>
-        <div className="squares square-bottom quiz-color">
-          <p>20</p>
-          <h4>Quiz</h4>
-        </div>
         <div className="squares square-bottom">
-          <p>21</p>
+          <p>20</p>  
         </div>
+        
+        <div className="squares square-bottom action-color">
+          <p>21</p>
+          <h4>Bonne Action</h4>
+        </div>
+
         <div className="squares square-bottom">
           <p>22</p>
         </div>
         <div className="squares square-bottom">
           <p>23</p>
         </div>
-        <div className="squares square-bottom defi-color">
+
+        <div className="squares square-bottom sanction-color">
           <p>24</p>
-          <h4>Defi</h4>
+          <h4>Sanction</h4>
         </div>
+        
         <div className="squares square-bottom">
           <p>25</p>
         </div>
         <div className="squares square-bottom">
           <p>26</p>
         </div>
-        <div className="squares square-bottom">
+
+        <div className="squares square-bottom quiz-color">
           <p>27</p>
+          <h4>Quiz</h4>
         </div>
-        <div className="squares square-bottom action-color">
+
+        <div className="squares square-bottom">
           <p>28</p>
-          <h4>Bonne Action</h4>
         </div>
+
       </div>
 
     </div>

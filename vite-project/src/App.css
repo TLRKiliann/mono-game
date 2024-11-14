@@ -45,37 +45,6 @@
   height: 10vh;
 }
 
-.squares-side {
-  width: 99%;
-  height: 20%;
-  background: #f5f5f5;
-  border-top: 1px solid #000;
-  color: #333; 
-}
-
-.squares-lside {
-  border-right: 1px solid #000;
-}
-
-.squares-rside {
-  border-left: 1px solid #000;
-}
-
-.squares-side p {
-  margin: 4px 4px;
-  /* border: 1px solid #000; */
-}
-
-.squares-side h4 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50%;
-  margin: auto;
-
-  /* border: 1px solid #333; */
-}
-
 .squares {
   display: flex;
   flex-direction: column;
@@ -87,8 +56,57 @@
   color: #333;
 }
 
+.first-square {
+  background: rgba(0, 0, 255, 0.25);
+}
+
 .squares:last-child {
   border-right: 0 solid #000;
+}
+
+.squares-side {
+  width: 99%;
+  height: 20%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: #f5f5f5;
+  border-top: 1px solid #000;
+
+  /* border: 3px solid red; */
+  color: #333;
+  padding-top: 4px;
+}
+
+.squares-lside {
+  border-right: 1px solid #000;
+}
+
+.squares-rside {
+  border-left: 1px solid #000;
+}
+
+.squares-side p {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  width: 90%;
+
+  margin: auto;
+  margin-top: 4px;
+  margin-left: 4px;
+
+  border: 1px solid #000;
+}
+
+.squares-side h4 {
+  text-align: center;
+  margin: 4px;
+
+  /* border: 1px solid orangered; */
 }
 
 .square-top {
@@ -239,4 +257,17 @@
 
 .defi-color {
   background: lightblue;
+}
+
+.span-pawn {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #333;
+  border-radius: 100%;
+  box-shadow: 5px 5px 5px -2px #333;
 }
