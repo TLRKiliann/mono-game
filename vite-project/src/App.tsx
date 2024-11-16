@@ -67,6 +67,60 @@ function App(): JSX.Element {
     }
   ]);
 
+  const PlayerSpan: React.FC<{ player: PlayerProps }> = ({ player }) => (
+    <span style={{ background: player.color }} className="span-pawn">
+      {player.id}
+    </span>
+  );
+  
+  // top side squares
+  const TopSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
+    { caseNumber, players, additionalContent }) => (
+      <div className={`squares square-top ${caseNumber === 39 ? "quiz-color" : caseNumber === 42 ? "defi-color" : caseNumber === 45  
+        ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" : caseNumber === 54 ? "defi-color" : null}`}>
+        <p>
+          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
+        </p>
+        {additionalContent}
+      </div>
+  );
+
+  // left side squares
+  const LeftSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
+    { caseNumber, players, additionalContent }) => (
+      <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" : caseNumber === 9 
+        ? "action-color" : null}`}>
+        <p>
+          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
+        </p>
+        {additionalContent}
+      </div>
+  );
+
+  // right side squares
+  const RightSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
+    { caseNumber, players, additionalContent }) => (
+      <div className={`squares-side squares-rside ${caseNumber === 30 ? "defi-color" : caseNumber === 33 ? "action-color" : caseNumber === 36 
+        ? "sanction-color" : null}`}>
+        <p>
+          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
+        </p>
+        {additionalContent}
+      </div>
+  );
+
+  // bottom side squares
+  const BottomSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
+    { caseNumber, players, additionalContent }) => (
+      <div className={`squares square-bottom ${caseNumber === 12 ? "sanction-color" : caseNumber === 15 ? "quiz-color" : caseNumber === 18 
+        ? "defi-color" : caseNumber === 21 ? "action-color" : caseNumber === 24 ? "sanction-color" : caseNumber === 27 ? "quiz-color" : null}`}>
+        <p>
+          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
+        </p>
+        {additionalContent}
+      </div>
+  );
+
   console.log(countPlayerOne, "countPlayerOne");
   console.log(countPlayerTwo, "countPlayerTwo");
   console.log(countPlayerThree, "countPlayerThree");
@@ -90,153 +144,64 @@ function App(): JSX.Element {
             <p key={players.id}>{players.name} - {players.caseNumber}</p>
           ))}
         </div>
-        
-        <div className='squares square-top'>
-          <p>55</p>
-        </div>
 
-        <div className='squares square-top defi-color'>
-          <p>54</p>
-          <h4>Defi</h4>
-        </div>
-        
-        <div className='squares square-top'>
-          <p>53</p>
-        </div>
-        <div className='squares square-top'>
-          <p>52</p>
-        </div>
-        
-        <div className='squares square-top quiz-color'>
-          <p>51</p>
-          <h4>Quiz</h4>
-        </div>
-        
-        <div className='squares square-top'>
-          <p>50</p>
-        </div>
-        <div className='squares square-top'>
-          <p>49</p>
-        </div>
-        
-        <div className='squares square-top sanction-color'>
-          <p>48</p>
-          <h4>Sanction</h4> 
-        </div>
-        
-        <div className='squares square-top'>
-          <p>47</p>
-        </div>
-        <div className='squares square-top'>
-          <p>46</p>
-        </div>
-        
-        <div className='squares square-top action-color'>
-          <p>45</p>
-          <h4>Bonne Action</h4>
-        </div>
-        
-        <div className='squares square-top'>
-          <p>44</p>
-        </div>
-        <div className='squares square-top'>
-          <p>43</p>
-        </div>
-        
-        <div className='squares square-top defi-color'>
-          <p>42</p>
-          <h4>Defi</h4>
-        </div>
-        
-        <div className='squares square-top'>
-          <p>41</p>
-        </div>
-        <div className='squares square-top'>
-          <p>40</p>  
-        </div>
+        {Array.from({ length: 17 }, (_, index) => {
+          const caseNumber = 55 - index;
+          let additionalContent;
 
-        <div className='squares square-top quiz-color'>
-          <p>39</p>
-          <h4>Quiz</h4>
-        </div>
+          switch (caseNumber) {
+            case 39:
+              additionalContent = <h4>Quiz</h4>;
+              break;
+            case 42:
+              additionalContent = <h4>Défi</h4>;
+              break;
+            case 45:
+              additionalContent = <h4>Bonne Action</h4>;
+              break;
+            case 48:
+              additionalContent = <h4>Sanction</h4>;
+              break;
+            case 51:
+              additionalContent = <h4>Quiz</h4>;
+              break;
+            case 54:
+              additionalContent = <h4>Défi</h4>;
+              break;
+            default:
+              additionalContent = null;
+          }
+
+          return <TopSquare key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
+        })}
 
       </div>
 
       <div className="middle-frames">
 
         <div className='left-frame'>
+          {Array.from({ length: 10 }, (_, index) => {
+            const caseNumber = index + 1;
+            let additionalContent;
 
-          <div className='squares-side squares-lside'>
-            <p>1 {players.map((player) => player.caseNumber === 1 ? (
-               <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
-              ) : null)}
-            </p>
-          </div>
-          <div className='squares-side squares-lside'>
-            <p>2 {players.map((player) => player.caseNumber === 2 ? (
-                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
-              ) : null)}
-            </p>
-          </div>
-          
-          <div className='squares-side squares-lside quiz-color'>
-            <p>3 {players.map((player) => player.caseNumber === 3 ? (
-                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
-              ) : null)}
-            </p>
-            <h4>Quiz</h4>
-          </div>
+            switch (caseNumber) {
+              case 3:
+                additionalContent = <h4>Quiz</h4>;
+                break;
+              case 6:
+                additionalContent = <h4>Défi</h4>;
+                break;
+              case 9:
+                additionalContent = <h4>Bonne Action</h4>;
+                break;
+              default:
+                additionalContent = null;
+            }
 
-          <div className='squares-side squares-lside'>
-            <p>4 {players.map((player) => player.caseNumber === 4 ? (
-                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
-              ) : null)}
-            </p>
-          </div>
-          <div className='squares-side squares-lside'>
-            <p>5 {players.map((player) => player.caseNumber === 5 ? (
-                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
-              ) : null)}
-            </p>
-          </div>
-
-          <div className='squares-side squares-lside defi-color'>
-            <p>6 {players.map((player) => player.caseNumber === 6 ? (
-                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
-              ) : null)}
-            </p>
-            <h4>Defi</h4>
-          </div>
-
-          <div className='squares-side squares-lside'>
-            <p>7 {players.map((player) => player.caseNumber === 7 ? (
-                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
-              ) : null)}
-            </p>
-          </div>
-          <div className='squares-side squares-lside'>
-            <p>8 {players.map((player) => player.caseNumber === 8 ? (
-                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
-              ) : null)}
-            </p>
-          </div>
-
-          <div className='squares-side squares-lside action-color'>
-            <p>9 {players.map((player) => player.caseNumber === 9 ? (
-                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
-              ) : null)}
-            </p>
-            <h4>Bonne Action</h4>
-          </div>
-
-          <div className='squares-side squares-lside'>
-            <p>10 {players.map((player) => player.caseNumber === 10 ? (
-                <span style={{"background": player.color}} className="span-pawn">{player.id}</span>
-              ) : null)}
-            </p>
-          </div>
-
+            return <LeftSquare key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
+          })}
         </div>
+
 
         <div className="container-cards">
           
@@ -289,125 +254,60 @@ function App(): JSX.Element {
         </div>
 
         <div className='right-frame'>
+          {Array.from({ length: 10 }, (_, index) => {
+            const caseNumber = 38 - index;
+            let additionalContent;
 
-          <div className='squares-side squares-rside'>
-            <p>38</p>
-          </div>
-          <div className='squares-side squares-rside'>
-            <p>37</p>
-          </div>
+            switch (caseNumber) {
+              case 30:
+                additionalContent = <h4>Défi</h4>;
+                break;
+              case 33:
+                additionalContent = <h4>Bonne Action</h4>;
+                break;
+              case 36:
+                additionalContent = <h4>Sanction</h4>;
+                break;
+              default:
+                additionalContent = null;
+            }
 
-          <div className='squares-side squares-rside sanction-color'>
-            <p>36</p>
-            <h4>Sanction</h4>
-          </div>
-          
-          <div className='squares-side squares-rside'>
-            <p>35</p>
-          </div>
-          <div className='squares-side squares-rside'>
-            <p>34</p>
-          </div>
-          
-          <div className='squares-side squares-rside action-color'>
-            <p>33</p>
-            <h4>Bonne Action</h4>
-          </div>
-
-          <div className='squares-side squares-rside'>
-            <p>32</p>
-          </div>
-          <div className='squares-side squares-rside'>
-            <p>31</p>
-          </div>
-          
-          <div className='squares-side squares-rside defi-color'>
-            <p>30</p>
-            <h4>Defi</h4>
-          </div>
-          
-          <div className='squares-side squares-rside'>
-            <p>29</p>
-          </div>
-
+            return <RightSquare key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
+          })}
         </div>
 
       </div>
 
       <div className='bottom-frame'>
-        
-        <div className="squares square-bottom">
-          <p>11</p>
-        </div>
-        
-        <div className="squares square-bottom sanction-color">
-          <p>12</p>
-          <h4>Sanction</h4>
-        </div>
-        
-        <div className="squares square-bottom">
-          <p>13</p>
-        </div>
-        <div className="squares square-bottom">
-          <p>14</p>
-        </div>
+        {Array.from({ length: 18 }, (_, index) => {
+          const caseNumber = index + 11;
+          let additionalContent;
 
-        <div className="squares square-bottom quiz-color">
-          <p>15</p>
-          <h4>Quiz</h4>
-        </div>
-        
-        <div className="squares square-bottom">
-          <p>16</p>  
-        </div>
-        <div className="squares square-bottom">
-          <p>17</p>
-        </div>
+          switch (caseNumber) {
+            case 12:
+              additionalContent = <h4>Sanction</h4>;
+              break;
+            case 15:
+              additionalContent = <h4>Quiz</h4>;
+              break;
+            case 18:
+              additionalContent = <h4>Défi</h4>;
+              break;
+            case 21:
+              additionalContent = <h4>Bonne Action</h4>;
+              break;
+            case 24:
+              additionalContent = <h4>Sanction</h4>;
+              break;
+            case 27:
+              additionalContent = <h4>Quiz</h4>;
+              break;
+            default:
+              additionalContent = null;
+          }
 
-        <div className="squares square-bottom defi-color">
-          <p>18</p>
-          <h4>Defi</h4>
-        </div>
-        
-        <div className="squares square-bottom">
-          <p>19</p>
-        </div>
-        <div className="squares square-bottom">
-          <p>20</p>  
-        </div>
-        
-        <div className="squares square-bottom action-color">
-          <p>21</p>
-          <h4>Bonne Action</h4>
-        </div>
-
-        <div className="squares square-bottom">
-          <p>22</p>
-        </div>
-        <div className="squares square-bottom">
-          <p>23</p>
-        </div>
-
-        <div className="squares square-bottom sanction-color">
-          <p>24</p>
-          <h4>Sanction</h4>
-        </div>
-        
-        <div className="squares square-bottom">
-          <p>25</p>
-        </div>
-        <div className="squares square-bottom">
-          <p>26</p>
-        </div>
-
-        <div className="squares square-bottom quiz-color">
-          <p>27</p>
-          <h4>Quiz</h4>
-        </div>
-
-        <div className="squares square-bottom">
-          <p>28</p>
-        </div>
+          return <BottomSquare key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
+        })}
 
       </div>
 
