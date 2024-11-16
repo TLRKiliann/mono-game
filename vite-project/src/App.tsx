@@ -73,6 +73,51 @@ function App(): JSX.Element {
     </span>
   );
   
+
+  // test avec les cartes (left-side) !!!
+  // ########################################################################################################################################################
+
+  const getRandomNumber = (type: 'quiz' | 'defi' | 'action' | 'sanction'): number | undefined => {
+    let randomNum = Math.floor(Math.random() * 25) + 1;
+    console.log(randomNum, type);
+
+    switch (count) {
+        case 3:
+        case 15:
+        case 27:
+        case 39:
+        case 51:
+            return type === 'quiz' ? randomNum : undefined;
+        case 6:
+        case 18:
+        case 30:
+        case 42:
+        case 54:
+            return type === 'defi' ? randomNum : undefined;
+        case 9:
+        case 21:
+        case 33:
+        case 45:
+            return type === 'action' ? randomNum : undefined;
+        case 12:
+        case 24:
+        case 36:
+        case 48:
+            return type === 'sanction' ? randomNum : undefined;
+        default:
+            console.log("nothing to retrieve");
+            return undefined; // ou une valeur par défaut
+    }
+  }
+
+  const QuizFunction = () => getRandomNumber('quiz');
+  const DefiFunction = () => getRandomNumber('defi');
+  const ActionFunction = () => getRandomNumber('action');
+  const SanctionFunction = () => getRandomNumber('sanction');
+
+
+  // ########################################################################################################################################################
+
   // top side squares
   const TopSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
@@ -80,6 +125,8 @@ function App(): JSX.Element {
         ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" : caseNumber === 54 ? "defi-color" : null}`}>
         <p>
           {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
+          {caseNumber === 39 ? QuizFunction() : caseNumber === 42 ? DefiFunction() : caseNumber === 45 ? ActionFunction() : caseNumber === 48 ? SanctionFunction() 
+          : caseNumber === 51 ? QuizFunction() : caseNumber === 54 ? DefiFunction() : null}
         </p>
         {additionalContent}
       </div>
@@ -88,10 +135,10 @@ function App(): JSX.Element {
   // left side squares
   const LeftSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
-      <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" : caseNumber === 9 
-        ? "action-color" : null}`}>
+      <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" : caseNumber === 9 ? "action-color" : null}`}>
         <p>
           {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
+          {caseNumber === 3 ? QuizFunction() : caseNumber === 6 ? DefiFunction() : caseNumber === 9 ? ActionFunction() : null}
         </p>
         {additionalContent}
       </div>
@@ -104,6 +151,7 @@ function App(): JSX.Element {
         ? "sanction-color" : null}`}>
         <p>
           {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
+          {caseNumber === 30 ? DefiFunction() : caseNumber === 33 ? ActionFunction() : caseNumber === 36 ? SanctionFunction() : null}
         </p>
         {additionalContent}
       </div>
@@ -116,6 +164,8 @@ function App(): JSX.Element {
         ? "defi-color" : caseNumber === 21 ? "action-color" : caseNumber === 24 ? "sanction-color" : caseNumber === 27 ? "quiz-color" : null}`}>
         <p>
           {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
+          {caseNumber === 12 ? SanctionFunction() : caseNumber === 15 ? QuizFunction() : caseNumber === 18 ? DefiFunction() : caseNumber === 21 ? ActionFunction() 
+          : caseNumber === 24 ? SanctionFunction() : caseNumber === 27 ? QuizFunction() : null}
         </p>
         {additionalContent}
       </div>
