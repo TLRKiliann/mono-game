@@ -117,9 +117,17 @@
   border-top: 1px solid #000;
 }
 
-.squares p {
+/* .squares p {
   margin: 4px 4px;
-  /* border: 1px solid #000; */
+} */
+
+.caseNumber {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  margin: 4px 4px;
+  border: 1px solid #333;
 }
 
 .squares h4 {

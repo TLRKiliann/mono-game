@@ -43,6 +43,9 @@ function App(): JSX.Element {
   // counter by player
   const [activePlayerId, setActivePlayerId] = useState<number>(1);
   
+  // for handleClick btn
+  const [onShow, setOnShow] = useState<boolean>(true);
+
   //quiz questions for cards
   /* const quizQuestionsMap = quizQuestions.map((quiz: QuizProps) => quiz.id + " " + quiz.ask + " " + quiz.answer);
   console.log(quizQuestionsMap, "quizQuestionsMap"); */
@@ -87,6 +90,10 @@ function App(): JSX.Element {
     }
   ]);
 
+  const handleClick = () => {
+    setOnShow(false);
+  }
+
   // test avec les cartes !!!
   // ########################################################################################################################################################
 
@@ -101,7 +108,7 @@ function App(): JSX.Element {
       case 27:
       case 39:
       case 51:
-        return type === 'quiz' && findCardQuiz ? <ComponentQuiz findCardQuiz={findCardQuiz} /> : null;
+        return type === 'quiz' && findCardQuiz ? <ComponentQuiz findCardQuiz={findCardQuiz} onShow={onShow} handleClick={handleClick} /> : null;
       default:
         console.log("nothing to retrieve");
         return null;
@@ -119,7 +126,7 @@ function App(): JSX.Element {
       case 30:
       case 42:
       case 54:
-        return type === 'defi' && findCardDefi ? <ComponentDefi findCardDefi={findCardDefi} /> : null;
+        return type === 'defi' && findCardDefi ? <ComponentDefi findCardDefi={findCardDefi} onShow={onShow} handleClick={handleClick} /> : null;
       default:
         console.log("nothing to retrieve");
         return null;
@@ -136,13 +143,12 @@ function App(): JSX.Element {
       case 21:
       case 33:
       case 45:
-        return type === 'action' && findCardAction ? <ComponentBonneAction findCardAction={findCardAction} /> : null;
+        return type === 'action' && findCardAction ? <ComponentBonneAction findCardAction={findCardAction} onShow={onShow} handleClick={handleClick} /> : null;
       default:
         console.log("nothing to retrieve");
         return null;
     }
   };
-
 
   const getRandomNumberSanction = (type: 'sanction'): JSX.Element | null => {
     
@@ -154,7 +160,7 @@ function App(): JSX.Element {
       case 24:
       case 36:
       case 48:
-        return type === 'sanction' && findCardSanction ? <ComponentSanction findCardSanction={findCardSanction} /> : null;
+        return type === 'sanction' && findCardSanction ? <ComponentSanction findCardSanction={findCardSanction} onShow={onShow} handleClick={handleClick} /> : null;
       default:
         console.log("nothing to retrieve");
         return null;
@@ -168,78 +174,83 @@ function App(): JSX.Element {
 
   // ########################################################################################################################################################
 
-  // top side squares
+  // top side squares onShow true & absolute over / onShow false & absolute under
   const PlayerSpanTop: React.FC<{ player: PlayerProps }> = ({ player }) => (
-    
-    <span style={{ background: player.color }} className="span-pawn">
-    
+    <div style={{ background: player.color }} className="span-pawn">
       {player.id} {player.caseNumber === 39 ? QuizFunction() : player.caseNumber === 42 ? DefiFunction() : player.caseNumber === 45 ? ActionFunction() 
         : player.caseNumber === 48 ? SanctionFunction() : player.caseNumber === 51 ? QuizFunction() : player.caseNumber === 54 ? DefiFunction() : null}
-
-    </span>
+    </div>
   );
 
   const TopSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
       <div className={`squares square-top ${caseNumber === 39 ? "quiz-color" : caseNumber === 42 ? "defi-color" : caseNumber === 45  
         ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" : caseNumber === 54 ? "defi-color" : null}`}>
-        <p>
-          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanTop key={player.id} player={player} /> : null)}
-        </p>
+        
+        <div className="caseNumber">
+          {caseNumber}
+          {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanTop key={player.id} player={player} /> : null)}
+        </div>
         {additionalContent}
       </div>
   );
 
   // left side squares (almost done)
   const PlayerSpanLeft: React.FC<{ player: PlayerProps }> = ({ player }) => (
-    <span style={{ background: player.color }} className="span-pawn">
+    <div style={{ background: player.color }} className="span-pawn">
       {player.id} {player.caseNumber === 3 ? QuizFunction() : player.caseNumber === 6 ? DefiFunction() : player.caseNumber === 9 ? ActionFunction() : null}
-    </span>
+    </div>
   );
 
   const LeftSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
       <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" : caseNumber === 9 ? "action-color" : null}`}>
-        <p>
-          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanLeft key={player.id} player={player} /> : null)}
-        </p>
+        
+        <div className="caseNumber">
+          {caseNumber}
+          {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanLeft key={player.id} player={player} /> : null)}
+        </div>
         {additionalContent}
       </div>
   );
 
   // right side squares
   const PlayerSpanRight: React.FC<{ player: PlayerProps }> = ({ player }) => (
-    <span style={{ background: player.color }} className="span-pawn">
+    <div style={{ background: player.color }} className="span-pawn">
       {player.id} {player.caseNumber === 30 ? DefiFunction() : player.caseNumber === 33 ? ActionFunction() : player.caseNumber === 36 ? SanctionFunction() : null}
-    </span>
+    </div>
   );
 
   const RightSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
       <div className={`squares-side squares-rside ${caseNumber === 30 ? "defi-color" : caseNumber === 33 ? "action-color" : caseNumber === 36 
         ? "sanction-color" : null}`}>
-        <p>
-          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanRight key={player.id} player={player} /> : null)}
-        </p>
+        
+        <div className="caseNumber">
+          {caseNumber}
+          {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanRight key={player.id} player={player} /> : null)}
+        </div>
         {additionalContent}
       </div>
   );
 
   // bottom side squares
   const PlayerSpanBottom: React.FC<{ player: PlayerProps }> = ({ player }) => (
-    <span style={{ background: player.color }} className="span-pawn">
+    <div style={{ background: player.color }} className="span-pawn">
       {player.id} {player.caseNumber === 12 ? SanctionFunction() : player.caseNumber === 15 ? QuizFunction() : player.caseNumber === 18 ? DefiFunction()
       : player.caseNumber === 21 ? ActionFunction() : player.caseNumber === 24 ? SanctionFunction() : player.caseNumber === 27 ? QuizFunction() : null}
-    </span>
+    </div>
   );
 
   const BottomSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
       <div className={`squares square-bottom ${caseNumber === 12 ? "sanction-color" : caseNumber === 15 ? "quiz-color" : caseNumber === 18 
         ? "defi-color" : caseNumber === 21 ? "action-color" : caseNumber === 24 ? "sanction-color" : caseNumber === 27 ? "quiz-color" : null}`}>
-        <p>
-          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanBottom key={player.id} player={player} /> : null)}
-        </p>
+        
+        <div className="caseNumber">
+          {caseNumber}
+          {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanBottom key={player.id} player={player} /> : null)}
+        </div>
         {additionalContent}
       </div>
   );
