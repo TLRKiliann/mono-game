@@ -1,5 +1,32 @@
 # React + TypeScript + Vite
 
+## Goals
+
+- 1) Cases special puis sortir une carte !!!
+
+Sort la carte arrive sur la case et la carte est lisible pour tous ?
+Ou seulement pour le joueur qui arrive sur la case ? (Tous sur le même écran)
+
+
+```
+
+// Générer un nombre aléatoire entre 1 et 25
+let randomNumber = Math.floor(Math.random() * 25) + 1;
+
+console.log(randomNumber);
+
+
+```
+
+
+- 2) splitter en plrs components (code splitting)
+
+- 3) logo dans le signet en-haut (plus tard)
+
+- 4) cards aux 4 coins (plus tard)
+
+---
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
