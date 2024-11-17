@@ -1,47 +1,25 @@
 # React + TypeScript + Vite
 
-Goals
+## Goals
 
-- 1)Revoir l'algorythmies des pions (simplifier)
+- 1) Cases special puis sortir une carte !!!
 
-#######################################################################################################################################
+```
 
-const PlayerSpan = ({ player }) => (
-  <span style={{ background: player.color }} className="span-pawn">
-    {player.id}
-  </span>
-);
+// Générer un nombre aléatoire entre 1 et 25
+let randomNumber = Math.floor(Math.random() * 25) + 1;
 
-const Square = ({ caseNumber, players, additionalContent }) => (
-  <div className='squares-side squares-lside'>
-    <p>
-      {caseNumber} {players.map((player) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
-    </p>
-    {additionalContent}
-  </div>
-);
+console.log(randomNumber);
 
-const GameBoard = ({ players }) => (
-  <div className='left-frame'>
-    <Square caseNumber={1} players={players} />
-    <Square caseNumber={2} players={players} />
-    <Square caseNumber={3} players={players} additionalContent={<h4>Quiz</h4>} />
-    <Square caseNumber={4} players={players} />
-    <Square caseNumber={5} players={players} />
-    <Square caseNumber={6} players={players} additionalContent={<h4>Defi</h4>} />
-    <Square caseNumber={7} players={players} />
-    <Square caseNumber={8} players={players} />
-    <Square caseNumber={9} players={players} additionalContent={<h4>Bonne Action</h4>} />
-    <Square caseNumber={10} players={players} />
-  </div>
-);
 
-#######################################################################################################################################
+```
 
-- 2)splitter en plrs components (code splitting)
-- 
-- logo dans le signet en-haut (plus tard)
-- cards aux 4 coins (plus tard)
+
+- 2) splitter en plrs components (code splitting)
+
+- 3) logo dans le signet en-haut (plus tard)
+
+- 4) cards aux 4 coins (plus tard)
 
 ---
 
