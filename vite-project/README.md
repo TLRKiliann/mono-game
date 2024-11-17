@@ -4,6 +4,10 @@
 
 - 1) Cases special puis sortir une carte !!!
 
+Sort la carte arrive sur la case et la carte est lisible pour tous ?
+Ou seulement pour le joueur qui arrive sur la case ? (Tous sur le même écran)
+
+
 ```
 
 // Générer un nombre aléatoire entre 1 et 25
