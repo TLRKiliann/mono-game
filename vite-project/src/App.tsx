@@ -1,8 +1,24 @@
 import { useState } from "react";
 import Dices from "./components/Dices";
+import { quizQuestions, defiQuestions, sanctionOrder, bonneActionOrder } from './lib/questions';
+import ComponentQuiz from "./components/ComponentQuiz";
+import ComponentDefi from "./components/ComponentDefi";
+import ComponentBonneAction from './components/ComponentBonneAction';
+import ComponentSanction from './components/ComponentSanction';
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
 import './App.css';
+
+type QuizProps = {
+  id: number;
+  ask: string;
+  answer: string;
+};
+
+type OrderProps = {
+  id: number;
+  order: string;
+};
 
 type PlayerProps = {
   id: number;
@@ -27,6 +43,10 @@ function App(): JSX.Element {
   // counter by player
   const [activePlayerId, setActivePlayerId] = useState<number>(1);
   
+  //quiz questions for cards
+  /* const quizQuestionsMap = quizQuestions.map((quiz: QuizProps) => quiz.id + " " + quiz.ask + " " + quiz.answer);
+  console.log(quizQuestionsMap, "quizQuestionsMap"); */
+
   // simulation user's data from db
   const [players, setPlayers] = useState<PlayerProps[]>([
     {
@@ -67,116 +87,169 @@ function App(): JSX.Element {
     }
   ]);
 
-  const PlayerSpan: React.FC<{ player: PlayerProps }> = ({ player }) => (
-    <span style={{ background: player.color }} className="span-pawn">
-      {player.id}
-    </span>
-  );
-  
-
-  // test avec les cartes (left-side) !!!
+  // test avec les cartes !!!
   // ########################################################################################################################################################
 
-  const getRandomNumber = (type: 'quiz' | 'defi' | 'action' | 'sanction'): number | undefined => {
-    let randomNum = Math.floor(Math.random() * 25) + 1;
-    console.log(randomNum, type);
+  const getRandomNumberQuiz = (type: 'quiz'): JSX.Element | null => {
+    
+    let randomNum = Math.floor(Math.random() * 3) + 1;
+    const findCardQuiz: QuizProps | undefined = quizQuestions.find((quiz: QuizProps) => quiz.id === randomNum);
 
     switch (count) {
-        case 3:
-        case 15:
-        case 27:
-        case 39:
-        case 51:
-            return type === 'quiz' ? randomNum : undefined;
-        case 6:
-        case 18:
-        case 30:
-        case 42:
-        case 54:
-            return type === 'defi' ? randomNum : undefined;
-        case 9:
-        case 21:
-        case 33:
-        case 45:
-            return type === 'action' ? randomNum : undefined;
-        case 12:
-        case 24:
-        case 36:
-        case 48:
-            return type === 'sanction' ? randomNum : undefined;
-        default:
-            console.log("nothing to retrieve");
-            return undefined; // ou une valeur par défaut
+      case 3:
+      case 15:
+      case 27:
+      case 39:
+      case 51:
+        return type === 'quiz' && findCardQuiz ? <ComponentQuiz findCardQuiz={findCardQuiz} /> : null;
+      default:
+        console.log("nothing to retrieve");
+        return null;
     }
   }
 
-  const QuizFunction = () => getRandomNumber('quiz');
-  const DefiFunction = () => getRandomNumber('defi');
-  const ActionFunction = () => getRandomNumber('action');
-  const SanctionFunction = () => getRandomNumber('sanction');
+  const getRandomNumberDefi = (type: 'defi'): JSX.Element | null => {
+    
+    let randomNum = Math.floor(Math.random() * 3) + 1;
+    const findCardDefi: QuizProps | undefined = defiQuestions.find((defi: QuizProps) => defi.id === randomNum);
 
+    switch (count) {
+      case 6:
+      case 18:
+      case 30:
+      case 42:
+      case 54:
+        return type === 'defi' && findCardDefi ? <ComponentDefi findCardDefi={findCardDefi} /> : null;
+      default:
+        console.log("nothing to retrieve");
+        return null;
+    }
+  }
+
+  const getRandomNumberAction = (type: 'action'): JSX.Element | null => {
+    
+    let randomNum = Math.floor(Math.random() * 3) + 1;
+    const findCardAction: OrderProps | undefined = bonneActionOrder.find((action: OrderProps) => action.id === randomNum);
+
+    switch (count) {
+      case 9:
+      case 21:
+      case 33:
+      case 45:
+        return type === 'action' && findCardAction ? <ComponentBonneAction findCardAction={findCardAction} /> : null;
+      default:
+        console.log("nothing to retrieve");
+        return null;
+    }
+  };
+
+
+  const getRandomNumberSanction = (type: 'sanction'): JSX.Element | null => {
+    
+    let randomNum = Math.floor(Math.random() * 3) + 1;
+    const findCardSanction: OrderProps | undefined = sanctionOrder.find((sanction: OrderProps) => sanction.id === randomNum);
+    
+    switch (count) {
+      case 12:
+      case 24:
+      case 36:
+      case 48:
+        return type === 'sanction' && findCardSanction ? <ComponentSanction findCardSanction={findCardSanction} /> : null;
+      default:
+        console.log("nothing to retrieve");
+        return null;
+    }
+  };
+
+  const QuizFunction = () => getRandomNumberQuiz('quiz');
+  const DefiFunction = () => getRandomNumberDefi('defi');
+  const ActionFunction = () => getRandomNumberAction('action');
+  const SanctionFunction = () => getRandomNumberSanction('sanction');
 
   // ########################################################################################################################################################
 
   // top side squares
+  const PlayerSpanTop: React.FC<{ player: PlayerProps }> = ({ player }) => (
+    
+    <span style={{ background: player.color }} className="span-pawn">
+    
+      {player.id} {player.caseNumber === 39 ? QuizFunction() : player.caseNumber === 42 ? DefiFunction() : player.caseNumber === 45 ? ActionFunction() 
+        : player.caseNumber === 48 ? SanctionFunction() : player.caseNumber === 51 ? QuizFunction() : player.caseNumber === 54 ? DefiFunction() : null}
+
+    </span>
+  );
+
   const TopSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
       <div className={`squares square-top ${caseNumber === 39 ? "quiz-color" : caseNumber === 42 ? "defi-color" : caseNumber === 45  
         ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" : caseNumber === 54 ? "defi-color" : null}`}>
         <p>
-          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
-          {caseNumber === 39 ? QuizFunction() : caseNumber === 42 ? DefiFunction() : caseNumber === 45 ? ActionFunction() : caseNumber === 48 ? SanctionFunction() 
-          : caseNumber === 51 ? QuizFunction() : caseNumber === 54 ? DefiFunction() : null}
+          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanTop key={player.id} player={player} /> : null)}
         </p>
         {additionalContent}
       </div>
   );
 
-  // left side squares
+  // left side squares (almost done)
+  const PlayerSpanLeft: React.FC<{ player: PlayerProps }> = ({ player }) => (
+    <span style={{ background: player.color }} className="span-pawn">
+      {player.id} {player.caseNumber === 3 ? QuizFunction() : player.caseNumber === 6 ? DefiFunction() : player.caseNumber === 9 ? ActionFunction() : null}
+    </span>
+  );
+
   const LeftSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
       <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" : caseNumber === 9 ? "action-color" : null}`}>
         <p>
-          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
-          {caseNumber === 3 ? QuizFunction() : caseNumber === 6 ? DefiFunction() : caseNumber === 9 ? ActionFunction() : null}
+          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanLeft key={player.id} player={player} /> : null)}
         </p>
         {additionalContent}
       </div>
   );
 
   // right side squares
+  const PlayerSpanRight: React.FC<{ player: PlayerProps }> = ({ player }) => (
+    <span style={{ background: player.color }} className="span-pawn">
+      {player.id} {player.caseNumber === 30 ? DefiFunction() : player.caseNumber === 33 ? ActionFunction() : player.caseNumber === 36 ? SanctionFunction() : null}
+    </span>
+  );
+
   const RightSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
       <div className={`squares-side squares-rside ${caseNumber === 30 ? "defi-color" : caseNumber === 33 ? "action-color" : caseNumber === 36 
         ? "sanction-color" : null}`}>
         <p>
-          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
-          {caseNumber === 30 ? DefiFunction() : caseNumber === 33 ? ActionFunction() : caseNumber === 36 ? SanctionFunction() : null}
+          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanRight key={player.id} player={player} /> : null)}
         </p>
         {additionalContent}
       </div>
   );
 
   // bottom side squares
+  const PlayerSpanBottom: React.FC<{ player: PlayerProps }> = ({ player }) => (
+    <span style={{ background: player.color }} className="span-pawn">
+      {player.id} {player.caseNumber === 12 ? SanctionFunction() : player.caseNumber === 15 ? QuizFunction() : player.caseNumber === 18 ? DefiFunction()
+      : player.caseNumber === 21 ? ActionFunction() : player.caseNumber === 24 ? SanctionFunction() : player.caseNumber === 27 ? QuizFunction() : null}
+    </span>
+  );
+
   const BottomSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
       <div className={`squares square-bottom ${caseNumber === 12 ? "sanction-color" : caseNumber === 15 ? "quiz-color" : caseNumber === 18 
         ? "defi-color" : caseNumber === 21 ? "action-color" : caseNumber === 24 ? "sanction-color" : caseNumber === 27 ? "quiz-color" : null}`}>
         <p>
-          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpan key={player.id} player={player} /> : null)}
-          {caseNumber === 12 ? SanctionFunction() : caseNumber === 15 ? QuizFunction() : caseNumber === 18 ? DefiFunction() : caseNumber === 21 ? ActionFunction() 
-          : caseNumber === 24 ? SanctionFunction() : caseNumber === 27 ? QuizFunction() : null}
+          {caseNumber} {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanBottom key={player.id} player={player} /> : null)}
         </p>
         {additionalContent}
       </div>
   );
 
-  console.log(countPlayerOne, "countPlayerOne");
+  /* console.log(countPlayerOne, "countPlayerOne");
   console.log(countPlayerTwo, "countPlayerTwo");
   console.log(countPlayerThree, "countPlayerThree");
   console.log(countPlayerFour, "countPlayerFour");
   console.log(countPlayerFive, "countPlayerFive");
-  console.log(countPlayerSix, "countPlayerSix");
+  console.log(countPlayerSix, "countPlayerSix"); */
 
   //console.log(count, "count");
   //console.log(value, "value");
