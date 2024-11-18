@@ -2,6 +2,8 @@
 
 ## Goals
 
+100) Le code splitting ne semble pas avoir satisfait react... A revoir...
+
 - 1) Cases special puis sortir une carte !!!
 
 Sort la carte arrive sur la case et la carte est lisible pour tous ?

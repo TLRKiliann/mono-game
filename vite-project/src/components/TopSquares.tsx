@@ -1,6 +1,6 @@
 import type { PlayerProps } from "../lib/types";
 import React, { useEffect, useState } from "react";
-import { getRandomNumberQuiz, getRandomNumberAction, getRandomNumberDefi, getRandomNumberSanction } from "../lib/functions";
+import { getRandomNumberQuiz, getRandomNumberAction, getRandomNumberDefi, getRandomNumberSanction } from "./functions";
 import './styles/TopSquares.css';
 
 // top side squares onShow true & absolute over / onShow false & absolute under

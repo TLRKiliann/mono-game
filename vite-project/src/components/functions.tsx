@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { quizQuestions, defiQuestions, sanctionOrder, bonneActionOrder } from './questions';
-import ComponentQuiz from "../components/ComponentQuiz";
-import ComponentDefi from "../components/ComponentDefi";
-import ComponentBonneAction from '../components/ComponentBonneAction';
-import ComponentSanction from '../components/ComponentSanction';
+import { quizQuestions, defiQuestions, sanctionOrder, bonneActionOrder } from '../lib/questions';
+import ComponentQuiz from "./ComponentQuiz";
+import ComponentDefi from "./ComponentDefi";
+import ComponentBonneAction from './ComponentBonneAction';
+import ComponentSanction from './ComponentSanction';
 
 type QuizProps = {
     id: number;

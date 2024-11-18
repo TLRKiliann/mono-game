@@ -1,6 +1,6 @@
 import type { PlayerProps } from "../lib/types";
 import React, { useEffect, useState } from "react";
-import { getRandomNumberDefi, getRandomNumberAction, getRandomNumberSanction } from "../lib/functions";
+import { getRandomNumberDefi, getRandomNumberAction, getRandomNumberSanction } from "./functions";
 import "./styles/RightSquares.css";
 
 const PlayerSpanRight: React.FC<{ player: PlayerProps }> = ({ player }) => {
