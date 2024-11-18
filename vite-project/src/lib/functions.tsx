@@ -74,8 +74,3 @@ export const getRandomNumberSanction = (type: 'sanction'): JSX.Element | null =>
 
     return (type === 'sanction' && findCardSanction) ? <ComponentSanction findCardSanction={findCardSanction} onShow={onShow} handleClick={handleClick} /> : null;
 };
-
-//export const QuizFunction = () => getRandomNumberQuiz('quiz');
-//export const DefiFunction = () => getRandomNumberDefi('defi');
-//export const ActionFunction = () => getRandomNumberAction('action');
-//export const SanctionFunction = () => getRandomNumberSanction('sanction');
