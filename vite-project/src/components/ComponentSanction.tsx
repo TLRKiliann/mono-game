@@ -28,7 +28,7 @@ import img_26 from '../assets/sanctions/26.jpg';
 import img_27 from '../assets/sanctions/27.jpg';
 import img_28 from '../assets/sanctions/28.jpg';
 import img_29 from '../assets/sanctions/29.jpg'; */
-import './CardDisplayer.css';
+import './styles/CardDisplayer.css';
 
 type OrderProps = {
     id: number;

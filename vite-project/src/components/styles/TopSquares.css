@@ -1,0 +1,13 @@
+.span-pawn {
+    width: 24px;
+    height: 24px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    border: 1px solid #333;
+    border-radius: 100%;
+    box-shadow: 5px 5px 5px -2px #333;
+  }
+  

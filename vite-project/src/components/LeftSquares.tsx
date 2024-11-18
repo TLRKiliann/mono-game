@@ -1,6 +1,7 @@
-import type { PlayerProps } from "../lib/type";
+import type { PlayerProps } from "../lib/types";
 import React, { useEffect, useState } from "react";
 import { getRandomNumberQuiz, getRandomNumberAction, getRandomNumberDefi } from "../lib/functions";
+import './styles/LeftSquares.css';
 
 const PlayerSpanLeft: React.FC<{ player: PlayerProps }> = ({ player }) => {
     

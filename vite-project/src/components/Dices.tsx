@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import gifDice from "../assets/dice.gif";
-import './Dices.css';
+import './styles/Dices.css';
 
 type PlayerProps = {
   id: number;

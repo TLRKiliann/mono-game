@@ -1,4 +1,4 @@
-import type { PlayerProps } from "./lib/type";
+import type { PlayerProps } from "./lib/types";
 import { useState } from "react";
 import Dices from "./components/Dices";
 import mascotte from "./assets/mascotte-resize.png";
@@ -8,8 +8,6 @@ import LeftSquares from "./components/LeftSquares";
 import RightSquares from "./components/RightSquares";
 import BottomSquares from "./components/BottomSquares";
 import './App.css';
-
-
 
 function App(): JSX.Element {
 

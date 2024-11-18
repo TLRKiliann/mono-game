@@ -14,7 +14,7 @@ import img_12 from '../assets/quiz/12.jpg';
 import img_13 from '../assets/quiz/13.jpg';
 import img_14 from '../assets/quiz/14.jpg';
 import img_15 from '../assets/quiz/15.jpg'; */
-import './CardDisplayer.css';
+import './styles/CardDisplayer.css';
 
 type QuizProps = {
     id: number;

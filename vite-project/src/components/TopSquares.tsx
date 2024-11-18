@@ -1,6 +1,7 @@
-import type { PlayerProps } from "../lib/type";
+import type { PlayerProps } from "../lib/types";
 import React, { useEffect, useState } from "react";
 import { getRandomNumberQuiz, getRandomNumberAction, getRandomNumberDefi, getRandomNumberSanction } from "../lib/functions";
+import './styles/TopSquares.css';
 
 // top side squares onShow true & absolute over / onShow false & absolute under
 const PlayerSpanTop: React.FC<{ player: PlayerProps }> = ({ player }) => {
@@ -36,14 +37,14 @@ const PlayerSpanTop: React.FC<{ player: PlayerProps }> = ({ player }) => {
 };
 
 const TopSquares: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
-    { caseNumber, players, additionalContent }) => (
-    <div className={`squares square-top ${caseNumber === 39 ? "quiz-color" : caseNumber === 42 ? "defi-color" : caseNumber === 45  
-        ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" : caseNumber === 54 ? "defi-color" : null}`}>
-        <div className="caseNumber">
-          {caseNumber}
-          {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanTop key={player.id} player={player} /> : null)}
-        </div>
-        {additionalContent}
+  { caseNumber, players, additionalContent }) => (
+  <div className={`squares square-top ${caseNumber === 39 ? "quiz-color" : caseNumber === 42 ? "defi-color" : caseNumber === 45  
+    ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" : caseNumber === 54 ? "defi-color" : null}`}>
+    <div className="caseNumber">
+      {caseNumber}
+      {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanTop key={player.id} player={player} /> : null)}
     </div>
+    {additionalContent}
+  </div>
 );
 export default TopSquares;

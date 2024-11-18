@@ -35,7 +35,7 @@ import img_33 from '../assets/defis/13.jpg';
 import img_34 from '../assets/defis/14.jpg';
 import img_35 from '../assets/defis/15.jpg';
 import img_36 from '../assets/defis/16.jpg'; */
-import './CardDisplayer.css';
+import './styles/CardDisplayer.css';
 
 type QuizProps = {
     id: number;
