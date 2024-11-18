@@ -12,18 +12,20 @@ Ou seulement pour le joueur qui arrive sur la case ? (Tous sur le même écran)
 
 // Générer un nombre aléatoire entre 1 et 25
 let randomNumber = Math.floor(Math.random() * 25) + 1;
-
 console.log(randomNumber);
 
 
 ```
 
+- 2) Les questions doivent être supprimées après avoir été utilisées => ALGO !.
 
-- 2) splitter en plrs components (code splitting)
+- 3) Choisir le nbre de player avant que le jeu commence (min 2 & max 6).
 
-- 3) logo dans le signet en-haut (plus tard)
+- 3) splitter en plrs components (code splitting)
 
-- 4) cards aux 4 coins (plus tard)
+- 4) logo dans le signet en-haut (plus tard)
+
+- 5) cards aux 4 coins (plus tard)
 
 ---
 

@@ -1,13 +1,4 @@
-type QuizProps = {
-    id: number;
-    ask: string;
-    answer: string;
-};
-
-type OrderProps = {
-    id: number;
-    order: string;
-};
+import { QuizProps, OrderProps } from "./type";
 
 export const quizQuestions: QuizProps[] = [
     {
