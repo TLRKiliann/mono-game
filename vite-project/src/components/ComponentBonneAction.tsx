@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import img_1 from '../assets/actions/1.jpg';
 import img_2 from '../assets/actions/2.jpg';
 import img_3 from '../assets/actions/3.jpg';
@@ -33,11 +33,17 @@ type OrderProps = {
 
 interface ComponentQuizProps {
     findCardAction: OrderProps;
-    onShow: boolean;
-    handleClick: () => void;
+    /* onShow: boolean;
+    handleClick: () => void; */
 };
 
-const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, onShow, handleClick }) => {
+const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction }) => {
+
+    const [onShow, setOnShow] = useState<boolean>(true);
+
+    const handleClick = () => {
+      setOnShow(false);
+    };
 
     /*
     const imgBonneActions: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9, 
@@ -52,9 +58,7 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, on
 
     return (
         <div className={`${onShow === true ? 'card-displayer' : 'card-hidden'}`}>
-
             <img src={imgBonneActionId} width={512} height={512} alt="no img quiz" className='img-card' />
-
             <p className='p-card'>{findCardAction?.id}</p>
             <p className='p-card'>{findCardAction?.order}</p>
             <button onClick={handleClick}>Click</button>

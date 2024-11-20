@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import img_1 from '../assets/sanctions/1.jpg';
 import img_2 from '../assets/sanctions/2.jpg';
 import img_3 from '../assets/sanctions/3.jpg';
@@ -37,11 +37,18 @@ type OrderProps = {
 
 interface ComponentQuizProps {
     findCardSanction: OrderProps;
-    onShow: boolean;
-    handleClick: () => void;
+    /* onShow: boolean;
+    handleClick: () => void; */
 };
 
-const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, onShow, handleClick }) => {
+const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction }) => {
+
+    const [onShow, setOnShow] = useState<boolean>(true);
+
+    const handleClick = () => {
+      setOnShow(false);
+    };
+    
 
     /* const imgSanctions: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9, 
         img_10, img_11, img_12, img_13, img_14, img_15, img_16, img_17, img_18, img_19,

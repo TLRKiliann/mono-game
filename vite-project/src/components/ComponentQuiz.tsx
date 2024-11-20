@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import img_1 from '../assets/quiz/1.jpg';
 import img_2 from '../assets/quiz/2.jpg';
 import img_3 from '../assets/quiz/3.jpg';
@@ -24,11 +24,21 @@ type QuizProps = {
 
 interface ComponentQuizProps {
     findCardQuiz: QuizProps;
-    onShow: boolean;
-    handleClick: () => void;
+    //setQuizCard: React.Dispatch<React.SetStateAction<JSX.Element | null>>;
+    /* onShow: boolean;
+    handleClick: () => void; */
 };
 
-const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, onShow, handleClick }) => {
+const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
+
+  // Some troubles with click btn to close card !!!
+  const [onShow, setOnShow] = useState<boolean>(true);
+
+  const handleClick = () => {
+    setOnShow(false);
+  };
+  
+  console.log(onShow, "!! onShow !!");
 
 /*     const imgQuiz: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, 
         img_7, img_8, img_9, img_10, img_11, img_12, img_13, img_14, img_15
@@ -43,12 +53,28 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, onShow, han
     return (
         <div className={`${onShow === true ? 'card-displayer' : 'card-hidden'}`}>
             
-            <img src={imgQuizId} width={512} height={512} alt="no img quiz" className='img-card' />
+            <img src={imgQuizId} width={1024} height={1024} alt="no img quiz" className='img-card' />
             
-            <p className='p-card'>{findCardQuiz?.id}</p>
-            <p className='p-card'>{findCardQuiz?.ask}</p>
-            <p className='p-card'>{findCardQuiz?.answer}</p>
-            <button onClick={handleClick}>Click</button>
+            <div className='para-box-card'>
+
+                <div>
+                    <p className='p-card-first'>{findCardQuiz?.id}</p>
+                </div>
+                
+                <div>
+                    <p className='p-card-second'>{findCardQuiz?.ask}</p>
+                </div>
+            
+                <div>
+                    <p className='p-card-third'>{findCardQuiz?.answer}</p>
+                </div>
+            
+            </div>
+
+
+            <div className='div-btn'>
+                <button onClick={handleClick}>Close</button>
+            </div>        
         </div>
     );
 };
