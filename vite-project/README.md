@@ -9,6 +9,7 @@
 Sort la carte arrive sur la case et la carte est lisible pour tous ?
 Ou seulement pour le joueur qui arrive sur la case ? (Tous sur le même écran)
 
+Click btn ferme la carte !!!
 
 ```
 
