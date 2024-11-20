@@ -1,13 +1,11 @@
 import type { PlayerProps } from "./lib/types";
 import { useEffect, useState } from "react";
 import Dices from "./components/Dices";
-
 import { bonneActionOrder, defiQuestions, quizQuestions, sanctionOrder } from "./lib/questions";
 import ComponentQuiz from "./components/ComponentQuiz";
 import ComponentDefi from "./components/ComponentDefi";
 import ComponentBonneAction from "./components/ComponentBonneAction";
 import ComponentSanction from "./components/ComponentSanction";
-
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
 import './App.css';
@@ -78,15 +76,6 @@ function App(): JSX.Element {
     }
   ]);
 
-  // Some troubles with click btn to close card !!!
-  const [onShow, setOnShow] = useState<boolean>(false);
-
-  const handleClick = () => {
-    setOnShow(false);
-  }
-  
-  console.log(onShow, "!! onShow !!");
-
   //---
 
   const getRandomNumberQuiz = (type: 'quiz'): JSX.Element | null => {
@@ -97,7 +86,7 @@ function App(): JSX.Element {
     console.log(findCardQuiz, "!!! findCardQuiz !!!");
     
     if (findCardQuiz) {
-      return (type === 'quiz' && findCardQuiz) ? <ComponentQuiz findCardQuiz={findCardQuiz} onShow={onShow} handleClick={handleClick} /> : null;
+      return (type === 'quiz' && findCardQuiz) ? <ComponentQuiz findCardQuiz={findCardQuiz} /> : null;
     } else {
       return null;
     }
@@ -108,7 +97,7 @@ function App(): JSX.Element {
     const findCardDefi: QuizProps | undefined = defiQuestions.find((defi: QuizProps) => defi.id === randomNum);
 
     if (findCardDefi) {
-      return (type === 'defi' && findCardDefi) ? <ComponentDefi findCardDefi={findCardDefi} onShow={onShow} handleClick={handleClick} /> : null;  
+      return (type === 'defi' && findCardDefi) ? <ComponentDefi findCardDefi={findCardDefi} /> : null;  
     } else {
       return null;
     }
@@ -119,7 +108,7 @@ function App(): JSX.Element {
     const findCardAction: OrderProps | undefined = bonneActionOrder.find((action: OrderProps) => action.id === randomNum);
 
     if (findCardAction) {
-      return (type === 'action' && findCardAction) ? <ComponentBonneAction findCardAction={findCardAction} onShow={onShow} handleClick={handleClick} /> : null;
+      return (type === 'action' && findCardAction) ? <ComponentBonneAction findCardAction={findCardAction} /> : null;
     } else {
       return null;
     }
@@ -129,7 +118,7 @@ function App(): JSX.Element {
     const randomNum = Math.floor(Math.random() * 3) + 1;
     const findCardSanction: OrderProps | undefined = sanctionOrder.find((sanction: OrderProps) => sanction.id === randomNum);
     if (findCardSanction) {
-      return (type === 'sanction' && findCardSanction) ? <ComponentSanction findCardSanction={findCardSanction} onShow={onShow} handleClick={handleClick} /> : null;
+      return (type === 'sanction' && findCardSanction) ? <ComponentSanction findCardSanction={findCardSanction} /> : null;
     } else {
       return null;
     }
@@ -147,15 +136,9 @@ function App(): JSX.Element {
 
     useEffect(() => {
       updateCardsTop(player.caseNumber);
-      return () => console.log("clean-up left side");
+      return () => console.log("clean-up top side");
     }, [player.caseNumber]);
     
-    useEffect(() => {
-      if (quizCard || defiCard ||  actionCard || sanctionCard) {
-        setOnShow(true);
-      }
-    }, [quizCard || defiCard ||  actionCard || sanctionCard]);
-
     // Update card by case & by player
     const updateCardsTop = (caseNum: number): void => {
       if (caseNum === 39 || caseNum === 51) {
@@ -192,46 +175,32 @@ function App(): JSX.Element {
 
   // Left CONCENTRATE !!!
   const PlayerSpanLeft: React.FC<{ player: PlayerProps }> = ({ player }) => {
+
     const [quizCard, setQuizCard] = useState<JSX.Element | null>(null);
     const [defiCard, setDefiCard] = useState<JSX.Element | null>(null);
     const [actionCard, setActionCard] = useState<JSX.Element | null>(null);
 
+    // problem !!!
     useEffect(() => {
       updateCardsLeft(player.caseNumber);
       return () => console.log("clean-up left side");
-    }, [player.caseNumber]);
-
-    // ça se joue ici...
-    /* useEffect(() => {
-      if (quizCard || defiCard || actionCard) {
-        setOnShow(true);
-      }
-    }, [quizCard, defiCard, actionCard]); */
+    }, []);
 
     const updateCardsLeft = (caseNum: number): void => {
-      
-      console.log(caseNum, "caseNum");
-
       if (caseNum === 3 && quizCard === null) {
-        /*setOnShow(true);*/
         setQuizCard(getRandomNumberQuiz("quiz"));
       } else if (caseNum === 6 && defiCard === null) {
-        /*setOnShow(true);*/
         setDefiCard(getRandomNumberDefi("defi"));
       } else if (caseNum === 9 && actionCard === null) {
-        /*setOnShow(true);*/
         setActionCard(getRandomNumberAction("action"));
       } else {
-        //setOnShow(false);
-        setQuizCard(null);
-        setDefiCard(null);
-        setActionCard(null);
+        console.log("nothing else to update...");
       }
     };
 
     return (
       <div style={{ background: player.color }} className="span-pawn">
-        {player.id} {quizCard} {defiCard} {actionCard}
+        {player.id} {defiCard} {actionCard} {actionCard}
       </div>
     )
   };
@@ -259,18 +228,8 @@ function App(): JSX.Element {
 
     useEffect(() => {
       updateCardsRight(player.caseNumber);
-      return () => console.log("clean-up left side");
+      return () => console.log("clean-up right side");
     }, [player.caseNumber]);
-    
-    useEffect(() => {
-      if (defiCard ||  actionCard || sanctionCard) {
-          setOnShow(true);
-      }
-    }, [defiCard ||  actionCard || sanctionCard]);
-
-/*     const handleClick = () => {
-      setOnShow(false);
-    } */
 
 
     // Update card by case & by player
@@ -315,18 +274,8 @@ function App(): JSX.Element {
 
     useEffect(() => {
       updateCardsBottom(player.caseNumber);
-      return () => console.log("clean-up left side");
+      return () => console.log("clean-up bottom side");
     }, [player.caseNumber]);
-    
-    useEffect(() => {
-      if (quizCard || defiCard ||  actionCard || sanctionCard) {
-          setOnShow(true);
-      }
-    }, [quizCard || defiCard ||  actionCard || sanctionCard]);
-
-/*     const handleClick = () => {
-      setOnShow(false);
-    } */
 
     // Update card by case & by player
     const updateCardsBottom = (caseNum: number): void => {
@@ -430,7 +379,6 @@ function App(): JSX.Element {
             return <LeftSquares key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
           })}
         </div>
-
 
         <div className="container-cards">
           
