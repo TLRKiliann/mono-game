@@ -1,14 +1,8 @@
+import type { PlayerProps } from '../lib/types';
 import { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import gifDice from "../assets/dice.gif";
 import './styles/Dices.css';
-
-type PlayerProps = {
-  id: number;
-  name: string;
-  color: string;
-  caseNumber: number;
-};
 
 type ValProps = {
   players: PlayerProps[];
