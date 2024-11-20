@@ -1,4 +1,4 @@
-import type { PlayerProps } from "./lib/types";
+import type { OrderProps, PlayerProps, QuizProps } from "./lib/types";
 import { useEffect, useState } from "react";
 import Dices from "./components/Dices";
 import { bonneActionOrder, defiQuestions, quizQuestions, sanctionOrder } from "./lib/questions";
@@ -9,17 +9,6 @@ import ComponentSanction from "./components/ComponentSanction";
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
 import './App.css';
-
-type QuizProps = {
-  id: number;
-  ask: string;
-  answer: string;
-};
-
-type OrderProps = {
-  id: number;
-  order: string;
-};
 
 function App(): JSX.Element {
 
@@ -42,39 +31,52 @@ function App(): JSX.Element {
       id: 1,
       name: "Player one",
       color: "lightblue",
-      caseNumber: count > 55 ? (count - 55) : count
+      caseNumber: count > 55 ? (count - 55) : count,
+      caseQuiz: false
     },
     {
       id: 2,
       name: "Player two",
       color: "yellow",
-      caseNumber: count > 55 ? (count - 55) : count
+      caseNumber: count > 55 ? (count - 55) : count,
+      caseQuiz: false
     },
     {
       id: 3,
       name: "Player three",
       color: "red",
-      caseNumber: count > 55 ? (count - 55) : count
+      caseNumber: count > 55 ? (count - 55) : count,
+      caseQuiz: false
     },
     {
       id: 4,
       name: "Player four",
       color: "violet",
-      caseNumber: count > 55 ? (count - 55) : count
+      caseNumber: count > 55 ? (count - 55) : count,
+      caseQuiz: false
     },
     {
       id: 5,
       name: "Player five",
       color: "orange",
-      caseNumber: count > 55 ? (count - 55) : count
+      caseNumber: count > 55 ? (count - 55) : count,
+      caseQuiz: false
     },
     {
       id: 6,
       name: "Player six",
       color: "green",
-      caseNumber: count > 55 ? (count - 55) : count
+      caseNumber: count > 55 ? (count - 55) : count,
+      caseQuiz: false
     }
   ]);
+
+  //---
+
+  /* const [quizCard, setQuizCard] = useState<JSX.Element | null>(null);
+  const [defiCard, setDefiCard] = useState<JSX.Element | null>(null);
+  const [actionCard, setActionCard] = useState<JSX.Element | null>(null);
+  const [sanctionCard, setSanctionCard] = useState<JSX.Element | null>(null); */
 
   //---
 
@@ -85,8 +87,8 @@ function App(): JSX.Element {
     const findCardQuiz: QuizProps | undefined = quizQuestions.find((quiz: QuizProps) => quiz.id === randomNum);
     console.log(findCardQuiz, "!!! findCardQuiz !!!");
     
-    if (findCardQuiz) {
-      return (type === 'quiz' && findCardQuiz) ? <ComponentQuiz findCardQuiz={findCardQuiz} /> : null;
+    if (type === 'quiz' && findCardQuiz) {
+      return <ComponentQuiz findCardQuiz={findCardQuiz} />;
     } else {
       return null;
     }
@@ -180,34 +182,51 @@ function App(): JSX.Element {
     const [defiCard, setDefiCard] = useState<JSX.Element | null>(null);
     const [actionCard, setActionCard] = useState<JSX.Element | null>(null);
 
-    // problem !!!
+    // problem !!! manque un param
+    //setQuizCard(getRandomNumberQuiz("quiz")); le reinit !!!
+
+    /* 
+      Tant que le pion est sur la case, la function "getRandomNumberQuiz("quiz")" 
+      va se réouvrire en boucle... On veut qu'elle ne s'ouvre qu'une fois. Il faut 
+      un "setQuizCard(null)" et le "useEffect()" ne devrait être appelé qu'une fois.
+    */
+
+    const updateCardsLeft = (caseNum: number): void => {
+      if (caseNum === 3 && quizCard === null) {
+        setQuizCard(getRandomNumberQuiz("quiz"));
+      } else if (caseNum === 3 && quizCard !== null) {
+        setQuizCard(null);
+      } else if (caseNum === 6 && defiCard === null) {
+        setDefiCard(getRandomNumberDefi("defi"));
+      } else if (caseNum === 6 && defiCard !== null) {
+        setDefiCard(null);
+      } else if (caseNum === 9 && actionCard === null) {
+        setActionCard(getRandomNumberAction("action"));
+      } else if (caseNum === 9 && actionCard !== null) {
+        setActionCard(null);
+      } else {
+        console.log("nothing else to update...");
+        setQuizCard(null);
+        setDefiCard(null);
+        setActionCard(null);
+      }
+    };
+
     useEffect(() => {
       updateCardsLeft(player.caseNumber);
       return () => console.log("clean-up left side");
     }, []);
 
-    const updateCardsLeft = (caseNum: number): void => {
-      if (caseNum === 3 && quizCard === null) {
-        setQuizCard(getRandomNumberQuiz("quiz"));
-      } else if (caseNum === 6 && defiCard === null) {
-        setDefiCard(getRandomNumberDefi("defi"));
-      } else if (caseNum === 9 && actionCard === null) {
-        setActionCard(getRandomNumberAction("action"));
-      } else {
-        console.log("nothing else to update...");
-      }
-    };
-
     return (
       <div style={{ background: player.color }} className="span-pawn">
-        {player.id} {defiCard} {actionCard} {actionCard}
+        {player.id} {quizCard} {defiCard} {actionCard}
       </div>
     )
   };
+
   const LeftSquares: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
     <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" : caseNumber === 9 ? "action-color" : null}`}>
-        
         <div className="caseNumber">
           {caseNumber}
           {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanLeft key={player.id} player={player} /> : null)}
@@ -274,6 +293,7 @@ function App(): JSX.Element {
 
     useEffect(() => {
       updateCardsBottom(player.caseNumber);
+      
       return () => console.log("clean-up bottom side");
     }, [player.caseNumber]);
 
