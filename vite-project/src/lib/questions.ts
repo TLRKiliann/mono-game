@@ -31,8 +31,8 @@ export const defiQuestions: QuizProps[] = [
     },
     {
         id: 3,
-        ask: "Quelle la femme la plus belle du monde ?",
-        answer: "Nora"
+        ask: "Quelle est le nom le plus joli ?",
+        answer: "Emerald"
     },
 ];
 

@@ -58,10 +58,26 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction }) 
 
     return (
         <div className={`${onShow === true ? 'card-displayer' : 'card-hidden'}`}>
-            <img src={imgBonneActionId} width={512} height={512} alt="no img quiz" className='img-card' />
-            <p className='p-card'>{findCardAction?.id}</p>
-            <p className='p-card'>{findCardAction?.order}</p>
-            <button onClick={handleClick}>Click</button>
+            <img 
+                src={imgBonneActionId} 
+                width={1024} 
+                height={1024} 
+                alt={`Illustration pour la question ${findCardAction.id}`} 
+                className='img-card' 
+            />
+            
+            <div className='para-box-card'>
+                <div>
+                    <p className='p-card-first'>{findCardAction.id}</p>
+                </div>
+                <div>
+                    <p className='p-card-third'>{findCardAction.order || "Réponse indisponible"}</p>
+                </div>
+            </div>
+
+            <div className='div-btn'>
+                <button onClick={handleClick}>Close</button>
+            </div>
         </div>
     );
 };

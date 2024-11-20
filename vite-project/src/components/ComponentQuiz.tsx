@@ -24,6 +24,7 @@ type QuizProps = {
 
 interface ComponentQuizProps {
     findCardQuiz: QuizProps;
+    //setActiveCard: React.Dispatch<React.SetStateAction<any>>;
 };
 
 const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
@@ -31,7 +32,13 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
     const [onShow, setOnShow] = useState<boolean>(true);
 
     const handleClick = () => {
-      setOnShow(false);
+        setOnShow(false);  // Mettre la carte en "invisible"
+        /* setActiveCard((prevState: any) => ({
+            ...prevState,  // On garde l'état précédent
+            isCardActive: false,  // On marque la carte comme fermée
+            type: null,  // Réinitialisation du type de carte
+            cardData: null,  // Réinitialisation des données de la carte
+        })); */
     };
 
     const imgQuiz: string[] = [img_1, img_2, img_3];

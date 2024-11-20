@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #333;
+    border: 2px solid red;
     border-radius: 7px;
 }
 
@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    border: 12px solid violet;
+    border: 1px solid magenta;
 
     /* border: 5px solid violet; */
 }
@@ -47,7 +47,7 @@
     text-align: center;
     text-shadow: 1px 1px 1px #555;
     
-    border: 1px solid violet;
+    border: 3px dashed violet;
 }
 
 .dice-indicator p {
