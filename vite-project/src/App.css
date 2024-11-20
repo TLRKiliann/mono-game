@@ -58,6 +58,7 @@
 
 .first-square {
   background: rgba(0, 0, 255, 0.25);
+  border: 1px solid #333;
 }
 
 .squares:last-child {
@@ -117,17 +118,44 @@
   border-top: 1px solid #000;
 }
 
-/* .squares p {
-  margin: 4px 4px;
-} */
+.first-squares {
+  width: 12%;
+  height: 100%;
+
+  background: rgba(106, 90, 205, 0.7);
+  border-right: 1px solid #000;
+  color: #333;
+}
+
+.first-squares-pone {
+  display: flex;
+  justify-content: start;
+  margin: 4px;
+
+  /* border: 1px solid #000; */
+}
+
+.first-squares-ptwo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f5f5f5;
+
+  margin-top: 25%;
+
+  /* border: 1px solid #000; */
+}
 
 .caseNumber {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 
-  margin: 4px 4px;
-  border: 1px solid #333;
+  margin: 4px;
+  /* border: 1px solid #333; */
 }
 
 .squares h4 {
@@ -137,7 +165,6 @@
 
   text-wrap: nowrap;
   text-align: justify;
-
   /* border: 1px solid #333; */
 }
 
@@ -266,6 +293,15 @@
 
 .defi-color {
   background: lightblue;
+}
+
+.players-start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #333;
 }
 
 .span-pawn {

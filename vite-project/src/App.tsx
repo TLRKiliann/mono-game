@@ -1,31 +1,14 @@
-import { useState } from "react";
+import type { OrderProps, PlayerProps, QuizProps } from "./lib/types";
+import { useEffect, useState } from "react";
 import Dices from "./components/Dices";
-import { quizQuestions, defiQuestions, sanctionOrder, bonneActionOrder } from './lib/questions';
+import { bonneActionOrder, defiQuestions, quizQuestions, sanctionOrder } from "./lib/questions";
 import ComponentQuiz from "./components/ComponentQuiz";
 import ComponentDefi from "./components/ComponentDefi";
-import ComponentBonneAction from './components/ComponentBonneAction';
-import ComponentSanction from './components/ComponentSanction';
+import ComponentBonneAction from "./components/ComponentBonneAction";
+import ComponentSanction from "./components/ComponentSanction";
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
 import './App.css';
-
-type QuizProps = {
-  id: number;
-  ask: string;
-  answer: string;
-};
-
-type OrderProps = {
-  id: number;
-  order: string;
-};
-
-type PlayerProps = {
-  id: number;
-  name: string;
-  color: string;
-  caseNumber: number;
-};
 
 function App(): JSX.Element {
 
@@ -34,194 +17,259 @@ function App(): JSX.Element {
 
   const [countPlayerOne, setCountPlayerOne] = useState<number>(0);
   const [countPlayerTwo, setCountPlayerTwo] = useState<number>(0);
-
   const [countPlayerThree, setCountPlayerThree] = useState<number>(0);
   const [countPlayerFour, setCountPlayerFour] = useState<number>(0);
   const [countPlayerFive, setCountPlayerFive] = useState<number>(0);
   const [countPlayerSix, setCountPlayerSix] = useState<number>(0);
-
+  
   // counter by player
   const [activePlayerId, setActivePlayerId] = useState<number>(1);
   
-  // for handleClick btn
-  const [onShow, setOnShow] = useState<boolean>(true);
-
-  //quiz questions for cards
-  /* const quizQuestionsMap = quizQuestions.map((quiz: QuizProps) => quiz.id + " " + quiz.ask + " " + quiz.answer);
-  console.log(quizQuestionsMap, "quizQuestionsMap"); */
-
   // simulation user's data from db
   const [players, setPlayers] = useState<PlayerProps[]>([
     {
       id: 1,
       name: "Player one",
       color: "lightblue",
-      caseNumber: count
+      caseNumber: count > 55 ? (count - 55) : count,
+      caseQuiz: false
     },
     {
       id: 2,
       name: "Player two",
       color: "yellow",
-      caseNumber: count
+      caseNumber: count > 55 ? (count - 55) : count,
+      caseQuiz: false
     },
     {
       id: 3,
       name: "Player three",
       color: "red",
-      caseNumber: count
+      caseNumber: count > 55 ? (count - 55) : count,
+      caseQuiz: false
     },
     {
       id: 4,
       name: "Player four",
       color: "violet",
-      caseNumber: count
+      caseNumber: count > 55 ? (count - 55) : count,
+      caseQuiz: false
     },
     {
       id: 5,
       name: "Player five",
       color: "orange",
-      caseNumber: count
+      caseNumber: count > 55 ? (count - 55) : count,
+      caseQuiz: false
     },
     {
       id: 6,
       name: "Player six",
       color: "green",
-      caseNumber: count
+      caseNumber: count > 55 ? (count - 55) : count,
+      caseQuiz: false
     }
   ]);
 
-  const handleClick = () => {
-    setOnShow(false);
-  }
+  //---
 
-  // test avec les cartes !!!
-  // ########################################################################################################################################################
+  /* const [quizCard, setQuizCard] = useState<JSX.Element | null>(null);
+  const [defiCard, setDefiCard] = useState<JSX.Element | null>(null);
+  const [actionCard, setActionCard] = useState<JSX.Element | null>(null);
+  const [sanctionCard, setSanctionCard] = useState<JSX.Element | null>(null); */
+
+  //---
 
   const getRandomNumberQuiz = (type: 'quiz'): JSX.Element | null => {
-    
-    let randomNum = Math.floor(Math.random() * 3) + 1;
-    const findCardQuiz: QuizProps | undefined = quizQuestions.find((quiz: QuizProps) => quiz.id === randomNum);
+    const randomNum = Math.floor(Math.random() * 3) + 1;
+    console.log("random", randomNum);
 
-    switch (count) {
-      case 3:
-      case 15:
-      case 27:
-      case 39:
-      case 51:
-        return type === 'quiz' && findCardQuiz ? <ComponentQuiz findCardQuiz={findCardQuiz} onShow={onShow} handleClick={handleClick} /> : null;
-      default:
-        console.log("nothing to retrieve");
-        return null;
+    const findCardQuiz: QuizProps | undefined = quizQuestions.find((quiz: QuizProps) => quiz.id === randomNum);
+    console.log(findCardQuiz, "!!! findCardQuiz !!!");
+    
+    if (type === 'quiz' && findCardQuiz) {
+      return <ComponentQuiz findCardQuiz={findCardQuiz} />;
+    } else {
+      return null;
     }
   }
 
   const getRandomNumberDefi = (type: 'defi'): JSX.Element | null => {
-    
-    let randomNum = Math.floor(Math.random() * 3) + 1;
+    const randomNum = Math.floor(Math.random() * 3) + 1;
     const findCardDefi: QuizProps | undefined = defiQuestions.find((defi: QuizProps) => defi.id === randomNum);
 
-    switch (count) {
-      case 6:
-      case 18:
-      case 30:
-      case 42:
-      case 54:
-        return type === 'defi' && findCardDefi ? <ComponentDefi findCardDefi={findCardDefi} onShow={onShow} handleClick={handleClick} /> : null;
-      default:
-        console.log("nothing to retrieve");
-        return null;
+    if (findCardDefi) {
+      return (type === 'defi' && findCardDefi) ? <ComponentDefi findCardDefi={findCardDefi} /> : null;  
+    } else {
+      return null;
     }
   }
 
   const getRandomNumberAction = (type: 'action'): JSX.Element | null => {
-    
-    let randomNum = Math.floor(Math.random() * 3) + 1;
+    const randomNum = Math.floor(Math.random() * 3) + 1;
     const findCardAction: OrderProps | undefined = bonneActionOrder.find((action: OrderProps) => action.id === randomNum);
 
-    switch (count) {
-      case 9:
-      case 21:
-      case 33:
-      case 45:
-        return type === 'action' && findCardAction ? <ComponentBonneAction findCardAction={findCardAction} onShow={onShow} handleClick={handleClick} /> : null;
-      default:
-        console.log("nothing to retrieve");
-        return null;
+    if (findCardAction) {
+      return (type === 'action' && findCardAction) ? <ComponentBonneAction findCardAction={findCardAction} /> : null;
+    } else {
+      return null;
     }
-  };
+  }
 
   const getRandomNumberSanction = (type: 'sanction'): JSX.Element | null => {
-    
-    let randomNum = Math.floor(Math.random() * 3) + 1;
+    const randomNum = Math.floor(Math.random() * 3) + 1;
     const findCardSanction: OrderProps | undefined = sanctionOrder.find((sanction: OrderProps) => sanction.id === randomNum);
-    
-    switch (count) {
-      case 12:
-      case 24:
-      case 36:
-      case 48:
-        return type === 'sanction' && findCardSanction ? <ComponentSanction findCardSanction={findCardSanction} onShow={onShow} handleClick={handleClick} /> : null;
-      default:
-        console.log("nothing to retrieve");
-        return null;
+    if (findCardSanction) {
+      return (type === 'sanction' && findCardSanction) ? <ComponentSanction findCardSanction={findCardSanction} /> : null;
+    } else {
+      return null;
     }
   };
 
-  const QuizFunction = () => getRandomNumberQuiz('quiz');
-  const DefiFunction = () => getRandomNumberDefi('defi');
-  const ActionFunction = () => getRandomNumberAction('action');
-  const SanctionFunction = () => getRandomNumberSanction('sanction');
+  //---
 
-  // ########################################################################################################################################################
+  // Top
+  const PlayerSpanTop: React.FC<{ player: PlayerProps }> = ({ player }) => {
+    
+    const [quizCard, setQuizCard] = useState<JSX.Element | null>(null);
+    const [defiCard, setDefiCard] = useState<JSX.Element | null>(null);
+    const [actionCard, setActionCard] = useState<JSX.Element | null>(null);
+    const [sanctionCard, setSanctionCard] = useState<JSX.Element | null>(null);
 
-  // top side squares onShow true & absolute over / onShow false & absolute under
-  const PlayerSpanTop: React.FC<{ player: PlayerProps }> = ({ player }) => (
-    <div style={{ background: player.color }} className="span-pawn">
-      {player.id} {player.caseNumber === 39 ? QuizFunction() : player.caseNumber === 42 ? DefiFunction() : player.caseNumber === 45 ? ActionFunction() 
-        : player.caseNumber === 48 ? SanctionFunction() : player.caseNumber === 51 ? QuizFunction() : player.caseNumber === 54 ? DefiFunction() : null}
-    </div>
-  );
+    useEffect(() => {
+      updateCardsTop(player.caseNumber);
+      return () => console.log("clean-up top side");
+    }, [player.caseNumber]);
+    
+    // Update card by case & by player
+    const updateCardsTop = (caseNum: number): void => {
+      if (caseNum === 39 || caseNum === 51) {
+        setQuizCard(getRandomNumberQuiz("quiz"));
+      } else if (caseNum === 42 || caseNum === 54) {
+        setDefiCard(getRandomNumberDefi("defi"));
+      } else if (caseNum === 45) {
+        setActionCard(getRandomNumberAction("action"));
+      } else if (caseNum === 48) {
+        setSanctionCard(getRandomNumberSanction("sanction"));
+      }
+    };
 
-  const TopSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
-    { caseNumber, players, additionalContent }) => (
-      <div className={`squares square-top ${caseNumber === 39 ? "quiz-color" : caseNumber === 42 ? "defi-color" : caseNumber === 45  
-        ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" : caseNumber === 54 ? "defi-color" : null}`}>
-        
-        <div className="caseNumber">
-          {caseNumber}
-          {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanTop key={player.id} player={player} /> : null)}
-        </div>
-        {additionalContent}
+    return (
+      <div style={{ background: player.color }} className="span-pawn">
+        {player.id} {quizCard} {defiCard} {actionCard} {sanctionCard}
       </div>
-  );
+    )
+  };
 
-  // left side squares (almost done)
-  const PlayerSpanLeft: React.FC<{ player: PlayerProps }> = ({ player }) => (
-    <div style={{ background: player.color }} className="span-pawn">
-      {player.id} {player.caseNumber === 3 ? QuizFunction() : player.caseNumber === 6 ? DefiFunction() : player.caseNumber === 9 ? ActionFunction() : null}
+  const TopSquares: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
+    { caseNumber, players, additionalContent }) => (
+    <div className={`squares square-top ${caseNumber === 39 ? "quiz-color" : caseNumber === 42 ? "defi-color" : caseNumber === 45  
+      ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" : caseNumber === 54 ? "defi-color" : null}`}>
+      <div className="caseNumber">
+        {caseNumber}
+        {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanTop key={player.id} player={player} /> : null)}
+      </div>
+      {additionalContent}
     </div>
   );
 
-  const LeftSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
+  // --- --- ---
+
+  // Left CONCENTRATE !!!
+  const PlayerSpanLeft: React.FC<{ player: PlayerProps }> = ({ player }) => {
+
+    const [quizCard, setQuizCard] = useState<JSX.Element | null>(null);
+    const [defiCard, setDefiCard] = useState<JSX.Element | null>(null);
+    const [actionCard, setActionCard] = useState<JSX.Element | null>(null);
+
+    // problem !!! manque un param
+    //setQuizCard(getRandomNumberQuiz("quiz")); le reinit !!!
+
+    /* 
+      Tant que le pion est sur la case, la function "getRandomNumberQuiz("quiz")" 
+      va se réouvrire en boucle... On veut qu'elle ne s'ouvre qu'une fois. Il faut 
+      un "setQuizCard(null)" et le "useEffect()" ne devrait être appelé qu'une fois.
+    */
+
+    const updateCardsLeft = (caseNum: number): void => {
+      if (caseNum === 3 && quizCard === null) {
+        setQuizCard(getRandomNumberQuiz("quiz"));
+      } else if (caseNum === 3 && quizCard !== null) {
+        setQuizCard(null);
+      } else if (caseNum === 6 && defiCard === null) {
+        setDefiCard(getRandomNumberDefi("defi"));
+      } else if (caseNum === 6 && defiCard !== null) {
+        setDefiCard(null);
+      } else if (caseNum === 9 && actionCard === null) {
+        setActionCard(getRandomNumberAction("action"));
+      } else if (caseNum === 9 && actionCard !== null) {
+        setActionCard(null);
+      } else {
+        console.log("nothing else to update...");
+        setQuizCard(null);
+        setDefiCard(null);
+        setActionCard(null);
+      }
+    };
+
+    useEffect(() => {
+      updateCardsLeft(player.caseNumber);
+      return () => console.log("clean-up left side");
+    }, []);
+
+    return (
+      <div style={{ background: player.color }} className="span-pawn">
+        {player.id} {quizCard} {defiCard} {actionCard}
+      </div>
+    )
+  };
+
+  const LeftSquares: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
-      <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" : caseNumber === 9 ? "action-color" : null}`}>
-        
+    <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" : caseNumber === 9 ? "action-color" : null}`}>
         <div className="caseNumber">
           {caseNumber}
           {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanLeft key={player.id} player={player} /> : null)}
         </div>
         {additionalContent}
-      </div>
-  );
-
-  // right side squares
-  const PlayerSpanRight: React.FC<{ player: PlayerProps }> = ({ player }) => (
-    <div style={{ background: player.color }} className="span-pawn">
-      {player.id} {player.caseNumber === 30 ? DefiFunction() : player.caseNumber === 33 ? ActionFunction() : player.caseNumber === 36 ? SanctionFunction() : null}
     </div>
   );
+  
+  // --- --- ---
 
-  const RightSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
+  // Right
+  const PlayerSpanRight: React.FC<{ player: PlayerProps }> = ({ player }) => {
+    
+    const [defiCard, setDefiCard] = useState<JSX.Element | null>(null);
+    const [actionCard, setActionCard] = useState<JSX.Element | null>(null);
+    const [sanctionCard, setSanctionCard] = useState<JSX.Element | null>(null);
+    /* const [onShow, setOnShow] = useState<boolean>(true); */
+
+    useEffect(() => {
+      updateCardsRight(player.caseNumber);
+      return () => console.log("clean-up right side");
+    }, [player.caseNumber]);
+
+
+    // Update card by case & by player
+    const updateCardsRight = (caseNum: number): void => {
+      if (caseNum === 30) {
+        setDefiCard(getRandomNumberDefi("defi"));
+      } else if (caseNum === 33) {
+        setActionCard(getRandomNumberAction("action"));
+      } else if (caseNum === 36) {
+        setSanctionCard(getRandomNumberSanction("sanction"));
+      }
+    };
+
+    return (
+      <div style={{ background: player.color }} className="span-pawn">
+        {player.id} {defiCard} {actionCard} {sanctionCard}
+      </div>
+    )
+  };
+
+  const RightSquares: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
       <div className={`squares-side squares-rside ${caseNumber === 30 ? "defi-color" : caseNumber === 33 ? "action-color" : caseNumber === 36 
         ? "sanction-color" : null}`}>
@@ -234,49 +282,65 @@ function App(): JSX.Element {
       </div>
   );
 
-  // bottom side squares
-  const PlayerSpanBottom: React.FC<{ player: PlayerProps }> = ({ player }) => (
-    <div style={{ background: player.color }} className="span-pawn">
-      {player.id} {player.caseNumber === 12 ? SanctionFunction() : player.caseNumber === 15 ? QuizFunction() : player.caseNumber === 18 ? DefiFunction()
-      : player.caseNumber === 21 ? ActionFunction() : player.caseNumber === 24 ? SanctionFunction() : player.caseNumber === 27 ? QuizFunction() : null}
-    </div>
-  );
+  //bottom
+  const PlayerSpanBottom: React.FC<{ player: PlayerProps }> = ({ player }) => {
+    
+    const [quizCard, setQuizCard] = useState<JSX.Element | null>(null);
+    const [defiCard, setDefiCard] = useState<JSX.Element | null>(null);
+    const [actionCard, setActionCard] = useState<JSX.Element | null>(null);
+    const [sanctionCard, setSanctionCard] = useState<JSX.Element | null>(null);
+    /* const [onShow, setOnShow] = useState<boolean>(true); */
 
-  const BottomSquare: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
+    useEffect(() => {
+      updateCardsBottom(player.caseNumber);
+      
+      return () => console.log("clean-up bottom side");
+    }, [player.caseNumber]);
+
+    // Update card by case & by player
+    const updateCardsBottom = (caseNum: number): void => {
+      if (caseNum === 15 || caseNum === 27) {
+        setQuizCard(getRandomNumberQuiz("quiz"));
+      } else if (caseNum === 18) {
+        setDefiCard(getRandomNumberDefi("defi"));
+      } else if (caseNum === 21) {
+        setActionCard(getRandomNumberAction("action"));
+      } else if (caseNum === 12 || caseNum === 24) {
+        setSanctionCard(getRandomNumberSanction("sanction"));
+      }
+    };
+
+    return (
+      <div style={{ background: player.color }} className="span-pawn">
+        {player.id} {quizCard} {defiCard} {actionCard} {sanctionCard}
+      </div>
+    )
+  };
+
+  const BottomSquares: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, players, additionalContent }) => (
-      <div className={`squares square-bottom ${caseNumber === 12 ? "sanction-color" : caseNumber === 15 ? "quiz-color" : caseNumber === 18 
+    <div className={`squares square-bottom ${caseNumber === 12 ? "sanction-color" : caseNumber === 15 ? "quiz-color" : caseNumber === 18 
         ? "defi-color" : caseNumber === 21 ? "action-color" : caseNumber === 24 ? "sanction-color" : caseNumber === 27 ? "quiz-color" : null}`}>
         
         <div className="caseNumber">
-          {caseNumber}
-          {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanBottom key={player.id} player={player} /> : null)}
+        {caseNumber}
+        {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanBottom key={player.id} player={player} /> : null)}
         </div>
         {additionalContent}
-      </div>
+    </div>
   );
-
-  /* console.log(countPlayerOne, "countPlayerOne");
-  console.log(countPlayerTwo, "countPlayerTwo");
-  console.log(countPlayerThree, "countPlayerThree");
-  console.log(countPlayerFour, "countPlayerFour");
-  console.log(countPlayerFive, "countPlayerFive");
-  console.log(countPlayerSix, "countPlayerSix"); */
-
-  //console.log(count, "count");
-  //console.log(value, "value");
 
   return (
     <div className='frame'>
 
       <div className='top-frame'>
 
-        <div className='squares square-top first-square'>
+        <div className='first-squares square-top'>
           
-          <p>0</p>
-
-          {players.map((players: PlayerProps) => (
-            <p key={players.id}>{players.name} - {players.caseNumber}</p>
-          ))}
+          <p className="first-squares-pone">0</p>
+        
+          <p className="first-squares-ptwo">Start</p>
+        
         </div>
 
         {Array.from({ length: 17 }, (_, index) => {
@@ -306,7 +370,7 @@ function App(): JSX.Element {
               additionalContent = null;
           }
 
-          return <TopSquare key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
+          return <TopSquares key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
         })}
 
       </div>
@@ -332,10 +396,9 @@ function App(): JSX.Element {
                 additionalContent = null;
             }
 
-            return <LeftSquare key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
+            return <LeftSquares key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
           })}
         </div>
-
 
         <div className="container-cards">
           
@@ -406,7 +469,7 @@ function App(): JSX.Element {
                 additionalContent = null;
             }
 
-            return <RightSquare key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
+            return <RightSquares key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
           })}
         </div>
 
@@ -440,7 +503,7 @@ function App(): JSX.Element {
               additionalContent = null;
           }
 
-          return <BottomSquare key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
+          return <BottomSquares key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
         })}
 
       </div>
