@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid red;
+    border: 2px solid #000;
     border-radius: 7px;
 }
 
@@ -32,7 +32,7 @@
     justify-content: center;
     
     background-color: red;
-    border: 2px solid #333;
+    border: 2px solid red;
     border-radius: 10px;
     
     font-size: 2rem;
