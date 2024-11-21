@@ -67,18 +67,34 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi }) => {
 
     const imgDefis: string[] = [img_1, img_2, img_3];
 
-    const imgDefi = imgDefis[findCardDefi.id - 1];
-    console.log(imgDefi, "imgDefi");
+    const imgDefiId = imgDefis[findCardDefi.id - 1];
+    console.log(imgDefiId, "imgDefi");
 
     return (
         <div className={`${onShow === true ? 'card-displayer' : 'card-hidden'}`}>
+            <img 
+                src={imgDefiId} 
+                width={1024} 
+                height={1024} 
+                alt={`Illustration pour la question ${findCardDefi.id}`} 
+                className='img-card' 
+            />
+            
+            <div className='para-box-card'>
+                <div>
+                    <p className='p-card-first'>{findCardDefi.id}</p>
+                </div>
+                <div>
+                    <p className='p-card-second'>{findCardDefi.ask || "Question indisponible"}</p>
+                </div>
+                <div>
+                    <p className='p-card-third'>{findCardDefi.answer || "Réponse indisponible"}</p>
+                </div>
+            </div>
 
-            <img src={imgDefi} width={512} height={512} alt="no img defi" className='img-card' />
-
-            <p className='p-card'>{findCardDefi?.id}</p>
-            <p className='p-card'>{findCardDefi?.ask}</p>
-            <p className='p-card'>{findCardDefi?.answer}</p>
-            <button onClick={handleClick}>Click</button>
+            <div className='div-btn'>
+                <button onClick={handleClick}>Close</button>
+            </div>
         </div>
     );
 };

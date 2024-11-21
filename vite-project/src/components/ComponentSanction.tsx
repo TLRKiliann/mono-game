@@ -62,12 +62,26 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction }) =
 
     return (
         <div className={`${onShow === true ? 'card-displayer' : 'card-hidden'}`}>
+            <img 
+                src={imgSanctionId} 
+                width={1024} 
+                height={1024} 
+                alt={`Illustration pour la question ${findCardSanction.id}`} 
+                className='img-card' 
+            />
             
-            <img src={imgSanctionId} width={512} height={512} alt="no img sanction" className='img-card' />
+            <div className='para-box-card'>
+                <div>
+                    <p className='p-card-first'>{findCardSanction.id}</p>
+                </div>
+                <div>
+                    <p className='p-card-third'>{findCardSanction.order || "Réponse indisponible"}</p>
+                </div>
+            </div>
 
-            <p className='p-card'>{findCardSanction?.id}</p>
-            <p className='p-card'>{findCardSanction?.order}</p>
-            <button onClick={handleClick}>Click</button>
+            <div className='div-btn'>
+                <button onClick={handleClick}>Close</button>
+            </div>
         </div>
     );
 };
