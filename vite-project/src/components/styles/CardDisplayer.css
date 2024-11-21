@@ -109,20 +109,19 @@
 }
 
 /* btn validation */
-.div-validatecase {
-    position: absolute;
-    top: 60%;
+.div-validateBtn {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    width: 80%;
+    width: 95%;
     height: auto;
-    margin: auto;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+
     /* border: 1px solid orangered; */
 }
 
-.div-validatecase button {
+.div-validateBtn button {
     font-size: 1.0rem;
     font-weight: 600;
     background: rgba(17, 83, 72, 1);
@@ -134,13 +133,13 @@
     transform: scale(1.0);
 }
 
-.div-validatecase button:hover {
+.div-validateBtn button:hover {
     background: rgba(17, 83, 72, 0.5);
     border: 1px solid rgba(17, 83, 72, 0.5);
     transform: scale(1.05);
 }
 
-.div-validatecase button:active {
+.div-validateBtn button:active {
     background: rgba(17, 83, 72, 0.75);
     transform: scale(0.95);
     border: 1px solid rgba(17, 83, 72, 0.75);
@@ -213,7 +212,7 @@
 }
 
 /* btn response */
-.div-response {
+.div-responseBtn {
 
     display: flex;
     align-items: center;
@@ -223,7 +222,7 @@
     margin: auto;
 }
 
-.div-response button {
+.div-responseBtn button {
     font-size: 1.0rem;
     font-weight: 600;
     background: rgba(17, 83, 72, 1);
@@ -235,13 +234,13 @@
     transform: scale(1.0);
 }
 
-.div-response button:hover {
+.div-responseBtn button:hover {
     background: rgba(17, 83, 72, 0.5);
     border: 1px solid rgba(17, 83, 72, 0.5);
     transform: scale(1.05);
 }
 
-.div-response button:active {
+.div-responseBtn button:active {
     background: rgba(17, 83, 72, 0.75);
     transform: scale(0.95);
     border: 1px solid rgba(17, 83, 72, 0.75);

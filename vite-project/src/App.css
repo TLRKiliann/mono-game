@@ -207,14 +207,32 @@
   align-items: center;
   justify-content: center;
 
+  font-family: 'Courier New', Courier, monospace;
   text-wrap: nowrap;
   font-size: 1.2rem;
-  font-weight: 400;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px #333;
   
   background: linear-gradient(30deg, rgba(17, 83, 72, 0.5) 10%, rgba(17, 83, 72, 1) 90%);
   border: none;
-  border-radius: 5px;
+
   box-shadow: 0 0 10px #777;
+}
+
+.card-one {
+  border-radius: 0 0 7px 0;
+}
+
+.card-two {
+  border-radius: 0 7px 0 0;
+}
+
+.card-three {
+  border-radius: 0 0 0 7px;
+}
+
+.card-four {
+  border-radius: 7px 0 0 0;
 }
 
 /*main div for dice*/

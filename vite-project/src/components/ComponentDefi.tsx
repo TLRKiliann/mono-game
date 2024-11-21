@@ -118,7 +118,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi }) => {
                 ) : null}
 
                 {isChecked ? (
-                    <div className='div-validatecase'>
+                    <div className='div-validateBtn'>
                         <button type="button" onClick={handleValidate}>Validate</button>
                     </div>
                 ) : null}
@@ -127,7 +127,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi }) => {
                     {response === true ? (
                         <p className='p-card-third'>{findCardDefi.answer || "Réponse indisponible"}</p>
                     ) : (
-                        <div className='div-response'>
+                        <div className='div-responseBtn'>
                             <button type="button" onClick={handleResponse}>Response</button>
                         </div>
                     )}

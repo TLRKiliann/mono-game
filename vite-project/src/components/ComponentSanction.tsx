@@ -71,15 +71,15 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction }) =
             />
             
             <div className='para-box-card'>
-                <div>
+                <div className='div-card-item'>
                     <p className='p-card-first'>{findCardSanction.id}</p>
                 </div>
-                <div>
+                <div className='div-card-item'>
                     <p className='p-card-third'>{findCardSanction.order || "Réponse indisponible"}</p>
                 </div>
             </div>
 
-            <div className='div-btn'>
+            <div className='div-closeBtn'>
                 <button onClick={handleClick}>Close</button>
             </div>
         </div>

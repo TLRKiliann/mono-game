@@ -100,7 +100,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
                 ) : null}
 
                 {isChecked ? (
-                    <div className='div-validatecase'>
+                    <div className='div-validateBtn'>
                         <button type="button" onClick={handleValidate}>Validate</button>
                     </div>
                 ) : null}
@@ -110,7 +110,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
                     {response === true ? (
                         <p className='p-card-third'>{findCardQuiz.answer || "Réponse indisponible"}</p>
                     ) : (
-                        <div className='div-response'>
+                        <div className='div-responseBtn'>
                             <button type="button" onClick={handleResponse}>Response</button>
                         </div>
                     )}

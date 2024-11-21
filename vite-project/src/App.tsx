@@ -395,14 +395,14 @@ function App(): JSX.Element {
           
           <div className='cards-box cards-box-left'>
             
-            <div className="card">Defis</div>
+            <div className="card card-one">Defis</div>
 
             <div className="div-jeudesociete">
               <h2>JEU DE SOCIETE</h2>
               <img src={mascotte} width={564} height={564} alt="img mascotte" className="mascotte-img" />
             </div>
 
-            <div className="card">Quiz</div>
+            <div className="card card-two">Quiz</div>
           
           </div>
           
@@ -435,14 +435,14 @@ function App(): JSX.Element {
 
           <div className='cards-box cards-box-right'>
           
-            <div className="card">Sanctions</div>
+            <div className="card card-three">Sanctions</div>
             
             <div className="div-monecopote">
               <h2>MON ECO POTE</h2>
               <img src={myEcoBest} width={564} height={564} alt="img myecobestfriend" className="myecobestfriend-img" />
             </div>
 
-            <div className="card">Bonnes Actions</div>
+            <div className="card card-four">Bonnes Actions</div>
 
           </div>
 
