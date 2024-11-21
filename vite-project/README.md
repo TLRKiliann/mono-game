@@ -8,15 +8,24 @@
 
 Sort la carte arrive sur la case et la carte est lisible pour tous ?
 Ou seulement pour le joueur qui arrive sur la case ? (Tous sur le même écran)
+Local et online ? Online ???
+
 
 Click btn ferme la carte !!!
 Ok la carte se ferme, mais elle apparaît de nouveau quand un autre joueur lance le dés...
+Parce que le joueur de la case spécial reste sur la même case lors du refresh !
+
+## Solution
++1 case si réussi ???
+-1 case si erreur ???
+
+## Element à revoir en fonction des cartes et des questions et des règles...
+ComponentBonneAction.tsx
+ComponentSanction.tsx
 
 ```
 
-// Générer un nombre aléatoire entre 1 et 25
-let randomNumber = Math.floor(Math.random() * 25) + 1;
-console.log(randomNumber);
+Algo en fonction de nbre de carte et de question.
 
 
 ```
