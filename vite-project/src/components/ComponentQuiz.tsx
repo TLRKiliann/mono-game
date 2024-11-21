@@ -30,6 +30,7 @@ interface ComponentQuizProps {
 const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
+    const [response, setResponse] = useState<boolean>(false);
 
     const handleClick = () => {
         setOnShow(false);  // Mettre la carte en "invisible"
@@ -40,6 +41,10 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
             cardData: null,  // Réinitialisation des données de la carte
         })); */
     };
+
+    const handleResponse = () => {
+        setResponse(!response);
+    }
 
     const imgQuiz: string[] = [img_1, img_2, img_3];
     const imgQuizId = imgQuiz[findCardQuiz.id - 1] ?? "";
@@ -66,7 +71,15 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
                     <p className='p-card-second'>{findCardQuiz.ask || "Question indisponible"}</p>
                 </div>
                 <div>
-                    <p className='p-card-third'>{findCardQuiz.answer || "Réponse indisponible"}</p>
+
+                    {response === true ? (
+                        <p className='p-card-third'>{findCardQuiz.answer || "Réponse indisponible"}</p>
+                    ) : (
+                        <div className='div-response'>
+                            <button type="button" onClick={handleResponse}>Response</button>
+                        </div>
+                    )}
+                    
                 </div>
             </div>
 
