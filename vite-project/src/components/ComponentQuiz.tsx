@@ -31,8 +31,9 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
+    const [isChecked, setIsChecked] = useState<string>("");
 
-    const handleClick = () => {
+    const handleClick = (): void => {
         setOnShow(false);  // Mettre la carte en "invisible"
         /* setActiveCard((prevState: any) => ({
             ...prevState,  // On garde l'état précédent
@@ -42,8 +43,17 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
         })); */
     };
 
-    const handleResponse = () => {
+    const handleResponse = (): void => {
         setResponse(!response);
+    }
+
+    const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        setIsChecked(event.target.value);
+    }
+
+    const handleValidate = (): void => {
+        console.log("Change case number by gamer !!!");
+        setOnShow(false);
     }
 
     const imgQuiz: string[] = [img_1, img_2, img_3];
@@ -70,6 +80,31 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
                 <div>
                     <p className='p-card-second'>{findCardQuiz.ask || "Question indisponible"}</p>
                 </div>
+
+                {response === true ? (
+                    <div>
+
+                        <div className='validate-error'>
+                            <label htmlFor="validate">True
+                                <input type="radio" id="validate" name="validate" value="option1" checked={isChecked === 'option1'} onChange={handleCheck} />
+                            </label>
+                        </div>
+
+                        <div className='validate-error'>
+                            <label htmlFor="error">False
+                                <input type="radio" id="error" name="error" value="option2" checked={isChecked === 'option2'} onChange={handleCheck} />
+                            </label>
+                        </div>
+
+                    </div>
+                ) : null}
+
+                {isChecked ? (
+                    <div className='div-validatecase'>
+                        <button type="button" onClick={handleValidate}>Validate</button>
+                    </div>
+                ) : null}
+                
                 <div>
 
                     {response === true ? (

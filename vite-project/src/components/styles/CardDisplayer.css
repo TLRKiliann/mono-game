@@ -82,10 +82,56 @@
     /* border: 1px solid yellow; */
 }
 
+.validate-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+
+    background: rgba(0, 0, 0, 0.2);
+    color: #000;
+    margin: 0 10px;
+}
+
+.validate-error label {
+    background: rgba(255, 255, 255, 0.5);
+    color: #333;
+
+    border: none;
+    border-radius: 7px;
+    padding: 5px 20px;
+}
+
+.div-validatecase {
+    position: absolute;
+    top: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: auto;
+    margin: auto;
+
+    /* border: 1px solid orangered; */
+}
+
+.div-validatecase button {
+    background: linear-gradient(30deg, rgba(17, 83, 72, 0.5) 10%, rgba(17, 83, 72, 1) 90%);
+    border: 1px solid rgba(17, 83, 72, 0.75);
+    border-radius: 5px;
+    box-shadow: 0 0 3px #c1c1c1;
+    font-size: 1.0rem;
+    font-weight: 600;
+    padding: 7px 20px;
+}
+
 .p-card-third {
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    color: red;
 
     padding: 10px 40px;
     /* border: 1px solid orangered; */
