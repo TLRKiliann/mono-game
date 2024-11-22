@@ -1,3 +1,15 @@
+@keyframes animation-card {
+    0% {
+        opacity: 0.75;
+        transform: scale(0.0) rotate3d(0, 0, 0, 0deg);
+        
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.0) rotate3d(3, -1, 3, 360deg);
+    }
+}
+
 .card-displayer {
     position: absolute;
     top: 20%;
@@ -16,10 +28,15 @@
     box-shadow: 0 0 50px rgba(17, 83, 72, 0.5);
 
     color: #fff;
-
     margin: auto;
     z-index: 50;
-    /* border: 1px solid yellow; */
+    transform: scale(1.0) rotate3d(0, 0, 0, 0deg);
+
+    animation-name: animation-card;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
 }
 
 .card-hidden {
@@ -53,8 +70,6 @@
     /* justify-content: center; */
     width: 100%;
     height: auto;
-
-    margin: 10px;
    /*  border: 1px solid lime; */
 }
 
@@ -66,6 +81,7 @@
 
 .p-card-first {
     font-size: 1.2rem;
+    font-weight: 600;
     color: #333;
     padding: 10px 20px;
     /* border: 1px solid cyan; */
@@ -77,6 +93,7 @@
     justify-content: center;
     text-align: justify;
     color: #333;
+    
     padding: 10px 20px;
     /* border: 1px solid yellow; */
 }
