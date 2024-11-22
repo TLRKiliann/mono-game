@@ -40,6 +40,8 @@ Algo en fonction de nbre de carte et de question.
 
 - 5) cards aux 4 coins (plus tard)
 
+- 6) Btn close des cartes => utilité ???
+
 ---
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
