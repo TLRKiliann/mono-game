@@ -1,3 +1,4 @@
+import type { PlayerProps, QuizProps } from '../lib/types';
 import React, { useState } from 'react';
 import img_1 from '../assets/quiz/1.jpg';
 import img_2 from '../assets/quiz/2.jpg';
@@ -16,52 +17,53 @@ import img_14 from '../assets/quiz/14.jpg';
 import img_15 from '../assets/quiz/15.jpg'; */
 import './styles/CardDisplayer.css';
 
-type QuizProps = {
-    id: number;
-    ask: string;
-    answer: string;
-};
-
-interface ComponentQuizProps {
+type ComponentQuizProps = {
     findCardQuiz: QuizProps;
-    //setActiveCard: React.Dispatch<React.SetStateAction<any>>;
+    player: PlayerProps;
+    setPlayers: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
 };
 
-const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
+const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, setPlayers }) => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
     const [isChecked, setIsChecked] = useState<string>("");
 
+    const imgQuiz: string[] = [img_1, img_2, img_3];
+    const imgQuizId = imgQuiz[findCardQuiz.id - 1] ?? "";
+
     const handleClick = (): void => {
-        setOnShow(false);  // Mettre la carte en "invisible"
-        /* setActiveCard((prevState: any) => ({
-            ...prevState,  // On garde l'état précédent
-            isCardActive: false,  // On marque la carte comme fermée
-            type: null,  // Réinitialisation du type de carte
-            cardData: null,  // Réinitialisation des données de la carte
-        })); */
+        setOnShow(false);
     };
 
     const handleResponse = (): void => {
         setResponse(!response);
-    }
+    };
 
     const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setIsChecked(event.target.value);
-    }
+        const optionValue = event.target.value;
+        setIsChecked(optionValue);
+    };
 
     const handleValidate = (): void => {
-        console.log("Change case number by gamer !!!");
+        if (isChecked === "option1") {
+            // player.caseNumber += 4;
+            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} 
+                : playerGame));
+        } else {
+            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+                ? {...playerGame, caseNumber: playerGame.caseNumber - 4} 
+                : playerGame));
+        };
         setOnShow(false);
-    }
-
-    const imgQuiz: string[] = [img_1, img_2, img_3];
-    const imgQuizId = imgQuiz[findCardQuiz.id - 1] ?? "";
+    };
 
     if (!imgQuizId) {
         return <p>Image non trouvée pour cette question.</p>;
-    }
+    };
+
+    console.log(player.caseNumber, "player.caseNumber");
 
     return (
         <div className={`${onShow === true ? 'card-displayer' : 'card-hidden'}`}>

@@ -1,3 +1,4 @@
+import type { PlayerProps, QuizProps } from '../lib/types';
 import React, { useState } from 'react';
 import img_1 from '../assets/defis/1.jpg';
 import img_2 from '../assets/defis/2.jpg';
@@ -37,38 +38,49 @@ import img_35 from '../assets/defis/15.jpg';
 import img_36 from '../assets/defis/16.jpg'; */
 import './styles/CardDisplayer.css';
 
-type QuizProps = {
-    id: number;
-    ask: string;
-    answer: string;
-};
-
 interface ComponentDefiProps {
     findCardDefi: QuizProps;
+    player: PlayerProps;
+    setPlayers: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
 };
 
-const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi }) => {
+const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, setPlayers }) => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
     const [isChecked, setIsChecked] = useState<string>("");
 
+    const imgDefis: string[] = [img_1, img_2, img_3];
+
+    const imgDefiId = imgDefis[findCardDefi.id - 1];
+    console.log(imgDefiId, "imgDefi");
+
     const handleClick = () => {
-      setOnShow(false);
+        setOnShow(false);
     };
     
     const handleResponse = (): void => {
         setResponse(!response);
-    }
+    };
 
     const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setIsChecked(event.target.value);
-    }
+        const optionValue = event.target.value;
+        setIsChecked(optionValue);
+    };
 
     const handleValidate = (): void => {
-        console.log("Change case number by gamer !!!");
+        if (isChecked === "option1") {
+            // player.caseNumber += 4;
+            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} 
+                : playerGame));
+        } else {
+            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+                ? {...playerGame, caseNumber: playerGame.caseNumber - 4} 
+                : playerGame));
+        }
         setOnShow(false);
-    }
+    };
 
     /* const imgDefis: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9, 
         img_10, img_11, img_12, img_13, img_14, img_15, img_16, img_17, img_18, img_19,
@@ -76,10 +88,11 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi }) => {
         img_30, img_31, img_32, img_33, img_34, img_35, img_36
     ]; */
 
-    const imgDefis: string[] = [img_1, img_2, img_3];
+    if (!imgDefiId) {
+        return <p>Image non trouvée pour cette question.</p>;
+    };
 
-    const imgDefiId = imgDefis[findCardDefi.id - 1];
-    console.log(imgDefiId, "imgDefi");
+    console.log(player.caseNumber, "player.caseNumber");
 
     return (
         <div className={`${onShow === true ? 'card-displayer' : 'card-hidden'}`}>
