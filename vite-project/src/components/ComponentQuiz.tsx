@@ -74,24 +74,24 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
             />
             
             <div className='para-box-card'>
-                <div>
+                <div className='div-card-item'>
                     <p className='p-card-first'>{findCardQuiz.id}</p>
                 </div>
-                <div>
+                <div className='div-card-item'>
                     <p className='p-card-second'>{findCardQuiz.ask || "Question indisponible"}</p>
                 </div>
 
                 {response === true ? (
-                    <div>
+                    <div className='div-mainValidate'>
 
                         <div className='validate-error'>
-                            <label htmlFor="validate">True
+                            <label htmlFor="validate">Juste
                                 <input type="radio" id="validate" name="validate" value="option1" checked={isChecked === 'option1'} onChange={handleCheck} />
                             </label>
                         </div>
 
                         <div className='validate-error'>
-                            <label htmlFor="error">False
+                            <label htmlFor="error">Faux
                                 <input type="radio" id="error" name="error" value="option2" checked={isChecked === 'option2'} onChange={handleCheck} />
                             </label>
                         </div>
@@ -100,17 +100,17 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
                 ) : null}
 
                 {isChecked ? (
-                    <div className='div-validatecase'>
+                    <div className='div-validateBtn'>
                         <button type="button" onClick={handleValidate}>Validate</button>
                     </div>
                 ) : null}
                 
-                <div>
+                <div className='div-card-item'>
 
                     {response === true ? (
                         <p className='p-card-third'>{findCardQuiz.answer || "Réponse indisponible"}</p>
                     ) : (
-                        <div className='div-response'>
+                        <div className='div-responseBtn'>
                             <button type="button" onClick={handleResponse}>Response</button>
                         </div>
                     )}
@@ -118,7 +118,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz }) => {
                 </div>
             </div>
 
-            <div className='div-btn'>
+            <div className='div-closeBtn'>
                 <button onClick={handleClick}>Close</button>
             </div>
         </div>

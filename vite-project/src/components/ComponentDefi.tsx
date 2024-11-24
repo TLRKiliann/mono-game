@@ -45,19 +45,30 @@ type QuizProps = {
 
 interface ComponentDefiProps {
     findCardDefi: QuizProps;
-    /* onShow: boolean;
-    handleClick: () => void; */
 };
 
 const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi }) => {
 
-
     const [onShow, setOnShow] = useState<boolean>(true);
+    const [response, setResponse] = useState<boolean>(false);
+    const [isChecked, setIsChecked] = useState<string>("");
 
     const handleClick = () => {
       setOnShow(false);
     };
     
+    const handleResponse = (): void => {
+        setResponse(!response);
+    }
+
+    const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        setIsChecked(event.target.value);
+    }
+
+    const handleValidate = (): void => {
+        console.log("Change case number by gamer !!!");
+        setOnShow(false);
+    }
 
     /* const imgDefis: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9, 
         img_10, img_11, img_12, img_13, img_14, img_15, img_16, img_17, img_18, img_19,
@@ -79,20 +90,51 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi }) => {
                 alt={`Illustration pour la question ${findCardDefi.id}`} 
                 className='img-card' 
             />
-            
+
             <div className='para-box-card'>
-                <div>
+                <div className='div-card-item'>
                     <p className='p-card-first'>{findCardDefi.id}</p>
                 </div>
-                <div>
+                <div className='div-card-item'>
                     <p className='p-card-second'>{findCardDefi.ask || "Question indisponible"}</p>
                 </div>
-                <div>
-                    <p className='p-card-third'>{findCardDefi.answer || "Réponse indisponible"}</p>
+
+                {response === true ? (
+                    <div className='div-mainValidate'>
+
+                        <div className='validate-error'>
+                            <label htmlFor="validate">Juste
+                                <input type="radio" id="validate" name="validate" value="option1" checked={isChecked === 'option1'} onChange={handleCheck} />
+                            </label>
+                        </div>
+
+                        <div className='validate-error'>
+                            <label htmlFor="error">Faux
+                                <input type="radio" id="error" name="error" value="option2" checked={isChecked === 'option2'} onChange={handleCheck} />
+                            </label>
+                        </div>
+
+                    </div>
+                ) : null}
+
+                {isChecked ? (
+                    <div className='div-validateBtn'>
+                        <button type="button" onClick={handleValidate}>Validate</button>
+                    </div>
+                ) : null}
+                
+                <div className='div-card-item'>
+                    {response === true ? (
+                        <p className='p-card-third'>{findCardDefi.answer || "Réponse indisponible"}</p>
+                    ) : (
+                        <div className='div-responseBtn'>
+                            <button type="button" onClick={handleResponse}>Response</button>
+                        </div>
+                    )}
                 </div>
             </div>
 
-            <div className='div-btn'>
+            <div className='div-closeBtn'>
                 <button onClick={handleClick}>Close</button>
             </div>
         </div>
