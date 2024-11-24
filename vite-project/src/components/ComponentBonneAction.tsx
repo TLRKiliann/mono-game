@@ -1,3 +1,4 @@
+import type { PlayerProps, QuizProps } from '../lib/types';
 import React, { useState } from 'react';
 import img_1 from '../assets/actions/1.jpg';
 import img_2 from '../assets/actions/2.jpg';
@@ -26,24 +27,17 @@ import img_24 from '../assets/actions/24.jpg';
 import img_25 from '../assets/actions/25.jpg'; */
 import './styles/CardDisplayer.css';
 
-type OrderProps = {
-    id: number;
-    order: string;
+type ComponentQuizProps = {
+    findCardAction: QuizProps;
+    player: PlayerProps;
+    setPlayers: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
 };
 
-interface ComponentQuizProps {
-    findCardAction: OrderProps;
-    /* onShow: boolean;
-    handleClick: () => void; */
-};
-
-const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction }) => {
+const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, player, setPlayers }) => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
-
-    const handleClick = () => {
-      setOnShow(false);
-    };
+    const [response, setResponse] = useState<boolean>(false);
+    const [isChecked, setIsChecked] = useState<string>("");
 
     /*
     const imgBonneActions: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9, 
@@ -55,6 +49,33 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction }) 
 
     const imgBonneActionId = imgBonneActions[findCardAction.id - 1];
     console.log(imgBonneActionId, "imgBonneActionId");
+
+    const handleClick = () => {
+        setOnShow(false);
+    };
+
+    const handleResponse = (): void => {
+        setResponse(!response);
+    };
+
+    const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const optionValue = event.target.value;
+        setIsChecked(optionValue);
+    };
+
+    const handleValidate = (): void => {
+        if (isChecked === "option1") {
+            // player.caseNumber += 4;
+            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} 
+                : playerGame));
+        } else {
+            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+                ? {...playerGame, caseNumber: playerGame.caseNumber - 4} 
+                : playerGame));
+        }
+        setOnShow(false);
+    };
 
     return (
         <div className={`${onShow === true ? 'card-displayer' : 'card-hidden'}`}>
@@ -71,7 +92,43 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction }) 
                     <p className='p-card-first'>{findCardAction.id}</p>
                 </div>
                 <div className='div-card-item'>
-                    <p className='p-card-third'>{findCardAction.order || "Réponse indisponible"}</p>
+                    <p className='p-card-second'>{findCardAction.ask || "Question indisponible"}</p>
+                </div>
+
+                {response === true ? (
+                    <div className='div-mainValidate'>
+
+                        <div className='validate-error'>
+                            <label htmlFor="validate">Juste
+                                <input type="radio" id="validate" name="validate" value="option1" checked={isChecked === 'option1'} onChange={handleCheck} />
+                            </label>
+                        </div>
+
+                        <div className='validate-error'>
+                            <label htmlFor="error">Faux
+                                <input type="radio" id="error" name="error" value="option2" checked={isChecked === 'option2'} onChange={handleCheck} />
+                            </label>
+                        </div>
+
+                    </div>
+                ) : null}
+
+                {isChecked ? (
+                    <div className='div-validateBtn'>
+                        <button type="button" onClick={handleValidate}>Validate</button>
+                    </div>
+                ) : null}
+                
+                <div className='div-card-item'>
+
+                    {response === true ? (
+                        <p className='p-card-third'>{findCardAction.answer || "Réponse indisponible"}</p>
+                    ) : (
+                        <div className='div-responseBtn'>
+                            <button type="button" onClick={handleResponse}>Response</button>
+                        </div>
+                    )}
+                    
                 </div>
             </div>
 

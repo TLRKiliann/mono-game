@@ -1,5 +1,5 @@
-import type { OrderProps, PlayerProps, QuizProps } from "./lib/types";
-import { useEffect, useState } from "react";
+import type { PlayerProps, QuizProps } from "./lib/types";
+import React, { useEffect, useState } from "react";
 import Dices from "./components/Dices";
 import { bonneActionOrder, defiQuestions, quizQuestions, sanctionOrder } from "./lib/questions";
 import ComponentQuiz from "./components/ComponentQuiz";
@@ -9,19 +9,18 @@ import ComponentSanction from "./components/ComponentSanction";
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
 import './App.css';
-import React from "react";
 
 function App(): JSX.Element {
 
   const [count, setCount] = useState<number>(0);
   const [value, setValue] = useState<number>(1);
 
-  const [countPlayerOne, setCountPlayerOne] = useState<number>(0);
-  const [countPlayerTwo, setCountPlayerTwo] = useState<number>(0);
-  const [countPlayerThree, setCountPlayerThree] = useState<number>(0);
-  const [countPlayerFour, setCountPlayerFour] = useState<number>(0);
-  const [countPlayerFive, setCountPlayerFive] = useState<number>(0);
-  const [countPlayerSix, setCountPlayerSix] = useState<number>(0);
+  const [, setCountPlayerOne] = useState<number>(0);
+  const [, setCountPlayerTwo] = useState<number>(0);
+  const [, setCountPlayerThree] = useState<number>(0);
+  const [, setCountPlayerFour] = useState<number>(0);
+  const [, setCountPlayerFive] = useState<number>(0);
+  const [, setCountPlayerSix] = useState<number>(0);
   
   // counter by player
   const [activePlayerId, setActivePlayerId] = useState<number>(1);
@@ -80,7 +79,7 @@ function App(): JSX.Element {
     isCardActive: boolean;
   }>({ type: null, cardData: null, isCardActive: false });
   
-  const getRandomNumber = (type: string) => {
+  const getRandomNumber = (type: string, player: PlayerProps) => {
     const randomNum = Math.floor(Math.random() * 3) + 1;
     const findCard = {
       quiz: quizQuestions.find((quiz) => quiz.id === randomNum),
@@ -93,13 +92,13 @@ function App(): JSX.Element {
 
     switch (type) {
       case "quiz":
-        return <ComponentQuiz findCardQuiz={findCard as QuizProps} />;
+        return <ComponentQuiz findCardQuiz={findCard as QuizProps} player={player} setPlayers={setPlayers} />;
       case "defi":
-        return <ComponentDefi findCardDefi={findCard as QuizProps} />;
+        return <ComponentDefi findCardDefi={findCard as QuizProps} player={player} setPlayers={setPlayers}/>;
       case "action":
-        return <ComponentBonneAction findCardAction={findCard as OrderProps} />;
+        return <ComponentBonneAction findCardAction={findCard as QuizProps} player={player} setPlayers={setPlayers}/>;
       case "sanction":
-        return <ComponentSanction findCardSanction={findCard as OrderProps} />;
+        return <ComponentSanction findCardSanction={findCard as QuizProps} player={player} setPlayers={setPlayers}/>;
       default:
         return null;
     }
@@ -112,31 +111,31 @@ function App(): JSX.Element {
     
 
     useEffect(() => {
-      // Ne déclencher l'affichage de la carte que si aucune carte n'est déjà active
+      // triggers card display only if no card is already displayed.
       if (activeCard.isCardActive) return;
   
       if (player.caseNumber === 39 || player.caseNumber === 51 && activeCard.type !== "quiz") {
         setActiveCard({
           type: "quiz",
-          cardData: getRandomNumber("quiz"),
-          isCardActive: true, // On marque la carte comme active
+          cardData: getRandomNumber("quiz", player),
+          isCardActive: true,
         });
       } else if (player.caseNumber === 42 || player.caseNumber === 54 && activeCard.type !== "defi") {
         setActiveCard({
           type: "defi",
-          cardData: getRandomNumber("defi"),
+          cardData: getRandomNumber("defi", player),
           isCardActive: true,
         });
       } else if (player.caseNumber === 45 && activeCard.type !== "action") {
         setActiveCard({
           type: "action",
-          cardData: getRandomNumber("action"),
+          cardData: getRandomNumber("action", player),
           isCardActive: true,
         });
       } else if (player.caseNumber === 48 && activeCard.type !== "sanction") {
         setActiveCard({
           type: "sanction",
-          cardData: getRandomNumber("sanction"),
+          cardData: getRandomNumber("sanction", player),
           isCardActive: true,
         });
       }
@@ -155,7 +154,11 @@ function App(): JSX.Element {
       ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" : caseNumber === 54 ? "defi-color" : null}`}>
       <div className="caseNumber">
         {caseNumber}
-        {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanTop key={player.id} player={player} /> : null)}
+        {players.map((player: PlayerProps) => player.caseNumber === caseNumber 
+          ? <PlayerSpanTop 
+              key={player.id} 
+              player={player} 
+            /> : null)}
       </div>
       {additionalContent}
     </div>
@@ -165,28 +168,27 @@ function App(): JSX.Element {
   
   // Left CONCENTRATE !!!
   const PlayerSpanLeft: React.FC<{ player: PlayerProps }> = ({ player }) => {
-    // Fonction de fermeture de la carte, ajout du verrou pour éviter la boucle infinie
 
     useEffect(() => {
-      // Ne déclencher l'affichage de la carte que si aucune carte n'est déjà active
+      // triggers card display only if no card is already displayed.
       if (activeCard.isCardActive) return;
   
       if (player.caseNumber === 3 && activeCard.type !== "quiz") {
         setActiveCard({
           type: "quiz",
-          cardData: getRandomNumber("quiz"),
+          cardData: getRandomNumber("quiz", player),
           isCardActive: true, // On marque la carte comme active
         });
       } else if (player.caseNumber === 6 && activeCard.type !== "defi") {
         setActiveCard({
           type: "defi",
-          cardData: getRandomNumber("defi"),
+          cardData: getRandomNumber("defi", player),
           isCardActive: true,
         });
       } else if (player.caseNumber === 9 && activeCard.type !== "action") {
         setActiveCard({
           type: "action",
-          cardData: getRandomNumber("action"),
+          cardData: getRandomNumber("action", player),
           isCardActive: true,
         });
       }
@@ -207,7 +209,7 @@ function App(): JSX.Element {
           {players.map((player: PlayerProps) => player.caseNumber === caseNumber 
             ? <PlayerSpanLeft 
                 key={player.id} 
-                player={player} 
+                player={player}
               /> 
             : null
           )}
@@ -222,26 +224,26 @@ function App(): JSX.Element {
   const PlayerSpanRight: React.FC<{ player: PlayerProps }> = ({ player }) => {
     
     useEffect(() => {
-      // Ne déclencher l'affichage de la carte que si aucune carte n'est déjà active
+      // triggers card display only if no card is already displayed.
       if (activeCard.isCardActive) return;
   
       if (player.caseNumber === 30 && activeCard.type !== "defi") {
         setActiveCard({
           type: "defi",
-          cardData: getRandomNumber("defi"),
+          cardData: getRandomNumber("defi", player),
           isCardActive: true,
         });
       } else if (player.caseNumber === 33 && activeCard.type !== "action") {
         setActiveCard({
           type: "action",
-          cardData: getRandomNumber("action"),
+          cardData: getRandomNumber("action", player),
           isCardActive: true,
         });
       } else if (player.caseNumber === 36 && activeCard.type !== "sanction") {
         setActiveCard({
           type: "sanction",
-          cardData: getRandomNumber("sanction"),
-          isCardActive: true, // On marque la carte comme active
+          cardData: getRandomNumber("sanction", player),
+          isCardActive: true,
         });
       }
     }, [player.caseNumber, activeCard.type]);
@@ -260,7 +262,11 @@ function App(): JSX.Element {
         
         <div className="caseNumber">
           {caseNumber}
-          {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanRight key={player.id} player={player} /> : null)}
+          {players.map((player: PlayerProps) => player.caseNumber === caseNumber 
+            ? <PlayerSpanRight
+                key={player.id} 
+                player={player}
+              /> : null)}
         </div>
         {additionalContent}
       </div>
@@ -271,32 +277,32 @@ function App(): JSX.Element {
     
 
     useEffect(() => {
-      // Ne déclencher l'affichage de la carte que si aucune carte n'est déjà active
+      // triggers card display only if no card is already displayed.
       if (activeCard.isCardActive) return;
   
       if (player.caseNumber === 18 && activeCard.type !== "defi") {
         setActiveCard({
           type: "defi",
-          cardData: getRandomNumber("defi"),
+          cardData: getRandomNumber("defi", player),
           isCardActive: true,
         });
       } else if (player.caseNumber === 21 && activeCard.type !== "action") {
         setActiveCard({
           type: "action",
-          cardData: getRandomNumber("action"),
+          cardData: getRandomNumber("action", player),
           isCardActive: true,
         });
       } else if (player.caseNumber === 15 || player.caseNumber === 27 && activeCard.type !== "quiz") {
         setActiveCard({
           type: "quiz",
-          cardData: getRandomNumber("quiz"),
+          cardData: getRandomNumber("quiz", player),
           isCardActive: true,
         });
       } else if (player.caseNumber === 12 || player.caseNumber === 24 && activeCard.type !== "sanction") {
         setActiveCard({
           type: "sanction",
-          cardData: getRandomNumber("sanction"),
-          isCardActive: true, // On marque la carte comme active
+          cardData: getRandomNumber("sanction", player),
+          isCardActive: true,
         });
       }
     }, [player.caseNumber, activeCard.type]);
@@ -315,7 +321,11 @@ function App(): JSX.Element {
         
         <div className="caseNumber">
         {caseNumber}
-        {players.map((player: PlayerProps) => player.caseNumber === caseNumber ? <PlayerSpanBottom key={player.id} player={player} /> : null)}
+        {players.map((player: PlayerProps) => player.caseNumber === caseNumber 
+          ? <PlayerSpanBottom 
+              key={player.id} 
+              player={player}
+            /> : null)}
         </div>
         {additionalContent}
     </div>

@@ -1,4 +1,4 @@
-import { QuizProps, OrderProps } from "./types";
+import { QuizProps } from "./types";
 
 export const quizQuestions: QuizProps[] = [
     {
@@ -36,33 +36,39 @@ export const defiQuestions: QuizProps[] = [
     },
 ];
 
-export const sanctionOrder: OrderProps[] = [
+export const sanctionOrder: QuizProps[] = [
     {
         id: 1,
-        order: "Reculer de 2 cases !"
+        ask: "Comment s'appelle le champion du monde de boxe ?",
+        answer: "Mike Tyson"
     },
     {
         id: 2,
-        order: "Reculer de 4 cases !"
+        ask: "Comment s'appelle le champion du monde de boxe ?",
+        answer: "Mike Tyson"
     },
     {
         id: 3,
-        order: "Reculer de 5 cases !"
+        ask: "Comment s'appelle le champion du monde de boxe ?",
+        answer: "Mike Tyson"
     }
 ];
 
-export const bonneActionOrder: OrderProps[] = [
+export const bonneActionOrder: QuizProps[] = [
     {
         id: 1,
-        order: "Donner + 2 cases au joueur de votre choix."
+        ask: "Comment s'appelle le champion du monde de boxe ?",
+        answer: "Mike Tyson"
     },
     {
         id: 2,
-        order: "Donner + 4 cases au joueur de votre choix."
+        ask: "Comment s'appelle le champion du monde de boxe ?",
+        answer: "Mike Tyson"
     },
     {
         id: 3,
-        order: "Donner + 5 cases au joueur de votre choix."
+        ask: "Comment s'appelle le champion du monde de boxe ?",
+        answer: "Mike Tyson"
     }
 ];
 

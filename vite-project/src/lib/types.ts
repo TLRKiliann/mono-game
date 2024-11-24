@@ -12,7 +12,7 @@ export type QuizProps = {
     answer: string;
 };
 
-export type OrderProps = {
+/* export type OrderProps = {
     id: number;
     order: string;
-};
+}; */
