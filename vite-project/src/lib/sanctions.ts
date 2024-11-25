@@ -1,9 +1,4 @@
-type SanctionsProps = {
-    id: number;
-    title: string;
-    info: string;
-    consequence: string;
-};
+import { SanctionsProps } from "./types";
 
 export const sanctionQuestions: SanctionsProps[] = [
     {
@@ -22,13 +17,13 @@ export const sanctionQuestions: SanctionsProps[] = [
         id: 3,
         title: "Désert de Sécheresse",
         info: "Pénurie d'eau !",
-        consequence: "eculez de deux cases"
+        consequence: "Reculez de deux cases"
     },
     {
         id: 4,
         title: "Désastre de Déforestation",
         info: "La forêt dans laquelle vous étiez est maintenant un site de déboisement.",
-        consequence: "eculez de quatre cases"
+        consequence: "Reculez de quatre cases"
     },
     {
         id: 5,	
@@ -112,7 +107,7 @@ export const sanctionQuestions: SanctionsProps[] = [
         id: 18,	
         title: "Perte de Biodiversité",
         info: "Destruction de l'habitat !",
-        consequence: "Reculez de trois cases"
+        consequence: "Reculez de quatre cases"
     },
     {
         id: 19,	
@@ -166,7 +161,7 @@ export const sanctionQuestions: SanctionsProps[] = [
         id: 27,	
         title: "Îlot de Chaleur Urbain",
         info: "Alerte à la vague de chaleur !",												
-        consequence: "Reculez de trois cases"
+        consequence: "Reculez de quatre cases"
     },
     {
         id: 28,	

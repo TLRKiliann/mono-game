@@ -1,9 +1,4 @@
-type DefiProps = {
-    id: number;
-    title: string;
-    objectif: string;
-    criteres: string;
-};
+import { DefiProps } from "./types";
 
 export const defiQuestions: DefiProps[] = [
     {
