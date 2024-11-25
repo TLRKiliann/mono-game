@@ -58,7 +58,7 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
         console.log(imgBonneActionId);
     };
 
-    const handleClick = () => {
+    const handleClick = (): void => {
         setOnShow(false);
     };
 

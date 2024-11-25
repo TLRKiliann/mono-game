@@ -71,7 +71,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
         console.log(imgDefiId);
     };
     
-    const handleClick = () => {
+    const handleClick = (): void => {
         setOnShow(false);
     };
     

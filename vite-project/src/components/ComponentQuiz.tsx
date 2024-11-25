@@ -67,8 +67,9 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                 ? {...playerGame, caseNumber: playerGame.caseNumber + 4} 
                 : playerGame));
         } else {
+            // A tester !
             setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber - 4} 
+                ? {...playerGame, caseNumber: playerGame.caseNumber === 3 ? playerGame.caseNumber - 3 : playerGame.caseNumber - 4}
                 : playerGame));
         };
         setOnShow(false);
