@@ -1,9 +1,4 @@
-type BonneActionProps = {
-    id: number;
-    title: string;
-    info: string;
-    recompense: string;
-}
+import { BonneActionProps } from "./types";
 
 export const bonneActionQuestions: BonneActionProps[] = [
     {
@@ -22,7 +17,7 @@ export const bonneActionQuestions: BonneActionProps[] = [
         id: 3,	
         title: "Nettoyage de Plage sale",
         info: "Vous avez organisé un nettoyage réussi de la plage !",
-        recompense:	"Avancez de trois cases."
+        recompense:	"Avancez de quatre cases."
     },
     { 
         id: 4,	
@@ -58,7 +53,7 @@ export const bonneActionQuestions: BonneActionProps[] = [
         id: 9,	
         title: "Expédition de Nettoyage des Océans",
         info: "Vous avez participé à un nettoyage des océans !",
-        recompense: "Avancez de trois cases."
+        recompense: "Avancez de quatre cases."
     },
     { 
         id: 10,	
@@ -100,7 +95,7 @@ export const bonneActionQuestions: BonneActionProps[] = [
         id: 16,	
         title: "Boost d'Énergie Renouvelable",
         info: "Votre maison fonctionne entièrement avec de l'énergie renouvelable !",
-        recompense:	"Avancez de trois cases."
+        recompense:	"Avancez de quatre cases."
     },
     {
         id: 17,	
@@ -124,7 +119,7 @@ export const bonneActionQuestions: BonneActionProps[] = [
         id: 20,	
         title: "Champion du Compostage",
         info: "Votre composteur prospère !",
-        recompense:	"Célébrez et avancez d'une case."
+        recompense:	"Avancez d'une case."
     },
     {
         id: 21,	

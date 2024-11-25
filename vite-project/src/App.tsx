@@ -1,7 +1,10 @@
-import type { PlayerProps, QuizProps } from "./lib/types";
+import type { BonneActionProps, DefiProps, PlayerProps, QuizProps, SanctionsProps } from "./lib/types";
 import React, { useEffect, useState } from "react";
 import Dices from "./components/Dices";
-import { bonneActionOrder, defiQuestions, quizQuestions, sanctionOrder } from "./lib/questions";
+import { quizQuestions } from "./lib/quiz";
+import { defiQuestions } from "./lib/defi";
+import { bonneActionQuestions } from "./lib/bonnes-actions";
+import { sanctionQuestions } from "./lib/sanctions";
 import ComponentQuiz from "./components/ComponentQuiz";
 import ComponentDefi from "./components/ComponentDefi";
 import ComponentBonneAction from "./components/ComponentBonneAction";
@@ -12,9 +15,12 @@ import './App.css';
 
 function App(): JSX.Element {
 
+  // count nbre of case by player
   const [count, setCount] = useState<number>(0);
+  // display value of dice
   const [value, setValue] = useState<number>(1);
 
+  // all players start at 0
   const [, setCountPlayerOne] = useState<number>(0);
   const [, setCountPlayerTwo] = useState<number>(0);
   const [, setCountPlayerThree] = useState<number>(0);
@@ -22,56 +28,61 @@ function App(): JSX.Element {
   const [, setCountPlayerFive] = useState<number>(0);
   const [, setCountPlayerSix] = useState<number>(0);
   
-  // counter by player
+  // counter by player after throwing dice
   const [activePlayerId, setActivePlayerId] = useState<number>(1);
   
-  // simulation user's data from db
+  // simulation user's data from db - or without db
   const [players, setPlayers] = useState<PlayerProps[]>([
     {
       id: 1,
       name: "Player one",
       color: "lightblue",
-      caseNumber: count > 55 ? (count - 55) : count,
+      caseNumber: count,
       caseQuiz: false
     },
     {
       id: 2,
       name: "Player two",
       color: "yellow",
-      caseNumber: count > 55 ? (count - 55) : count,
+      caseNumber: count,
       caseQuiz: false
     },
     {
       id: 3,
       name: "Player three",
       color: "red",
-      caseNumber: count > 55 ? (count - 55) : count,
+      caseNumber: count,
       caseQuiz: false
     },
     {
       id: 4,
       name: "Player four",
       color: "violet",
-      caseNumber: count > 55 ? (count - 55) : count,
+      caseNumber: count,
       caseQuiz: false
     },
     {
       id: 5,
       name: "Player five",
       color: "orange",
-      caseNumber: count > 55 ? (count - 55) : count,
+      caseNumber: count,
       caseQuiz: false
     },
     {
       id: 6,
       name: "Player six",
       color: "green",
-      caseNumber: count > 55 ? (count - 55) : count,
+      caseNumber: count,
       caseQuiz: false
     }
   ]);
 
   //---
+
+  const allQuizIdToDelete: number[] = [];
+  const allDefiIdToDelete: number[] = [];
+  const allBonneActionIdToDelete: number[] = [];
+  const allSanctionIdToDelete: number[] = [];
 
   const [activeCard, setActiveCard] = useState<{
     type: 'quiz' | 'defi' | 'action' | 'sanction' | null;
@@ -79,13 +90,50 @@ function App(): JSX.Element {
     isCardActive: boolean;
   }>({ type: null, cardData: null, isCardActive: false });
   
+  // choose question by random with 'quiz' | 'defi' | 'action' | 'sanction'
   const getRandomNumber = (type: string, player: PlayerProps) => {
-    const randomNum = Math.floor(Math.random() * 3) + 1;
+    
+    // delete quiz question
+    let randomNumQuiz: number;
+
+    do {
+        randomNumQuiz = Math.floor(Math.random() * 100) + 1;
+    } while (allQuizIdToDelete.includes(randomNumQuiz));
+
+    allQuizIdToDelete.push(randomNumQuiz);
+
+    // delete defi question
+    let randomNumDefi: number;
+
+    do {
+        randomNumDefi = Math.floor(Math.random() * 20) + 1;
+    } while (allDefiIdToDelete.includes(randomNumDefi));
+
+    allDefiIdToDelete.push(randomNumDefi);
+
+    // delete bonneAction question
+    let randomNumBonneAction: number;
+
+    do {
+      randomNumBonneAction = Math.floor(Math.random() * 25) + 1;
+    } while (allBonneActionIdToDelete.includes(randomNumBonneAction));
+
+    allBonneActionIdToDelete.push(randomNumBonneAction);
+
+    // delete sanction question
+    let randomNumSanction: number;
+
+    do {
+      randomNumSanction = Math.floor(Math.random() * 29) + 1;
+    } while (allSanctionIdToDelete.includes(randomNumSanction));
+
+    allSanctionIdToDelete.push(randomNumSanction);
+
     const findCard = {
-      quiz: quizQuestions.find((quiz) => quiz.id === randomNum),
-      defi: defiQuestions.find((defi) => defi.id === randomNum),
-      action: bonneActionOrder.find((action) => action.id === randomNum),
-      sanction: sanctionOrder.find((sanction) => sanction.id === randomNum),
+      quiz: quizQuestions.find((quiz) => quiz.id === randomNumQuiz),
+      defi: defiQuestions.find((defi) => defi.id === randomNumDefi),
+      action: bonneActionQuestions.find((action) => action.id === randomNumBonneAction),
+      sanction: sanctionQuestions.find((sanction) => sanction.id === randomNumSanction),
     }[type];
 
     if (!findCard) return null;
@@ -94,11 +142,11 @@ function App(): JSX.Element {
       case "quiz":
         return <ComponentQuiz findCardQuiz={findCard as QuizProps} player={player} setPlayers={setPlayers} />;
       case "defi":
-        return <ComponentDefi findCardDefi={findCard as QuizProps} player={player} setPlayers={setPlayers}/>;
+        return <ComponentDefi findCardDefi={findCard as DefiProps} player={player} setPlayers={setPlayers}/>;
       case "action":
-        return <ComponentBonneAction findCardAction={findCard as QuizProps} player={player} setPlayers={setPlayers}/>;
+        return <ComponentBonneAction findCardAction={findCard as BonneActionProps} player={player} setPlayers={setPlayers}/>;
       case "sanction":
-        return <ComponentSanction findCardSanction={findCard as QuizProps} player={player} setPlayers={setPlayers}/>;
+        return <ComponentSanction findCardSanction={findCard as SanctionsProps} player={player} setPlayers={setPlayers}/>;
       default:
         return null;
     }
@@ -109,7 +157,6 @@ function App(): JSX.Element {
   // Top
   const PlayerSpanTop: React.FC<{ player: PlayerProps }> = ({ player }) => {
     
-
     useEffect(() => {
       // triggers card display only if no card is already displayed.
       if (activeCard.isCardActive) return;
@@ -166,7 +213,7 @@ function App(): JSX.Element {
 
   // --- --- ---
   
-  // Left CONCENTRATE !!!
+  // Left
   const PlayerSpanLeft: React.FC<{ player: PlayerProps }> = ({ player }) => {
 
     useEffect(() => {
@@ -275,7 +322,6 @@ function App(): JSX.Element {
   //bottom
   const PlayerSpanBottom: React.FC<{ player: PlayerProps }> = ({ player }) => {
     
-
     useEffect(() => {
       // triggers card display only if no card is already displayed.
       if (activeCard.isCardActive) return;

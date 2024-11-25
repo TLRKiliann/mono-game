@@ -8,11 +8,28 @@ export type PlayerProps = {
 
 export type QuizProps = {
     id: number;
-    ask: string;
-    answer: string;
+    title: string;
+    question: string;
+    response: string;
 };
 
-/* export type OrderProps = {
+export type DefiProps = {
     id: number;
-    order: string;
-}; */
+    title: string;
+    objectif: string;
+    criteres: string;
+};
+
+export type BonneActionProps = {
+    id: number;
+    title: string;
+    info: string;
+    recompense: string;
+}
+
+export type SanctionsProps = {
+    id: number;
+    title: string;
+    info: string;
+    consequence: string;
+};

@@ -1,9 +1,9 @@
-import type { PlayerProps, QuizProps } from '../lib/types';
+import type { BonneActionProps, PlayerProps } from '../lib/types';
 import React, { useState } from 'react';
 import img_1 from '../assets/actions/1.jpg';
 import img_2 from '../assets/actions/2.jpg';
 import img_3 from '../assets/actions/3.jpg';
-/* import img_4 from '../assets/actions/4.jpg';
+import img_4 from '../assets/actions/4.jpg';
 import img_5 from '../assets/actions/5.jpg';
 import img_6 from '../assets/actions/6.jpg';
 import img_7 from '../assets/actions/7.jpg';
@@ -24,11 +24,11 @@ import img_21 from '../assets/actions/21.jpg';
 import img_22 from '../assets/actions/22.jpg';
 import img_23 from '../assets/actions/23.jpg';
 import img_24 from '../assets/actions/24.jpg';
-import img_25 from '../assets/actions/25.jpg'; */
+import img_25 from '../assets/actions/25.jpg';
 import './styles/CardDisplayer.css';
 
 type ComponentQuizProps = {
-    findCardAction: QuizProps;
+    findCardAction: BonneActionProps;
     player: PlayerProps;
     setPlayers: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
 };
@@ -39,18 +39,26 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
     const [response, setResponse] = useState<boolean>(false);
     const [isChecked, setIsChecked] = useState<string>("");
 
-    /*
+    // cards
     const imgBonneActions: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9, 
         img_10, img_11, img_12, img_13, img_14, img_15, img_16, img_17, img_18, img_19,
         img_20, img_21, img_22, img_23, img_24, img_25
-    ]; */
+    ];
 
-    const imgBonneActions: string[] = [img_1, img_2, img_3];
+    // card corresponds of question nbr (29 cards - 36 questions)
+    let bonneActionNumber: number = findCardAction.id;
+    let imgBonneActionId: string;
 
-    const imgBonneActionId = imgBonneActions[findCardAction.id - 1];
-    console.log(imgBonneActionId, "imgBonneActionId");
+    if (bonneActionNumber && bonneActionNumber > 15) {
+        const imgRandom = Math.floor(Math.random() * 25);
+        imgBonneActionId = imgBonneActions[imgRandom];
+        console.log(imgBonneActionId);
+    } else {
+        imgBonneActionId = imgBonneActions[bonneActionNumber - 1];
+        console.log(imgBonneActionId);
+    };
 
-    const handleClick = () => {
+    const handleClick = (): void => {
         setOnShow(false);
     };
 
@@ -65,9 +73,8 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
-            // player.caseNumber += 4;
             setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} 
+                ? {...playerGame, caseNumber: playerGame.caseNumber + 5} // rule applied 
                 : playerGame));
         } else {
             setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
@@ -89,10 +96,10 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
             
             <div className='para-box-card'>
                 <div className='div-card-item'>
-                    <p className='p-card-first'>{findCardAction.id}</p>
+                    <p className='p-card-first'>{findCardAction.id} {findCardAction.title}</p>
                 </div>
                 <div className='div-card-item'>
-                    <p className='p-card-second'>{findCardAction.ask || "Question indisponible"}</p>
+                    <p className='p-card-second'>{findCardAction.info || "Question indisponible"}</p>
                 </div>
 
                 {response === true ? (
@@ -122,10 +129,10 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
                 <div className='div-card-item'>
 
                     {response === true ? (
-                        <p className='p-card-third'>{findCardAction.answer || "Réponse indisponible"}</p>
+                        <p className='p-card-third'>{findCardAction.recompense || "Réponse indisponible"}</p>
                     ) : (
                         <div className='div-responseBtn'>
-                            <button type="button" onClick={handleResponse}>Response</button>
+                            <button type="button" onClick={handleResponse}>Recompense</button>
                         </div>
                     )}
                     

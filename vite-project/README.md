@@ -1,46 +1,49 @@
 # React + TypeScript + Vite
 
-## Goals
+## Rules
 
-100) Le code splitting ne semble pas avoir satisfait react... A revoir...
+1. Un defi gagné permet de pouvoir rejouer.
+  
+2. Un Quiz bien repondu permet de rejouer
 
-- 1) Cases special puis sortir une carte !!!
+3. Un sanction vous fait reculer de 5 cases
 
-Sort la carte arrive sur la case et la carte est lisible pour tous ?
-Ou seulement pour le joueur qui arrive sur la case ? (Tous sur le même écran)
-Local et online ? Online ???
+4. Un bonne cause vous fait avancer de 5 cases.
 
+5. Principe du jeu est de faire X fois le tour du jeu (A decider à l'avance selon la longueur du jeu).
 
-Click btn ferme la carte !!!
-Ok la carte se ferme, mais elle apparaît de nouveau quand un autre joueur lance le dés...
-Parce que le joueur de la case spécial reste sur la même case lors du refresh !
+Pour les défis, si vous refusez de jouer, vous reculez de 4 cases
 
-## Solution
-+1 case si réussi ???
--1 case si erreur ???
+"good actions" et "sanctions" tu verras pour chacun la conséquence. il faudrait donc une regle par carte.
+Récompense quiz et défi => rejouer.
 
-## Element à revoir en fonction des cartes et des questions et des règles...
-ComponentBonneAction.tsx
-ComponentSanction.tsx
+---
 
-```
+- quiz réussi - le même player peut rejouer.
+- quiz loupé - ???
 
-Algo en fonction de nbre de carte et de question.
+- défi réussi - le même player peut rejouer - (ou + 4 ?)
+## défi loupé - 4 ? (applied)
 
+## sanction loupé - 5 (applied)
+- sanction réussi - nbre de case à avancer - (ou + 5 ?)
 
-```
+## bonne action réussi + 5 (applied)
+- bonne action loupé - ???
 
-- 2) Les questions doivent être supprimées après avoir été utilisées => ALGO !.
+1) choix du nbre de players : 2 à 6
 
-- 3) Choisir le nbre de player avant que le jeu commence (min 2 & max 6).
+2) Les questions doivent être supprimées après avoir été utilisées => ALGO ! et réinitialisées 1x le jeu terminé. 
 
-- 3) splitter en plrs components (code splitting)
+3) Choisir le nbre de player avant que le jeu commence (min 2 & max 6).
 
-- 4) logo dans le signet en-haut (plus tard)
+3) splitter en plrs components (code splitting)
 
-- 5) cards aux 4 coins (plus tard)
+4) logo dans le signet en-haut (plus tard)
 
-- 6) Btn close des cartes => utilité ???
+5) cards aux 4 coins (plus tard)
+
+6) Btn close des cartes => utilité à vérifier !
 
 ---
 
