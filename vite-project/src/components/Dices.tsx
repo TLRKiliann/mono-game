@@ -45,6 +45,12 @@ const Dices = ({
 
   const [isRolling, setIsRolling] = useState<boolean>(false);
 
+  /* setPlayers((prevPlayers) => prevPlayers.map((p: PlayerProps) => p.id === id 
+      ? { ...p, caseNumber: p.caseNumber + newVal } 
+      : p)
+  ); */
+
+  // update score to current player
   const rollDice = (id: number): void => {
     if (isRolling) return;
     setIsRolling(true);
@@ -53,11 +59,6 @@ const Dices = ({
     setTimeout(() => {
       setIsRolling(false);
       setCount((prev) => prev + newVal);
-      // update score to current player
-      /* setPlayers((prevPlayers) => prevPlayers.map((p: PlayerProps) => p.id === id 
-          ? { ...p, caseNumber: p.caseNumber + newVal } 
-          : p)
-      ); */
       // one more lap to go
       setPlayers((prevPlayers) => prevPlayers.map((p: PlayerProps) => {
           if (p.id === id) {
