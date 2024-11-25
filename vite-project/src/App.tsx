@@ -37,42 +37,42 @@ function App(): JSX.Element {
       id: 1,
       name: "Player one",
       color: "lightblue",
-      caseNumber: count > 55 ? (count - 55) : count,
+      caseNumber: count,
       caseQuiz: false
     },
     {
       id: 2,
       name: "Player two",
       color: "yellow",
-      caseNumber: count > 55 ? (count - 55) : count,
+      caseNumber: count,
       caseQuiz: false
     },
     {
       id: 3,
       name: "Player three",
       color: "red",
-      caseNumber: count > 55 ? (count - 55) : count,
+      caseNumber: count,
       caseQuiz: false
     },
     {
       id: 4,
       name: "Player four",
       color: "violet",
-      caseNumber: count > 55 ? (count - 55) : count,
+      caseNumber: count,
       caseQuiz: false
     },
     {
       id: 5,
       name: "Player five",
       color: "orange",
-      caseNumber: count > 55 ? (count - 55) : count,
+      caseNumber: count,
       caseQuiz: false
     },
     {
       id: 6,
       name: "Player six",
       color: "green",
-      caseNumber: count > 55 ? (count - 55) : count,
+      caseNumber: count,
       caseQuiz: false
     }
   ]);
