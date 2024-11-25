@@ -54,10 +54,18 @@ const Dices = ({
       setIsRolling(false);
       setCount((prev) => prev + newVal);
       // update score to current player
-      setPlayers((prevPlayers) => 
-        prevPlayers.map((p: PlayerProps) => p.id === id 
+      /* setPlayers((prevPlayers) => prevPlayers.map((p: PlayerProps) => p.id === id 
           ? { ...p, caseNumber: p.caseNumber + newVal } 
           : p)
+      ); */
+      // one more lap to go
+      setPlayers((prevPlayers) => prevPlayers.map((p: PlayerProps) => {
+          if (p.id === id) {
+            const newCaseNumber = p.caseNumber + newVal;
+            return { ...p, caseNumber: newCaseNumber > 55 ? newCaseNumber % 56 : newCaseNumber };
+          }
+          return p;
+        })
       );
       // change score
       if (activePlayerId === 1) {
