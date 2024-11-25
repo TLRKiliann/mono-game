@@ -426,116 +426,185 @@ export const quizQuestions: QuizProps[] = [
         title: "Surveillance par satellite de la déforestation",
         question: "Comment les satellites peuvent-ils aider à protéger les forêts et la biodiversité ?",
 		response: "En suivant la déforestation et l'abattage illégal depuis l'espace"
+    },
+    {
+        id: 71,	
+        title: "Histoire",
+        question: "Qui est renommé pour ses recherches révolutionnaires sur les chimpanzés dans leur habitat naturel ?",
+		response: "Jane Goodall"
+    },
+    {
+        id: 72,	
+        title: "Histoire",
+        question: "Quel homme politique a fondé le Jour de la Terre, un événement mondial dédié à la sensibilisation environnementale ?",
+		response: "Gaylord Nelson "
+    },
+    {
+        id: 73,	
+        title: "Histoire",
+        question: "Qui a promu des pratiques agricoles durables et la diversification des cultures, en mettant l'accent sur la santé des sols ?",
+		response: "George Washington Carver "
+    },
+    {
+        id: 74,	
+        title: "Histoire",
+        question: "Qui a joué un rôle clé dans l'établissement du parc national de Yosemite et a plaidé en faveur de la préservation des espaces sauvages ?",
+		response: "John Muir "
+    },
+    {
+        id: 75,	
+        title: "Histoire",
+        question: "Quel écologiste a lutté contre le racisme environnemental et a défendu la justice sociale ?",
+		response: "Robert Bullard "
+    },
+    {
+        id: 76,	
+        title: "Histoire",
+        question: "À qui appartient le livre 'Printemps silencieux' qui a exposé les dangers des pesticides et a déclenché le mouvement environnemental moderne ?",
+		response: "Rachel Carson"
+    },
+    {
+        id: 77,	
+        title: "Histoire",
+        question: "Qui a co-fondé Honor the Earth pour protéger les terres autochtones et promouvoir des solutions énergétiques propres ?",
+		response: "Winona LaDuke"
+    },
+    {
+        id: 78,	
+        title: "Histoire",
+        question: "Quelle conservationniste et cinéaste se concentre sur la conservation marine et la santé des océans ?",
+		response: "Malaika Vaz"
+    },
+    {
+        id: 79,	
+        title: "Histoire",
+        question: "Qui a autonomisé les femmes grâce à la plantation d'arbres et aux efforts de reboisement au Kenya ?",
+		response: "Wangari Maathai"
+    },
+    {
+        id: 80,	
+        title: "Histoire",
+        question: "Qui a plaidé en faveur du Wilderness Act, conduisant à la protection de paysages naturels vierges ?",
+		response: "Howard Zahniser"
+    },
+    {
+        id: 81,	
+        title: "Catastrophe pétrolière Deepwater Horizon (2010)",
+        question: "En 2010, une plate-forme de forage en mer a explosé, provoquant l'une des plus importantes marées noires de l'histoire. Comment s'appelait cette plate-forme ?",
+		response: "Deepwater Horizon"
+    },
+    {
+        id: 82,	
+        title: "Catastrophe nucléaire de Tchernobyl (1986)",
+        question: "Quelle centrale nucléaire en Ukraine a connu une fusion catastrophique en 1986, libérant des matériaux radioactifs dans l'environnement ?",
+		response: "Tchernobyl"
+    },
+    {
+        id: 83,	
+        title: "Tragédie du gaz de Bhopal (1984)",
+        question: "En 1984, une usine de pesticides en Inde a fui du gaz toxique, entraînant des milliers de décès et des effets à long terme sur la santé. Dans quelle ville cette tragédie s'est-elle produite ?",
+		response: "Bhopal"
+    },
+    {
+        id: 84,	
+        title: "Déforestation dans la forêt amazonienne	",
+        question: "Quelle activité humaine contribue significativement à la déforestation de la forêt amazonienne ?",
+		response: "L'exploitation forestière et l'agriculture (comme l'élevage de bétail et la culture du soja)"
+    },
+    {
+        id: 85,	
+        title: "Catastrophe nucléaire de Fukushima (2011)",
+        question: "Suite à un séisme et un tsunami massifs, une centrale nucléaire au Japon a connu une fusion. Quel était le nom de cette centrale ?",
+		response: "Fukushima Daiichi"
+    },
+    {
+        id: 86,	
+        title: "Crise de l'eau de Flint (2014-2019)",
+        question: "Dans quelle ville américaine les habitants ont-ils été confrontés à de l'eau contaminée au plomb en raison d'un traitement de l'eau insuffisant et d'infrastructures vieillissantes ?",
+		response: "Flint, Michigan"
+    },
+    {
+        id: 87,	
+        title: "Effondrement de l'usine de Rana Plaza (2013)",
+        question: "Au Bangladesh, un bâtiment d'usine de vêtements s'est effondré, entraînant plus de 1 100 décès. Quel était le nom de ce bâtiment ?",
+		response: "Rana Plaza"
+    },
+    {
+        id: 88,	
+        title: "Marée noire de l'Exxon Valdez (1989)",
+        question: "Quel pétrolier s'est échoué en Alaska, déversant des millions de gallons de pétrole brut dans le détroit du Prince William ?",
+		response: "Exxon Valdez"
+    },
+    {
+        id: 89,	
+        title: "Barrage des Trois Gorges (Chine)",
+        question: "Quel immense barrage sur le fleuve Yangtsé a suscité la controverse en raison de son impact environnemental, notamment la perte d'habitat et la modification du débit du fleuve ?",
+		response: "Barrage des Trois Gorges"
+    },
+    {
+        id: 90,	
+        title: "Décharge de déchets toxiques de Love Canal (années 1970)",
+        question: "À New York, un quartier a été construit sur une décharge de déchets toxiques, entraînant des problèmes de santé pour les résidents. Quel était le nom de cette zone ?",
+		response: "Love Canal ! (Canal de l'Amour)"
+    },
+    {
+        id: 91,	
+        title: "Koalas",
+        question: "Quel marsupial emblématique d'Australie est menacé par les vagues de chaleur et la perte d'habitat due au changement climatique ?",
+		response: "Koalas"
+    },
+    {
+        id: 92,	
+        title: "Animaux",
+        question: "Quelle espèce arctique est confrontée à la diminution de la banquise, affectant leur capacité à chasser les phoques ?",
+		response: "Ours polaires"
+    },
+    {
+        id: 93,	
+        title: "Océeans",
+        question: "Les températures océaniques en hausse provoquent le blanchiment des coraux. Quels écosystèmes délicats sont menacés ?",
+		response: "Récifs coralliens"
+    },
+    {
+        id: 94,	
+        title: "Papillons Monarques",
+        question: "Ces insectes migrateurs dépendent de plantes spécifiques pour se nourrir et se loger. Qu'est-ce qui menace leur survie ?",
+		response: "Le changement climatique perturbe leurs habitats"
+    },
+    {
+        id: 95,	
+        title: "Antartique",
+        question: "Quelle espèce de manchots en Antarctique fait face à la pénurie alimentaire en raison de la fonte des glaces et des courants océaniques modifiés ?",
+		response: "Manchots Adélie"
+    },
+    {
+        id: 96,	
+        title: "Tortues caouannes",
+        question: "Ces reptiles marins nichent sur les plages. Comment la montée du niveau de la mer impacte-t-elle leurs sites de nidification ?",
+		response: "Elle inonde leurs nids et réduit le succès de l'éclosion"
+    },
+    {
+        id: 97,	
+        title: "Lièvres des neiges",
+        question: "Dans les régions enneigées, ces lièvres changent de couleur de pelage. Comment le changement climatique perturbe-t-il cette adaptation ?",
+		response: "Leur fourrure blanche se détache sur les paysages bruns "
+    },
+    {
+        id: 98,	
+        title: "Macareux moines",
+        question: "Ces oiseaux marins dépendent des populations de poissons. Comment le réchauffement des océans affecte-t-il leur alimentation ?",
+		response: "Il perturbe la distribution et la disponibilité des poissons"
+    },
+    {
+        id: 99,	
+        title: "Gorilles des montagnes",
+        question: "Ces primates en danger habitent les forêts tropicales africaines. Qu'est-ce qui menace leur habitat ?",
+		response: "La déforestation due aux changements climatiques"
+    },
+    {
+        id: 100,	
+        title: "Grenouilles harlequins",
+        question: "Ces amphibiens colorés vivent dans les forêts de nuages. Comment le changement climatique impacte-t-il leur survie ?",
+		response: "Les températures changeantes affectent leur peau sensible et leur habitat"
     }
-];													
-
-															
-
-															
-
-/* 														
-
-71	Histoire 	Q	Qui est renommé pour ses recherches révolutionnaires sur les chimpanzés dans leur habitat naturel ?															
-		R	Jane Goodall 															
-
-72	Histoire 	Q	Quel homme politique a fondé le Jour de la Terre, un événement mondial dédié à la sensibilisation environnementale ?															
-		R	Gaylord Nelson 															
-
-73	Histoire 	Q	Qui a promu des pratiques agricoles durables et la diversification des cultures, en mettant l'accent sur la santé des sols ?															
-		R	George Washington Carver 															
-
-74	Histoire 	Q	Qui a joué un rôle clé dans l'établissement du parc national de Yosemite et a plaidé en faveur de la préservation des espaces sauvages ?															
-		R	John Muir 															
-
-75	Histoire 	Q	Quel écologiste a lutté contre le racisme environnemental et a défendu la justice sociale ?															
-		R	Robert Bullard 															
-
-76	Histoire 	Q	À qui appartient le livre "Printemps silencieux" qui a exposé les dangers des pesticides et a déclenché le mouvement environnemental moderne ?															
-		R	Rachel Carson 															
-
-77	Histoire 	Q	Qui a co-fondé Honor the Earth pour protéger les terres autochtones et promouvoir des solutions énergétiques propres ?															
-		R	Winona LaDuke 															
-
-78	Histoire 	Q	Quelle conservationniste et cinéaste se concentre sur la conservation marine et la santé des océans ?															
-		R	Malaika Vaz 															
-
-79	Histoire 	Q	Qui a autonomisé les femmes grâce à la plantation d'arbres et aux efforts de reboisement au Kenya ?															
-		R	Wangari Maathai 															
-
-80	Histoire 	Q	Qui a plaidé en faveur du Wilderness Act, conduisant à la protection de paysages naturels vierges ?															
-		R	Howard Zahniser 															
-
-81	Catastrophe pétrolière Deepwater Horizon (2010) 	Q	En 2010, une plate-forme de forage en mer a explosé, provoquant l'une des plus importantes marées noires de l'histoire. Comment s'appelait cette plate-forme ?															
-		R	Deepwater Horizon 															
-
-82	Catastrophe nucléaire de Tchernobyl (1986) 	Q	Quelle centrale nucléaire en Ukraine a connu une fusion catastrophique en 1986, libérant des matériaux radioactifs dans l'environnement ?															
-		R	Tchernobyl															
-
-83	Tragédie du gaz de Bhopal (1984) 	Q	En 1984, une usine de pesticides en Inde a fui du gaz toxique, entraînant des milliers de décès et des effets à long terme sur la santé. Dans quelle ville cette tragédie s'est-elle produite ?															
-		R	Bhopal 															
-
-84	Déforestation dans la forêt amazonienne	Q	Quelle activité humaine contribue significativement à la déforestation de la forêt amazonienne ?															
-		R	L'exploitation forestière et l'agriculture (comme l'élevage de bétail et la culture du soja)															
-
-85	Catastrophe nucléaire de Fukushima (2011) 	Q	Suite à un séisme et un tsunami massifs, une centrale nucléaire au Japon a connu une fusion. Quel était le nom de cette centrale ?															
-		R	Fukushima Daiichi 															
-
-86	Crise de l'eau de Flint (2014-2019) 	Q	Dans quelle ville américaine les habitants ont-ils été confrontés à de l'eau contaminée au plomb en raison d'un traitement de l'eau insuffisant et d'infrastructures vieillissantes ?															
-		R	Flint, Michigan 															
-
-87	Effondrement de l'usine de Rana Plaza (2013) 	Q	Au Bangladesh, un bâtiment d'usine de vêtements s'est effondré, entraînant plus de 1 100 décès. Quel était le nom de ce bâtiment ?															
-		R	Rana Plaza 															
-
-88	Marée noire de l'Exxon Valdez (1989) 	Q	Quel pétrolier s'est échoué en Alaska, déversant des millions de gallons de pétrole brut dans le détroit du Prince William ?															
-		R	Exxon Valdez 															
-
-89	Barrage des Trois Gorges (Chine) 	Q	Quel immense barrage sur le fleuve Yangtsé a suscité la controverse en raison de son impact environnemental, notamment la perte d'habitat et la modification du débit du fleuve ?															
-		R	Barrage des Trois Gorges 															
-
-90	Décharge de déchets toxiques de Love Canal (années 1970)	Q	À New York, un quartier a été construit sur une décharge de déchets toxiques, entraînant des problèmes de santé pour les résidents. Quel était le nom de cette zone ?															
-		R	Love Canal ! (Canal de l'Amour)															
-
-91	Koalas	Q	Quel marsupial emblématique d'Australie est menacé par les vagues de chaleur et la perte d'habitat due au changement climatique ?															
-		R	Koalas 															
-
-92	Animaux	Q	Quelle espèce arctique est confrontée à la diminution de la banquise, affectant leur capacité à chasser les phoques ?															
-		R	Ours polaires 															
-
-93	Océeans	Q	Les températures océaniques en hausse provoquent le blanchiment des coraux. Quels écosystèmes délicats sont menacés ?															
-		R	Récifs coralliens 															
-
-94	Papillons Monarques 	Q	Ces insectes migrateurs dépendent de plantes spécifiques pour se nourrir et se loger. Qu'est-ce qui menace leur survie ?															
-		R	Le changement climatique perturbe leurs habitats 															
-
-95	Antartique	Q	Quelle espèce de manchots en Antarctique fait face à la pénurie alimentaire en raison de la fonte des glaces et des courants océaniques modifiés ?															
-		R	Manchots Adélie 															
-
-96	Tortues caouannes 	Q	Ces reptiles marins nichent sur les plages. Comment la montée du niveau de la mer impacte-t-elle leurs sites de nidification ?															
-		R	Elle inonde leurs nids et réduit le succès de l'éclosion 															
-
-97	Lièvres des neiges 	Q	Dans les régions enneigées, ces lièvres changent de couleur de pelage. Comment le changement climatique perturbe-t-il cette adaptation ?															
-		R	Leur fourrure blanche se détache sur les paysages bruns 															
-
-98	Macareux moines 	Q	Ces oiseaux marins dépendent des populations de poissons. Comment le réchauffement des océans affecte-t-il leur alimentation ?															
-		R	Il perturbe la distribution et la disponibilité des poissons 															
-
-99	Gorilles des montagnes 	Q	Ces primates en danger habitent les forêts tropicales africaines. Qu'est-ce qui menace leur habitat ?															
-		R	La déforestation due aux changements climatiques 															
-
-100	Grenouilles harlequins 	Q	Ces amphibiens colorés vivent dans les forêts de nuages. Comment le changement climatique impacte-t-il leur survie ?															
-		R	Les températures changeantes affectent leur peau sensible et leur habitat 															
-														
-		 */																
-																		
-																		
-																		
-																		
-																		
-																		
-																		
-																		
-																		
-																		
-																		
-																		
-																		
+];											
