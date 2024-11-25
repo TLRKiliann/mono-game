@@ -49,8 +49,18 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
         img_20, img_21, img_22, img_23, img_24, img_25, img_26, img_27, img_28, img_29
     ];
 
-    const imgSanctionId = imgSanctions[findCardSanction.id - 1];
-    console.log(imgSanctionId, "imgSanctionId");
+    // card corresponds of question nbr (29 cards - 36 questions)
+    let sanctionNumber: number = findCardSanction.id;
+    let imgSanctionId: string;
+
+    if (sanctionNumber && sanctionNumber > 15) {
+        const imgRandom = Math.floor(Math.random() * 29);
+        imgSanctionId = imgSanctions[imgRandom];
+        console.log(imgSanctionId);
+    } else {
+        imgSanctionId = imgSanctions[sanctionNumber - 1];
+        console.log(imgSanctionId);
+    };
 
     const handleClick = () => {
         setOnShow(false);

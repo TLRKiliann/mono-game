@@ -35,8 +35,18 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
         img_9, img_10, img_11, img_12, img_13, img_14, img_15
     ];
 
-    // card corresponds of question nbr (15 cards - 100 questions) & question deleted !
-    const imgQuizId = imgQuiz[findCardQuiz.id - 1] ?? "";
+    // card corresponds of question nbr (15 cards - 100 questions) !
+    let quizNumber: number = findCardQuiz.id;
+    let imgQuizId: string;
+
+    if (quizNumber && quizNumber > 15) {
+        const imgRandom = Math.floor(Math.random() * 15);
+        imgQuizId = imgQuiz[imgRandom];
+        console.log(imgQuizId);
+    } else {
+        imgQuizId = imgQuiz[quizNumber - 1];
+        console.log(imgQuizId);
+    };
 
     const handleClick = (): void => {
         setOnShow(false);
@@ -53,7 +63,6 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
-            // player.caseNumber += 4;
             setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
                 ? {...playerGame, caseNumber: playerGame.caseNumber + 4} 
                 : playerGame));

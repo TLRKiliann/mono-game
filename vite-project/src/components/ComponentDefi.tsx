@@ -58,10 +58,19 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
         img_29, img_30, img_31, img_32, img_33, img_34, img_35, img_36
     ];
 
-    // card corresponds of question nbr (36 cards - 20 questions) & question deleted !
-    const imgDefiId = imgDefis[findCardDefi.id - 1] ?? "";
-    console.log(imgDefiId, "imgDefi");
+    // card corresponds of question nbr (36 cards - 20 questions)
+    let DefiNumber: number = findCardDefi.id;
+    let imgDefiId: string;
 
+    if (DefiNumber && DefiNumber > 15) {
+        const imgRandom = Math.floor(Math.random() * 36);
+        imgDefiId = imgDefis[imgRandom];
+        console.log(imgDefiId);
+    } else {
+        imgDefiId = imgDefis[DefiNumber - 1];
+        console.log(imgDefiId);
+    };
+    
     const handleClick = () => {
         setOnShow(false);
     };
