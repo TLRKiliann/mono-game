@@ -10,6 +10,7 @@ Sort la carte arrive sur la case et la carte est lisible pour tous ?
 Ou seulement pour le joueur qui arrive sur la case ? (Tous sur le même écran)
 Local et online ? Online ???
 
+nbre de carte = questions => non !!!
 
 Click btn ferme la carte !!!
 Ok la carte se ferme, mais elle apparaît de nouveau quand un autre joueur lance le dés...
@@ -19,18 +20,46 @@ Parce que le joueur de la case spécial reste sur la même case lors du refresh 
 +1 case si réussi ???
 -1 case si erreur ???
 
-## Element à revoir en fonction des cartes et des questions et des règles...
-ComponentBonneAction.tsx
-ComponentSanction.tsx
+## Rules
 
-```
+1. Pour defis, si le defi a deja eu lieu, interdit de repeter les memes reponses, exemples 
+2. Un defi gagné permet de pouvoir rejouer.
+3. Un Quiz bien repondu permet de rejouer
 
-Algo en fonction de nbre de carte et de question.
+4. Un sanction vous fait reculer de 6 cases
+
+5. Un bonne cause vous fait avancer de 6 cases.
+
+6. Principe du jeu est de faire X fois le tour du jeu (A decider à l'avance selon la longueur du jeu.
+
+Pour les défis, si vous refusez de jouer, vous reculez de 3 cases
+
+Mais pour les sanctions et bonnes actions en fait il y a a chaque fois une recompense et consequence 
+pour chaque "carte" si tu regardes dans les onglets "good actions" et "sanctions" tu verras pour chacun 
+la conseéquence. il faudrait donc une regle par "carte en fait".
+Juste pour le quiz et defis, si ceux-ci sont reussi ben on peut juste "rejouer".
+
+---
+
+- choix du nbre de players : 2 à 6
+- éviter les même questions !!!
+
+- quiz réussi - le même player peut rejouer.
+- quiz loupé - ???
+
+- défi réussi - le même player peut rejouer ou + 4 ?
+## défi loupé - 4 ? (applied)
+
+## sanction loupé - 5 (applied)
+- sanction réussi - nbre de case à avancer ou + 5 ?
+
+## bonne action réussi + 5 (applied)
+- bonne action loupé - ???
+
+- 3x tour du jeu
 
 
-```
-
-- 2) Les questions doivent être supprimées après avoir été utilisées => ALGO !.
+- 2) Les questions doivent être supprimées après avoir été utilisées => ALGO ! et réinitialisées 1x le jeu terminé. 
 
 - 3) Choisir le nbre de player avant que le jeu commence (min 2 & max 6).
 
@@ -40,7 +69,7 @@ Algo en fonction de nbre de carte et de question.
 
 - 5) cards aux 4 coins (plus tard)
 
-- 6) Btn close des cartes => utilité ???
+- 6) Btn close des cartes => utilité à vérifier !
 
 ---
 

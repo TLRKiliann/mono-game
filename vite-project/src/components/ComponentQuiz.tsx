@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import img_1 from '../assets/quiz/1.jpg';
 import img_2 from '../assets/quiz/2.jpg';
 import img_3 from '../assets/quiz/3.jpg';
-/* import img_4 from '../assets/quiz/4.jpg';
+import img_4 from '../assets/quiz/4.jpg';
 import img_5 from '../assets/quiz/5.jpg';
 import img_6 from '../assets/quiz/6.jpg';
 import img_7 from '../assets/quiz/7.jpg';
@@ -14,7 +14,7 @@ import img_11 from '../assets/quiz/11.jpg';
 import img_12 from '../assets/quiz/12.jpg';
 import img_13 from '../assets/quiz/13.jpg';
 import img_14 from '../assets/quiz/14.jpg';
-import img_15 from '../assets/quiz/15.jpg'; */
+import img_15 from '../assets/quiz/15.jpg';
 import './styles/CardDisplayer.css';
 
 type ComponentQuizProps = {
@@ -29,7 +29,13 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
     const [response, setResponse] = useState<boolean>(false);
     const [isChecked, setIsChecked] = useState<string>("");
 
-    const imgQuiz: string[] = [img_1, img_2, img_3];
+    // cards
+    const imgQuiz: string[] = [
+        img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, 
+        img_9, img_10, img_11, img_12, img_13, img_14, img_15
+    ];
+
+    // card corresponds of question nbr (15 cards - 100 questions) & question deleted !
     const imgQuizId = imgQuiz[findCardQuiz.id - 1] ?? "";
 
     const handleClick = (): void => {
@@ -77,10 +83,10 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
             
             <div className='para-box-card'>
                 <div className='div-card-item'>
-                    <p className='p-card-first'>{findCardQuiz.id}</p>
+                    <p className='p-card-first'>{findCardQuiz.id} {findCardQuiz.title}</p>
                 </div>
                 <div className='div-card-item'>
-                    <p className='p-card-second'>{findCardQuiz.ask || "Question indisponible"}</p>
+                    <p className='p-card-second'>{findCardQuiz.question || "Question indisponible"}</p>
                 </div>
 
                 {response === true ? (
@@ -110,7 +116,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                 <div className='div-card-item'>
 
                     {response === true ? (
-                        <p className='p-card-third'>{findCardQuiz.answer || "Réponse indisponible"}</p>
+                        <p className='p-card-third'>{findCardQuiz.response || "Réponse indisponible"}</p>
                     ) : (
                         <div className='div-responseBtn'>
                             <button type="button" onClick={handleResponse}>Response</button>
