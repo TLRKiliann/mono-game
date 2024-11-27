@@ -29,7 +29,7 @@ export const sanctionQuestions: SanctionsProps[] = [
         id: 5,	
         title: "Déversement de Pétrole",
         info: "Votre bateau a heurté une marée noire.",
-        consequence: "Passez votre tour pendant que vous nettoyez le désordre",
+        consequence: "Passez votre tour pendant que vous nettoyez le désordre"
     },
     {
         id: 6,	

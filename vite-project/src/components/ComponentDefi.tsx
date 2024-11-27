@@ -41,10 +41,10 @@ import './styles/CardDisplayer.css';
 interface ComponentDefiProps {
     findCardDefi: DefiProps;
     player: PlayerProps;
-    setPlayers: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+    setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
 };
 
-const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, setPlayers }) => {
+const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, setPlayersChoosen }) => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -86,11 +86,11 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
-            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} // player should replay
+            setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} // player should be able to replay
                 : playerGame));
         } else {
-            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+            setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
                 ? {...playerGame, caseNumber: playerGame.caseNumber - 4} // rule applied 
                 : playerGame));
         }

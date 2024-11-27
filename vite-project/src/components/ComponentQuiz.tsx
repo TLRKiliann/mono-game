@@ -20,10 +20,10 @@ import './styles/CardDisplayer.css';
 type ComponentQuizProps = {
     findCardQuiz: QuizProps;
     player: PlayerProps;
-    setPlayers: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+    setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
 };
 
-const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, setPlayers }) => {
+const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, setPlayersChoosen }) => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -63,12 +63,12 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
-            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} 
+            setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} // player should be able to replay
                 : playerGame));
         } else {
             // A tester !
-            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+            setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
                 ? {...playerGame, caseNumber: playerGame.caseNumber === 3 ? playerGame.caseNumber - 3 : playerGame.caseNumber - 4}
                 : playerGame));
         };

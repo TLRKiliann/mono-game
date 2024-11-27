@@ -34,10 +34,10 @@ import './styles/CardDisplayer.css';
 type ComponentQuizProps = {
     findCardSanction: SanctionsProps;
     player: PlayerProps;
-    setPlayers: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+    setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
 };
 
-const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayers }) => {
+const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayersChoosen }) => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -77,11 +77,11 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
-            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} 
+            setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} // watch out recompense
                 : playerGame));
         } else {
-            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+            setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
                 ? {...playerGame, caseNumber: playerGame.caseNumber - 5} // rule applied
                 : playerGame));
         };
