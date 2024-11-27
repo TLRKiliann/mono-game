@@ -1,5 +1,6 @@
 import type { BonneActionProps, DefiProps, PlayerProps, QuizProps, SanctionsProps } from "./lib/types";
 import React, { useEffect, useState } from "react";
+import NbrOfPlayers from "./components/NbrOfPlayers";
 import Dices from "./components/Dices";
 import { quizQuestions } from "./lib/quiz";
 import { defiQuestions } from "./lib/defi";
@@ -31,8 +32,13 @@ function App(): JSX.Element {
   // counter by player after throwing dice
   const [activePlayerId, setActivePlayerId] = useState<number>(1);
   
+  // choose players number at the begining of game
+  const [nbPlayer, setNbPlayer] = useState<number>(2);
+
+  const [playersChoosen, setPlayersChoosen] = useState<PlayerProps[]>([]);
+
   // simulation user's data from db - or without db
-  const [players, setPlayers] = useState<PlayerProps[]>([
+  const [players] = useState<PlayerProps[]>([
     {
       id: 1,
       name: "Player one",
@@ -76,6 +82,19 @@ function App(): JSX.Element {
       caseQuiz: false
     }
   ]);
+
+  //---
+
+  // derivated state
+  const derivatedStatePlayers: PlayerProps[] = players;
+
+  useEffect(() => {
+    //setPlayers(players.slice(0, nbPlayer));
+    setPlayersChoosen(derivatedStatePlayers.slice(0, nbPlayer));
+  }, [nbPlayer]);
+
+  console.log(nbPlayer, "nb players");
+  console.log(playersChoosen, "playersChoosen");
 
   //---
 
@@ -140,13 +159,13 @@ function App(): JSX.Element {
 
     switch (type) {
       case "quiz":
-        return <ComponentQuiz findCardQuiz={findCard as QuizProps} player={player} setPlayers={setPlayers} />;
+        return <ComponentQuiz findCardQuiz={findCard as QuizProps} player={player} setPlayersChoosen={setPlayersChoosen} />;
       case "defi":
-        return <ComponentDefi findCardDefi={findCard as DefiProps} player={player} setPlayers={setPlayers}/>;
+        return <ComponentDefi findCardDefi={findCard as DefiProps} player={player} setPlayersChoosen={setPlayersChoosen}/>;
       case "action":
-        return <ComponentBonneAction findCardAction={findCard as BonneActionProps} player={player} setPlayers={setPlayers}/>;
+        return <ComponentBonneAction findCardAction={findCard as BonneActionProps} player={player} setPlayersChoosen={setPlayersChoosen}/>;
       case "sanction":
-        return <ComponentSanction findCardSanction={findCard as SanctionsProps} player={player} setPlayers={setPlayers}/>;
+        return <ComponentSanction findCardSanction={findCard as SanctionsProps} player={player} setPlayersChoosen={setPlayersChoosen}/>;
       default:
         return null;
     }
@@ -195,13 +214,13 @@ function App(): JSX.Element {
     )
   };
 
-  const TopSquares: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
-    { caseNumber, players, additionalContent }) => (
+  const TopSquares: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
+    { caseNumber, playersChoosen, additionalContent }) => (
     <div className={`squares square-top ${caseNumber === 39 ? "quiz-color" : caseNumber === 42 ? "defi-color" : caseNumber === 45  
       ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" : caseNumber === 54 ? "defi-color" : null}`}>
       <div className="caseNumber">
         {caseNumber}
-        {players.map((player: PlayerProps) => player.caseNumber === caseNumber 
+        {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
           ? <PlayerSpanTop 
               key={player.id} 
               player={player} 
@@ -224,7 +243,7 @@ function App(): JSX.Element {
         setActiveCard({
           type: "quiz",
           cardData: getRandomNumber("quiz", player),
-          isCardActive: true, // On marque la carte comme active
+          isCardActive: true,
         });
       } else if (player.caseNumber === 6 && activeCard.type !== "defi") {
         setActiveCard({
@@ -248,12 +267,12 @@ function App(): JSX.Element {
     );
   };
   
-  const LeftSquares: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
-    { caseNumber, players, additionalContent }) => (
+  const LeftSquares: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
+    { caseNumber, playersChoosen, additionalContent }) => (
     <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" : caseNumber === 9 ? "action-color" : null}`}>
         <div className="caseNumber">
           {caseNumber}
-          {players.map((player: PlayerProps) => player.caseNumber === caseNumber 
+          {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
             ? <PlayerSpanLeft 
                 key={player.id} 
                 player={player}
@@ -302,14 +321,14 @@ function App(): JSX.Element {
     )
   };
 
-  const RightSquares: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
-    { caseNumber, players, additionalContent }) => (
+  const RightSquares: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
+    { caseNumber, playersChoosen, additionalContent }) => (
       <div className={`squares-side squares-rside ${caseNumber === 30 ? "defi-color" : caseNumber === 33 ? "action-color" : caseNumber === 36 
         ? "sanction-color" : null}`}>
         
         <div className="caseNumber">
           {caseNumber}
-          {players.map((player: PlayerProps) => player.caseNumber === caseNumber 
+          {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
             ? <PlayerSpanRight
                 key={player.id} 
                 player={player}
@@ -360,14 +379,14 @@ function App(): JSX.Element {
     )
   };
 
-  const BottomSquares: React.FC<{ caseNumber: number, players: PlayerProps[], additionalContent: React.ReactNode }> = (
-    { caseNumber, players, additionalContent }) => (
+  const BottomSquares: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
+    { caseNumber, playersChoosen, additionalContent }) => (
     <div className={`squares square-bottom ${caseNumber === 12 ? "sanction-color" : caseNumber === 15 ? "quiz-color" : caseNumber === 18 
         ? "defi-color" : caseNumber === 21 ? "action-color" : caseNumber === 24 ? "sanction-color" : caseNumber === 27 ? "quiz-color" : null}`}>
         
         <div className="caseNumber">
         {caseNumber}
-        {players.map((player: PlayerProps) => player.caseNumber === caseNumber 
+        {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
           ? <PlayerSpanBottom 
               key={player.id} 
               player={player}
@@ -379,6 +398,8 @@ function App(): JSX.Element {
 
   return (
     <div className='frame'>
+
+      <NbrOfPlayers nbPlayer={nbPlayer} setNbPlayer={setNbPlayer} />
 
       <div className='top-frame'>
 
@@ -417,7 +438,7 @@ function App(): JSX.Element {
               additionalContent = null;
           }
 
-          return <TopSquares key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
+          return <TopSquares key={caseNumber} caseNumber={caseNumber} playersChoosen={playersChoosen} additionalContent={additionalContent} />;
         })}
 
       </div>
@@ -443,7 +464,7 @@ function App(): JSX.Element {
                 additionalContent = null;
             }
 
-            return <LeftSquares key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
+            return <LeftSquares key={caseNumber} caseNumber={caseNumber} playersChoosen={playersChoosen} additionalContent={additionalContent} />;
           })}
         </div>
 
@@ -473,8 +494,10 @@ function App(): JSX.Element {
               value={value} 
               setValue={setValue} 
               setCount={setCount}
-              players={players}
-              setPlayers={setPlayers}
+
+              nbPlayer={nbPlayer}
+              playersChoosen={playersChoosen}
+              setPlayersChoosen={setPlayersChoosen}
 
               setCountPlayerOne={setCountPlayerOne}
               setCountPlayerTwo={setCountPlayerTwo}
@@ -523,7 +546,7 @@ function App(): JSX.Element {
                 additionalContent = null;
             }
 
-            return <RightSquares key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
+            return <RightSquares key={caseNumber} caseNumber={caseNumber} playersChoosen={playersChoosen} additionalContent={additionalContent} />;
           })}
         </div>
 
@@ -557,7 +580,7 @@ function App(): JSX.Element {
               additionalContent = null;
           }
 
-          return <BottomSquares key={caseNumber} caseNumber={caseNumber} players={players} additionalContent={additionalContent} />;
+          return <BottomSquares key={caseNumber} caseNumber={caseNumber} playersChoosen={playersChoosen} additionalContent={additionalContent} />;
         })}
 
       </div>
