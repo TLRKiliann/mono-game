@@ -5,15 +5,15 @@ import gifDice from "../assets/dice.gif";
 import './styles/Dices.css';
 
 type ValProps = {
-  players: PlayerProps[];
-  setPlayers: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+  playersChoosen: PlayerProps[];
+  setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+  nbPlayer: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
   value: number;
   setValue: React.Dispatch<React.SetStateAction<number>>;
 
   setCountPlayerOne: React.Dispatch<React.SetStateAction<number>>;
   setCountPlayerTwo: React.Dispatch<React.SetStateAction<number>>;
-
   setCountPlayerThree: React.Dispatch<React.SetStateAction<number>>;
   setCountPlayerFour: React.Dispatch<React.SetStateAction<number>>;
   setCountPlayerFive: React.Dispatch<React.SetStateAction<number>>;
@@ -25,13 +25,14 @@ type ValProps = {
 };
 
 const Dices = ({
-  players,
-  setPlayers,
+  playersChoosen,
+  setPlayersChoosen,
+  nbPlayer,
   activePlayerId,
+  
   setActivePlayerId,
   setCountPlayerOne,
   setCountPlayerTwo,
-
   setCountPlayerThree,
   setCountPlayerFour,
   setCountPlayerFive,
@@ -49,18 +50,20 @@ const Dices = ({
       ? { ...p, caseNumber: p.caseNumber + newVal } 
       : p)
   ); */
+  console.log(playersChoosen, "playersChoosen from dice");
+  console.log(activePlayerId, "activePlayerId from dice");
 
   // update score to current player
   const rollDice = (id: number): void => {
     if (isRolling) return;
     setIsRolling(true);
-    const newVal = Math.floor(Math.random() * 6) + 1;
+    const newVal = Math.floor(Math.random() * nbPlayer) + 1;
     setValue(newVal);
     setTimeout(() => {
       setIsRolling(false);
       setCount((prev) => prev + newVal);
       // one more lap to go
-      setPlayers((prevPlayers) => prevPlayers.map((p: PlayerProps) => {
+      setPlayersChoosen((prevPlayers) => prevPlayers.map((p: PlayerProps) => {
           if (p.id === id) {
             const newCaseNumber = p.caseNumber + newVal;
             return { ...p, caseNumber: newCaseNumber > 55 ? newCaseNumber % 56 : newCaseNumber };
@@ -78,15 +81,29 @@ const Dices = ({
         setCountPlayerTwo((prev) => prev + newVal);
         setActiveCard({ type: null, cardData: null });
       } else if (activePlayerId === 3) {
-        setActivePlayerId(4);
+        if (nbPlayer === 3) {
+          setActivePlayerId(1);
+        } else {
+          setActivePlayerId(4);
+        }
         setCountPlayerThree((prev) => prev + newVal);
         setActiveCard({ type: null, cardData: null });
       } else if (activePlayerId === 4) {
-        setActivePlayerId(5);
+        if (nbPlayer === 4) {
+          setActivePlayerId(1);
+        } else {
+          setActivePlayerId(5);
+        }
+        //setActivePlayerId(5);
         setCountPlayerFour((prev) => prev + newVal);
         setActiveCard({ type: null, cardData: null });
       } else if (activePlayerId === 5) {
-        setActivePlayerId(6);
+        if (nbPlayer === 5) {
+          setActivePlayerId(1);
+        } else {
+          setActivePlayerId(6);
+        }
+        //setActivePlayerId(6);
         setCountPlayerFive((prev) => prev + newVal);
         setActiveCard({ type: null, cardData: null });
       } else {
@@ -111,7 +128,7 @@ const Dices = ({
         </div>
       ) : (
         <div className='dice-box'>
-          {players.map((play: PlayerProps) => (
+          {playersChoosen.map((play: PlayerProps) => (
             play.id === activePlayerId ? (
               <animated.div 
                 key={play.id}
@@ -125,7 +142,7 @@ const Dices = ({
           ))}
         </div>
       )}
-      {players.slice(0, 6).map((play: PlayerProps) => (
+      {playersChoosen.map((play: PlayerProps) => ( 
         play.id === activePlayerId ? (
           <div key={play.id} className='dice-indicator'>
             <p>{play.name} {play.caseNumber}</p>
@@ -135,5 +152,5 @@ const Dices = ({
     </div>
   );
 };
-
 export default Dices;
+/* {playersChoosen.map((play: PlayerProps) => ( */
