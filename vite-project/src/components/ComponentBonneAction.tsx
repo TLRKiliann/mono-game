@@ -30,10 +30,10 @@ import './styles/CardDisplayer.css';
 type ComponentQuizProps = {
     findCardAction: BonneActionProps;
     player: PlayerProps;
-    setPlayers: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+    setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
 };
 
-const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, player, setPlayers }) => {
+const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, player, setPlayersChoosen }) => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -73,12 +73,12 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
-            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+            setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
                 ? {...playerGame, caseNumber: playerGame.caseNumber + 5} // rule applied 
                 : playerGame));
         } else {
-            setPlayers((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber - 4} 
+            setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+                ? {...playerGame, caseNumber: playerGame.caseNumber - 5} // watch out sanction
                 : playerGame));
         }
         setOnShow(false);
