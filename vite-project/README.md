@@ -31,21 +31,19 @@ Récompense quiz et défi => rejouer.
 ## bonne action réussi + 5 (applied)
 - bonne action loupé - ???
 
-1) Résoudre les problèmes avec quiz => la carte affichée change à chaque click !!!
+1) Faire rejouer le joueur (défi, quiz)
 
-2) Faire rejouer le joueur (défi, quiz)
+2) Bonne Action et Sanction => tenir compte des récompenses et sanctions + ou . case
 
-3) Bonne Action et Sanction => tenir compte des récompenses et sanctions
+3) splitter en plrs components (code splitting)
 
-4) splitter en plrs components (code splitting)
+4) logo dans le signet en-haut (plus tard)
 
-5) logo dans le signet en-haut (plus tard)
+5) cards aux 4 coins (plus tard)
 
-6) cards aux 4 coins (plus tard)
+6) Btn close des cartes => utilité à vérifier !
 
-7) Btn close des cartes => utilité à vérifier !
-
-8) Faire un dice en 3D !
+7) Faire un dice en 3D !
 
 ---
 
