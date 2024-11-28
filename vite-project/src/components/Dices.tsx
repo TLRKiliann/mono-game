@@ -118,7 +118,7 @@ const Dices = ({
         <p>Game-Over</p>
       </div>
     );
-  }
+  };
 
   return (
     <div className='dice-container'>
