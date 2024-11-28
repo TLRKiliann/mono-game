@@ -3,7 +3,9 @@ export type PlayerProps = {
     name: string;
     color: string;
     caseNumber: number;
-    caseQuiz: boolean;
+    lap: number;
+    gameOver: boolean;
+    //caseQuiz: boolean;
 };
 
 export type QuizProps = {
