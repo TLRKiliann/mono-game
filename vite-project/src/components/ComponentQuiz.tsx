@@ -1,5 +1,5 @@
 import type { PlayerProps, QuizProps } from '../lib/types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import img_1 from '../assets/quiz/1.jpg';
 import img_2 from '../assets/quiz/2.jpg';
 import img_3 from '../assets/quiz/3.jpg';
@@ -37,17 +37,20 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
 
     // card corresponds of question nbr (15 cards - 100 questions) !
     let quizNumber: number = findCardQuiz.id;
-    let imgQuizId: string;
+    
+    const [imgQuizId, setImgQuizId] = useState<string>("");
 
-    // trbl => card change in every click !
-    if (quizNumber && quizNumber > 15) {
-        const imgRandom = Math.floor(Math.random() * 15);
-        imgQuizId = imgQuiz[imgRandom];
-        console.log(imgQuizId);
-    } else {
-        imgQuizId = imgQuiz[quizNumber - 1];
-        console.log(imgQuizId);
-    };
+    // avoid to change card in every render
+    useEffect(() => {
+        if (quizNumber && quizNumber > 15) {
+            const imgRandom = Math.floor(Math.random() * 15);
+            const imgQuizId = imgQuiz[imgRandom];
+            setImgQuizId(imgQuizId);
+        } else {
+            const imgQuizId = imgQuiz[quizNumber - 1];
+            setImgQuizId(imgQuizId);
+        };
+    }, [quizNumber]);
 
     const handleClick = (): void => {
         setOnShow(false);
