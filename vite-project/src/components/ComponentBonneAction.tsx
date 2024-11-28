@@ -45,18 +45,9 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
         img_20, img_21, img_22, img_23, img_24, img_25
     ];
 
-    // card corresponds of question nbr (29 cards - 36 questions)
+    // card corresponds of question nbr (25 cards - 25 questions)
     let bonneActionNumber: number = findCardAction.id;
-    let imgBonneActionId: string;
-
-    if (bonneActionNumber && bonneActionNumber > 15) {
-        const imgRandom = Math.floor(Math.random() * 25);
-        imgBonneActionId = imgBonneActions[imgRandom];
-        console.log(imgBonneActionId);
-    } else {
-        imgBonneActionId = imgBonneActions[bonneActionNumber - 1];
-        console.log(imgBonneActionId);
-    };
+    const imgBonneActionId = imgBonneActions[bonneActionNumber - 1];
 
     const handleClick = (): void => {
         setOnShow(false);

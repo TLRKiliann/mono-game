@@ -46,71 +46,61 @@ const Dices = ({
 
   const [isRolling, setIsRolling] = useState<boolean>(false);
 
-  /* setPlayers((prevPlayers) => prevPlayers.map((p: PlayerProps) => p.id === id 
-      ? { ...p, caseNumber: p.caseNumber + newVal } 
-      : p)
-  ); */
-  console.log(playersChoosen, "playersChoosen from dice");
-  console.log(activePlayerId, "activePlayerId from dice");
+  //console.log(playersChoosen, "playersChoosen from dice");
+  //console.log(activePlayerId, "activePlayerId from dice");
 
   // update score to current player
-  const rollDice = (id: number): void => {
+  const rollDice = (id: number): void | JSX.Element => {
     if (isRolling) return;
     setIsRolling(true);
-    const newVal = Math.floor(Math.random() * nbPlayer) + 1;
+    const newVal = Math.floor(Math.random() * 6) + 1;
     setValue(newVal);
     setTimeout(() => {
       setIsRolling(false);
       setCount((prev) => prev + newVal);
-      // one more lap to go
-      setPlayersChoosen((prevPlayers) => prevPlayers.map((p: PlayerProps) => {
-          if (p.id === id) {
-            const newCaseNumber = p.caseNumber + newVal;
-            return { ...p, caseNumber: newCaseNumber > 55 ? newCaseNumber % 56 : newCaseNumber };
+
+      // one more lap to go (max 3 laps)
+      setPlayersChoosen((prevPlayers) => prevPlayers.map((gamer: PlayerProps) => {
+          if (gamer.id === id) {
+            
+            const newCaseNumber = gamer.caseNumber + newVal;
+            let newCounter = gamer.lap || 0;
+
+            if (newCaseNumber > 55) {
+              newCounter += 1;
+
+              if (newCounter === 3) {
+                const updatePlayer = { ...gamer, caseNumber: newCaseNumber % 56, lap: newCounter, gameOver: true };
+                return updatePlayer;
+              }
+              return { ...gamer, caseNumber: newCaseNumber % 56, lap: newCounter };
+            }
+            return { ...gamer, caseNumber: newCaseNumber, lap: newCounter };
           }
-          return p;
+          return gamer;
         })
       );
       // change score
       if (activePlayerId === 1) {
         setActivePlayerId(2);
-        setActiveCard({ type: null, cardData: null });
         setCountPlayerOne((prev) => prev + newVal);
       } else if (activePlayerId === 2) {
-        setActivePlayerId(3);
+        nbPlayer === 2 ? setActivePlayerId(1) : setActivePlayerId(3);
         setCountPlayerTwo((prev) => prev + newVal);
-        setActiveCard({ type: null, cardData: null });
       } else if (activePlayerId === 3) {
-        if (nbPlayer === 3) {
-          setActivePlayerId(1);
-        } else {
-          setActivePlayerId(4);
-        }
+        nbPlayer === 3 ? setActivePlayerId(1) : setActivePlayerId(4);
         setCountPlayerThree((prev) => prev + newVal);
-        setActiveCard({ type: null, cardData: null });
       } else if (activePlayerId === 4) {
-        if (nbPlayer === 4) {
-          setActivePlayerId(1);
-        } else {
-          setActivePlayerId(5);
-        }
-        //setActivePlayerId(5);
+        nbPlayer === 4 ? setActivePlayerId(1) : setActivePlayerId(5);
         setCountPlayerFour((prev) => prev + newVal);
-        setActiveCard({ type: null, cardData: null });
       } else if (activePlayerId === 5) {
-        if (nbPlayer === 5) {
-          setActivePlayerId(1);
-        } else {
-          setActivePlayerId(6);
-        }
-        //setActivePlayerId(6);
+        nbPlayer === 5 ? setActivePlayerId(1) : setActivePlayerId(6);
         setCountPlayerFive((prev) => prev + newVal);
-        setActiveCard({ type: null, cardData: null });
       } else {
         setActivePlayerId(1);
         setCountPlayerSix((prev) => prev + newVal);
-        setActiveCard({ type: null, cardData: null });
       }
+      setActiveCard({ type: null, cardData: null });
     }, 1000);
   };
 
@@ -120,6 +110,16 @@ const Dices = ({
     config: { tension: 200, friction: 10 },
   });
 
+  const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
+  if (winner) {
+    return (
+      <div className="game-over">
+        <p>{winner.name} WIN !</p>
+        <p>Game-Over</p>
+      </div>
+    );
+  };
+
   return (
     <div className='dice-container'>
       {isRolling === true ? (
@@ -128,13 +128,13 @@ const Dices = ({
         </div>
       ) : (
         <div className='dice-box'>
-          {playersChoosen.map((play: PlayerProps) => (
-            play.id === activePlayerId ? (
+          {playersChoosen.map((player: PlayerProps) => (
+            player.id === activePlayerId ? (
               <animated.div 
-                key={play.id}
+                key={player.id}
                 style={props}
                 className="dice"
-                onClick={() => rollDice(play.id)} 
+                onClick={() => rollDice(player.id)} 
               >
                 {value}
               </animated.div>
@@ -149,8 +149,8 @@ const Dices = ({
           </div> 
         ) : null
       ))}
+
     </div>
   );
 };
 export default Dices;
-/* {playersChoosen.map((play: PlayerProps) => ( */

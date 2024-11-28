@@ -59,17 +59,8 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
     ];
 
     // card corresponds of question nbr (36 cards - 20 questions)
-    let DefiNumber: number = findCardDefi.id;
-    let imgDefiId: string;
-
-    if (DefiNumber && DefiNumber > 15) {
-        const imgRandom = Math.floor(Math.random() * 36);
-        imgDefiId = imgDefis[imgRandom];
-        console.log(imgDefiId);
-    } else {
-        imgDefiId = imgDefis[DefiNumber - 1];
-        console.log(imgDefiId);
-    };
+    let defiNumber: number = findCardDefi.id;
+    const imgDefiId = imgDefis[defiNumber - 1];
     
     const handleClick = (): void => {
         setOnShow(false);
@@ -126,13 +117,27 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
 
                         <div className='validate-error'>
                             <label htmlFor="validate">Juste
-                                <input type="radio" id="validate" name="validate" value="option1" checked={isChecked === 'option1'} onChange={handleCheck} />
+                                <input
+                                    type="radio"
+                                    id="validate"
+                                    name="validate"
+                                    value="option1"
+                                    checked={isChecked === 'option1'} 
+                                    onChange={handleCheck} 
+                                />
                             </label>
                         </div>
 
                         <div className='validate-error'>
                             <label htmlFor="error">Faux
-                                <input type="radio" id="error" name="error" value="option2" checked={isChecked === 'option2'} onChange={handleCheck} />
+                                <input
+                                    type="radio"
+                                    id="error"
+                                    name="error"
+                                    value="option2"
+                                    checked={isChecked === 'option2'} 
+                                    onChange={handleCheck}
+                                />
                             </label>
                         </div>
 

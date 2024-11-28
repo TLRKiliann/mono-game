@@ -26,16 +26,14 @@ Récompense quiz et défi => rejouer.
 ## défi loupé - 4 ? (applied)
 
 ## sanction loupé - 5 (applied)
-- sanction réussi - nbre de case à avancer - (ou + 5 ?)
+- sanction réussi - nbre de case à avancer
 
 ## bonne action réussi + 5 (applied)
 - bonne action loupé - ???
 
-1) choix du nbre de players : 2 à 6
+1) Faire rejouer le joueur (défi, quiz)
 
-2) Les questions doivent être supprimées après avoir été utilisées => ALGO ! et réinitialisées 1x le jeu terminé. 
-
-3) Choisir le nbre de player avant que le jeu commence (min 2 & max 6).
+2) Bonne Action et Sanction => tenir compte des récompenses et sanctions + ou . case
 
 3) splitter en plrs components (code splitting)
 
@@ -44,6 +42,8 @@ Récompense quiz et défi => rejouer.
 5) cards aux 4 coins (plus tard)
 
 6) Btn close des cartes => utilité à vérifier !
+
+7) Faire un dice en 3D !
 
 ---
 
