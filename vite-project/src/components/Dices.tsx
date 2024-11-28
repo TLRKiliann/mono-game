@@ -83,28 +83,22 @@ const Dices = ({
       // change score
       if (activePlayerId === 1) {
         setActivePlayerId(2);
-        //setActiveCard({ type: null, cardData: null });
         setCountPlayerOne((prev) => prev + newVal);
       } else if (activePlayerId === 2) {
         nbPlayer === 2 ? setActivePlayerId(1) : setActivePlayerId(3);
         setCountPlayerTwo((prev) => prev + newVal);
-        //setActiveCard({ type: null, cardData: null });
       } else if (activePlayerId === 3) {
         nbPlayer === 3 ? setActivePlayerId(1) : setActivePlayerId(4);
         setCountPlayerThree((prev) => prev + newVal);
-        //setActiveCard({ type: null, cardData: null });
       } else if (activePlayerId === 4) {
         nbPlayer === 4 ? setActivePlayerId(1) : setActivePlayerId(5);
         setCountPlayerFour((prev) => prev + newVal);
-        //setActiveCard({ type: null, cardData: null });
       } else if (activePlayerId === 5) {
         nbPlayer === 5 ? setActivePlayerId(1) : setActivePlayerId(6);
         setCountPlayerFive((prev) => prev + newVal);
-        //setActiveCard({ type: null, cardData: null });
       } else {
         setActivePlayerId(1);
         setCountPlayerSix((prev) => prev + newVal);
-        //setActiveCard({ type: null, cardData: null });
       }
       setActiveCard({ type: null, cardData: null });
     }, 1000);
