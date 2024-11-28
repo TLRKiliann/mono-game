@@ -41,45 +41,57 @@ function App(): JSX.Element {
   const [players] = useState<PlayerProps[]>([
     {
       id: 1,
-      name: "Player one",
+      name: "Player 1",
       color: "lightblue",
       caseNumber: count,
-      caseQuiz: false
+      lap: 0,
+      gameOver: false,
+      //caseQuiz: false
     },
     {
       id: 2,
-      name: "Player two",
+      name: "Player 2",
       color: "yellow",
       caseNumber: count,
-      caseQuiz: false
+      lap: 0,
+      gameOver: false,
+      //caseQuiz: false
     },
     {
       id: 3,
-      name: "Player three",
+      name: "Player 3",
       color: "red",
       caseNumber: count,
-      caseQuiz: false
+      lap: 0,
+      gameOver: false,
+      //caseQuiz: false
     },
     {
       id: 4,
-      name: "Player four",
+      name: "Player 4",
       color: "violet",
       caseNumber: count,
-      caseQuiz: false
+      lap: 0,
+      gameOver: false,
+      //caseQuiz: false
     },
     {
       id: 5,
-      name: "Player five",
+      name: "Player 5",
       color: "orange",
       caseNumber: count,
-      caseQuiz: false
+      lap: 0,
+      gameOver: false,
+      //caseQuiz: false
     },
     {
       id: 6,
-      name: "Player six",
+      name: "Player 6",
       color: "green",
       caseNumber: count,
-      caseQuiz: false
+      lap: 0,
+      gameOver: false,
+      //caseQuiz: false
     }
   ]);
 
