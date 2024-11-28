@@ -62,7 +62,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
     let DefiNumber: number = findCardDefi.id;
     let imgDefiId: string;
 
-    if (DefiNumber && DefiNumber > 15) {
+    if (DefiNumber && DefiNumber > 20) {
         const imgRandom = Math.floor(Math.random() * 36);
         imgDefiId = imgDefis[imgRandom];
         console.log(imgDefiId);
@@ -126,13 +126,27 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
 
                         <div className='validate-error'>
                             <label htmlFor="validate">Juste
-                                <input type="radio" id="validate" name="validate" value="option1" checked={isChecked === 'option1'} onChange={handleCheck} />
+                                <input
+                                    type="radio"
+                                    id="validate"
+                                    name="validate"
+                                    value="option1"
+                                    checked={isChecked === 'option1'} 
+                                    onChange={handleCheck} 
+                                />
                             </label>
                         </div>
 
                         <div className='validate-error'>
                             <label htmlFor="error">Faux
-                                <input type="radio" id="error" name="error" value="option2" checked={isChecked === 'option2'} onChange={handleCheck} />
+                                <input
+                                    type="radio"
+                                    id="error"
+                                    name="error"
+                                    value="option2"
+                                    checked={isChecked === 'option2'} 
+                                    onChange={handleCheck}
+                                />
                             </label>
                         </div>
 

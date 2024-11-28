@@ -10,7 +10,8 @@
     align-items: center;
     justify-content: center;
 
-    background: linear-gradient(30deg, rgba(17, 150, 72, 1) 10%, rgba(17, 83, 72, 1) 90%);
+    /*background: linear-gradient(30deg, rgba(17, 150, 72, 1) 10%, rgba(17, 83, 72, 1) 90%);*/
+    background: linear-gradient(30deg, rgba(17, 83, 72, 0.5) 10%, rgba(17, 83, 72, 1) 90%);
     border: none;
     border-radius: 7px;
     z-index: 50;

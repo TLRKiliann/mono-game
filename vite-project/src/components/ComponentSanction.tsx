@@ -53,7 +53,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
     let sanctionNumber: number = findCardSanction.id;
     let imgSanctionId: string;
 
-    if (sanctionNumber && sanctionNumber > 15) {
+    if (sanctionNumber && sanctionNumber > 29) {
         const imgRandom = Math.floor(Math.random() * 29);
         imgSanctionId = imgSanctions[imgRandom];
         console.log(imgSanctionId);

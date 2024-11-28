@@ -39,6 +39,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
     let quizNumber: number = findCardQuiz.id;
     let imgQuizId: string;
 
+    // trbl => card change in every click !
     if (quizNumber && quizNumber > 15) {
         const imgRandom = Math.floor(Math.random() * 15);
         imgQuizId = imgQuiz[imgRandom];
@@ -104,13 +105,27 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
 
                         <div className='validate-error'>
                             <label htmlFor="validate">Juste
-                                <input type="radio" id="validate" name="validate" value="option1" checked={isChecked === 'option1'} onChange={handleCheck} />
+                                <input
+                                    type="radio"
+                                    id="validate"
+                                    name="validate"
+                                    value="option1"
+                                    checked={isChecked === 'option1'} 
+                                    onChange={handleCheck}
+                                />
                             </label>
                         </div>
 
                         <div className='validate-error'>
                             <label htmlFor="error">Faux
-                                <input type="radio" id="error" name="error" value="option2" checked={isChecked === 'option2'} onChange={handleCheck} />
+                                <input
+                                    type="radio"
+                                    id="error"
+                                    name="error"
+                                    value="option2"
+                                    checked={isChecked === 'option2'} 
+                                    onChange={handleCheck}
+                                />
                             </label>
                         </div>
 
