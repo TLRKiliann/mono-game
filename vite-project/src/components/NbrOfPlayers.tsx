@@ -45,7 +45,7 @@ const NbrOfPlayers = ({nbPlayer, setNbPlayer} : NbPlayerProps) => {
                         max="6" 
                     />
                 </label>
-                {error && <h1>{error}</h1>}
+                {error && <h3 className="error">{error}</h3>}
             </div>
 
             <div className="div-btnPlayer">
