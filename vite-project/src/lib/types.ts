@@ -33,5 +33,5 @@ export type SanctionsProps = {
     id: number;
     title: string;
     info: string;
-    consequence: string;
+    consequence: number;
 };
