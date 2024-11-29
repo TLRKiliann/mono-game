@@ -41,7 +41,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
-    const [isChecked, setIsChecked] = useState<string>("");
+    //const [isChecked, setIsChecked] = useState<string>("");
 
     // cards
     const imgSanctions: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, 
@@ -70,21 +70,26 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
         setResponse(!response);
     };
 
-    const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    /* const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const optionValue = event.target.value;
         setIsChecked(optionValue);
-    };
+    }; */
 
     const handleValidate = (): void => {
-        if (isChecked === "option1") {
+        setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+                ? {...playerGame, caseNumber: findCardSanction.consequence === 55 ? 0 : playerGame.caseNumber - findCardSanction.consequence}
+                : playerGame
+            )
+        );
+        /* if (isChecked === "option1") {
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
                 ? {...playerGame, caseNumber: playerGame.caseNumber + 4} // watch out recompense
                 : playerGame));
-        } else {
+        } else { // rule applied 12 - 24 - 36 - 48
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber - 5} // rule applied
+                ? {...playerGame, caseNumber: findCardSanction.consequence === 55 ? 0 : playerGame.caseNumber - findCardSanction.consequence}
                 : playerGame));
-        };
+        }; */
         setOnShow(false);
     };
 
@@ -106,7 +111,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                     <p className='p-card-second'>{findCardSanction.info || "Question indisponible"}</p>
                 </div>
 
-                {response === true ? (
+                {/* {response === true ? (
                     <div className='div-mainValidate'>
 
                         <div className='validate-error'>
@@ -122,9 +127,9 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                         </div>
 
                     </div>
-                ) : null}
+                ) : null} */}
 
-                {isChecked ? (
+                {response ? (
                     <div className='div-validateBtn'>
                         <button type="button" onClick={handleValidate}>Validate</button>
                     </div>
@@ -133,7 +138,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                 <div className='div-card-item'>
 
                     {response === true ? (
-                        <p className='p-card-third'>{findCardSanction.consequence || "Réponse indisponible"}</p>
+                        <p className='p-card-third'>{findCardSanction.consequence === 55 ? "Retour case départ" : findCardSanction.consequence || "Réponse indisponible"}</p>
                     ) : (
                         <div className='div-responseBtn'>
                             <button type="button" onClick={handleResponse}>Conséquence</button>
