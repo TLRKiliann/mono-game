@@ -26,12 +26,12 @@ export type BonneActionProps = {
     id: number;
     title: string;
     info: string;
-    recompense: string;
+    recompense: string | number;
 }
 
 export type SanctionsProps = {
     id: number;
     title: string;
     info: string;
-    consequence: number;
+    consequence: string | number;
 };
