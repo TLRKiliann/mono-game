@@ -1,7 +1,6 @@
 import type { PlayerProps } from '../lib/types';
 import { useState } from 'react';
-//import { useSpring, animated } from 'react-spring';
-import gifDice from "../assets/dice.gif";
+//import gifDice from "../assets/dice.gif";
 import './styles/Dices.css';
 
 type ValProps = {
@@ -104,12 +103,6 @@ const Dices = ({
     }, 1000);
   };
 
-  // dice animation
-  /* const props = useSpring({
-    transform: isRolling ? 'rotate3d(3, -1, -3, 360deg)' : 'rotate3d(0, 1, 0, 0deg)',
-    config: { tension: 200, friction: 10 },
-  }); */
-
   const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
   if (winner) {
     return (
@@ -125,7 +118,7 @@ const Dices = ({
       {isRolling === true ? (
         <div>
           <div>
-            <img src={gifDice} width={120} height={120} className="dice-gif" alt="dice anim" />
+            {/* <img src={gifDice} width={120} height={120} className="dice-gif" alt="dice anim" /> */}
           </div>
           <div className='dice-box'>
             {playersChoosen.map((player: PlayerProps) => (
@@ -210,12 +203,3 @@ const Dices = ({
   );
 };
 export default Dices;
-
-              {/* <animated.div 
-                key={player.id}
-                style={props}
-                className="dice"
-                onClick={() => rollDice(player.id)} 
-              >
-                {value}
-              </animated.div> */}
