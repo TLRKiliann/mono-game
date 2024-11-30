@@ -77,7 +77,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
 
     const handleValidate = (): void => {
         setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: findCardSanction.consequence === 55 ? 0 : playerGame.caseNumber - findCardSanction.consequence}
+                ? {...playerGame, caseNumber: findCardSanction.consequence === "reset" ? 0 : playerGame.caseNumber - Number(findCardSanction.consequence)}
                 : playerGame
             )
         );
@@ -129,7 +129,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                     </div>
                 ) : null} */}
 
-                {response ? (
+                {response === true ? (
                     <div className='div-validateBtn'>
                         <button type="button" onClick={handleValidate}>Validate</button>
                     </div>
@@ -138,7 +138,8 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                 <div className='div-card-item'>
 
                     {response === true ? (
-                        <p className='p-card-third'>{findCardSanction.consequence === 55 ? "Retour case départ" : findCardSanction.consequence || "Réponse indisponible"}</p>
+                        <p className='p-card-third'>{findCardSanction.consequence === "reset" ? "Retour case départ" 
+                            : "Reculez de " + findCardSanction.consequence + " case(s)" || "Réponse indisponible"}</p>
                     ) : (
                         <div className='div-responseBtn'>
                             <button type="button" onClick={handleResponse}>Conséquence</button>

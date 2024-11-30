@@ -13,7 +13,7 @@ export const sanctionQuestions: SanctionsProps[] = [
         title: "Océan de Plastique",
         info: "Vous avez rencontré une mer de déchets plastiques.",
         //consequence: "Passez votre tour pendant que vous nettoyez"
-        consequence: 0
+        consequence: 4
     },
     {
         id: 3,
@@ -34,7 +34,7 @@ export const sanctionQuestions: SanctionsProps[] = [
         title: "Déversement de Pétrole",
         info: "Votre bateau a heurté une marée noire.",
         //consequence: "Passez votre tour pendant que vous nettoyez le désordre"
-        consequence: 0
+        consequence: 2
     },
     {
         id: 6,	
@@ -55,7 +55,7 @@ export const sanctionQuestions: SanctionsProps[] = [
         title: "Rivière Polluée",
         info: "Votre bateau s'est coincé dans une rivière polluée.",												
         //consequence: "Passez votre tour"
-        consequence: 0
+        consequence: 2
     },
     {
         id: 9,	
@@ -69,7 +69,7 @@ export const sanctionQuestions: SanctionsProps[] = [
         title: "Fuite Nucléaire",
         info: "Zone radioactive !",
         //consequence: "Passez votre tour pendant que vous trouvez un chemin sûr"
-        consequence: 0
+        consequence: 4
     },
 	{
         id: 11,	
@@ -97,21 +97,21 @@ export const sanctionQuestions: SanctionsProps[] = [
         title: "Invasion d'Espèces Envahissantes",
         info: "Des espèces étrangères ont envahi votre jardin.",
         //consequence: "Retournez à la case départ"
-        consequence: 55
+        consequence: "reset"
     },
     {
         id: 15,
         title: "Tempête de Changement Climatique",
         info: "Conditions météorologiques extrêmes !",
         //consequence: "Retournez à la case départ"
-        consequence: 55
+        consequence: "reset"
     },
     {
         id: 16,	
         title: "Décharge de Déchets Électroniques",
         info: "Vous êtes tombé sur une décharge de déchets électroniques.",
         //consequence: "Passez votre tour pendant que vous vous débarrassez en toute sécurité de vieux gadgets"
-        consequence: 0
+        consequence: 1
     },	
 	{
         id: 17,	
@@ -153,7 +153,7 @@ export const sanctionQuestions: SanctionsProps[] = [
         title: "Négation du Changement Climatique",
         info: "Vous êtes tombé sur un climatosceptique.",
         //consequence: "Passez votre tour pendant que vous les éduquez"
-        consequence: 0
+        consequence: 1
     },	
 	{
         id: 23,	
@@ -181,7 +181,7 @@ export const sanctionQuestions: SanctionsProps[] = [
         title: "Site de Déchets Nucléaires",
         info: "Zone radioactive !",										
         //consequence: "Passez votre tour pendant que vous trouvez un chemin sûr"
-        consequence: 0
+        consequence: 2
     },
     {
         id: 27,	
@@ -202,6 +202,6 @@ export const sanctionQuestions: SanctionsProps[] = [
         title: "Piège de Greenwashing",
         info: "Vous êtes tombé dans le piège du faux étiquetage écologique.",
         //consequence: "Retournez à la case départ"
-        consequence: 55
+        consequence: "reset"
     }											
 ];

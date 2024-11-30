@@ -1,6 +1,6 @@
 import type { PlayerProps } from '../lib/types';
 import { useState } from 'react';
-import { useSpring, animated } from 'react-spring';
+//import { useSpring, animated } from 'react-spring';
 import gifDice from "../assets/dice.gif";
 import './styles/Dices.css';
 
@@ -105,10 +105,10 @@ const Dices = ({
   };
 
   // dice animation
-  const props = useSpring({
+  /* const props = useSpring({
     transform: isRolling ? 'rotate3d(3, -1, -3, 360deg)' : 'rotate3d(0, 1, 0, 0deg)',
     config: { tension: 200, friction: 10 },
-  });
+  }); */
 
   const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
   if (winner) {
@@ -124,27 +124,83 @@ const Dices = ({
     <div className='dice-container'>
       {isRolling === true ? (
         <div>
-          <img src={gifDice} width={120} height={120} className="dice-gif" alt="dice anim" />
+          <div>
+            <img src={gifDice} width={120} height={120} className="dice-gif" alt="dice anim" />
+          </div>
+          <div className='dice-box'>
+            {playersChoosen.map((player: PlayerProps) => (
+              player.id === activePlayerId ? (
+                <div
+                  key={player.id}
+                  className="dice_2"
+                >
+                  <div className="front faceOfDice1">
+                    <span>O</span>
+                  </div>
+
+                  <div className='back faceOfDice2'>
+                    <span className="span-nbr1">O</span>
+                    <span className="span-nbr2">O</span>
+                  </div>
+                  
+                  <div className="left faceOfDice3">
+                    <span className='span-nbr1'>O</span>
+                    <span className='span-nbr2'>O</span>
+                    <span className='span-nbr3'>O</span>
+                  </div>
+
+                  <div className="right faceOfDice4">
+                    <span>O</span>
+                    <span>O</span>
+                    <span>O</span>
+                    <span>O</span>
+                  </div>
+
+                  <div className="top faceOfDice5">
+                    <span className='span-nbr'>O</span>
+                    <span className='span-nbr'>O</span>
+                    <span className='span-nbr_3'>O</span>
+                    <span className='span-nbr'>O</span>
+                    <span className='span-nbr'>O</span>
+                  </div>
+
+                  <div className='bottom faceOfDice6'>
+                      <span>O</span>
+                      <span>O</span>
+                      <span>O</span>
+                      <span>O</span>
+                      <span>O</span>
+                      <span>O</span>
+                  </div>
+                
+                </div>
+              ) : null
+            ))}
+          </div>
         </div>
       ) : (
         <div className='dice-box'>
           {playersChoosen.map((player: PlayerProps) => (
             player.id === activePlayerId ? (
-              <animated.div 
+              <div
                 key={player.id}
-                style={props}
-                className="dice"
-                onClick={() => rollDice(player.id)} 
+                className="dice" 
+                onClick={() => rollDice(player.id)}
               >
-                {value}
-              </animated.div>
+                {value === 1 ? <div className='faceOfDice1'><span>O</span></div> : value === 2 
+                  ? <div className='faceOfDice2'><span className="span-nbr1">O</span><span className="span-nbr2">O</span></div> : value === 3 
+                  ? <div className='faceOfDice3'><span className='span-nbr1'>O</span><span className='span-nbr2'>O</span><span className='span-nbr3'>O</span></div> : value === 4 
+                  ? <div className='faceOfDice4'><span>O</span><span>O</span><span>O</span><span>O</span></div> : value === 5 
+                  ? <div className='faceOfDice5'><span className='span-nbr'>O</span><span className='span-nbr'>O</span><span className='span-nbr_3'>O</span><span className='span-nbr'>O</span><span className='span-nbr'>O</span></div> : value === 6 
+                  ? <div className='faceOfDice6'><span>O</span><span>O</span><span>O</span><span>O</span><span>O</span><span>O</span></div> : null}
+              </div>
             ) : null
           ))}
         </div>
       )}
       {playersChoosen.map((play: PlayerProps) => ( 
         play.id === activePlayerId ? (
-          <div key={play.id} className='dice-indicator'>
+          <div key={play.id} className='dice-player'>
             <p>{play.name} {play.caseNumber}</p>
           </div> 
         ) : null
@@ -154,3 +210,12 @@ const Dices = ({
   );
 };
 export default Dices;
+
+              {/* <animated.div 
+                key={player.id}
+                style={props}
+                className="dice"
+                onClick={() => rollDice(player.id)} 
+              >
+                {value}
+              </animated.div> */}

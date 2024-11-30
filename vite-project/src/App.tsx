@@ -121,7 +121,7 @@ function App(): JSX.Element {
     isCardActive: boolean;
   }>({ type: null, cardData: null, isCardActive: false });
   
-  // choose question by random with 'quiz' | 'defi' | 'action' | 'sanction'
+  // choose question by random with 'quiz' | 'defi' | 'action' | 'sanction' to display corresponding card
   const getRandomNumber = (type: string, player: PlayerProps) => {
     
     // delete quiz question

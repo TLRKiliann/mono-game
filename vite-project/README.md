@@ -31,13 +31,14 @@ Récompense quiz et défi => rejouer.
 ## bonne action réussi + 5 (applied)
 - bonne action loupé - ???
 
-1) Faire rejouer le joueur (défi, quiz)
+1) Faire rejouer le joueur (défi, quiz) => POSSIBLE ???
 
-2) Bonne Action et Sanction => tenir compte des récompenses et sanctions + ou . case
+2) Bonne Action et Sanction => tenir compte des récompenses et sanctions
+  (sanction avec un joker en case 0 : Pas de sens / retour en case départ : ok)
 
 3) splitter en plrs components (code splitting)
 
-4) logo dans le signet en-haut (plus tard)
+4) favicon dans le signet en-haut (plus tard)
 
 5) cards aux 4 coins (plus tard)
 
