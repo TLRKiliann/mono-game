@@ -10,6 +10,7 @@ import ComponentQuiz from "./components/ComponentQuiz";
 import ComponentDefi from "./components/ComponentDefi";
 import ComponentBonneAction from "./components/ComponentBonneAction";
 import ComponentSanction from "./components/ComponentSanction";
+import natureImg from "./assets/nature_1.jpg"
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
 import './App.css';
@@ -481,6 +482,10 @@ function App(): JSX.Element {
         </div>
 
         <div className="container-cards">
+
+          <div className="div-bgImg">
+            <img src={natureImg} width={1920} height={1080} alt="img nature" className="bg-img" />
+          </div>
           
           <div className='cards-box cards-box-left'>
             
