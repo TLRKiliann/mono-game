@@ -19,7 +19,7 @@ const NbrOfPlayers = ({nbPlayer, setNbPlayer} : NbPlayerProps) => {
             setNbPlayer(numberValue);
             setError("");
         } else {
-            setError("Ce n'est pas un chiffre correct. Choisissez entre 2 et 6.");
+            setError("Choisissez un chiffre entre 2 et 6.");
         }
     };
 
@@ -32,21 +32,23 @@ const NbrOfPlayers = ({nbPlayer, setNbPlayer} : NbPlayerProps) => {
         }
     };
 
-    return (
+    return (        
         <div className={`${onShowForm ? 'player-displayer' : 'player-hidden'}`}>
             <div className="div-labelInputPlayer">
                 <label htmlFor="nbPlayer">Choisir entre 2 et 6 joueurs:
                     <input 
-                        type="number" 
+                        type="text" 
                         id="nbPlayers" 
-                        value={nbPlayer} 
-                        onChange={handleNbPlayer} 
-                        min="2" 
-                        max="6" 
+                        value="" 
+                        onChange={handleNbPlayer}
+                        className=""
+                        placeholder={String(nbPlayer)} 
                     />
                 </label>
-                {error && <h3 className="error">{error}</h3>}
+                
             </div>
+
+            {error && <p className="error">{error}</p>}
 
             <div className="div-btnPlayer">
                 <button type="button" onClick={handleValidateNbPlayers}>Valider</button>
