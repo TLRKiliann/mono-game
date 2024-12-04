@@ -21,9 +21,10 @@ type ComponentQuizProps = {
     findCardQuiz: QuizProps;
     player: PlayerProps;
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+    setReplay: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, setPlayersChoosen }) => {
+const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, setReplay, setPlayersChoosen }) => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -67,9 +68,11 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
+            // player should be able to replay
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} // player should be able to replay
+                ? {...playerGame, caseQuiz: !playerGame.caseQuiz}
                 : playerGame));
+            setReplay(true);
         } else {
             // A tester !
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 

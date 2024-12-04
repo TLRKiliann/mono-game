@@ -5,7 +5,7 @@ export type PlayerProps = {
     caseNumber: number;
     lap: number;
     gameOver: boolean;
-    //caseQuiz: boolean;
+    caseQuiz: boolean;
 };
 
 export type QuizProps = {

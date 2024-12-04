@@ -1,11 +1,13 @@
 import type { PlayerProps } from '../lib/types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 //import gifDice from "../assets/dice.gif";
 import './styles/Dices.css';
 
 type ValProps = {
   playersChoosen: PlayerProps[];
   setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+  replay: boolean;
+  setReplay: React.Dispatch<React.SetStateAction<boolean>>;
   nbPlayer: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
   value: number;
@@ -26,6 +28,8 @@ type ValProps = {
 const Dices = ({
   playersChoosen,
   setPlayersChoosen,
+  replay,
+  setReplay,
   nbPlayer,
   activePlayerId,
   
@@ -45,6 +49,19 @@ const Dices = ({
 
   const [isRolling, setIsRolling] = useState<boolean>(false);
 
+  // action replay if player is in "quiz" case
+  useEffect(() => {
+    const handleReplay = () => {
+      const findPlayerToReplay = playersChoosen.map((playerGame: PlayerProps) => playerGame.caseQuiz === true 
+        ? rollDice(playerGame.id) 
+        : playerGame);
+      setReplay(false);
+      return findPlayerToReplay;
+    }
+    handleReplay();
+    return () => console.log("action replay clean-up !");
+  }, [replay]);
+
   //console.log(playersChoosen, "playersChoosen from dice");
   //console.log(activePlayerId, "activePlayerId from dice");
 
@@ -60,25 +77,26 @@ const Dices = ({
 
       // one more lap to go (max 3 laps)
       setPlayersChoosen((prevPlayers) => prevPlayers.map((gamer: PlayerProps) => {
-          if (gamer.id === id) {
-            
-            const newCaseNumber = gamer.caseNumber + newVal;
-            let newCounter = gamer.lap || 0;
+        // reset to false the replay if player is in "quiz" case
+        gamer.id === id && gamer.caseQuiz === true ? {...gamer, caseQuiz: false} : gamer;
+        if (gamer.id === id) {
+          
+          const newCaseNumber = gamer.caseNumber + newVal;
+          let newCounter = gamer.lap || 0;
 
-            if (newCaseNumber > 55) {
-              newCounter += 1;
+          if (newCaseNumber > 55) {
+            newCounter += 1;
 
-              if (newCounter === 3) {
-                const updatePlayer = { ...gamer, caseNumber: newCaseNumber % 56, lap: newCounter, gameOver: true };
-                return updatePlayer;
-              }
-              return { ...gamer, caseNumber: newCaseNumber % 56, lap: newCounter };
+            if (newCounter === 3) {
+              const updatePlayer = { ...gamer, caseNumber: newCaseNumber % 56, lap: newCounter, gameOver: true };
+              return updatePlayer;
             }
-            return { ...gamer, caseNumber: newCaseNumber, lap: newCounter };
+            return { ...gamer, caseNumber: newCaseNumber % 56, lap: newCounter };
           }
-          return gamer;
-        })
-      );
+          return { ...gamer, caseNumber: newCaseNumber, lap: newCounter };
+        }
+        return gamer;
+      }));
       // change score
       if (activePlayerId === 1) {
         setActivePlayerId(2);

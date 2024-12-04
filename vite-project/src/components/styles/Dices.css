@@ -217,6 +217,9 @@
     grid-template-rows: 1Fr 1Fr 1Fr;
     font-size: 2rem;
     font-weight: bold;
+    
+    border: 1px solid #333;
+
     border-radius: 10px;
     margin: auto;
 }

@@ -36,9 +36,11 @@ function App(): JSX.Element {
   // choose players number at the begining of game
   const [nbPlayer, setNbPlayer] = useState<number>(2);
 
+  const [replay, setReplay] = useState<boolean>(false);
+
   const [playersChoosen, setPlayersChoosen] = useState<PlayerProps[]>([]);
 
-  // simulation user's data from db - or without db
+  // initial players state
   const [players] = useState<PlayerProps[]>([
     {
       id: 1,
@@ -47,7 +49,7 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      //caseQuiz: false
+      caseQuiz: false
     },
     {
       id: 2,
@@ -56,7 +58,7 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      //caseQuiz: false
+      caseQuiz: false
     },
     {
       id: 3,
@@ -65,7 +67,7 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      //caseQuiz: false
+      caseQuiz: false
     },
     {
       id: 4,
@@ -74,7 +76,7 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      //caseQuiz: false
+      caseQuiz: false
     },
     {
       id: 5,
@@ -83,7 +85,7 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      //caseQuiz: false
+      caseQuiz: false
     },
     {
       id: 6,
@@ -92,17 +94,17 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      //caseQuiz: false
+      caseQuiz: false
     }
   ]);
 
   //---
+  // define number of players to start
 
   // derivated state
   const derivatedStatePlayers: PlayerProps[] = players;
 
   useEffect(() => {
-    //setPlayers(players.slice(0, nbPlayer));
     setPlayersChoosen(derivatedStatePlayers.slice(0, nbPlayer));
   }, [nbPlayer]);
 
@@ -110,6 +112,7 @@ function App(): JSX.Element {
   console.log(playersChoosen, "playersChoosen");
 
   //---
+  // open card by case & player
 
   const allQuizIdToDelete: number[] = [];
   const allDefiIdToDelete: number[] = [];
@@ -172,7 +175,7 @@ function App(): JSX.Element {
 
     switch (type) {
       case "quiz":
-        return <ComponentQuiz findCardQuiz={findCard as QuizProps} player={player} setPlayersChoosen={setPlayersChoosen} />;
+        return <ComponentQuiz findCardQuiz={findCard as QuizProps} player={player} setPlayersChoosen={setPlayersChoosen} setReplay={setReplay} />;
       case "defi":
         return <ComponentDefi findCardDefi={findCard as DefiProps} player={player} setPlayersChoosen={setPlayersChoosen}/>;
       case "action":
@@ -184,7 +187,7 @@ function App(): JSX.Element {
     }
   };
 
-  //---
+  // --- --- ---
 
   // Top
   const PlayerSpanTop: React.FC<{ player: PlayerProps }> = ({ player }) => {
@@ -351,6 +354,8 @@ function App(): JSX.Element {
       </div>
   );
 
+  // --- --- ---
+
   //bottom
   const PlayerSpanBottom: React.FC<{ player: PlayerProps }> = ({ player }) => {
     
@@ -512,6 +517,8 @@ function App(): JSX.Element {
               setValue={setValue} 
               setCount={setCount}
 
+              replay={replay}
+              setReplay={setReplay}
               nbPlayer={nbPlayer}
               playersChoosen={playersChoosen}
               setPlayersChoosen={setPlayersChoosen}
