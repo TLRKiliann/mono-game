@@ -4,9 +4,9 @@ type FullScreenCloseProps = {
     setCloseFullScreen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const FullScreen = ({setCloseFullScreen}: FullScreenCloseProps) => {
+const FullScreen = ({setCloseFullScreen}: FullScreenCloseProps): JSX.Element => {
     
-    const handleFullScreen = () => {
+    const handleFullScreen = (): void => {
         const element = document.documentElement;
         if (element.requestFullscreen) {
             element.requestFullscreen();
@@ -22,7 +22,7 @@ const FullScreen = ({setCloseFullScreen}: FullScreenCloseProps) => {
 
     return (
         <div className="fullscreen-div">
-            <button onClick={handleFullScreen}>Full Screen Mode</button>
+            <button type="button" onClick={handleFullScreen}>Full Screen Mode</button>
         </div>
     )
 }

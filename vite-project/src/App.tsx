@@ -1,6 +1,8 @@
 import type { BonneActionProps, DefiProps, PlayerProps, QuizProps, SanctionsProps } from "./lib/types";
 import React, { useEffect, useState } from "react";
 import FullScreen from "./components/FullScreen";
+import WelcomeComponent from "./components/WelcomeComponent";
+import RulesComponent from "./components/RulesComponent";
 import NbrOfPlayers from "./components/NbrOfPlayers";
 import Dices from "./components/Dices";
 import { quizQuestions } from "./lib/quiz";
@@ -20,6 +22,12 @@ function App(): JSX.Element {
 
   // hide full screen box
   const [closeFullScreen, setCloseFullScreen] = useState<boolean>(true);
+
+  // languages choosen
+  const [selectedOption, setSelectedOption] = useState<string>("");
+
+  // display/hide tutorial for rules
+  const [viewRules, setViewRules] = useState<boolean>(true);
 
   // count nbre of case by player
   const [count, setCount] = useState<number>(0);
@@ -426,7 +434,20 @@ function App(): JSX.Element {
         ) : null
       }
 
-      <NbrOfPlayers nbPlayer={nbPlayer} setNbPlayer={setNbPlayer} />
+      {selectedOption === "" && closeFullScreen === false ? (
+        <WelcomeComponent selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+        ) : null
+      }
+
+      {selectedOption !== "" && viewRules === true ? (
+        <RulesComponent selectedOption={selectedOption} setViewRules={setViewRules} />
+        ) : null
+      }
+
+      {viewRules === false ? (
+        <NbrOfPlayers nbPlayer={nbPlayer} setNbPlayer={setNbPlayer} />
+        ) : null
+      }
 
       <div className='top-frame'>
 

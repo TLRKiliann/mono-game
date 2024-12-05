@@ -10,7 +10,7 @@
     justify-content: center;
     background: linear-gradient(30deg, rgba(17, 83, 72, 0.9) 10%, rgba(17, 83, 72, 1) 50%, rgba(17, 83, 72, 0.9) 90%);
 
-    z-index: 60;
+    z-index: 70;
 }
 
 .fullscreen-div button {
