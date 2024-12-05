@@ -1,0 +1,38 @@
+.fullscreen-div {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(30deg, rgba(17, 83, 72, 0.9) 10%, rgba(17, 83, 72, 1) 50%, rgba(17, 83, 72, 0.9) 90%);
+
+    z-index: 60;
+}
+
+.fullscreen-div button {
+    font-size: 1.0rem;
+    font-weight: 600;
+    background: rgba(17, 83, 72, 1);
+    border: 1px solid rgba(17, 83, 72, 0.75);
+    border-radius: 5px;
+    box-shadow: 0 0 20px lightgrey;
+    padding: 12px 30px;
+    transition: 0.2s ease-in-out;
+    transform: scale(1.0);
+}
+
+.fullscreen-div button:hover {
+    background: rgba(17, 83, 72, 0.5);
+    border: 1px solid rgba(17, 83, 72, 0.5);
+    transform: scale(1.05);
+}
+
+.fullscreen-div button:active {
+    background: rgba(17, 83, 72, 0.75);
+    transform: scale(0.95);
+    border: 1px solid rgba(17, 83, 72, 0.75);
+}
