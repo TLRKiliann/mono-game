@@ -103,6 +103,16 @@
     border-radius: 10px;
 }
 
+.faceOfDice1 span {
+    width: 20px;
+    height: 20px;
+    background: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 3px #000;
+    margin: auto;
+}
+
 /*face 2*/
 .faceOfDice2 {
     width: 100%;
@@ -116,15 +126,27 @@
 }
 
 .faceOfDice2 .span-nbr1 { 
+    width: 20px;
+    height: 20px;
+    background: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 3px #000;
     margin: auto;
-    margin-top: 0px;
+    margin-top: 10px;
     margin-left: 10px;
 }
 
 .faceOfDice2 .span-nbr2 { 
+    width: 20px;
+    height: 20px;
+    background: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 3px #000;
     margin: auto;
     margin-right: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 }
 
 /*face 3*/
@@ -141,18 +163,39 @@
     border-radius: 10px;
 }
 
-.faceOfDice3 .span-nbr1 { 
+.faceOfDice3 .span-nbr1 {
+    width: 20px;
+    height: 20px;
+    background: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 3px #000;
     margin: auto;
-    margin-top: 0px;
+
+    margin-top: 10px;
 }
 
-.faceOfDice3 .span-nbr2 { 
+.faceOfDice3 .span-nbr2 {
+    width: 20px;
+    height: 20px;
+    background: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 3px #000;
+
     margin: auto;
 }
 
-.faceOfDice3 .span-nbr3 { 
+.faceOfDice3 .span-nbr3 {
+    width: 20px;
+    height: 20px;
+    background: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 3px #000;
     margin: auto;
-    margin-bottom: 0px;
+
+    margin-bottom: 10px;
 }
 
 /*face 4*/
@@ -170,6 +213,12 @@
 }
 
 .faceOfDice4 span {
+    width: 20px;
+    height: 20px;
+    background: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 3px #000;
     margin: auto;
 }
 
@@ -189,6 +238,12 @@
 }
 
 .faceOfDice5 .span-nbr {
+    width: 20px;
+    height: 20px;
+    background: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 3px #000;
     margin: auto;
 }
 
@@ -205,6 +260,12 @@
 
     font-size: 2rem;
     font-weight: bold;
+    width: 20px;
+    height: 20px;
+    background: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 3px #000;
     margin: auto;
 }
 
@@ -217,14 +278,18 @@
     grid-template-rows: 1Fr 1Fr 1Fr;
     font-size: 2rem;
     font-weight: bold;
-    
-    border: 1px solid #333;
 
     border-radius: 10px;
     margin: auto;
 }
 
 .faceOfDice6 span {
+    width: 20px;
+    height: 20px;
+    background: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 3px #000;
     margin: auto;
 }
 

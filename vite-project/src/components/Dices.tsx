@@ -49,21 +49,19 @@ const Dices = ({
 
   const [isRolling, setIsRolling] = useState<boolean>(false);
 
-  // action replay if player is in "quiz" case
+  // action replay if player is in the square of "quiz"
   useEffect(() => {
     const handleReplay = () => {
-      const findPlayerToReplay = playersChoosen.map((playerGame: PlayerProps) => playerGame.caseQuiz === true 
-        ? rollDice(playerGame.id) 
-        : playerGame);
       setReplay(false);
+      const findPlayerToReplay = playersChoosen.map((playerGame: PlayerProps) => playerGame.caseQuiz === true 
+        ? rollDice(playerGame.id)
+        : playerGame
+      );
       return findPlayerToReplay;
-    }
+    };
     handleReplay();
     return () => console.log("action replay clean-up !");
   }, [replay]);
-
-  //console.log(playersChoosen, "playersChoosen from dice");
-  //console.log(activePlayerId, "activePlayerId from dice");
 
   // update score to current player
   const rollDice = (id: number): void | JSX.Element => {
@@ -71,14 +69,19 @@ const Dices = ({
     setIsRolling(true);
     const newVal = Math.floor(Math.random() * 6) + 1;
     setValue(newVal);
+
+    // reset to false the replay value if player is in the square of "quiz"
+    setPlayersChoosen((prevPlayers) => prevPlayers.map((gamer: PlayerProps) => gamer.id === id && gamer.caseQuiz === true 
+      ? {...gamer, caseQuiz: false} : gamer
+    ));
+
     setTimeout(() => {
       setIsRolling(false);
       setCount((prev) => prev + newVal);
 
       // one more lap to go (max 3 laps)
       setPlayersChoosen((prevPlayers) => prevPlayers.map((gamer: PlayerProps) => {
-        // reset to false the replay if player is in "quiz" case
-        gamer.id === id && gamer.caseQuiz === true ? {...gamer, caseQuiz: false} : gamer;
+        
         if (gamer.id === id) {
           
           const newCaseNumber = gamer.caseNumber + newVal;
@@ -121,6 +124,9 @@ const Dices = ({
     }, 1000);
   };
 
+  console.log(playersChoosen, "playersChoosen from dice");
+  //console.log(activePlayerId, "activePlayerId from dice");
+
   const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
   if (winner) {
     return (
@@ -146,42 +152,42 @@ const Dices = ({
                   className="dice_2"
                 >
                   <div className="front faceOfDice1">
-                    <span>O</span>
+                    <span></span>
                   </div>
 
                   <div className='back faceOfDice2'>
-                    <span className="span-nbr1">O</span>
-                    <span className="span-nbr2">O</span>
+                    <span className="span-nbr1"></span>
+                    <span className="span-nbr2"></span>
                   </div>
                   
                   <div className="left faceOfDice3">
-                    <span className='span-nbr1'>O</span>
-                    <span className='span-nbr2'>O</span>
-                    <span className='span-nbr3'>O</span>
+                    <span className='span-nbr1'></span>
+                    <span className='span-nbr2'></span>
+                    <span className='span-nbr3'></span>
                   </div>
 
                   <div className="right faceOfDice4">
-                    <span>O</span>
-                    <span>O</span>
-                    <span>O</span>
-                    <span>O</span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                   </div>
 
                   <div className="top faceOfDice5">
-                    <span className='span-nbr'>O</span>
-                    <span className='span-nbr'>O</span>
-                    <span className='span-nbr_3'>O</span>
-                    <span className='span-nbr'>O</span>
-                    <span className='span-nbr'>O</span>
+                    <span className='span-nbr'></span>
+                    <span className='span-nbr'></span>
+                    <span className='span-nbr_3'></span>
+                    <span className='span-nbr'></span>
+                    <span className='span-nbr'></span>
                   </div>
 
                   <div className='bottom faceOfDice6'>
-                      <span>O</span>
-                      <span>O</span>
-                      <span>O</span>
-                      <span>O</span>
-                      <span>O</span>
-                      <span>O</span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
                   </div>
                 
                 </div>
@@ -198,12 +204,12 @@ const Dices = ({
                 className="dice" 
                 onClick={() => rollDice(player.id)}
               >
-                {value === 1 ? <div className='faceOfDice1'><span>O</span></div> : value === 2 
-                  ? <div className='faceOfDice2'><span className="span-nbr1">O</span><span className="span-nbr2">O</span></div> : value === 3 
-                  ? <div className='faceOfDice3'><span className='span-nbr1'>O</span><span className='span-nbr2'>O</span><span className='span-nbr3'>O</span></div> : value === 4 
-                  ? <div className='faceOfDice4'><span>O</span><span>O</span><span>O</span><span>O</span></div> : value === 5 
-                  ? <div className='faceOfDice5'><span className='span-nbr'>O</span><span className='span-nbr'>O</span><span className='span-nbr_3'>O</span><span className='span-nbr'>O</span><span className='span-nbr'>O</span></div> : value === 6 
-                  ? <div className='faceOfDice6'><span>O</span><span>O</span><span>O</span><span>O</span><span>O</span><span>O</span></div> : null}
+                {value === 1 ? <div className='faceOfDice1'><span></span></div> : value === 2 
+                  ? <div className='faceOfDice2'><span className="span-nbr1"></span><span className="span-nbr2"></span></div> : value === 3 
+                  ? <div className='faceOfDice3'><span className='span-nbr1'></span><span className='span-nbr2'></span><span className='span-nbr3'></span></div> : value === 4 
+                  ? <div className='faceOfDice4'><span></span><span></span><span></span><span></span></div> : value === 5 
+                  ? <div className='faceOfDice5'><span className='span-nbr'></span><span className='span-nbr'></span><span className='span-nbr_3'></span><span className='span-nbr'></span><span className='span-nbr'></span></div> : value === 6 
+                  ? <div className='faceOfDice6'><span></span><span></span><span></span><span></span><span></span><span></span></div> : null}
               </div>
             ) : null
           ))}
