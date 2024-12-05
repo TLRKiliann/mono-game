@@ -45,7 +45,7 @@ interface ComponentDefiProps {
     setReplay: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, setPlayersChoosen, setReplay }) => {
+const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, setPlayersChoosen, setReplay }): JSX.Element => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -63,10 +63,6 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
     let defiNumber: number = findCardDefi.id;
     const imgDefiId = imgDefis[defiNumber - 1];
     
-    const handleClick = (): void => {
-        setOnShow(false);
-    };
-    
     const handleResponse = (): void => {
         setResponse(!response);
     };
@@ -79,9 +75,6 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
     // player should be able to replay if response is correct. Otherwise, he must move back to 4 squares. 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
-            /* setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber + 4}
-                : playerGame)); */
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
                 ? {...playerGame, caseQuiz: true}
                 : playerGame
@@ -169,9 +162,6 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
                 </div>
             </div>
 
-            <div className='div-closeBtn'>
-                <button onClick={handleClick}>Close</button>
-            </div>
         </div>
     );
 };

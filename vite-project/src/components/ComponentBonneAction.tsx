@@ -33,7 +33,7 @@ type ComponentQuizProps = {
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
 };
 
-const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, player, setPlayersChoosen }) => {
+const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, player, setPlayersChoosen }): JSX.Element => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -47,10 +47,6 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
     // card corresponds of question nbr (25 cards - 25 questions)
     let bonneActionNumber: number = findCardAction.id;
     const imgBonneActionId = imgBonneActions[bonneActionNumber - 1];
-
-    const handleClick = (): void => {
-        setOnShow(false);
-    };
 
     const handleResponse = (): void => {
         setResponse(!response);
@@ -104,9 +100,6 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
                 </div>
             </div>
 
-            <div className='div-closeBtn'>
-                <button onClick={handleClick}>Close</button>
-            </div>
         </div>
     );
 };

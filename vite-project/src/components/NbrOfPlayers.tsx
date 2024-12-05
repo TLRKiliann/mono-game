@@ -6,7 +6,7 @@ type NbPlayerProps = {
     setNbPlayer: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const NbrOfPlayers = ({nbPlayer, setNbPlayer} : NbPlayerProps) => {
+const NbrOfPlayers = ({nbPlayer, setNbPlayer} : NbPlayerProps): JSX.Element => {
 
     const [onShowForm, setOnShowForm] = useState<boolean>(true);
     const [error, setError] = useState<string>("");

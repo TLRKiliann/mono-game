@@ -37,7 +37,7 @@ type ComponentQuizProps = {
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
 };
 
-const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayersChoosen }) => {
+const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayersChoosen }): JSX.Element => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -59,10 +59,6 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
     } else {
         imgSanctionId = imgSanctions[sanctionNumber - 1];
         console.log(imgSanctionId);
-    };
-
-    const handleClick = (): void => {
-        setOnShow(false);
     };
 
     const handleResponse = (): void => {
@@ -117,9 +113,6 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                 </div>
             </div>
 
-            <div className='div-closeBtn'>
-                <button onClick={handleClick}>Close</button>
-            </div>
         </div>
     );
 };

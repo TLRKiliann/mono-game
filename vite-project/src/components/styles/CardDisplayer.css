@@ -51,51 +51,47 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 80%;
-    font-size: 1.2rem;
-    /* border: 1px solid red; */
+    height: 100%;
+    font-size: 1.4rem;
+    font-weight: bold;
 }
 
 .para-box-card div {
     display: flex;
-    /* width: 100%; */
     height: 75px;
     margin: auto;
-    /* border: 1px solid violet; */
 }
 
 .para-box-card div p {
     display: flex;
     align-items: center;
-    /* justify-content: center; */
     width: 100%;
     height: auto;
-   /*  border: 1px solid lime; */
 }
 
 .div-card-item {
     width: 95%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 7px;
 }
 
 .p-card-first {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #333;
+    color: #fff;
+    text-shadow: 1px 1px 1px #333;
     padding: 10px 20px;
-    /* border: 1px solid cyan; */
 }
 
 .p-card-second {
     display: flex;
     align-items: center;
     justify-content: center;
+
     text-align: justify;
-    color: #333;
-    
+    color: #fff;
+    text-shadow: 1px 1px 1px #333;    
     padding: 10px 20px;
-    /* border: 1px solid yellow; */
 }
 
 .div-mainValidate {
@@ -113,15 +109,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #333;
-    /* border: 1px solid red; */
 }
 
 .validate-error label {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     border: none;
     border-radius: 7px;
-    color: #333;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
     padding: 5px 20px;
 }
 
@@ -132,10 +127,8 @@
     justify-content: center;
     width: 95%;
     height: auto;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 7px;
-
-    /* border: 1px solid orangered; */
 }
 
 .div-validateBtn button {
@@ -145,7 +138,7 @@
     border: 1px solid rgba(17, 83, 72, 0.75);
     border-radius: 5px;
     box-shadow: 0 0 20px lightgrey;
-    padding: 7px 20px;
+    padding: 12px 30px;
     transition: 0.2s ease-in-out;
     transform: scale(1.0);
 }
@@ -172,9 +165,9 @@
     font-size: 1.4rem;
     font-weight: 600;
     color: rgb(6, 128, 77);
+    text-shadow: 1px 1px 1px #000;
 
     padding: 10px 40px;
-    /* border: 1px solid orangered; */
 }
 
 .img-card {
@@ -188,44 +181,6 @@
     margin: auto;
     opacity: 0.6;
     z-index: -1;
-}
-
-
-/* btn close */
-.div-closeBtn {
-    position: absolute;
-    bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    margin: auto;
-    /* border: 1px solid #fff; */
-}
-
-.div-closeBtn button {
-    font-size: 1.0rem;
-    font-weight: 600;
-    background: rgba(17, 83, 72, 1);
-    border: 1px solid rgba(17, 83, 72, 0.75);
-    border-radius: 5px;
-    box-shadow: 0 0 20px lightgrey;
-    padding: 7px 20px;
-    transition: 0.2s ease-in-out;
-    transform: scale(1.0);
-}
-
-.div-closeBtn button:hover {
-    background: rgba(17, 83, 72, 0.5);
-    border: 1px solid rgba(17, 83, 72, 0.5);
-    transform: scale(1.05);
-}
-
-.div-closeBtn button:active {
-    background: rgba(17, 83, 72, 0.75);
-    transform: scale(0.95);
-    border: 1px solid rgba(17, 83, 72, 0.75);
 }
 
 /* btn response */
@@ -246,7 +201,7 @@
     border: 1px solid rgba(17, 83, 72, 0.75);
     border-radius: 5px;
     box-shadow: 0 0 20px lightgrey;
-    padding: 7px 20px;
+    padding: 12px 30px;
     transition: 0.2s ease-in-out;
     transform: scale(1.0);
 }
