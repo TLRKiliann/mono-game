@@ -61,10 +61,6 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
         console.log(imgSanctionId);
     };
 
-    const handleClick = (): void => {
-        setOnShow(false);
-    };
-
     const handleResponse = (): void => {
         setResponse(!response);
     };
@@ -117,9 +113,6 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                 </div>
             </div>
 
-            <div className='div-closeBtn'>
-                <button onClick={handleClick}>Close</button>
-            </div>
         </div>
     );
 };

@@ -53,10 +53,6 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
         };
     }, [quizNumber]);
 
-    const handleClick = (): void => {
-        setOnShow(false);
-    };
-
     const handleResponse = (): void => {
         setResponse(!response);
     };
@@ -154,9 +150,6 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                 </div>
             </div>
 
-            <div className='div-closeBtn'>
-                <button onClick={handleClick}>Close</button>
-            </div>
         </div>
     );
 };

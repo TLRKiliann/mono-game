@@ -63,10 +63,6 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
     let defiNumber: number = findCardDefi.id;
     const imgDefiId = imgDefis[defiNumber - 1];
     
-    const handleClick = (): void => {
-        setOnShow(false);
-    };
-    
     const handleResponse = (): void => {
         setResponse(!response);
     };
@@ -169,9 +165,6 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
                 </div>
             </div>
 
-            <div className='div-closeBtn'>
-                <button onClick={handleClick}>Close</button>
-            </div>
         </div>
     );
 };

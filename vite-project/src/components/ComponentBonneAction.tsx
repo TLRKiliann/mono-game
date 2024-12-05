@@ -48,10 +48,6 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
     let bonneActionNumber: number = findCardAction.id;
     const imgBonneActionId = imgBonneActions[bonneActionNumber - 1];
 
-    const handleClick = (): void => {
-        setOnShow(false);
-    };
-
     const handleResponse = (): void => {
         setResponse(!response);
     };
@@ -104,9 +100,6 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
                 </div>
             </div>
 
-            <div className='div-closeBtn'>
-                <button onClick={handleClick}>Close</button>
-            </div>
         </div>
     );
 };
