@@ -19,10 +19,11 @@ function App(): JSX.Element {
 
   // count nbre of case by player
   const [count, setCount] = useState<number>(0);
+
   // display value of dice
   const [value, setValue] = useState<number>(1);
 
-  // all players start at 0
+  // all players start at square 0
   const [, setCountPlayerOne] = useState<number>(0);
   const [, setCountPlayerTwo] = useState<number>(0);
   const [, setCountPlayerThree] = useState<number>(0);
@@ -36,8 +37,10 @@ function App(): JSX.Element {
   // choose players number at the begining of game
   const [nbPlayer, setNbPlayer] = useState<number>(2);
 
+  // player is able to replay
   const [replay, setReplay] = useState<boolean>(false);
 
+  // allows to define number of players
   const [playersChoosen, setPlayersChoosen] = useState<PlayerProps[]>([]);
 
   // initial players state
@@ -108,12 +111,9 @@ function App(): JSX.Element {
     setPlayersChoosen(derivatedStatePlayers.slice(0, nbPlayer));
   }, [nbPlayer]);
 
-  console.log(nbPlayer, "nb players");
-  console.log(playersChoosen, "playersChoosen");
-
   //---
-  // open card by case & player
 
+  // open card for corresponding player & square
   const allQuizIdToDelete: number[] = [];
   const allDefiIdToDelete: number[] = [];
   const allBonneActionIdToDelete: number[] = [];
@@ -177,11 +177,11 @@ function App(): JSX.Element {
       case "quiz":
         return <ComponentQuiz findCardQuiz={findCard as QuizProps} player={player} setPlayersChoosen={setPlayersChoosen} setReplay={setReplay} />;
       case "defi":
-        return <ComponentDefi findCardDefi={findCard as DefiProps} player={player} setPlayersChoosen={setPlayersChoosen}/>;
+        return <ComponentDefi findCardDefi={findCard as DefiProps} player={player} setPlayersChoosen={setPlayersChoosen} setReplay={setReplay} />;
       case "action":
-        return <ComponentBonneAction findCardAction={findCard as BonneActionProps} player={player} setPlayersChoosen={setPlayersChoosen}/>;
+        return <ComponentBonneAction findCardAction={findCard as BonneActionProps} player={player} setPlayersChoosen={setPlayersChoosen} />;
       case "sanction":
-        return <ComponentSanction findCardSanction={findCard as SanctionsProps} player={player} setPlayersChoosen={setPlayersChoosen}/>;
+        return <ComponentSanction findCardSanction={findCard as SanctionsProps} player={player} setPlayersChoosen={setPlayersChoosen} />;
       default:
         return null;
     }
@@ -516,20 +516,17 @@ function App(): JSX.Element {
               value={value} 
               setValue={setValue} 
               setCount={setCount}
-
               replay={replay}
               setReplay={setReplay}
               nbPlayer={nbPlayer}
               playersChoosen={playersChoosen}
               setPlayersChoosen={setPlayersChoosen}
-
               setCountPlayerOne={setCountPlayerOne}
               setCountPlayerTwo={setCountPlayerTwo}
               setCountPlayerThree={setCountPlayerThree}
               setCountPlayerFour={setCountPlayerFour}
               setCountPlayerFive={setCountPlayerFive}
               setCountPlayerSix={setCountPlayerSix}
-
               activePlayerId={activePlayerId}
               setActivePlayerId={setActivePlayerId}
               setActiveCard={setActiveCard}
