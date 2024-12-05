@@ -31,20 +31,20 @@ Récompense quiz et défi => rejouer.
 ## bonne action réussi + 5 (applied)
 - bonne action loupé - ???
 
-1) Faire rejouer le joueur (défi, quiz) => POSSIBLE ???
+1) splitter en plrs components (code splitting)
 
-2) Bonne Action et Sanction => tenir compte des récompenses et sanctions
-  (sanction avec un joker en case 0 : Pas de sens / retour en case départ : ok)
+2) favicon dans le signet en-haut (plus tard)
 
-3) splitter en plrs components (code splitting)
+3) Menu plrs languages + 1er msg de bienvenue
 
-4) favicon dans le signet en-haut (plus tard)
+4) rules of games
 
-5) cards aux 4 coins (plus tard)
+5) player one is your turn
 
-6) Btn close des cartes => utilité à vérifier !
+6) Choice of lap 1-5
 
-7) Faire un dice en 3D !
+7) dice en blanc et points noirs
+
 
 ---
 
