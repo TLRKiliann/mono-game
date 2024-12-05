@@ -1,5 +1,6 @@
 import type { BonneActionProps, DefiProps, PlayerProps, QuizProps, SanctionsProps } from "./lib/types";
 import React, { useEffect, useState } from "react";
+import FullScreen from "./components/FullScreen";
 import NbrOfPlayers from "./components/NbrOfPlayers";
 import Dices from "./components/Dices";
 import { quizQuestions } from "./lib/quiz";
@@ -16,6 +17,9 @@ import myEcoBest from "./assets/myecobestfriend-logo.png";
 import './App.css';
 
 function App(): JSX.Element {
+
+  // hide full screen box
+  const [closeFullScreen, setCloseFullScreen] = useState<boolean>(true);
 
   // count nbre of case by player
   const [count, setCount] = useState<number>(0);
@@ -416,6 +420,11 @@ function App(): JSX.Element {
 
   return (
     <div className='frame'>
+
+      {closeFullScreen === true ? (
+        <FullScreen setCloseFullScreen={setCloseFullScreen} />
+        ) : null
+      }
 
       <NbrOfPlayers nbPlayer={nbPlayer} setNbPlayer={setNbPlayer} />
 
