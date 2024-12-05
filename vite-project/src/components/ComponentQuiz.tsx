@@ -21,9 +21,10 @@ type ComponentQuizProps = {
     findCardQuiz: QuizProps;
     player: PlayerProps;
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+    setReplay: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, setPlayersChoosen }) => {
+const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, setPlayersChoosen, setReplay }) => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -65,13 +66,14 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
         setIsChecked(optionValue);
     };
 
+    // player should be able to replay if response is correct. Otherwise, he must move back to 3 or 4 squares. 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} // player should be able to replay
+                ? {...playerGame, caseQuiz: true}
                 : playerGame));
+            setReplay(true);
         } else {
-            // A tester !
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
                 ? {...playerGame, caseNumber: playerGame.caseNumber === 3 ? playerGame.caseNumber - 3 : playerGame.caseNumber - 4}
                 : playerGame));
@@ -82,8 +84,6 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
     if (!imgQuizId) {
         return <p>Image non trouvée pour cette question.</p>;
     };
-
-    console.log(player.caseNumber, "player.caseNumber");
 
     return (
         <div className={`${onShow === true ? 'card-displayer' : 'card-hidden'}`}>

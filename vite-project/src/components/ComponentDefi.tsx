@@ -42,9 +42,10 @@ interface ComponentDefiProps {
     findCardDefi: DefiProps;
     player: PlayerProps;
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+    setReplay: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, setPlayersChoosen }) => {
+const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, setPlayersChoosen, setReplay }) => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -75,15 +76,22 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
         setIsChecked(optionValue);
     };
 
+    // player should be able to replay if response is correct. Otherwise, he must move back to 4 squares. 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
+            /* setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
+                ? {...playerGame, caseNumber: playerGame.caseNumber + 4}
+                : playerGame)); */
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} // player should be able to replay
-                : playerGame));
+                ? {...playerGame, caseQuiz: true}
+                : playerGame
+            ));
+            setReplay(true);
         } else {
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber - 4} // rule applied 
-                : playerGame));
+                ? {...playerGame, caseNumber: playerGame.caseNumber - 4}
+                : playerGame
+            ));
         }
         setOnShow(false);
     };
