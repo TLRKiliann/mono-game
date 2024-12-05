@@ -24,7 +24,7 @@ type ComponentQuizProps = {
     setReplay: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, setPlayersChoosen, setReplay }) => {
+const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, setPlayersChoosen, setReplay }): JSX.Element => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);

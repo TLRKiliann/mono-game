@@ -37,7 +37,7 @@ type ComponentQuizProps = {
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
 };
 
-const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayersChoosen }) => {
+const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayersChoosen }): JSX.Element => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
