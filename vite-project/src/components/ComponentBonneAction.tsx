@@ -37,7 +37,6 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
-    //const [isChecked, setIsChecked] = useState<string>("");
 
     // cards
     const imgBonneActions: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9, 
@@ -57,21 +56,13 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
         setResponse(!response);
     };
 
-    /* const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        const optionValue = event.target.value;
-        setIsChecked(optionValue);
-    }; */
-
+    // player can stay in square "bonne action" if "joker". Otherwise, he can advance according to the number of rewards.
     const handleValidate = (): void => {
-        //if (isChecked === "option1") {
         setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-            ? {...playerGame, caseNumber: findCardAction.recompense === "joker" ? playerGame.caseNumber : playerGame.caseNumber + Number(findCardAction.recompense)} // rule applied 
+            ? {...playerGame, caseNumber: findCardAction.recompense === "joker" 
+                ? playerGame.caseNumber 
+                : playerGame.caseNumber + Number(findCardAction.recompense)}
             : playerGame));
-        /*  else {
-            setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber - 5} // watch out sanction
-                : playerGame));
-        } */
         setOnShow(false);
     };
 
@@ -92,24 +83,6 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
                 <div className='div-card-item'>
                     <p className='p-card-second'>{findCardAction.info || "Question indisponible"}</p>
                 </div>
-
-                {/* {response === true ? (
-                    <div className='div-mainValidate'>
-
-                        <div className='validate-error'>
-                            <label htmlFor="validate">Juste
-                                <input type="radio" id="validate" name="validate" value="option1" checked={isChecked === 'option1'} onChange={handleCheck} />
-                            </label>
-                        </div>
-
-                        <div className='validate-error'>
-                            <label htmlFor="error">Faux
-                                <input type="radio" id="error" name="error" value="option2" checked={isChecked === 'option2'} onChange={handleCheck} />
-                            </label>
-                        </div>
-
-                    </div>
-                ) : null} */}
 
                 {response === true ? (
                     <div className='div-validateBtn'>

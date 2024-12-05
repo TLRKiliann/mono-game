@@ -41,7 +41,6 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
-    //const [isChecked, setIsChecked] = useState<string>("");
 
     // cards
     const imgSanctions: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, 
@@ -70,26 +69,13 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
         setResponse(!response);
     };
 
-    /* const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        const optionValue = event.target.value;
-        setIsChecked(optionValue);
-    }; */
-
+    // player must move back to start square if consequence is equal to 0. Otherwise, he must move back of number of squares...
     const handleValidate = (): void => {
         setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
                 ? {...playerGame, caseNumber: findCardSanction.consequence === "reset" ? 0 : playerGame.caseNumber - Number(findCardSanction.consequence)}
                 : playerGame
             )
         );
-        /* if (isChecked === "option1") {
-            setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: playerGame.caseNumber + 4} // watch out recompense
-                : playerGame));
-        } else { // rule applied 12 - 24 - 36 - 48
-            setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: findCardSanction.consequence === 55 ? 0 : playerGame.caseNumber - findCardSanction.consequence}
-                : playerGame));
-        }; */
         setOnShow(false);
     };
 
@@ -110,24 +96,6 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                 <div className='div-card-item'>
                     <p className='p-card-second'>{findCardSanction.info || "Question indisponible"}</p>
                 </div>
-
-                {/* {response === true ? (
-                    <div className='div-mainValidate'>
-
-                        <div className='validate-error'>
-                            <label htmlFor="validate">Juste
-                                <input type="radio" id="validate" name="validate" value="option1" checked={isChecked === 'option1'} onChange={handleCheck} />
-                            </label>
-                        </div>
-
-                        <div className='validate-error'>
-                            <label htmlFor="error">Faux
-                                <input type="radio" id="error" name="error" value="option2" checked={isChecked === 'option2'} onChange={handleCheck} />
-                            </label>
-                        </div>
-
-                    </div>
-                ) : null} */}
 
                 {response === true ? (
                     <div className='div-validateBtn'>
