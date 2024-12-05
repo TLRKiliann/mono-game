@@ -1,0 +1,38 @@
+.div-languages {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(30deg, rgba(17, 83, 72, 0.6) 10%, rgba(17, 83, 72, 1) 50%, rgba(17, 83, 72, 0.6) 90%);
+    border: none;
+    border-radius: 7px;
+    z-index: 60;
+    transform: translate(-50%, -50%);
+}
+
+.div-languages h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f5f5f5;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.div-languages label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f5f5f5;
+    text-shadow: 1px 1px 1px #000;
+    margin-bottom: 20px;
+}
+
+#options {
+    background-color: #f5f5f5;
+    border-radius: 7px;
+    color: #333;
+    padding: 5px 10px;
+}
