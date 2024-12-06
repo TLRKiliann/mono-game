@@ -33,6 +33,8 @@ Récompense quiz et défi => rejouer.
 
 1) splitter en plrs components (code splitting)
 
+2) Fonts (choisir 2x)
+
 2) favicon dans le signet en-haut (plus tard)
 
 3) traductions
