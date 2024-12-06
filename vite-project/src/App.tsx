@@ -4,6 +4,8 @@ import FullScreen from "./components/FullScreen";
 import WelcomeComponent from "./components/WelcomeComponent";
 import RulesComponent from "./components/RulesComponent";
 import NbrOfPlayers from "./components/NbrOfPlayers";
+import NbrOfLapComponent from "./components/NbrOfLapComponent";
+import ReadyComponent from "./components/ReadyComponent";
 import Dices from "./components/Dices";
 import { quizQuestions } from "./lib/quiz";
 import { defiQuestions } from "./lib/defi";
@@ -29,6 +31,15 @@ function App(): JSX.Element {
   // display/hide tutorial for rules
   const [viewRules, setViewRules] = useState<boolean>(true);
 
+  // hide nbr of players component
+  const [closeNbrOfPlayers, setCloseNbrOfPlayers] = useState<boolean>(true);
+
+  // close nbr of lap
+  const [closeNbrOfLap, setCloseNbrOfLap] = useState<boolean>(true);
+
+  // close ReadyComponent
+  const [closeReady, setCloseReady] = useState<boolean>(true);
+
   // count nbre of case by player
   const [count, setCount] = useState<number>(0);
 
@@ -46,6 +57,11 @@ function App(): JSX.Element {
   // counter by player after throwing dice
   const [activePlayerId, setActivePlayerId] = useState<number>(1);
   
+
+  // choose nbr of lap for the game
+  const [nbrOfLap, setNbrOfLap] = useState<number>(1);
+
+
   // choose players number at the begining of game
   const [nbPlayer, setNbPlayer] = useState<number>(2);
 
@@ -114,7 +130,7 @@ function App(): JSX.Element {
   ]);
 
   //---
-  // define number of players to start
+  // define number of players to start & nbr of lap for the game.
 
   // derivated state
   const derivatedStatePlayers: PlayerProps[] = players;
@@ -122,6 +138,10 @@ function App(): JSX.Element {
   useEffect(() => {
     setPlayersChoosen(derivatedStatePlayers.slice(0, nbPlayer));
   }, [nbPlayer]);
+
+  useEffect(() => {
+    setNbrOfLap(nbrOfLap);
+  }, [nbrOfLap])
 
   //---
 
@@ -426,6 +446,8 @@ function App(): JSX.Element {
     </div>
   );
 
+  console.log(nbrOfLap, "nbr of lap");
+
   return (
     <div className='frame'>
 
@@ -444,10 +466,29 @@ function App(): JSX.Element {
         ) : null
       }
 
-      {viewRules === false ? (
-        <NbrOfPlayers nbPlayer={nbPlayer} setNbPlayer={setNbPlayer} />
+      {viewRules === false && closeNbrOfPlayers === true ? (
+        <NbrOfPlayers 
+          selectedOption={selectedOption} 
+          setCloseNbrOfPlayers={setCloseNbrOfPlayers} 
+          nbPlayer={nbPlayer} 
+          setNbPlayer={setNbPlayer} 
+        />
         ) : null
       }
+
+      {closeNbrOfPlayers === false && closeNbrOfLap === true ? (
+        <NbrOfLapComponent 
+          selectedOption={selectedOption}
+          setCloseNbrOfLap={setCloseNbrOfLap} 
+          nbrOfLap={nbrOfLap} 
+          setNbrOfLap={setNbrOfLap}
+        />
+        ) : null
+      }
+
+      {closeNbrOfLap === false && closeReady === true ? (
+        <ReadyComponent setCloseReady={setCloseReady} selectedOption={selectedOption} />
+      ) : null}
 
       <div className='top-frame'>
 
@@ -549,6 +590,7 @@ function App(): JSX.Element {
               replay={replay}
               setReplay={setReplay}
               nbPlayer={nbPlayer}
+              nbrOfLap={nbrOfLap}
               playersChoosen={playersChoosen}
               setPlayersChoosen={setPlayersChoosen}
               setCountPlayerOne={setCountPlayerOne}
