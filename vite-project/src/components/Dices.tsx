@@ -9,6 +9,7 @@ type ValProps = {
   replay: boolean;
   setReplay: React.Dispatch<React.SetStateAction<boolean>>;
   nbPlayer: number;
+  nbrOfLap: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
   value: number;
   setValue: React.Dispatch<React.SetStateAction<number>>;
@@ -31,6 +32,7 @@ const Dices = ({
   replay,
   setReplay,
   nbPlayer,
+  nbrOfLap,
   activePlayerId,
   
   setActivePlayerId,
@@ -90,7 +92,7 @@ const Dices = ({
           if (newCaseNumber > 55) {
             newCounter += 1;
 
-            if (newCounter === 3) {
+            if (newCounter === nbrOfLap) {
               const updatePlayer = { ...gamer, caseNumber: newCaseNumber % 56, lap: newCounter, gameOver: true };
               return updatePlayer;
             }

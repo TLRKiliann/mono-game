@@ -16,10 +16,8 @@ const WelcomeComponent = ({ selectedOption, setSelectedOption }: SelectOptionPro
 
             <h1>! Bienvenue dans mon ecopot game !</h1>
 
-            <label htmlFor="options">Choisissez votre language :</label>
-
             <select id="options" value={selectedOption} onChange={handleChange}>
-                <option value="">--Please choose an option--</option>
+                <option value="">-- Choisissez votre langue : --</option>
                 <option value="français">Français</option>
                 <option value="english">English</option>
                 <option value="deutsch">Deutsch</option>
