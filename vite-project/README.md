@@ -35,16 +35,11 @@ Récompense quiz et défi => rejouer.
 
 2) favicon dans le signet en-haut (plus tard)
 
-3) Menu plrs languages + 1er msg de bienvenue
+3) traductions
 
-4) rules of games
+4) dice en blanc et points noirs (very bad)
 
-5) player one is your turn
-
-6) Choice of lap 1-5
-
-7) dice en blanc et points noirs
-
+5) red and white
 
 ---
 
