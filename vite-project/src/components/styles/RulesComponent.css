@@ -1,3 +1,11 @@
+@keyframes displayRules {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+
 .rules-div {
     position: absolute;
     top: 50%;
@@ -13,6 +21,12 @@
     border-radius: 7px;
     z-index: 55;
     transform: translate(-50%, -50%);
+
+    animation-name: displayRules;
+    animation-delay: 0s;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
 }
 
 .rules-div h1 {
