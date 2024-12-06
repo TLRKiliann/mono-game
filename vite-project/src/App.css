@@ -1,6 +1,7 @@
 .frame {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .top-frame {
@@ -52,17 +53,18 @@
   width: 12%;
   height: 100%;
   background: #f5f5f5;
-  border-right: 1px solid #000;
+  border-right: 1px solid #777;
+  /* border-radius: 0 0 7px 7px; */
   color: #333;
 }
 
 .first-square {
   background: rgba(0, 0, 255, 0.25);
-  border: 1px solid #333;
+  border: 1px solid #777;
 }
 
 .squares:last-child {
-  border-right: 0 solid #000;
+  border-right: 0 solid #777;
 }
 
 .squares-side {
@@ -74,19 +76,31 @@
   justify-content: center;
 
   background: #f5f5f5;
-  border-top: 1px solid #000;
+  border-top: 1px solid #777;
 
   /* border: 3px solid red; */
   color: #333;
   padding-top: 4px;
 }
 
+.square-top {
+  border-bottom: 1px solid #777;
+  border-radius: 0 0 7px 7px;
+}
+
+.square-bottom {
+  border-top: 1px solid #777;
+  border-radius: 7px 7px 0 0;
+}
+
 .squares-lside {
-  border-right: 1px solid #000;
+  border-right: 1px solid #777;
+  border-radius: 0 7px 7px 0;
 }
 
 .squares-rside {
-  border-left: 1px solid #000;
+  border-left: 1px solid #777;
+  border-radius: 7px 0 0 7px;
 }
 
 .squares-side p {
@@ -100,7 +114,7 @@
   margin-top: 4px;
   margin-left: 4px;
 
-  border: 1px solid #000;
+  border: 1px solid #333;
 }
 
 .squares-side h4 {
@@ -110,20 +124,12 @@
   /* border: 1px solid orangered; */
 }
 
-.square-top {
-  border-bottom: 1px solid #000;
-}
-
-.square-bottom {
-  border-top: 1px solid #000;
-}
-
 .first-squares {
   width: 12%;
   height: 100%;
 
   background: rgba(106, 90, 205, 0.7);
-  border-right: 1px solid #000;
+  border-right: 1px solid #777;
   color: #333;
 }
 
@@ -171,12 +177,11 @@
 /*Cards*/
 .container-cards {  
   display: flex;
-
   width: 100%;
   height: 100%;
   
   /* background: #F2CEC0; */
-
+  background: rgba(0, 0, 0, 0.4);
 }
 
 /* bg-img */
@@ -189,16 +194,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  background: pink;
-
   z-index: -10;
 }
 
 .div-bgImg img {
   width: 100%;
   height: 100%;
-  opacity: 0.35;
+  opacity: 1;
   object-fit: cover;
 }
 
@@ -214,13 +216,13 @@
 .cards-box-left {
   align-items: start;
 
-  border: 1px dashed orange;
+  /* border: 1px dashed orange; */
 }
 
 .cards-box-right {
   align-items: end;
 
-  border: 1px dashed orange;
+  /* border: 1px dashed orange; */
 }
 
 .card {
@@ -267,7 +269,7 @@
   align-items: center;
   justify-content: center;
   
-  border: 3px dashed purple;
+  /* border: 3px dashed purple; */
 }
 
 /* div design logo */
@@ -278,7 +280,7 @@
   flex-direction: column;
   align-items: start;
 
-  border: 3px dashed orange;
+  /* border: 3px dashed orange; */
 }
 
 .div-jeudesociete h2 {
@@ -295,7 +297,7 @@
   flex-direction: column;
   align-items: end;
   
-  border: 3px dashed orange;
+  /* border: 3px dashed orange; */
 }
 
 .div-monecopote h2 {
@@ -326,23 +328,26 @@
 
 /* colors special cases */
 .sanction-color {
-  background: orangered;
-  opacity: 0.8;
+  background: rgb(0, 128, 0);
   color: #f5f5f5;
+  opacity: 0.8;
 }
 
 .action-color {
-  background: yellowgreen;
+  background: green;
+  color: #f5f5f5;
   opacity: 0.8;
 }
 
 .quiz-color {
-  background: gold;
+  background: green;
+  color: #f5f5f5;
   opacity: 0.8;
 }
 
 .defi-color {
-  background: lightblue;
+  background: green;
+  color: #f5f5f5;
   opacity: 0.8;
 }
 
@@ -352,7 +357,7 @@
   align-items: center;
   justify-content: center;
 
-  border: 1px solid #333;
+  border: 1px solid #777;
 }
 
 .span-pawn {
