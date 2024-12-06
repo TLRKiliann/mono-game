@@ -1,4 +1,4 @@
-@keyframes displayRules {
+@keyframes displayReady {
     0% {
         opacity: 0;
     } 100% {
@@ -6,12 +6,12 @@
     }
 }
 
-.rules-div {
+.div-ready {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 600px;
-    height: 400px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,32 +19,31 @@
     background: linear-gradient(30deg, rgba(17, 83, 72, 0.6) 10%, rgba(17, 83, 72, 1) 50%, rgba(17, 83, 72, 0.6) 90%);
     border: none;
     border-radius: 7px;
-    z-index: 55;
+    z-index: 50;
     transform: translate(-50%, -50%);
 
-    animation-name: displayRules;
+    animation-name: displayReady;
     animation-delay: 0s;
     animation-duration: 0.25s;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
 }
 
-.rules-div h1 {
-    font-size: 2rem;
-    font-weight: bold;
+.div-contentready {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
     color: #f5f5f5;
     text-shadow: 1px 1px 1px #000;
-    margin: 0;
-    padding: 0;
 }
 
-.div-explanations li {
-
-    text-align: justify;
-    margin: 10px 40px;
+.div-contentready h1 {
+    font-size: 2rem;
 }
 
-.rules-div button {
+.div-btnready button {
     font-size: 1.2rem;
     font-weight: bold;
     background: rgb(46, 83, 255);
@@ -56,12 +55,12 @@
     transform: scale(1.0);
 }
 
-.rules-div button:hover {
+.div-btnready button:hover {
     background: rgb(46, 46, 200);
     transform: scale(1.05);
 }
 
-.rules-div button:active {
+.div-btnready button:active {
     background: dodgerblue;
     transform: scale(0.95);
 }

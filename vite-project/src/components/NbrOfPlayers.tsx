@@ -2,13 +2,14 @@ import { useState } from "react";
 import "./styles/NbrOfPlayers.css";
 
 type NbPlayerProps = {
+    selectedOption: string;
+    setCloseNbrOfPlayers: React.Dispatch<React.SetStateAction<boolean>>;
     nbPlayer: number;
     setNbPlayer: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const NbrOfPlayers = ({nbPlayer, setNbPlayer} : NbPlayerProps): JSX.Element => {
+const NbrOfPlayers = ({selectedOption, setCloseNbrOfPlayers, nbPlayer, setNbPlayer} : NbPlayerProps): JSX.Element => {
 
-    const [onShowForm, setOnShowForm] = useState<boolean>(true);
     const [error, setError] = useState<string>("");
 
     const handleNbPlayer = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -26,22 +27,26 @@ const NbrOfPlayers = ({nbPlayer, setNbPlayer} : NbPlayerProps): JSX.Element => {
     const handleValidateNbPlayers = (): void => {
         if (nbPlayer >= 2 && nbPlayer <= 6) {
             console.log("Nombre de joueurs:", nbPlayer);
-            setOnShowForm(false);
+            setCloseNbrOfPlayers(false);
         } else {
             setError("Veuillez choisir un nombre de joueurs valide.");
         }
     };
 
     return (        
-        <div className={`${onShowForm ? 'player-displayer' : 'player-hidden'}`}>
+        <div className="player-displayer">
             <div className="div-labelInputPlayer">
-                <label htmlFor="nbPlayer">Choisir entre 2 et 6 joueurs:
+                <label htmlFor="nbPlayer">
+                    {selectedOption === "français" 
+                        ? "Choisir entre 2 et 6 joueurs :" : selectedOption === "english" 
+                        ? "Choose between 2 and 6 players :" : selectedOption === "deutsch" 
+                        ? "Zwischen 2 und 6 Spielern wählen :" 
+                        : "Scegliere tra 2 e 6 giocatori :"}
                     <input 
                         type="text" 
                         id="nbPlayers" 
                         value="" 
                         onChange={handleNbPlayer}
-                        className=""
                         placeholder={String(nbPlayer)} 
                     />
                 </label>
