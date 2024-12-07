@@ -47,7 +47,8 @@
 .div-btnready button {
     font-size: 1.2rem;
     font-weight: bold;
-    background: rgba(0, 0, 255, 0.2);
+    /* background: rgba(0, 0, 255, 0.2); */
+    background: rgba(17, 83, 72, 0.1);
     border: none;
     border-radius: 7px;
     box-shadow: inset 0 0 10px rgba(211, 211, 211, 1);
@@ -57,13 +58,15 @@
 }
 
 .div-btnready button:hover {
-    background: rgb(46, 46, 200);
+    background: rgba(17, 83, 72, 1);
+    /* background: rgb(46, 46, 200); */
     box-shadow: inset 0 0 5px rgba(211, 211, 211, 1);
     transform: scale(1.05);
 }
 
 .div-btnready button:active {
-    background: rgb(46, 46, 200);
+    background: rgba(17, 83, 72, 1);
+    /* background: rgb(46, 46, 200); */
     box-shadow: inset 0 0 50px rgba(211, 211, 211, 1);
     transform: scale(0.95);
 }

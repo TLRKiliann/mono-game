@@ -218,7 +218,7 @@ const Dices = ({
       {playersChoosen.map((play: PlayerProps) => ( 
         play.id === activePlayerId ? (
           <div key={play.id} className='dice-player'>
-            <p>{play.name} {play.caseNumber}</p>
+            <p>{play.name}: {play.caseNumber} (case)</p>
           </div> 
         ) : null
       ))}
