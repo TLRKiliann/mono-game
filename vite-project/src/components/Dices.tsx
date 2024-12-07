@@ -1,5 +1,6 @@
 import type { PlayerProps } from '../lib/types';
 import { useEffect, useState } from 'react';
+//import DonationComponent from './DonationComponent';
 //import gifDice from "../assets/dice.gif";
 import './styles/Dices.css';
 
@@ -9,6 +10,7 @@ type ValProps = {
   replay: boolean;
   setReplay: React.Dispatch<React.SetStateAction<boolean>>;
   nbPlayer: number;
+  nbrOfLap: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
   value: number;
   setValue: React.Dispatch<React.SetStateAction<number>>;
@@ -31,6 +33,7 @@ const Dices = ({
   replay,
   setReplay,
   nbPlayer,
+  nbrOfLap,
   activePlayerId,
   
   setActivePlayerId,
@@ -90,7 +93,7 @@ const Dices = ({
           if (newCaseNumber > 55) {
             newCounter += 1;
 
-            if (newCounter === 3) {
+            if (newCounter === nbrOfLap) {
               const updatePlayer = { ...gamer, caseNumber: newCaseNumber % 56, lap: newCounter, gameOver: true };
               return updatePlayer;
             }
@@ -124,18 +127,15 @@ const Dices = ({
     }, 1000);
   };
 
-  console.log(playersChoosen, "playersChoosen from dice");
+  //console.log(playersChoosen, "playersChoosen from dice");
   //console.log(activePlayerId, "activePlayerId from dice");
 
-  const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
+  /* const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
   if (winner) {
     return (
-      <div className="game-over">
-        <p>{winner.name} WIN !</p>
-        <p>Game-Over</p>
-      </div>
+      <DonationComponent winner={winner.name} />
     );
-  };
+  }; */
 
   return (
     <div className='dice-container'>

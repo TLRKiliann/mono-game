@@ -35,3 +35,11 @@ export type SanctionsProps = {
     info: string;
     consequence: string | number;
 };
+
+export type DisplayCloseProps = {
+    closeFullScreen: boolean;
+    viewRules: boolean;
+    closeNbrOfPlayers: boolean;
+    closeNbrOfLap: boolean;
+    closeReady: boolean;
+};

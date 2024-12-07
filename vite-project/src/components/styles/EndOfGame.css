@@ -1,0 +1,108 @@
+@keyframes displayDonation {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+    background: linear-gradient(30deg, rgba(17, 83, 72, 0.6) 10%, rgba(17, 83, 72, 1) 50%, rgba(17, 83, 72, 0.6) 90%);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+    
+    z-index: 70;
+    transform: translate(-50%, -50%);
+
+    animation-name: displayDonation;
+    animation-delay: 0s;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+.game-over h1 {
+    font-size: 3rem;
+    text-shadow: 1px 1px 1px #000;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.game-over h2 {
+    font-size: 2rem;
+    text-shadow: 1px 1px 1px #000;
+    color: orangered;
+    margin: 40px auto;
+}
+
+.game-over p {
+    text-align: justify;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 1px #000;
+    margin: auto;
+    padding: 0 40px;
+}
+
+.game-over a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: rgba(0, 0, 255, 0.2);
+    border: none;
+    border-radius: 7px;
+    box-shadow: inset 0 0 10px rgba(211, 211, 211, 1);
+    margin-top: 40px;
+    padding: 10px 20px;
+    transform: scale(1.0);
+    transition: all 0.25s ease-in-out;
+}
+
+.game-over a:hover {
+    background: rgb(46, 46, 200);
+    box-shadow: inset 0 0 5px rgba(211, 211, 211, 1);
+    transform: scale(1.05);
+}
+
+.game-over a:active {
+    background: rgb(46, 46, 200);
+    box-shadow: inset 0 0 50px rgba(211, 211, 211, 1);
+    transform: scale(0.95);
+}
+
+.game-over button {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: rgba(0, 0, 255, 0.2);
+    border: none;
+    border-radius: 7px;
+    box-shadow: inset 0 0 10px rgba(211, 211, 211, 1);
+    margin: 40px auto;
+    padding: 10px 20px;
+    transform: scale(1.0);
+    transition: all 0.25s ease-in-out;
+}
+
+.game-over button:hover {
+    background: rgb(46, 46, 200);
+    box-shadow: inset 0 0 5px rgba(211, 211, 211, 1);
+    transform: scale(1.05);
+}
+
+.game-over button:active {
+    background: rgb(46, 46, 200);
+    box-shadow: inset 0 0 50px rgba(211, 211, 211, 1);
+    transform: scale(0.95);
+}

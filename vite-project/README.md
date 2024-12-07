@@ -31,15 +31,16 @@ Récompense quiz et défi => rejouer.
 ## bonne action réussi + 5 (applied)
 - bonne action loupé - ???
 
-1) splitter en plrs components (code splitting)
+1) refactoriser les state + code splitting ???
 
-2) favicon dans le signet en-haut (plus tard)
+2) Fonts (choisir 2x)
+  
+3) EndOfGame should to improved 
 
-3) traductions
+4) favicon dans le signet en-haut (plus tard)
 
-4) dice en blanc et points noirs (very bad)
+5) traductions
 
-5) red and white
 
 ---
 

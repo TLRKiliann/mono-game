@@ -1,10 +1,18 @@
 import "./styles/FullScreen.css";
 
-type FullScreenCloseProps = {
-    setCloseFullScreen: React.Dispatch<React.SetStateAction<boolean>>;
+type DisplayCloseProps = {
+    closeFullScreen: boolean;
+    viewRules: boolean;
+    closeNbrOfPlayers: boolean;
+    closeNbrOfLap: boolean;
+    closeReady: boolean;
 };
 
-const FullScreen = ({setCloseFullScreen}: FullScreenCloseProps): JSX.Element => {
+type FullScreenCloseProps = {
+    setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>;
+};
+
+const FullScreen = ({ setDisplayCloseBox }: FullScreenCloseProps): JSX.Element => {
     
     const handleFullScreen = (): void => {
         const element = document.documentElement;
@@ -17,7 +25,10 @@ const FullScreen = ({setCloseFullScreen}: FullScreenCloseProps): JSX.Element => 
         } else if (element.msRequestFullscreen) { // IE/Edge
             element.msRequestFullscreen();
         }
-        setCloseFullScreen(false);
+        setDisplayCloseBox((prev) => ({
+            ...prev,
+            closeFullScreen: false
+        }));
     };
 
     return (
