@@ -9,6 +9,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
   height: 10vh;
 }
 
@@ -179,9 +180,6 @@
   display: flex;
   width: 100%;
   height: 100%;
-  
-  /* background: #F2CEC0; */
-  background: rgba(0, 0, 0, 0.4);
 }
 
 /* bg-img */
@@ -194,14 +192,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  background: #F2CEC0;
+
   z-index: -10;
 }
 
 .div-bgImg img {
   width: 100%;
   height: 100%;
-  opacity: 1;
+  opacity: 0.2;
   object-fit: cover;
+}
+
+/* number of laps */
+.number-laps {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+
+  width: auto;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}
+
+.number-laps p {
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #000;
+  margin: auto;
 }
 
 .cards-box {
@@ -371,4 +390,5 @@
   border: 1px solid #333;
   border-radius: 100%;
   box-shadow: 5px 5px 5px -2px #333;
+  color: #333;
 }

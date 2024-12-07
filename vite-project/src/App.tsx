@@ -6,6 +6,7 @@ import RulesComponent from "./components/RulesComponent";
 import NbrOfPlayers from "./components/NbrOfPlayers";
 import NbrOfLapComponent from "./components/NbrOfLapComponent";
 import ReadyComponent from "./components/ReadyComponent";
+import DonationComponent from "./components/DonationComponent";
 import Dices from "./components/Dices";
 import { quizQuestions } from "./lib/quiz";
 import { defiQuestions } from "./lib/defi";
@@ -41,7 +42,7 @@ function App(): JSX.Element {
   const [closeReady, setCloseReady] = useState<boolean>(true);
 
   // count nbre of case by player
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(55);
 
   // display value of dice
   const [value, setValue] = useState<number>(1);
@@ -78,7 +79,7 @@ function App(): JSX.Element {
       name: "Player 1",
       color: "lightblue",
       caseNumber: count,
-      lap: 0,
+      lap: 2,
       gameOver: false,
       caseQuiz: false
     },
@@ -87,7 +88,7 @@ function App(): JSX.Element {
       name: "Player 2",
       color: "yellow",
       caseNumber: count,
-      lap: 0,
+      lap: 2,
       gameOver: false,
       caseQuiz: false
     },
@@ -96,7 +97,7 @@ function App(): JSX.Element {
       name: "Player 3",
       color: "red",
       caseNumber: count,
-      lap: 0,
+      lap: 2,
       gameOver: false,
       caseQuiz: false
     },
@@ -105,7 +106,7 @@ function App(): JSX.Element {
       name: "Player 4",
       color: "violet",
       caseNumber: count,
-      lap: 0,
+      lap: 2,
       gameOver: false,
       caseQuiz: false
     },
@@ -114,7 +115,7 @@ function App(): JSX.Element {
       name: "Player 5",
       color: "orange",
       caseNumber: count,
-      lap: 0,
+      lap: 2,
       gameOver: false,
       caseQuiz: false
     },
@@ -123,7 +124,7 @@ function App(): JSX.Element {
       name: "Player 6",
       color: "green",
       caseNumber: count,
-      lap: 0,
+      lap: 2,
       gameOver: false,
       caseQuiz: false
     }
@@ -448,6 +449,13 @@ function App(): JSX.Element {
 
   console.log(nbrOfLap, "nbr of lap");
 
+  const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
+  if (winner) {
+    return (
+      <DonationComponent selectedOption={selectedOption} winner={winner.name} />
+    );
+  };
+
   return (
     <div className='frame'>
 
@@ -561,6 +569,15 @@ function App(): JSX.Element {
 
           <div className="div-bgImg">
             <img src={natureImg} width={1920} height={1080} alt="img nature" className="bg-img" />
+          </div>
+
+          <div className="number-laps">
+            <p>
+              {selectedOption === "français" ? "Nombre de tour : " + nbrOfLap : selectedOption === "english" 
+                ? "Number of laps : " + nbrOfLap : selectedOption === "deutsch" 
+                ? "Rundenzahl : " + nbrOfLap : "numero di giri" + nbrOfLap
+              }
+            </p>
           </div>
           
           <div className='cards-box cards-box-left'>
