@@ -1,3 +1,4 @@
+import type { DisplayCloseProps } from "../lib/types";
 import { useState } from "react";
 import "./styles/NbrOfPlayers.css";
 
@@ -5,10 +6,10 @@ type NbrOfLapProps = {
     nbrOfLap: number;
     selectedOption: string;
     setNbrOfLap: React.Dispatch<React.SetStateAction<number>>;
-    setCloseNbrOfLap: React.Dispatch<React.SetStateAction<boolean>>;
+    setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>;
 };
 
-const NbrOfLapComponent = ({ selectedOption, nbrOfLap, setNbrOfLap, setCloseNbrOfLap }: NbrOfLapProps): JSX.Element => {
+const NbrOfLapComponent = ({ selectedOption, nbrOfLap, setNbrOfLap, setDisplayCloseBox }: NbrOfLapProps): JSX.Element => {
 
     const [error, setError] = useState<string>("");
 
@@ -27,7 +28,7 @@ const NbrOfLapComponent = ({ selectedOption, nbrOfLap, setNbrOfLap, setCloseNbrO
     const handleValidateNbLap = (): void => {
         if (nbrOfLap >= 1 && nbrOfLap <= 5) {
             console.log("Nombre de tour :", nbrOfLap);
-            setCloseNbrOfLap(false);
+            setDisplayCloseBox((prev) => ({...prev, closeNbrOfLap: false}));
         } else {
             setError("Veuillez choisir un nombre de tour valide.");
         }

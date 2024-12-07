@@ -1,14 +1,15 @@
+import type { DisplayCloseProps } from "../lib/types";
 import "./styles/RulesComponent.css";
 
 type RulesProps = {
     selectedOption: string;
-    setViewRules: React.Dispatch<React.SetStateAction<boolean>>;
+    setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>;
 };
 
-const RulesComponent = ({ selectedOption, setViewRules }: RulesProps): JSX.Element => {
+const RulesComponent = ({ selectedOption, setDisplayCloseBox }: RulesProps): JSX.Element => {
     
     const handleRules = (): void => {
-        setViewRules(false);
+        setDisplayCloseBox((prev) => ({...prev, viewRules: false}));
     };
 
     return (

@@ -1,14 +1,15 @@
+import type { DisplayCloseProps } from "../lib/types";
 import { useState } from "react";
 import "./styles/NbrOfPlayers.css";
 
 type NbPlayerProps = {
     selectedOption: string;
-    setCloseNbrOfPlayers: React.Dispatch<React.SetStateAction<boolean>>;
+    setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>;
     nbPlayer: number;
     setNbPlayer: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const NbrOfPlayers = ({selectedOption, setCloseNbrOfPlayers, nbPlayer, setNbPlayer} : NbPlayerProps): JSX.Element => {
+const NbrOfPlayers = ({selectedOption, setDisplayCloseBox, nbPlayer, setNbPlayer} : NbPlayerProps): JSX.Element => {
 
     const [error, setError] = useState<string>("");
 
@@ -27,7 +28,7 @@ const NbrOfPlayers = ({selectedOption, setCloseNbrOfPlayers, nbPlayer, setNbPlay
     const handleValidateNbPlayers = (): void => {
         if (nbPlayer >= 2 && nbPlayer <= 6) {
             console.log("Nombre de joueurs:", nbPlayer);
-            setCloseNbrOfPlayers(false);
+            setDisplayCloseBox((prev) => ({...prev, closeNbrOfPlayers: false}));
         } else {
             setError("Veuillez choisir un nombre de joueurs valide.");
         }

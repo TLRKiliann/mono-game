@@ -6,7 +6,7 @@ import RulesComponent from "./components/RulesComponent";
 import NbrOfPlayers from "./components/NbrOfPlayers";
 import NbrOfLapComponent from "./components/NbrOfLapComponent";
 import ReadyComponent from "./components/ReadyComponent";
-import DonationComponent from "./components/DonationComponent";
+import EndOfGame from "./components/EndOfGame";
 import Dices from "./components/Dices";
 import { quizQuestions } from "./lib/quiz";
 import { defiQuestions } from "./lib/defi";
@@ -21,25 +21,27 @@ import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
 import './App.css';
 
+type DisplayCloseProps = {
+  closeFullScreen: boolean;
+  viewRules: boolean;
+  closeNbrOfPlayers: boolean;
+  closeNbrOfLap: boolean;
+  closeReady: boolean;
+};
+
 function App(): JSX.Element {
 
-  // hide full screen box
-  const [closeFullScreen, setCloseFullScreen] = useState<boolean>(true);
+  // hide/display boxes before game start
+  const [displayCloseBox, setDisplayCloseBox] = useState<DisplayCloseProps>({
+    closeFullScreen: true,
+    viewRules: true,
+    closeNbrOfPlayers: true,
+    closeNbrOfLap: true,
+    closeReady: true
+  });
 
   // languages choosen
   const [selectedOption, setSelectedOption] = useState<string>("");
-
-  // display/hide tutorial for rules
-  const [viewRules, setViewRules] = useState<boolean>(true);
-
-  // hide nbr of players component
-  const [closeNbrOfPlayers, setCloseNbrOfPlayers] = useState<boolean>(true);
-
-  // close nbr of lap
-  const [closeNbrOfLap, setCloseNbrOfLap] = useState<boolean>(true);
-
-  // close ReadyComponent
-  const [closeReady, setCloseReady] = useState<boolean>(true);
 
   // count nbre of case by player
   const [count, setCount] = useState<number>(55);
@@ -58,10 +60,8 @@ function App(): JSX.Element {
   // counter by player after throwing dice
   const [activePlayerId, setActivePlayerId] = useState<number>(1);
   
-
   // choose nbr of lap for the game
   const [nbrOfLap, setNbrOfLap] = useState<number>(1);
-
 
   // choose players number at the begining of game
   const [nbPlayer, setNbPlayer] = useState<number>(2);
@@ -452,50 +452,50 @@ function App(): JSX.Element {
   const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
   if (winner) {
     return (
-      <DonationComponent selectedOption={selectedOption} winner={winner.name} />
+      <EndOfGame selectedOption={selectedOption} winner={winner.name} />
     );
   };
 
   return (
     <div className='frame'>
 
-      {closeFullScreen === true ? (
-        <FullScreen setCloseFullScreen={setCloseFullScreen} />
+      {displayCloseBox.closeFullScreen === true ? (
+        <FullScreen setDisplayCloseBox={setDisplayCloseBox} />
         ) : null
       }
 
-      {selectedOption === "" && closeFullScreen === false ? (
+      {selectedOption === "" && displayCloseBox.closeFullScreen === false ? (
         <WelcomeComponent selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
         ) : null
       }
 
-      {selectedOption !== "" && viewRules === true ? (
-        <RulesComponent selectedOption={selectedOption} setViewRules={setViewRules} />
+      {selectedOption !== "" && displayCloseBox.viewRules === true ? (
+        <RulesComponent selectedOption={selectedOption} setDisplayCloseBox={setDisplayCloseBox} />
         ) : null
       }
 
-      {viewRules === false && closeNbrOfPlayers === true ? (
+      {displayCloseBox.viewRules === false && displayCloseBox.closeNbrOfPlayers === true ? (
         <NbrOfPlayers 
           selectedOption={selectedOption} 
-          setCloseNbrOfPlayers={setCloseNbrOfPlayers} 
+          setDisplayCloseBox={setDisplayCloseBox} 
           nbPlayer={nbPlayer} 
           setNbPlayer={setNbPlayer} 
         />
         ) : null
       }
 
-      {closeNbrOfPlayers === false && closeNbrOfLap === true ? (
+      {displayCloseBox.closeNbrOfPlayers === false && displayCloseBox.closeNbrOfLap === true ? (
         <NbrOfLapComponent 
           selectedOption={selectedOption}
-          setCloseNbrOfLap={setCloseNbrOfLap} 
+          setDisplayCloseBox={setDisplayCloseBox} 
           nbrOfLap={nbrOfLap} 
           setNbrOfLap={setNbrOfLap}
         />
         ) : null
       }
 
-      {closeNbrOfLap === false && closeReady === true ? (
-        <ReadyComponent setCloseReady={setCloseReady} selectedOption={selectedOption} />
+      {displayCloseBox.closeNbrOfLap === false && displayCloseBox.closeReady === true ? (
+        <ReadyComponent setDisplayCloseBox={setDisplayCloseBox} selectedOption={selectedOption} />
       ) : null}
 
       <div className='top-frame'>

@@ -1,14 +1,15 @@
+import type { DisplayCloseProps } from "../lib/types";
 import "./styles/ReadyComponent.css";
 
 type SelectOptionProps = {
-    setCloseReady: React.Dispatch<React.SetStateAction<boolean>>; 
+    setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>; 
     selectedOption: string;
 };
 
-const ReadyComponent = ({setCloseReady, selectedOption}: SelectOptionProps): JSX.Element => {
+const ReadyComponent = ({setDisplayCloseBox, selectedOption}: SelectOptionProps): JSX.Element => {
 
     const handleCloseReady = (): void => {
-        setCloseReady(false);
+        setDisplayCloseBox((prev) => ({...prev, closeReady: false}));
     };
 
     return (
