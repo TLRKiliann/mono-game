@@ -1,4 +1,4 @@
-import type { BonneActionProps, DefiProps, PlayerProps, QuizProps, SanctionsProps } from "./lib/types";
+import type { BonneActionProps, DefiProps, DisplayCloseProps, PlayerProps, QuizProps, SanctionsProps } from "./lib/types";
 import React, { useEffect, useState } from "react";
 import FullScreen from "./components/FullScreen";
 import WelcomeComponent from "./components/WelcomeComponent";
@@ -20,14 +20,6 @@ import natureImg from "./assets/nature_1.jpg"
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
 import './App.css';
-
-type DisplayCloseProps = {
-  closeFullScreen: boolean;
-  viewRules: boolean;
-  closeNbrOfPlayers: boolean;
-  closeNbrOfLap: boolean;
-  closeReady: boolean;
-};
 
 function App(): JSX.Element {
 
@@ -374,7 +366,6 @@ function App(): JSX.Element {
     { caseNumber, playersChoosen, additionalContent }) => (
       <div className={`squares-side squares-rside ${caseNumber === 30 ? "defi-color" : caseNumber === 33 ? "action-color" : caseNumber === 36 
         ? "sanction-color" : null}`}>
-        
         <div className="caseNumber">
           {caseNumber}
           {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
@@ -452,7 +443,9 @@ function App(): JSX.Element {
   const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
   if (winner) {
     return (
-      <EndOfGame selectedOption={selectedOption} winner={winner.name} />
+      <div className="div-endofgame">
+        <EndOfGame selectedOption={selectedOption} winner={winner.name} />
+      </div>
     );
   };
 
