@@ -18,7 +18,7 @@
     justify-content: space-evenly;
     background: linear-gradient(30deg, rgba(17, 83, 72, 0.6) 10%, rgba(17, 83, 72, 1) 50%, rgba(17, 83, 72, 0.6) 90%);
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0 0 10px #000;
     z-index: 50;
     transform: translate(-50%, -50%);
