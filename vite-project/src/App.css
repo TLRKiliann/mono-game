@@ -50,7 +50,8 @@
   height: 100%;
   
   /* background: #f5f5f5; */
-  background: #F2CEC0;
+  /* background: #F2CEC0; */
+  background: #f5eeeb;
 
   border: none;
   border-right: 1px solid #777;
@@ -76,7 +77,8 @@
   justify-content: center;
 
   /* background: #f5f5f5; */
-  background: #F2CEC0;
+  /* background: #F2CEC0; */
+  background: #f5eeeb;
 
   border: none;
   border-top: 1px solid #777;
@@ -192,7 +194,9 @@
   align-items: center;
   justify-content: center;
   
-  background: rgba(0, 128, 0, 0.7);
+  /* background: #f5eeeb; */
+  /* background: #fefee3; */
+  background: #cac7ff;
   /* background: #F2CEC0; */
 
   z-index: -10;
@@ -216,10 +220,11 @@
   transform: translate(-50%, -50%);
 }
 
-.number-laps p {
+.number-laps h2 {
   font-size: 2rem;
   font-weight: bold;
-  text-shadow: 1px 1px 1px #000;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 2px #333;
   margin: auto;
 }
 
@@ -304,8 +309,9 @@
 
 .div-jeudesociete h2 {
   font-size: 2rem;
-  text-shadow: 1px 1px 2px #333;
-  color: #f5f5f5;
+  /* color: #f5f5f5; */
+  color: #115348;
+  text-shadow: 1px 1px 1px #777;
   margin: auto;
 }
 
@@ -347,26 +353,30 @@
 
 /* colors special cases */
 .sanction-color {
-  background: rgb(0, 128, 0);
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.6), rgba(17, 83, 72, 1));
   color: #f5f5f5;
+  text-shadow: 1px 1px 1px #333;
   opacity: 0.8;
 }
 
 .action-color {
-  background: green;
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.6), rgba(17, 83, 72, 1));
   color: #f5f5f5;
+  text-shadow: 1px 1px 1px #333;
   opacity: 0.8;
 }
 
 .quiz-color {
-  background: green;
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.6), rgba(17, 83, 72, 1));
   color: #f5f5f5;
+  text-shadow: 1px 1px 1px #333;
   opacity: 0.8;
 }
 
 .defi-color {
-  background: green;
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.6), rgba(17, 83, 72, 1));
   color: #f5f5f5;
+  text-shadow: 1px 1px 1px #333;
   opacity: 0.8;
 }
 
