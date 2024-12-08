@@ -34,12 +34,10 @@ Récompense quiz et défi => rejouer.
 1) refactoriser les state + code splitting ???
 
 2) Fonts (choisir 2x)
-  
-3) EndOfGame should to improved 
 
-4) favicon dans le signet en-haut (plus tard)
+3) favicon dans le signet en-haut (plus tard)
 
-5) traductions
+4) traductions
 
 
 ---
