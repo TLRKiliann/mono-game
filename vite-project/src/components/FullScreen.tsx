@@ -1,3 +1,4 @@
+import ecopotGame from "../assets/ecopotimg.png";
 import "./styles/FullScreen.css";
 
 type DisplayCloseProps = {
@@ -33,6 +34,9 @@ const FullScreen = ({ setDisplayCloseBox }: FullScreenCloseProps): JSX.Element =
 
     return (
         <div className="fullscreen-div">
+            <div className="div-ecopotimg">
+                <img src={ecopotGame} width={850} height={850} className="ecopotGame" alt="ecopot-img" />
+            </div>
             <button type="button" onClick={handleFullScreen}>Full Screen Mode</button>
         </div>
     )
