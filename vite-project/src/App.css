@@ -18,7 +18,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   /* background: #333; */
 }
 
@@ -50,21 +49,12 @@
   height: 100%;
   
   /* background: #f5f5f5; */
-  background: #F2CEC0;
+  /* background: #F2CEC0; */
+  background: #f5eeeb;
 
   border: none;
-  border-right: 1px solid #777;
+  border-right: 1px solid #c1c1c1;
   color: #333;
-}
-
-.first-square {
-  background: rgba(0, 0, 255, 0.25);
-  border: none;
-  border: 1px solid #777;
-}
-
-.squares:last-child {
-  border-right: 0 solid #777;
 }
 
 .squares-side {
@@ -76,32 +66,45 @@
   justify-content: center;
 
   /* background: #f5f5f5; */
-  background: #F2CEC0;
+  /* background: #F2CEC0; */
+  background: #f5eeeb;
 
   border: none;
-  border-top: 1px solid #777;
+  border-top: 1px solid #c1c1c1;
   color: #333;
   padding-top: 4px;
 }
 
 .square-top {
-  border-bottom: 1px solid #777;
+  border-bottom: 1px solid #c1c1c1;
   border-radius: 0 0 7px 7px;
 }
 
 .square-bottom {
-  border-top: 1px solid #777;
+  border-top: 1px solid #c1c1c1;
   border-radius: 7px 7px 0 0;
 }
 
 .squares-lside {
-  border-right: 1px solid #777;
+  border-right: 1px solid #c1c1c1;
   border-radius: 0 7px 7px 0;
 }
 
 .squares-rside {
-  border-left: 1px solid #777;
+  border-left: 1px solid #c1c1c1;
   border-radius: 7px 0 0 7px;
+}
+
+.first-square {
+  background: rgba(0, 0, 255, 0.25);
+  border: none;
+  border: 1px solid #c1c1c1;
+  border-radius: 0px;
+}
+
+.squares:last-child {
+  border-right: 0 solid #c1c1c1;
+  border-radius: 0px;
 }
 
 /* left & right square */
@@ -192,7 +195,9 @@
   align-items: center;
   justify-content: center;
   
-  background: rgba(0, 128, 0, 0.7);
+  /* background: #f5eeeb; */
+  background: #fefee3;
+  /* background: #cac7ff; */
   /* background: #F2CEC0; */
 
   z-index: -10;
@@ -216,10 +221,11 @@
   transform: translate(-50%, -50%);
 }
 
-.number-laps p {
+.number-laps h2 {
   font-size: 2rem;
   font-weight: bold;
-  text-shadow: 1px 1px 1px #000;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 2px #333;
   margin: auto;
 }
 
@@ -304,8 +310,9 @@
 
 .div-jeudesociete h2 {
   font-size: 2rem;
-  text-shadow: 1px 1px 2px #333;
-  color: #f5f5f5;
+  /* color: #f5f5f5; */
+  color: #115348;
+  text-shadow: 1px 1px 1px #777;
   margin: auto;
 }
 
@@ -347,26 +354,30 @@
 
 /* colors special cases */
 .sanction-color {
-  background: rgb(0, 128, 0);
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.6), rgba(17, 83, 72, 1));
   color: #f5f5f5;
+  text-shadow: 1px 1px 1px #333;
   opacity: 0.8;
 }
 
 .action-color {
-  background: green;
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.6), rgba(17, 83, 72, 1));
   color: #f5f5f5;
+  text-shadow: 1px 1px 1px #333;
   opacity: 0.8;
 }
 
 .quiz-color {
-  background: green;
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.6), rgba(17, 83, 72, 1));
   color: #f5f5f5;
+  text-shadow: 1px 1px 1px #333;
   opacity: 0.8;
 }
 
 .defi-color {
-  background: green;
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.6), rgba(17, 83, 72, 1));
   color: #f5f5f5;
+  text-shadow: 1px 1px 1px #333;
   opacity: 0.8;
 }
 

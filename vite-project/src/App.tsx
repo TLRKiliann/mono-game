@@ -36,7 +36,7 @@ function App(): JSX.Element {
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   // count nbre of case by player
-  const [count, setCount] = useState<number>(55);
+  const [count, setCount] = useState<number>(0);
 
   // display value of dice
   const [value, setValue] = useState<number>(1);
@@ -69,54 +69,54 @@ function App(): JSX.Element {
     {
       id: 1,
       name: "Player 1",
-      color: "lightblue",
+      color: "#A2D2DF",
       caseNumber: count,
-      lap: 2,
+      lap: 0,
       gameOver: false,
       caseQuiz: false
     },
     {
       id: 2,
       name: "Player 2",
-      color: "yellow",
+      color: "#dcbbdb",
       caseNumber: count,
-      lap: 2,
+      lap: 0,
       gameOver: false,
       caseQuiz: false
     },
     {
       id: 3,
       name: "Player 3",
-      color: "red",
+      color: "#ffb2ae",
       caseNumber: count,
-      lap: 2,
+      lap: 0,
       gameOver: false,
       caseQuiz: false
     },
     {
       id: 4,
       name: "Player 4",
-      color: "violet",
+      color: "#cac7ff",
       caseNumber: count,
-      lap: 2,
+      lap: 0,
       gameOver: false,
       caseQuiz: false
     },
     {
       id: 5,
       name: "Player 5",
-      color: "orange",
+      color: "#fefee3",
       caseNumber: count,
-      lap: 2,
+      lap: 0,
       gameOver: false,
       caseQuiz: false
     },
     {
       id: 6,
       name: "Player 6",
-      color: "green",
+      color: "#A7D477",
       caseNumber: count,
-      lap: 2,
+      lap: 0,
       gameOver: false,
       caseQuiz: false
     }
@@ -565,12 +565,12 @@ function App(): JSX.Element {
           </div>
 
           <div className="number-laps">
-            <p>
+            <h2>
               {selectedOption === "français" ? "Nombre de tour : " + nbrOfLap : selectedOption === "english" 
                 ? "Number of laps : " + nbrOfLap : selectedOption === "deutsch" 
                 ? "Rundenzahl : " + nbrOfLap : "numero di giri" + nbrOfLap
               }
-            </p>
+            </h2>
           </div>
           
           <div className='cards-box cards-box-left'>
