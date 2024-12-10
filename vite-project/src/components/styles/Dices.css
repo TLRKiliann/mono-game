@@ -37,8 +37,10 @@
     align-items: center;
     justify-content: center;
     
-    background: linear-gradient(30deg, rgba(255, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(255, 0, 0, 1));
-    border: 2px solid #161616;
+    /* background: linear-gradient(30deg, rgba(255, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(255, 0, 0, 1));
+    border: 2px solid #161616; */
+    background: linear-gradient(30deg, rgba(200, 200, 200, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(200, 200, 200, 1));
+    border: 2px solid #c1c1c1;
     border-radius: 10px;
     
     font-size: 2rem;
@@ -54,8 +56,8 @@
     align-items: center;
     justify-content: center;
     
-    background: linear-gradient(30deg, rgba(255, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(255, 0, 0, 1));
-    border: 2px solid #161616;
+    background: linear-gradient(30deg, rgba(200, 200, 200, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(200, 200, 200, 1));
+    border: 2px solid #c1c1c1;
     border-radius: 10px;
     
     font-size: 2rem;
@@ -73,8 +75,10 @@
     position: absolute;
     width: 150px;
     height: 150px;
-    background: linear-gradient(30deg, rgba(255, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(255, 0, 0, 1));
-    border: 2px solid #161616;
+    /* background: linear-gradient(30deg, rgba(255, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(255, 0, 0, 1));
+    border: 2px solid #161616; */
+    background: linear-gradient(30deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+    border: 2px solid #c1c1c1;
     color: #333;
 }
 
@@ -95,6 +99,7 @@
 .faceOfDice1 {
     width: 100%;
     height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -106,10 +111,11 @@
 .faceOfDice1 span {
     width: 20px;
     height: 20px;
-    background: #fff;
+
+    background: #000;
     border: none;
     border-radius: 50%;
-    box-shadow: inset 0 0 7px #000;
+    box-shadow: inset 0 0 7px #f5f5f5;
     margin: auto;
 }
 
@@ -117,6 +123,7 @@
 .faceOfDice2 {
     width: 100%;
     height: 100%;
+
     display: flex;
     font-size: 2rem;
     font-weight: bold;
@@ -128,10 +135,11 @@
 .faceOfDice2 .span-nbr1 { 
     width: 20px;
     height: 20px;
-    background: #fff;
+
+    background: #000;
     border: none;
     border-radius: 50%;
-    box-shadow: inset 0 0 7px #000;
+    box-shadow: inset 0 0 7px #f5f5f5;
     margin: auto;
     margin-top: 10px;
     margin-left: 10px;
@@ -140,10 +148,11 @@
 .faceOfDice2 .span-nbr2 { 
     width: 20px;
     height: 20px;
-    background: #fff;
+
+    background: #000;
     border: none;
     border-radius: 50%;
-    box-shadow: inset 0 0 7px #000;
+    box-shadow: inset 0 0 7px #f5f5f5;
     margin: auto;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -153,6 +162,7 @@
 .faceOfDice3 {
     width: 100%;
     height: 100%;
+
     display: flex;
     font-size: 2rem;
     font-weight: bold;
@@ -166,10 +176,11 @@
 .faceOfDice3 .span-nbr1 {
     width: 20px;
     height: 20px;
-    background: #fff;
+    
+    background: #000;
     border: none;
     border-radius: 50%;
-    box-shadow: inset 0 0 7px #000;
+    box-shadow: inset 0 0 7px #f5f5f5;
     margin: auto;
 
     margin-top: 10px;
@@ -178,10 +189,11 @@
 .faceOfDice3 .span-nbr2 {
     width: 20px;
     height: 20px;
-    background: #fff;
+
+    background: #000;
     border: none;
     border-radius: 50%;
-    box-shadow: inset 0 0 7px #000;
+    box-shadow: inset 0 0 7px #f5f5f5;
 
     margin: auto;
 }
@@ -189,10 +201,11 @@
 .faceOfDice3 .span-nbr3 {
     width: 20px;
     height: 20px;
-    background: #fff;
+
+    background: #000;
     border: none;
     border-radius: 50%;
-    box-shadow: inset 0 0 7px #000;
+    box-shadow: inset 0 0 7px #f5f5f5;
     margin: auto;
 
     margin-bottom: 10px;
@@ -202,6 +215,7 @@
 .faceOfDice4 {
     width: 100%;
     height: 100%;
+
     display: grid;
     grid-template-columns: 1Fr 1Fr;
     grid-template-rows: 1Fr 1Fr;
@@ -215,10 +229,10 @@
 .faceOfDice4 span {
     width: 20px;
     height: 20px;
-    background: #fff;
+    background: #000;
     border: none;
     border-radius: 50%;
-    box-shadow: inset 0 0 7px #000;
+    box-shadow: inset 0 0 7px #f5f5f5;
     margin: auto;
 }
 
@@ -240,10 +254,10 @@
 .faceOfDice5 .span-nbr {
     width: 20px;
     height: 20px;
-    background: #fff;
+    background: #000;
     border: none;
     border-radius: 50%;
-    box-shadow: inset 0 0 7px #000;
+    box-shadow: inset 0 0 7px #f5f5f5;
     margin: auto;
 }
 
@@ -258,14 +272,16 @@
     align-items: center;
     justify-content: center;
 
-    font-size: 2rem;
-    font-weight: bold;
     width: 20px;
     height: 20px;
-    background: #fff;
+
+    font-size: 2rem;
+    font-weight: bold;
+
+    background: #000;
     border: none;
     border-radius: 50%;
-    box-shadow: inset 0 0 7px #000;
+    box-shadow: inset 0 0 7px #f5f5f5;
     margin: auto;
 }
 
@@ -274,6 +290,7 @@
     width: 100%;
     height: 100%;
     display: grid;
+
     grid-template-columns: 1Fr 1Fr;
     grid-template-rows: 1Fr 1Fr 1Fr;
     font-size: 2rem;
@@ -286,10 +303,10 @@
 .faceOfDice6 span {
     width: 20px;
     height: 20px;
-    background: #fff;
+    background: #000;
     border: none;
     border-radius: 50%;
-    box-shadow: inset 0 0 7px #000;
+    box-shadow: inset 0 0 7px #f5f5f5;
     margin: auto;
 }
 
