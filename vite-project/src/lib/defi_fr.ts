@@ -1,6 +1,6 @@
 import { DefiProps } from "./types";
 
-export const defiQuestions: DefiProps[] = [
+export const defiQuestions_fr: DefiProps[] = [
     {
         id: 1,
         title: "Contes Écologiques",
@@ -23,8 +23,7 @@ export const defiQuestions: DefiProps[] = [
         id: 4,
         title: "Association de Mots Écologiques",
         objectif: "Dites un mot lié à la durabilité/nature/environnement.",
-        criteres: "Un joueur de la meme équipe répond avec un mot en lien (connexte) Trouvez jusqu'à 5 mots - 3 minutes"														
-    
+        criteres: "Un joueur de la meme équipe répond avec un mot en lien (connexte) Trouvez jusqu'à 5 mots - 3 minutes"
     },
     {
         id: 5,

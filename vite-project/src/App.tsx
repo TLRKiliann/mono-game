@@ -8,10 +8,34 @@ import NbrOfLapComponent from "./components/NbrOfLapComponent";
 import ReadyComponent from "./components/ReadyComponent";
 import EndOfGame from "./components/EndOfGame";
 import Dices from "./components/Dices";
-import { quizQuestions } from "./lib/quiz";
-import { defiQuestions } from "./lib/defi";
-import { bonneActionQuestions } from "./lib/bonnes-actions";
-import { sanctionQuestions } from "./lib/sanctions";
+
+import { quizQuestions_fr } from "./lib/quiz_fr";
+import { quizQuestions_en } from "./lib/quiz_en";
+// translate
+import { quizQuestions_d } from "./lib/quiz_d";
+import { quizQuestions_i } from "./lib/quiz_i";
+
+// done
+import { defiQuestions_fr } from "./lib/defi_fr";
+import { defiQuestions_en } from "./lib/defi_en";
+import { defiQuestions_d } from "./lib/defi_d";
+import { defiQuestions_i } from "./lib/defi_i";
+
+// translate
+import { bonneActionQuestions_fr } from "./lib/bonnes-actions_fr";
+import { bonneActionQuestions_en } from "./lib/bonnes-actions_en";
+import { bonneActionQuestions_d } from "./lib/bonnes-actions_d";
+import { bonneActionQuestions_i } from "./lib/bonnes-actions_i";
+
+// translate
+import { sanctionQuestions_fr } from "./lib/sanctions_fr";
+import { sanctionQuestions_en } from "./lib/sanctions_en";
+import { sanctionQuestions_d } from "./lib/sanctions_d";
+import { sanctionQuestions_i } from "./lib/sanctions_i";
+
+
+
+
 import ComponentQuiz from "./components/ComponentQuiz";
 import ComponentDefi from "./components/ComponentDefi";
 import ComponentBonneAction from "./components/ComponentBonneAction";
@@ -166,7 +190,7 @@ function App(): JSX.Element {
     let randomNumDefi: number;
 
     do {
-        randomNumDefi = Math.floor(Math.random() * 20) + 1;
+      randomNumDefi = Math.floor(Math.random() * 20) + 1;
     } while (allDefiIdToDelete.includes(randomNumDefi));
 
     allDefiIdToDelete.push(randomNumDefi);
@@ -189,12 +213,37 @@ function App(): JSX.Element {
 
     allSanctionIdToDelete.push(randomNumSanction);
 
-    const findCard = {
-      quiz: quizQuestions.find((quiz) => quiz.id === randomNumQuiz),
-      defi: defiQuestions.find((defi) => defi.id === randomNumDefi),
-      action: bonneActionQuestions.find((action) => action.id === randomNumBonneAction),
-      sanction: sanctionQuestions.find((sanction) => sanction.id === randomNumSanction),
-    }[type];
+    let findCard: any = null;
+
+    if (selectedOption === "français") {
+      findCard = {
+        quiz: quizQuestions_fr.find((quiz) => quiz.id === randomNumQuiz),
+        defi: defiQuestions_fr.find((defi) => defi.id === randomNumDefi),
+        action: bonneActionQuestions_fr.find((action) => action.id === randomNumBonneAction),
+        sanction: sanctionQuestions_fr.find((sanction) => sanction.id === randomNumSanction),
+      }[type];
+    } else if (selectedOption === "english") {
+      findCard = {
+        quiz: quizQuestions_en.find((quiz) => quiz.id === randomNumQuiz),
+        defi: defiQuestions_en.find((defi) => defi.id === randomNumDefi),
+        action: bonneActionQuestions_en.find((action) => action.id === randomNumBonneAction),
+        sanction: sanctionQuestions_en.find((sanction) => sanction.id === randomNumSanction),
+      }[type];
+    } else if (selectedOption === "deutsch") {
+      findCard = {
+        quiz: quizQuestions_d.find((quiz) => quiz.id === randomNumQuiz),
+        defi: defiQuestions_d.find((defi) => defi.id === randomNumDefi),
+        action: bonneActionQuestions_d.find((action) => action.id === randomNumBonneAction),
+        sanction: sanctionQuestions_d.find((sanction) => sanction.id === randomNumSanction),
+      }[type];
+    } else if (selectedOption === "italiano") {
+      findCard = {
+        quiz: quizQuestions_i.find((quiz) => quiz.id === randomNumQuiz),
+        defi: defiQuestions_i.find((defi) => defi.id === randomNumDefi),
+        action: bonneActionQuestions_i.find((action) => action.id === randomNumBonneAction),
+        sanction: sanctionQuestions_i.find((sanction) => sanction.id === randomNumSanction),
+      }[type];
+    }
 
     if (!findCard) return null;
 

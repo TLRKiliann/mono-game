@@ -1,6 +1,6 @@
 import { BonneActionProps } from "./types";
 
-export const bonneActionQuestions: BonneActionProps[] = [
+export const bonneActionQuestions_fr: BonneActionProps[] = [
     {
         id: 1,	
         title: "Jardin à Papillons",

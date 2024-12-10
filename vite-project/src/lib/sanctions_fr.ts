@@ -1,6 +1,6 @@
 import { SanctionsProps } from "./types";
 
-export const sanctionQuestions: SanctionsProps[] = [
+export const sanctionQuestions_fr: SanctionsProps[] = [
     {
         id: 1,	
         title: "Zone d'Incendie de Forêt",
