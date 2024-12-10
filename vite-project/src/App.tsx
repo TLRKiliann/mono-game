@@ -78,7 +78,7 @@ function App(): JSX.Element {
     {
       id: 2,
       name: "Player 2",
-      color: "#D0B8A8",
+      color: "#dcbbdb",
       caseNumber: count,
       lap: 0,
       gameOver: false,
