@@ -16,6 +16,7 @@ type FullScreenCloseProps = {
 const FullScreen = ({ setDisplayCloseBox }: FullScreenCloseProps): JSX.Element => {
     
     const handleFullScreen = (): void => {
+        
         const element = document.documentElement;
         if (element.requestFullscreen) {
             element.requestFullscreen();

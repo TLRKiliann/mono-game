@@ -216,7 +216,6 @@ export const quizQuestions_fr: QuizProps[] = [
         title: "Conservation de l'eau à la maison",
         question: "Comment pouvez-vous économiser de l'eau en lavant la vaisselle à la main ?",
 		response: "Remplissez un bassin au lieu de laisser couler le robinet en continu"
-
     },
     {
         id: 37,	
