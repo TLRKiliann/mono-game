@@ -464,12 +464,14 @@ function App(): JSX.Element {
         ? "defi-color" : caseNumber === 21 ? "action-color" : caseNumber === 24 ? "sanction-color" : caseNumber === 27 ? "quiz-color" : null}`}>
         
         <div className="caseNumber">
-        {caseNumber}
-        {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
-          ? <PlayerSpanBottom 
-              key={player.id} 
-              player={player}
-            /> : null)}
+          {caseNumber}
+          {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
+            ? <PlayerSpanBottom 
+                key={player.id} 
+                player={player}
+              /> 
+            : null
+          )}
         </div>
         {additionalContent}
     </div>
@@ -535,6 +537,12 @@ function App(): JSX.Element {
           <p className="first-squares-pone">0</p>
         
           <p className="first-squares-ptwo">Start</p>
+
+          <div className="span-pawn-firstcase">{playersChoosen.map((players: PlayerProps) => {
+            if (players.caseNumber === 0) return <p style={{ background: players.color }} className="span-pawn">{players.id}</p>;
+            else return null;
+          })}
+          </div>
         
         </div>
 

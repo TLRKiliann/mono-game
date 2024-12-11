@@ -57,7 +57,12 @@ const NbrOfPlayers = ({selectedOption, setDisplayCloseBox, nbPlayer, setNbPlayer
             {error && <p className="error">{error}</p>}
 
             <div className="div-btnPlayer">
-                <button type="button" onClick={handleValidateNbPlayers}>Valider</button>
+                <button type="button" onClick={handleValidateNbPlayers}>
+                    {selectedOption === "français" 
+                        ? "Valider" : selectedOption === "english" 
+                        ? "Validate" : selectedOption === "deutsch" 
+                        ? "Validieren" : "Validare"}
+                </button>
             </div>
         </div>
     );

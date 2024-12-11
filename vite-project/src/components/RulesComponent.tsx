@@ -73,7 +73,12 @@ const RulesComponent = ({ selectedOption, setDisplayCloseBox }: RulesProps): JSX
                 ) : null
             }
 
-            <button type="button" onClick={handleRules}>Close</button>
+            <button type="button" onClick={handleRules}>
+                {selectedOption === "français" 
+                    ? "Fermer" : selectedOption === "english" 
+                    ? "Close" : selectedOption === "deutsch" 
+                    ? "Schließen" : "Chiudere"}
+            </button>
         </div>
     )
 }

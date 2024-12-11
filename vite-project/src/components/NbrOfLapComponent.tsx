@@ -57,7 +57,12 @@ const NbrOfLapComponent = ({ selectedOption, nbrOfLap, setNbrOfLap, setDisplayCl
             {error && <p className="error">{error}</p>}
 
             <div className="div-btnPlayer">
-                <button type="button" onClick={handleValidateNbLap}>Valider</button>
+                <button type="button" onClick={handleValidateNbLap}>
+                    {selectedOption === "français" 
+                        ? "Valider" : selectedOption === "english" 
+                        ? "Validate" : selectedOption === "deutsch" 
+                        ? "Validieren" : "Validare"}
+                </button>
             </div>
         </div>
     )

@@ -46,7 +46,10 @@ const ReadyComponent = ({setDisplayCloseBox, selectedOption}: SelectOptionProps)
 
             <div className="div-btnready">
                 <button type="button" onClick={handleCloseReady}>
-                    Close
+                    {selectedOption === "français" 
+                        ? "Fermer" : selectedOption === "english" 
+                        ? "Close" : selectedOption === "deutsch" 
+                        ? "Schließen" : "Chiudere"}
                 </button>
             </div>
 
