@@ -53,14 +53,14 @@ export const sanctionQuestions_fr: SanctionsProps[] = [
     {
         id: 8,	
         title: "Rivière Polluée",
-        info: "Votre bateau s'est coincé dans une rivière polluée.",												
+        info: "Votre bateau s'est coincé dans une rivière polluée.",
         //consequence: "Passez votre tour"
         consequence: 2
     },
     {
         id: 9,	
         title: "Alerte à la Pollution Atmosphérique",	
-        info: "Alerte au smog !",								
+        info: "Alerte au smog !",
         //consequence: "Reculez d'une case"
         consequence: 1
     },
@@ -91,7 +91,7 @@ export const sanctionQuestions_fr: SanctionsProps[] = [
         info: "Le bord de la falaise s'est effondré.",
         //consequence: "Reculez d'une case"
         consequence: 1
-    },								
+    },
 	{
         id: 14,	
         title: "Invasion d'Espèces Envahissantes",
@@ -165,28 +165,28 @@ export const sanctionQuestions_fr: SanctionsProps[] = [
     {
         id: 24,	
         title: "Zone de Pénurie d'Eau",
-        info: "Pénurie d'eau !", 													
+        info: "Pénurie d'eau !",
         //consequence: "Reculez de deux cases"
-        consequence: 2												
+        consequence: 2
     },
     {
         id: 25,	
         title: "Mauvaise Manipulation du Recyclage",
-        info: "Vous avez contaminé la poubelle de recyclage.", 													
+        info: "Vous avez contaminé la poubelle de recyclage.",
         //consequence: "Reculez d'une case."
         consequence: 1
     },
 	{
         id: 26,	
         title: "Site de Déchets Nucléaires",
-        info: "Zone radioactive !",										
+        info: "Zone radioactive !",
         //consequence: "Passez votre tour pendant que vous trouvez un chemin sûr"
         consequence: 2
     },
     {
         id: 27,	
         title: "Îlot de Chaleur Urbain",
-        info: "Alerte à la vague de chaleur !",												
+        info: "Alerte à la vague de chaleur !",
         //consequence: "Reculez de quatre cases"
         consequence: 4
     },
@@ -203,5 +203,5 @@ export const sanctionQuestions_fr: SanctionsProps[] = [
         info: "Vous êtes tombé dans le piège du faux étiquetage écologique.",
         //consequence: "Retournez à la case départ"
         consequence: "reset"
-    }											
+    }
 ];

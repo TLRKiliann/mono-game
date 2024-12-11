@@ -8,34 +8,22 @@ import NbrOfLapComponent from "./components/NbrOfLapComponent";
 import ReadyComponent from "./components/ReadyComponent";
 import EndOfGame from "./components/EndOfGame";
 import Dices from "./components/Dices";
-
 import { quizQuestions_fr } from "./lib/quiz_fr";
 import { quizQuestions_en } from "./lib/quiz_en";
-// translate
-import { quizQuestions_d } from "./lib/quiz_d";
-import { quizQuestions_i } from "./lib/quiz_i";
-
-// done
+import { quizQuestions_de } from "./lib/quiz_de";
+import { quizQuestions_it } from "./lib/quiz_it";
 import { defiQuestions_fr } from "./lib/defi_fr";
 import { defiQuestions_en } from "./lib/defi_en";
-import { defiQuestions_d } from "./lib/defi_d";
-import { defiQuestions_i } from "./lib/defi_i";
-
-// translate
+import { defiQuestions_de } from "./lib/defi_de";
+import { defiQuestions_it } from "./lib/defi_it";
 import { bonneActionQuestions_fr } from "./lib/bonnes-actions_fr";
 import { bonneActionQuestions_en } from "./lib/bonnes-actions_en";
-import { bonneActionQuestions_d } from "./lib/bonnes-actions_d";
-import { bonneActionQuestions_i } from "./lib/bonnes-actions_i";
-
-// translate
+import { bonneActionQuestions_de } from "./lib/bonnes-actions_de";
+import { bonneActionQuestions_it } from "./lib/bonnes-actions_it";
 import { sanctionQuestions_fr } from "./lib/sanctions_fr";
 import { sanctionQuestions_en } from "./lib/sanctions_en";
-import { sanctionQuestions_d } from "./lib/sanctions_d";
-import { sanctionQuestions_i } from "./lib/sanctions_i";
-
-
-
-
+import { sanctionQuestions_de } from "./lib/sanctions_de";
+import { sanctionQuestions_it } from "./lib/sanctions_it";
 import ComponentQuiz from "./components/ComponentQuiz";
 import ComponentDefi from "./components/ComponentDefi";
 import ComponentBonneAction from "./components/ComponentBonneAction";
@@ -231,17 +219,17 @@ function App(): JSX.Element {
       }[type];
     } else if (selectedOption === "deutsch") {
       findCard = {
-        quiz: quizQuestions_d.find((quiz) => quiz.id === randomNumQuiz),
-        defi: defiQuestions_d.find((defi) => defi.id === randomNumDefi),
-        action: bonneActionQuestions_d.find((action) => action.id === randomNumBonneAction),
-        sanction: sanctionQuestions_d.find((sanction) => sanction.id === randomNumSanction),
+        quiz: quizQuestions_de.find((quiz) => quiz.id === randomNumQuiz),
+        defi: defiQuestions_de.find((defi) => defi.id === randomNumDefi),
+        action: bonneActionQuestions_de.find((action) => action.id === randomNumBonneAction),
+        sanction: sanctionQuestions_de.find((sanction) => sanction.id === randomNumSanction),
       }[type];
     } else if (selectedOption === "italiano") {
       findCard = {
-        quiz: quizQuestions_i.find((quiz) => quiz.id === randomNumQuiz),
-        defi: defiQuestions_i.find((defi) => defi.id === randomNumDefi),
-        action: bonneActionQuestions_i.find((action) => action.id === randomNumBonneAction),
-        sanction: sanctionQuestions_i.find((sanction) => sanction.id === randomNumSanction),
+        quiz: quizQuestions_it.find((quiz) => quiz.id === randomNumQuiz),
+        defi: defiQuestions_it.find((defi) => defi.id === randomNumDefi),
+        action: bonneActionQuestions_it.find((action) => action.id === randomNumBonneAction),
+        sanction: sanctionQuestions_it.find((sanction) => sanction.id === randomNumSanction),
       }[type];
     }
 
