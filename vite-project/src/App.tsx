@@ -286,7 +286,12 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{ background: player.color }} className="span-pawn">
+      <div style={{
+        background: player.color,
+        width: activePlayerId === player.id ? "36px" : "24px",
+        height: activePlayerId === player.id ? "36px" : "24px"}} 
+        className="span-pawn"
+      >
         {player.id}
       </div>
     )
@@ -339,7 +344,12 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
   
     return (
-      <div style={{ background: player.color }} className="span-pawn">
+      <div style={{
+        background: player.color,
+        width: activePlayerId === player.id ? "36px" : "24px",
+        height: activePlayerId === player.id ? "36px" : "24px"}} 
+        className="span-pawn"
+      >
         {player.id}
       </div>
     );
@@ -393,7 +403,12 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{ background: player.color }} className="span-pawn">
+      <div style={{
+        background: player.color,
+        width: activePlayerId === player.id ? "36px" : "24px",
+        height: activePlayerId === player.id ? "36px" : "24px"}} 
+        className="span-pawn"
+      >
         {player.id}
       </div>
     )
@@ -452,7 +467,12 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{ background: player.color }} className="span-pawn">
+      <div style={{
+        background: player.color,
+        width: activePlayerId === player.id ? "36px" : "24px",
+        height: activePlayerId === player.id ? "36px" : "24px"}} 
+        className="span-pawn"
+      >
         {player.id}
       </div>
     )
