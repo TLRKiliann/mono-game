@@ -56,7 +56,7 @@ const Dices = ({
   // action replay if player is in the square of "quiz"
   useEffect(() => {
     const handleReplay = () => {
-      setReplay(false);
+      //setReplay(false);
       const findPlayerToReplay = playersChoosen.map((playerGame: PlayerProps) => playerGame.caseQuiz === true 
         ? rollDice(playerGame.id)
         : playerGame
@@ -104,29 +104,53 @@ const Dices = ({
         }
         return gamer;
       }));
+    
       // change score
       if (activePlayerId === 1) {
-        setActivePlayerId(2);
+        replay === false ? setActivePlayerId(2) : setActivePlayerId(1);
         setCountPlayerOne((prev) => prev + newVal);
       } else if (activePlayerId === 2) {
-        nbPlayer === 2 ? setActivePlayerId(1) : setActivePlayerId(3);
-        setCountPlayerTwo((prev) => prev + newVal);
+        if (replay === false) {
+          nbPlayer === 2 ? setActivePlayerId(1) : setActivePlayerId(3);
+          setCountPlayerTwo((prev) => prev + newVal);
+        } else {
+          setActivePlayerId(2);
+        }
       } else if (activePlayerId === 3) {
-        nbPlayer === 3 ? setActivePlayerId(1) : setActivePlayerId(4);
-        setCountPlayerThree((prev) => prev + newVal);
+        if (replay === false) {
+          nbPlayer === 3 ? setActivePlayerId(1) : setActivePlayerId(4);
+          setCountPlayerThree((prev) => prev + newVal);
+        } else {
+          setActivePlayerId(3);
+        }
       } else if (activePlayerId === 4) {
-        nbPlayer === 4 ? setActivePlayerId(1) : setActivePlayerId(5);
-        setCountPlayerFour((prev) => prev + newVal);
+        if (replay === false) {
+          nbPlayer === 4 ? setActivePlayerId(1) : setActivePlayerId(5);
+          setCountPlayerFour((prev) => prev + newVal);
+        } else {
+          setActivePlayerId(4);
+        }
       } else if (activePlayerId === 5) {
-        nbPlayer === 5 ? setActivePlayerId(1) : setActivePlayerId(6);
-        setCountPlayerFive((prev) => prev + newVal);
+        if (replay === false) {
+          nbPlayer === 5 ? setActivePlayerId(1) : setActivePlayerId(6);
+          setCountPlayerFive((prev) => prev + newVal);
+        } else {
+          setActivePlayerId(5);
+        }
       } else {
-        setActivePlayerId(1);
-        setCountPlayerSix((prev) => prev + newVal);
+        if (replay === true) {
+          setActivePlayerId(6);
+        } else {
+          setActivePlayerId(1);
+          setCountPlayerSix((prev) => prev + newVal);
+        }
       }
       setActiveCard({ type: null, cardData: null });
+      setReplay(false);
     }, 1000);
   };
+
+  console.log(replay, "+++ replay +++");
 
   //console.log(playersChoosen, "playersChoosen from dice");
   //console.log(activePlayerId, "activePlayerId from dice");
