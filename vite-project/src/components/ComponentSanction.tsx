@@ -35,9 +35,10 @@ type ComponentQuizProps = {
     findCardSanction: SanctionsProps;
     player: PlayerProps;
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+    selectedOption: string;
 };
 
-const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayersChoosen }): JSX.Element => {
+const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayersChoosen, selectedOption }): JSX.Element => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -101,9 +102,24 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                 <div className='div-card-item'>
 
                     <p className={`p-card-third ${response === true ? "" : "collapsed-third"}`}>
-                        {findCardSanction.consequence === "reset" 
+                        {findCardSanction.consequence === "reset" && selectedOption === "français" 
                             ? "Retour case départ" 
-                            : "Reculez de " + findCardSanction.consequence + " case(s)" || "Réponse indisponible"}
+                            : findCardSanction.consequence === "reset" && selectedOption === "english" 
+                            ? "Go back to square one" 
+                            : findCardSanction.consequence === "reset" && selectedOption === "deutsch" 
+                            ? "Zurück zum Ausgangspunkt"
+                            : findCardSanction.consequence === "reset" && selectedOption === "italiano" 
+                            ? "Torna al punto di partenza"
+                            : selectedOption === "français" 
+                                ? "Reculez de " + findCardSanction.consequence + " case(s)" || "Réponse indisponible" 
+                            : selectedOption === "english" 
+                                ? "Move back " + findCardSanction.consequence + " square(s)" || "Response unavailable"
+                            : selectedOption === "deutsch" 
+                                ? "Gehe " + findCardSanction.consequence + " Felder zurück" || "Antwort nicht verfügbar"
+                            : selectedOption === "italiano" 
+                                ? "Torna indietro di " + findCardSanction.consequence + " caselle" || "Risposta non disponibile"
+                            : null
+                        }
                     </p>
 
                     {response === false ? (
