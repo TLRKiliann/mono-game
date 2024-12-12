@@ -87,6 +87,7 @@ function App(): JSX.Element {
       lap: 0,
       gameOver: false,
       caseQuiz: false,
+      joker: false,
       icon: <FaChessPawn size={16} />
     },
     {
@@ -97,6 +98,7 @@ function App(): JSX.Element {
       lap: 0,
       gameOver: false,
       caseQuiz: false,
+      joker: false,
       icon: <FaChessPawn size={16} />
     },
     {
@@ -107,6 +109,7 @@ function App(): JSX.Element {
       lap: 0,
       gameOver: false,
       caseQuiz: false,
+      joker: false,
       icon: <FaChessPawn size={16} />
     },
     {
@@ -117,6 +120,7 @@ function App(): JSX.Element {
       lap: 0,
       gameOver: false,
       caseQuiz: false,
+      joker: false,
       icon: <FaChessPawn size={16} />
     },
     {
@@ -127,6 +131,7 @@ function App(): JSX.Element {
       lap: 0,
       gameOver: false,
       caseQuiz: false,
+      joker: false,
       icon: <FaChessPawn size={16} />
     },
     {
@@ -137,6 +142,7 @@ function App(): JSX.Element {
       lap: 0,
       gameOver: false,
       caseQuiz: false,
+      joker: false,
       icon: <FaChessPawn size={16} />
     }
   ]);
@@ -250,7 +256,7 @@ function App(): JSX.Element {
       case "action":
         return <ComponentBonneAction findCardAction={findCard as BonneActionProps} player={player} setPlayersChoosen={setPlayersChoosen} selectedOption={selectedOption} />;
       case "sanction":
-        return <ComponentSanction findCardSanction={findCard as SanctionsProps} player={player} setPlayersChoosen={setPlayersChoosen} selectedOption={selectedOption} />;
+        return <ComponentSanction findCardSanction={findCard as SanctionsProps} player={player} setPlayersChoosen={setPlayersChoosen} setReplay={setReplay} selectedOption={selectedOption} />;
       default:
         return null;
     }
