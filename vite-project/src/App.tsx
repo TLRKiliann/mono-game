@@ -28,6 +28,7 @@ import ComponentQuiz from "./components/ComponentQuiz";
 import ComponentDefi from "./components/ComponentDefi";
 import ComponentBonneAction from "./components/ComponentBonneAction";
 import ComponentSanction from "./components/ComponentSanction";
+import { FaChessPawn } from "react-icons/fa6";
 import natureImg from "./assets/nature_1.jpg"
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
@@ -85,7 +86,8 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      caseQuiz: false
+      caseQuiz: false,
+      icon: <FaChessPawn size={16} />
     },
     {
       id: 2,
@@ -94,7 +96,8 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      caseQuiz: false
+      caseQuiz: false,
+      icon: <FaChessPawn size={16} />
     },
     {
       id: 3,
@@ -103,7 +106,8 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      caseQuiz: false
+      caseQuiz: false,
+      icon: <FaChessPawn size={16} />
     },
     {
       id: 4,
@@ -112,7 +116,8 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      caseQuiz: false
+      caseQuiz: false,
+      icon: <FaChessPawn size={16} />
     },
     {
       id: 5,
@@ -121,7 +126,8 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      caseQuiz: false
+      caseQuiz: false,
+      icon: <FaChessPawn size={16} />
     },
     {
       id: 6,
@@ -130,7 +136,8 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      caseQuiz: false
+      caseQuiz: false,
+      icon: <FaChessPawn size={16} />
     }
   ]);
 
@@ -292,7 +299,7 @@ function App(): JSX.Element {
         height: activePlayerId === player.id ? "36px" : "24px"}} 
         className="span-pawn"
       >
-        {player.id}
+        {player.id} {player.icon}
       </div>
     )
   };
@@ -350,7 +357,7 @@ function App(): JSX.Element {
         height: activePlayerId === player.id ? "36px" : "24px"}} 
         className="span-pawn"
       >
-        {player.id}
+        {player.id} {player.icon}
       </div>
     );
   };
@@ -409,7 +416,7 @@ function App(): JSX.Element {
         height: activePlayerId === player.id ? "36px" : "24px"}} 
         className="span-pawn"
       >
-        {player.id}
+        {player.id} {player.icon}
       </div>
     )
   };
@@ -473,7 +480,7 @@ function App(): JSX.Element {
         height: activePlayerId === player.id ? "36px" : "24px"}} 
         className="span-pawn"
       >
-        {player.id}
+        {player.id} {player.icon}
       </div>
     )
   };
@@ -559,7 +566,7 @@ function App(): JSX.Element {
           <p className="first-squares-ptwo">Start</p>
 
           <div className="span-pawn-firstcase">{playersChoosen.map((players: PlayerProps) => {
-            if (players.caseNumber === 0) return <p style={{ background: players.color }} className="span-pawn">{players.id}</p>;
+            if (players.caseNumber === 0) return <p style={{ background: players.color }} className="span-pawn">{players.id} {players.icon}</p>;
             else return null;
           })}
           </div>
