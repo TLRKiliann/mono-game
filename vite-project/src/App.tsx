@@ -640,7 +640,7 @@ function App(): JSX.Element {
           
           <div className='cards-box cards-box-left'>
             
-            <div className="card card-one">Defis</div>
+            <div className="card card-one">Défis</div>
 
             <div className="div-jeudesociete">
               <h2>JEU DE SOCIETE</h2>
