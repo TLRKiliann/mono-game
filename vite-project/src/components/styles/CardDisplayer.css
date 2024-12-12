@@ -95,6 +95,14 @@
     margin-bottom: 40px;
 
     padding: 20px;
+    opacity: 1;
+    overflow: hidden;
+    transition: padding 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.div-mainValidate.collapsed-second {
+    padding: 0;
+    opacity: 0;
 }
 
 .validate-error {
@@ -111,19 +119,24 @@
     padding: 5px 20px;
 }
 
-/* btn validation */
-.div-validateBtn {    
+.div-validateBtn {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    max-height: 100px;
     background: rgba(245, 238, 235, 0.7);
     border-radius: 7px;
-
     margin: auto 20px;
     margin-bottom: 40px;
-    
     padding: 20px;
+    opacity: 1;
+    overflow: hidden;
+    transition: padding 0.3s ease-in-out, opacity 0.3s ease-in-out; 
+}
+
+.div-validateBtn.collapsed {
+    padding: 0;
+    opacity: 0;
 }
 
 .div-validateBtn button {
@@ -163,6 +176,14 @@
 
     margin: 20px;
     padding: 20px;
+    opacity: 1;
+    overflow: hidden;
+    transition: padding 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.p-card-third.collapsed-third {
+    padding: 0;
+    opacity: 0;
 }
 
 .img-card {

@@ -22,13 +22,9 @@
 }
 
 .div-ecopotimg {
-    position: absolute;
+    width: 600px;
+    height: 600px;
     margin: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     animation-name: ecogame;
     animation-delay: 0s;
     animation-duration: 2s;

@@ -89,30 +89,31 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                 <div className='div-card-item'>
                     <p className='p-card-first'>{findCardSanction.id} {findCardSanction.title}</p>
                 </div>
+
                 <div className='div-card-item'>
                     <p className='p-card-second'>{findCardSanction.info || "Question indisponible"}</p>
                 </div>
 
-                {response === true ? (
-                    <div className='div-validateBtn'>
-                        <button type="button" onClick={handleValidate}>Validate</button>
-                    </div>
-                ) : null}
+                <div className={`div-validateBtn ${response ? '' : 'collapsed'}`}>
+                    <button type="button" onClick={handleValidate}>Validate</button>
+                </div>
                 
                 <div className='div-card-item'>
 
-                    {response === true ? (
-                        <p className='p-card-third'>{findCardSanction.consequence === "reset" ? "Retour case départ" 
-                            : "Reculez de " + findCardSanction.consequence + " case(s)" || "Réponse indisponible"}</p>
-                    ) : (
+                    <p className={`p-card-third ${response === true ? "" : "collapsed-third"}`}>
+                        {findCardSanction.consequence === "reset" 
+                            ? "Retour case départ" 
+                            : "Reculez de " + findCardSanction.consequence + " case(s)" || "Réponse indisponible"}
+                    </p>
+
+                    {response === false ? (
                         <div className='div-responseBtn'>
                             <button type="button" onClick={handleResponse}>Conséquence</button>
                         </div>
-                    )}
+                    ) : null}
                     
                 </div>
             </div>
-
         </div>
     );
 };
