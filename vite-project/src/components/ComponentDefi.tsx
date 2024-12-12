@@ -76,7 +76,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
     const handleValidate = (): void => {
         if (isChecked === "option1") {
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseQuiz: true}
+                ? {...playerGame, caseNumber: playerGame.caseNumber, caseQuiz: true}
                 : playerGame
             ));
             setReplay(true);

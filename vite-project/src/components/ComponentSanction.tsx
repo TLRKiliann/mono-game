@@ -35,10 +35,11 @@ type ComponentQuizProps = {
     findCardSanction: SanctionsProps;
     player: PlayerProps;
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+    setReplay: React.Dispatch<React.SetStateAction<boolean>>;
     selectedOption: string;
 };
 
-const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayersChoosen, selectedOption }): JSX.Element => {
+const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayersChoosen, setReplay, selectedOption }): JSX.Element => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -68,10 +69,22 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
 
     // player must move back to start square if consequence is equal to 0. Otherwise, he must move back of number of squares...
     const handleValidate = (): void => {
-        setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-                ? {...playerGame, caseNumber: findCardSanction.consequence === "reset" ? 0 : playerGame.caseNumber - Number(findCardSanction.consequence)}
-                : playerGame
-            )
+        setPlayersChoosen((prev) => 
+            prev.map((playerGame: PlayerProps) => {
+                if (playerGame.id === player.id) {
+                    if (playerGame.joker === true) {
+                        playerGame.caseQuiz = true;
+                        playerGame.joker = false;
+                        setReplay(true);
+                    }
+                    if (findCardSanction.consequence === "reset") {
+                        return { ...playerGame, caseNumber: 0 };
+                    } else {
+                        return { ...playerGame, caseNumber: playerGame.caseNumber - Number(findCardSanction.consequence) };
+                    }
+                }
+                return playerGame;
+            })
         );
         setOnShow(false);
     };

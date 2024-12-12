@@ -55,11 +55,16 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
 
     // player can stay in square "bonne action" if "joker". Otherwise, he can advance according to the number of rewards.
     const handleValidate = (): void => {
-        setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-            ? {...playerGame, caseNumber: findCardAction.recompense === "joker" 
-                ? playerGame.caseNumber 
-                : playerGame.caseNumber + Number(findCardAction.recompense)}
-            : playerGame));
+        setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => {
+            if (playerGame.id === player.id) {
+                if (findCardAction.recompense === "joker") {
+                    playerGame.joker = true;
+                } else {
+                    return { ...playerGame, caseNumber: playerGame.caseNumber + Number(findCardAction.recompense) };
+                }
+            }
+            return playerGame;
+        }));
         setOnShow(false);
     };
 
