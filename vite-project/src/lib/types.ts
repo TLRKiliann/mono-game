@@ -6,6 +6,7 @@ export type PlayerProps = {
     lap: number;
     gameOver: boolean;
     caseQuiz: boolean;
+    joker: boolean;
     icon: JSX.Element;
 };
 
