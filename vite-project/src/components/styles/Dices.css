@@ -312,7 +312,7 @@
 
 .dice-player {
     position: absolute;
-    top: 15%;
+    top: 20%;
     width: 400px;
     text-align: center;
 
@@ -323,6 +323,8 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 2.2rem;
     font-weight: 600;
-    color: #f5f5f5;
-    text-shadow: 1px 1px 2px #333;
+    color: darkgreen;
+    text-shadow: 0px 1px 2px #000;
+
+    margin: auto;
 }
