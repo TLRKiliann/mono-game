@@ -2,6 +2,7 @@ import type { PlayerProps } from '../lib/types';
 import { useEffect, useState } from 'react';
 //import DonationComponent from './DonationComponent';
 //import gifDice from "../assets/dice.gif";
+import { FaLongArrowAltRight } from "react-icons/fa";
 import './styles/Dices.css';
 
 type ValProps = {
@@ -218,7 +219,7 @@ const Dices = ({
       {playersChoosen.map((play: PlayerProps) => ( 
         play.id === activePlayerId ? (
           <div key={play.id} className='dice-player'>
-            <p>{play.name}: {play.caseNumber} (case)</p>
+            <p>{play.name}&nbsp;<FaLongArrowAltRight size={44} />&nbsp;case: {play.caseNumber}</p>
           </div> 
         ) : null
       ))}

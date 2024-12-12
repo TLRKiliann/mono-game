@@ -286,7 +286,12 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{ background: player.color }} className="span-pawn">
+      <div style={{
+        background: player.color,
+        width: activePlayerId === player.id ? "36px" : "24px",
+        height: activePlayerId === player.id ? "36px" : "24px"}} 
+        className="span-pawn"
+      >
         {player.id}
       </div>
     )
@@ -339,7 +344,12 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
   
     return (
-      <div style={{ background: player.color }} className="span-pawn">
+      <div style={{
+        background: player.color,
+        width: activePlayerId === player.id ? "36px" : "24px",
+        height: activePlayerId === player.id ? "36px" : "24px"}} 
+        className="span-pawn"
+      >
         {player.id}
       </div>
     );
@@ -393,7 +403,12 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{ background: player.color }} className="span-pawn">
+      <div style={{
+        background: player.color,
+        width: activePlayerId === player.id ? "36px" : "24px",
+        height: activePlayerId === player.id ? "36px" : "24px"}} 
+        className="span-pawn"
+      >
         {player.id}
       </div>
     )
@@ -452,7 +467,12 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{ background: player.color }} className="span-pawn">
+      <div style={{
+        background: player.color,
+        width: activePlayerId === player.id ? "36px" : "24px",
+        height: activePlayerId === player.id ? "36px" : "24px"}} 
+        className="span-pawn"
+      >
         {player.id}
       </div>
     )
@@ -613,14 +633,14 @@ function App(): JSX.Element {
             <h2>
               {selectedOption === "français" ? "Nombre de tour : " + nbrOfLap : selectedOption === "english" 
                 ? "Number of laps : " + nbrOfLap : selectedOption === "deutsch" 
-                ? "Rundenzahl : " + nbrOfLap : "numero di giri" + nbrOfLap
+                ? "Rundenzahl : " + nbrOfLap : "Numero di giri" + nbrOfLap
               }
             </h2>
           </div>
           
           <div className='cards-box cards-box-left'>
             
-            <div className="card card-one">Defis</div>
+            <div className="card card-one">Défis</div>
 
             <div className="div-jeudesociete">
               <h2>JEU DE SOCIETE</h2>

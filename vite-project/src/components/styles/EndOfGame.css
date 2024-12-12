@@ -35,14 +35,14 @@
 
 .game-over h1 {
     font-size: 3rem;
-    text-shadow: 1px 1px 1px #000;
+    text-shadow: 1px 1px 1px #333;
     margin: auto;
     margin-top: 40px;
 }
 
 .game-over h2 {
     font-size: 2rem;
-    text-shadow: 1px 1px 1px #000;
+    text-shadow: 1px 1px 1px #333;
     color: orangered;
     margin: 40px auto;
 }
@@ -50,7 +50,7 @@
 .game-over p {
     text-align: justify;
     font-size: 1.2rem;
-    text-shadow: 1px 1px 1px #000;
+    text-shadow: 1px 1px 1px #333;
     margin: auto;
     padding: 0 40px;
 }
