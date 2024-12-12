@@ -43,65 +43,58 @@
 }
 
 .para-box-card {
-    position: absolute;
-    top: 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     width: 100%;
     height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     font-size: 1.4rem;
     font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 1px #777;
+
+    /* border: 1px solid magenta; */
 }
 
-.para-box-card div {
-    display: flex;
-    height: 75px;
-    margin: auto;
-}
-
-.para-box-card div p {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: auto;
-}
-
+/* ??? */
 .div-card-item {
-    width: 95%;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 7px;
+    width: 100%;
+    /* border: 1px solid aqua; */
 }
 
+/* top question number + title */
 .p-card-first {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #fff;
-    text-shadow: 1px 1px 1px #333;
-    padding: 10px 20px;
+    background: rgba(245, 238, 235, 0.7);
+
+    margin: auto;
+    padding: 20px;
 }
 
+/* under top Question */
 .p-card-second {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    background: rgba(245, 238, 235, 0.7);
+    border-radius: 7px;
     text-align: justify;
-    color: #fff;
-    text-shadow: 1px 1px 1px #333;    
-    padding: 10px 20px;
+    
+    margin: 20px;
+    margin-top: 40px;
+    padding: 20px;
 }
 
 .div-mainValidate {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 95%;
+    justify-content: space-around;
+
     background: rgba(0, 0, 0, 0.5);
-    border: none;
     border-radius: 7px;
-    margin: 0 20px;
+
+    margin: auto 20px;
+    margin-bottom: 40px;
+
+    padding: 20px;
 }
 
 .validate-error {
@@ -111,36 +104,37 @@
 }
 
 .validate-error label {
-    background: rgba(255, 255, 255, 0.7);
-    border: none;
+    background: rgba(245, 238, 235, 0.7);
     border-radius: 7px;
     color: #fff;
-    text-shadow: 1px 1px 1px #000;
+    text-shadow: 1px 1px 1px #777;
     padding: 5px 20px;
 }
 
 /* btn validation */
-.div-validateBtn {
+.div-validateBtn {    
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 95%;
-    height: auto;
-    background: rgba(0, 0, 0, 0.5);
+
+    background: rgba(245, 238, 235, 0.7);
     border-radius: 7px;
+
+    margin: auto 20px;
+    margin-bottom: 40px;
+    
+    padding: 20px;
 }
 
 .div-validateBtn button {
     font-size: 1.0rem;
     font-weight: 600;
-    
+
     background: rgba(17, 83, 72, 1);
     border: none;
     border-radius: 7px;
-    box-shadow: 0 0 20px lightgrey;
-
+    box-shadow: 0 0 7px #777;
     padding: 12px 30px;
-
     transition: 0.2s ease-in-out;
     transform: scale(1.0);
 }
@@ -157,19 +151,18 @@
     transform: scale(0.95);
 }
 
+/* response */
 .p-card-third {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    width: 100%;
     text-align: justify;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: rgb(6, 128, 77);
-    text-shadow: 1px 1px 1px #000;
 
-    padding: 10px 40px;
+    color: rgb(6, 128, 77);
+    text-shadow: 1px 1px 1px #777;
+
+    background: rgba(245, 238, 235, 0.7);    
+    border-radius: 7px;
+
+    margin: 20px;
+    padding: 20px;
 }
 
 .img-card {
@@ -190,9 +183,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: auto;
-    margin: auto;
+    margin: 20px;
 }
 
 .div-responseBtn button {
