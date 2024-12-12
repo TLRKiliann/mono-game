@@ -54,14 +54,10 @@
     font-weight: bold;
     color: #fff;
     text-shadow: 1px 1px 1px #777;
-
-    /* border: 1px solid magenta; */
 }
 
-/* ??? */
 .div-card-item {
     width: 100%;
-    /* border: 1px solid aqua; */
 }
 
 /* top question number + title */
