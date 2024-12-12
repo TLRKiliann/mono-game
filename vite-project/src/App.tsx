@@ -633,7 +633,7 @@ function App(): JSX.Element {
             <h2>
               {selectedOption === "français" ? "Nombre de tour : " + nbrOfLap : selectedOption === "english" 
                 ? "Number of laps : " + nbrOfLap : selectedOption === "deutsch" 
-                ? "Rundenzahl : " + nbrOfLap : "numero di giri" + nbrOfLap
+                ? "Rundenzahl : " + nbrOfLap : "Numero di giri" + nbrOfLap
               }
             </h2>
           </div>
