@@ -99,57 +99,52 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                     <p className='p-card-second'>{findCardQuiz.question || "Question indisponible"}</p>
                 </div>
 
-                {response === true ? (
-                    <div className='div-mainValidate'>
+                <div className={`div-mainValidate ${response === true ? "" : "collapsed-second"}`}>
 
-                        <div className='validate-error'>
-                            <label htmlFor="validate">Juste
-                                <input
-                                    type="radio"
-                                    id="validate"
-                                    name="validate"
-                                    value="option1"
-                                    checked={isChecked === 'option1'} 
-                                    onChange={handleCheck}
-                                />
-                            </label>
-                        </div>
-
-                        <div className='validate-error'>
-                            <label htmlFor="error">Faux
-                                <input
-                                    type="radio"
-                                    id="error"
-                                    name="error"
-                                    value="option2"
-                                    checked={isChecked === 'option2'} 
-                                    onChange={handleCheck}
-                                />
-                            </label>
-                        </div>
-
+                    <div className='validate-error'>
+                        <label htmlFor="validate">Juste
+                            <input
+                                type="radio"
+                                id="validate"
+                                name="validate"
+                                value="option1"
+                                checked={isChecked === 'option1'} 
+                                onChange={handleCheck}
+                            />
+                        </label>
                     </div>
-                ) : null}
 
-                {isChecked ? (
-                    <div className='div-validateBtn'>
-                        <button type="button" onClick={handleValidate}>Validate</button>
+                    <div className='validate-error'>
+                        <label htmlFor="error">Faux
+                            <input
+                                type="radio"
+                                id="error"
+                                name="error"
+                                value="option2"
+                                checked={isChecked === 'option2'} 
+                                onChange={handleCheck}
+                            />
+                        </label>
                     </div>
-                ) : null}
-                
+                    
+                </div>
+               
+                <div className={`div-validateBtn ${isChecked ? '' : 'collapsed'}`}>
+                    <button type="button" onClick={handleValidate}>Validate</button>
+                </div>
+             
                 <div className='div-card-item'>
 
-                    {response === true ? (
-                        <p className='p-card-third'>{findCardQuiz.response || "Réponse indisponible"}</p>
-                    ) : (
+                    <p className={`p-card-third ${response === true ? "" : 'collapsed-third'}`}>{findCardQuiz.response || "Réponse indisponible"}</p>
+
+                    {response === false ? (
                         <div className='div-responseBtn'>
                             <button type="button" onClick={handleResponse}>Response</button>
                         </div>
-                    )}
-                    
+                    ) : null}
+
                 </div>
             </div>
-
         </div>
     );
 };

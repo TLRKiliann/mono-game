@@ -35,9 +35,10 @@ type ComponentQuizProps = {
     findCardSanction: SanctionsProps;
     player: PlayerProps;
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+    selectedOption: string;
 };
 
-const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayersChoosen }): JSX.Element => {
+const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayersChoosen, selectedOption }): JSX.Element => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -89,30 +90,46 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                 <div className='div-card-item'>
                     <p className='p-card-first'>{findCardSanction.id} {findCardSanction.title}</p>
                 </div>
+
                 <div className='div-card-item'>
                     <p className='p-card-second'>{findCardSanction.info || "Question indisponible"}</p>
                 </div>
 
-                {response === true ? (
-                    <div className='div-validateBtn'>
-                        <button type="button" onClick={handleValidate}>Validate</button>
-                    </div>
-                ) : null}
+                <div className={`div-validateBtn ${response ? '' : 'collapsed'}`}>
+                    <button type="button" onClick={handleValidate}>Validate</button>
+                </div>
                 
                 <div className='div-card-item'>
 
-                    {response === true ? (
-                        <p className='p-card-third'>{findCardSanction.consequence === "reset" ? "Retour case départ" 
-                            : "Reculez de " + findCardSanction.consequence + " case(s)" || "Réponse indisponible"}</p>
-                    ) : (
+                    <p className={`p-card-third ${response === true ? "" : "collapsed-third"}`}>
+                        {findCardSanction.consequence === "reset" && selectedOption === "français" 
+                            ? "Retour case départ" 
+                            : findCardSanction.consequence === "reset" && selectedOption === "english" 
+                            ? "Go back to square one" 
+                            : findCardSanction.consequence === "reset" && selectedOption === "deutsch" 
+                            ? "Zurück zum Ausgangspunkt"
+                            : findCardSanction.consequence === "reset" && selectedOption === "italiano" 
+                            ? "Torna al punto di partenza"
+                            : selectedOption === "français" 
+                                ? "Reculez de " + findCardSanction.consequence + " case(s)" || "Réponse indisponible" 
+                            : selectedOption === "english" 
+                                ? "Move back " + findCardSanction.consequence + " square(s)" || "Response unavailable"
+                            : selectedOption === "deutsch" 
+                                ? "Gehe " + findCardSanction.consequence + " Felder zurück" || "Antwort nicht verfügbar"
+                            : selectedOption === "italiano" 
+                                ? "Torna indietro di " + findCardSanction.consequence + " caselle" || "Risposta non disponibile"
+                            : null
+                        }
+                    </p>
+
+                    {response === false ? (
                         <div className='div-responseBtn'>
                             <button type="button" onClick={handleResponse}>Conséquence</button>
                         </div>
-                    )}
+                    ) : null}
                     
                 </div>
             </div>
-
         </div>
     );
 };

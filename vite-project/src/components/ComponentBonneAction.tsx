@@ -31,9 +31,10 @@ type ComponentQuizProps = {
     findCardAction: BonneActionProps;
     player: PlayerProps;
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
+    selectedOption: string;
 };
 
-const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, player, setPlayersChoosen }): JSX.Element => {
+const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, player, setPlayersChoosen, selectedOption }): JSX.Element => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -80,22 +81,38 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
                     <p className='p-card-second'>{findCardAction.info || "Question indisponible"}</p>
                 </div>
 
-                {response === true ? (
-                    <div className='div-validateBtn'>
-                        <button type="button" onClick={handleValidate}>Validate</button>
-                    </div>
-                ) : null}
+                <div className={`div-validateBtn ${response ? '' : 'collapsed'}`}>
+                    <button type="button" onClick={handleValidate}>Validate</button>
+                </div>
                 
                 <div className='div-card-item'>
 
-                    {response === true ? (
-                        <p className='p-card-third'>{findCardAction.recompense === "joker" 
-                            ? "Attendez encore un peu" : "Avancez de " + findCardAction.recompense + " case(s)" || "Réponse indisponible"}</p>
-                    ) : (
+                    <p className={`p-card-third ${response === true ? "" : "collapsed-third"}`}>
+                        {findCardAction.recompense === "joker" && selectedOption === "français"  
+                            ? "Attendez encore un peu"
+                            :findCardAction.recompense === "joker" && selectedOption === "english"
+                            ? "Wait a little longer"
+                            :findCardAction.recompense === "joker" && selectedOption === "deutsch" 
+                            ? "War noch ein wenig"
+                            :findCardAction.recompense === "joker" && selectedOption === "italiano" 
+                            ? "Aspetta ancora un po"
+                            : selectedOption === "français"  
+                                ? "Avancez de " + findCardAction.recompense + " case(s)" || "Réponse indisponible"
+                            : selectedOption === "english"  
+                                ? "Move forward " + findCardAction.recompense + " square(s)" || "Response unavailable"
+                            : selectedOption === "deutsch"  
+                                ? "Vorwärts " + findCardAction.recompense + " Felder zurück" || "Antwort nicht verfügbar"
+                            : selectedOption === "italiano"  
+                                ? "Avanza di " + findCardAction.recompense + " caselle" || "Risposta non disponibile"
+                            : null
+                        }
+                    </p>
+
+                    {response === false ? (
                         <div className='div-responseBtn'>
                             <button type="button" onClick={handleResponse}>Recompense</button>
                         </div>
-                    )}
+                    ) : null}
                     
                 </div>
             </div>

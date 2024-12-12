@@ -241,9 +241,9 @@ function App(): JSX.Element {
       case "defi":
         return <ComponentDefi findCardDefi={findCard as DefiProps} player={player} setPlayersChoosen={setPlayersChoosen} setReplay={setReplay} />;
       case "action":
-        return <ComponentBonneAction findCardAction={findCard as BonneActionProps} player={player} setPlayersChoosen={setPlayersChoosen} />;
+        return <ComponentBonneAction findCardAction={findCard as BonneActionProps} player={player} setPlayersChoosen={setPlayersChoosen} selectedOption={selectedOption} />;
       case "sanction":
-        return <ComponentSanction findCardSanction={findCard as SanctionsProps} player={player} setPlayersChoosen={setPlayersChoosen} />;
+        return <ComponentSanction findCardSanction={findCard as SanctionsProps} player={player} setPlayersChoosen={setPlayersChoosen} selectedOption={selectedOption} />;
       default:
         return null;
     }
@@ -633,7 +633,7 @@ function App(): JSX.Element {
             <h2>
               {selectedOption === "français" ? "Nombre de tour : " + nbrOfLap : selectedOption === "english" 
                 ? "Number of laps : " + nbrOfLap : selectedOption === "deutsch" 
-                ? "Rundenzahl : " + nbrOfLap : "Numero di giri" + nbrOfLap
+                ? "Rundenzahl : " + nbrOfLap : "Numero di giri : " + nbrOfLap
               }
             </h2>
           </div>
