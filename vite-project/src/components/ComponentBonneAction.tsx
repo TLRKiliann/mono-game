@@ -55,11 +55,16 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
 
     // player can stay in square "bonne action" if "joker". Otherwise, he can advance according to the number of rewards.
     const handleValidate = (): void => {
-        setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
-            ? {...playerGame, caseNumber: findCardAction.recompense === "joker" 
-                ? playerGame.caseNumber 
-                : playerGame.caseNumber + Number(findCardAction.recompense)}
-            : playerGame));
+        setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => {
+            if (playerGame.id === player.id) {
+                if (findCardAction.recompense === "joker") {
+                    playerGame.joker = true;
+                } else {
+                    return { ...playerGame, caseNumber: playerGame.caseNumber + Number(findCardAction.recompense) };
+                }
+            }
+            return playerGame;
+        }));
         setOnShow(false);
     };
 
@@ -82,7 +87,18 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
                 </div>
 
                 <div className={`div-validateBtn ${response ? '' : 'collapsed'}`}>
-                    <button type="button" onClick={handleValidate}>Validate</button>
+                    <button type="button" onClick={handleValidate}>
+                        {selectedOption === "français" 
+                            ? "Valider" 
+                            : selectedOption === "english" 
+                            ? "Validate" 
+                            : selectedOption === "deutsch" 
+                            ? "Validieren" 
+                            : selectedOption === "italiano" 
+                            ? "Validare" 
+                            : null
+                        }
+                    </button>
                 </div>
                 
                 <div className='div-card-item'>
@@ -97,20 +113,31 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
                             :findCardAction.recompense === "joker" && selectedOption === "italiano" 
                             ? "Aspetta ancora un po"
                             : selectedOption === "français"  
-                                ? "Avancez de " + findCardAction.recompense + " case(s)" || "Réponse indisponible"
+                            ? "Avancez de " + findCardAction.recompense + " case(s)" || "Réponse indisponible"
                             : selectedOption === "english"  
-                                ? "Move forward " + findCardAction.recompense + " square(s)" || "Response unavailable"
+                            ? "Move forward " + findCardAction.recompense + " square(s)" || "Response unavailable"
                             : selectedOption === "deutsch"  
-                                ? "Vorwärts " + findCardAction.recompense + " Felder zurück" || "Antwort nicht verfügbar"
+                            ? "Vorwärts " + findCardAction.recompense + " Felder zurück" || "Antwort nicht verfügbar"
                             : selectedOption === "italiano"  
-                                ? "Avanza di " + findCardAction.recompense + " caselle" || "Risposta non disponibile"
+                            ? "Avanza di " + findCardAction.recompense + " caselle" || "Risposta non disponibile"
                             : null
                         }
                     </p>
 
                     {response === false ? (
                         <div className='div-responseBtn'>
-                            <button type="button" onClick={handleResponse}>Recompense</button>
+                            <button type="button" onClick={handleResponse}>
+                                {selectedOption === "français" 
+                                    ? "Récompense" 
+                                    : selectedOption === "english" 
+                                    ? "Reward" 
+                                    : selectedOption === "deutsch" 
+                                    ? "Belohnung" 
+                                    : selectedOption === "italiano" 
+                                    ? "Ricompensa" 
+                                    : null
+                                }
+                            </button>
                         </div>
                     ) : null}
                     

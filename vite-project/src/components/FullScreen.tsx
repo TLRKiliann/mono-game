@@ -35,11 +35,43 @@ const FullScreen = ({ setDisplayCloseBox }: FullScreenCloseProps): JSX.Element =
     };
 
     return (
-        <div className="fullscreen-div">
-            <div className="div-ecopotimg">
-                <img src={ecopotGame} width={850} height={850} className="ecopotGame" alt="ecopot-img" />
+        <div className="div-fullscreen">
+            
+            <div className="main-container">
+
+                <div className="container-h1h2">
+                    <div className="div-h1">
+                        <h1 className="main-title">
+                            ! Bienvenue sur le jeu Mes Eco Potes !
+                        </h1>
+                    </div>
+                    
+                    <div className="div-h2">
+                        <h2 className="sub-title">
+                            Jeu de société sur l'environnement et la nature à jouer en famille, en classe ou entre amis !
+                        </h2>
+                    </div>
+                </div>
+                
+                <div className="div-imgbtnp">
+                    <div className="div-ecopotimg">
+                        <img src={ecopotGame} width={850} height={850} className="ecopotimg" alt="ecopot-img" />
+                    </div>
+
+                    <div className="div-btn">
+                        <button type="button" onClick={handleFullScreen}>Lancer le jeu</button>
+                    </div>
+
+                    <div className="div-p">
+                        <p>Jeu développé par l'Association sans but lucratif Mon Eco Pote (
+                            <a href="https://www.monecopote.com" target="_blank" rel="noopener noreferrer">www.monecopote.com</a> 
+                            ) - Tous droits réservés -
+                        </p>
+                    </div>
+                </div>
+
             </div>
-            <button type="button" onClick={handleFullScreen}>Full Screen Mode</button>
+            
         </div>
     )
 }

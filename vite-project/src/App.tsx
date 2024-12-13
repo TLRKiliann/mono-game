@@ -28,6 +28,7 @@ import ComponentQuiz from "./components/ComponentQuiz";
 import ComponentDefi from "./components/ComponentDefi";
 import ComponentBonneAction from "./components/ComponentBonneAction";
 import ComponentSanction from "./components/ComponentSanction";
+import { FaChessPawn } from "react-icons/fa6";
 import natureImg from "./assets/nature_1.jpg"
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
@@ -85,7 +86,9 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      caseQuiz: false
+      caseQuiz: false,
+      joker: false,
+      icon: <FaChessPawn size={16} />
     },
     {
       id: 2,
@@ -94,7 +97,9 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      caseQuiz: false
+      caseQuiz: false,
+      joker: false,
+      icon: <FaChessPawn size={16} />
     },
     {
       id: 3,
@@ -103,7 +108,9 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      caseQuiz: false
+      caseQuiz: false,
+      joker: false,
+      icon: <FaChessPawn size={16} />
     },
     {
       id: 4,
@@ -112,7 +119,9 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      caseQuiz: false
+      caseQuiz: false,
+      joker: false,
+      icon: <FaChessPawn size={16} />
     },
     {
       id: 5,
@@ -121,7 +130,9 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      caseQuiz: false
+      caseQuiz: false,
+      joker: false,
+      icon: <FaChessPawn size={16} />
     },
     {
       id: 6,
@@ -130,7 +141,9 @@ function App(): JSX.Element {
       caseNumber: count,
       lap: 0,
       gameOver: false,
-      caseQuiz: false
+      caseQuiz: false,
+      joker: false,
+      icon: <FaChessPawn size={16} />
     }
   ]);
 
@@ -237,13 +250,44 @@ function App(): JSX.Element {
 
     switch (type) {
       case "quiz":
-        return <ComponentQuiz findCardQuiz={findCard as QuizProps} player={player} setPlayersChoosen={setPlayersChoosen} setReplay={setReplay} />;
+        return (
+          <ComponentQuiz 
+            findCardQuiz={findCard as QuizProps}
+            player={player}
+            setPlayersChoosen={setPlayersChoosen}
+            setReplay={setReplay}
+            selectedOption={selectedOption} 
+          />
+        );
       case "defi":
-        return <ComponentDefi findCardDefi={findCard as DefiProps} player={player} setPlayersChoosen={setPlayersChoosen} setReplay={setReplay} />;
+        return (
+          <ComponentDefi
+            findCardDefi={findCard as DefiProps}
+            player={player}
+            setPlayersChoosen={setPlayersChoosen}
+            setReplay={setReplay}
+            selectedOption={selectedOption}
+          />
+        );
       case "action":
-        return <ComponentBonneAction findCardAction={findCard as BonneActionProps} player={player} setPlayersChoosen={setPlayersChoosen} selectedOption={selectedOption} />;
+        return (
+          <ComponentBonneAction 
+            findCardAction={findCard as BonneActionProps}
+            player={player}
+            setPlayersChoosen={setPlayersChoosen}
+            selectedOption={selectedOption}
+          />
+        );
       case "sanction":
-        return <ComponentSanction findCardSanction={findCard as SanctionsProps} player={player} setPlayersChoosen={setPlayersChoosen} selectedOption={selectedOption} />;
+        return (
+          <ComponentSanction 
+            findCardSanction={findCard as SanctionsProps}
+            player={player}
+            setPlayersChoosen={setPlayersChoosen}
+            setReplay={setReplay}
+            selectedOption={selectedOption} 
+          />
+        );
       default:
         return null;
     }
@@ -292,7 +336,7 @@ function App(): JSX.Element {
         height: activePlayerId === player.id ? "36px" : "24px"}} 
         className="span-pawn"
       >
-        {player.id}
+        {player.id} {player.icon}
       </div>
     )
   };
@@ -350,7 +394,7 @@ function App(): JSX.Element {
         height: activePlayerId === player.id ? "36px" : "24px"}} 
         className="span-pawn"
       >
-        {player.id}
+        {player.id} {player.icon}
       </div>
     );
   };
@@ -409,7 +453,7 @@ function App(): JSX.Element {
         height: activePlayerId === player.id ? "36px" : "24px"}} 
         className="span-pawn"
       >
-        {player.id}
+        {player.id} {player.icon}
       </div>
     )
   };
@@ -473,7 +517,7 @@ function App(): JSX.Element {
         height: activePlayerId === player.id ? "36px" : "24px"}} 
         className="span-pawn"
       >
-        {player.id}
+        {player.id} {player.icon}
       </div>
     )
   };
@@ -559,7 +603,11 @@ function App(): JSX.Element {
           <p className="first-squares-ptwo">Start</p>
 
           <div className="span-pawn-firstcase">{playersChoosen.map((players: PlayerProps) => {
-            if (players.caseNumber === 0) return <p style={{ background: players.color }} className="span-pawn">{players.id}</p>;
+            if (players.caseNumber === 0) return (
+              <p style={{ background: players.color }} className="span-pawn">
+                {players.id} {players.icon}
+              </p>
+            );
             else return null;
           })}
           </div>
@@ -631,7 +679,8 @@ function App(): JSX.Element {
 
           <div className="number-laps">
             <h2>
-              {selectedOption === "français" ? "Nombre de tour : " + nbrOfLap : selectedOption === "english" 
+              {selectedOption === "français" 
+                ? "Nombre de tour : " + nbrOfLap : selectedOption === "english" 
                 ? "Number of laps : " + nbrOfLap : selectedOption === "deutsch" 
                 ? "Rundenzahl : " + nbrOfLap : "Numero di giri : " + nbrOfLap
               }
