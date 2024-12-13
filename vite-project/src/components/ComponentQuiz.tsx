@@ -22,9 +22,10 @@ type ComponentQuizProps = {
     player: PlayerProps;
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
     setReplay: React.Dispatch<React.SetStateAction<boolean>>;
+    selectedOption: string;
 };
 
-const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, setPlayersChoosen, setReplay }): JSX.Element => {
+const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, setPlayersChoosen, setReplay, selectedOption }): JSX.Element => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
@@ -102,7 +103,17 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                 <div className={`div-mainValidate ${response === true ? "" : "collapsed-second"}`}>
 
                     <div className='validate-error'>
-                        <label htmlFor="validate">Juste
+                        <label htmlFor="validate">
+                            {selectedOption === "français" 
+                                ? "Juste" 
+                                : selectedOption === "english" 
+                                ? "Correct" 
+                                : selectedOption === "deutsch" 
+                                ? "Gerecht" 
+                                : selectedOption === "italiano" 
+                                ? "Giusto" 
+                                : null
+                            }
                             <input
                                 type="radio"
                                 id="validate"
@@ -115,7 +126,17 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                     </div>
 
                     <div className='validate-error'>
-                        <label htmlFor="error">Faux
+                        <label htmlFor="error">
+                            {selectedOption === "français" 
+                                ? "Faux" 
+                                : selectedOption === "english" 
+                                ? "Wrong" 
+                                : selectedOption === "deutsch" 
+                                ? "Falsch" 
+                                : selectedOption === "italiano" 
+                                ? "Falso" 
+                                : null
+                            }
                             <input
                                 type="radio"
                                 id="error"
@@ -130,7 +151,18 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                 </div>
                
                 <div className={`div-validateBtn ${isChecked ? '' : 'collapsed'}`}>
-                    <button type="button" onClick={handleValidate}>Validate</button>
+                    <button type="button" onClick={handleValidate}>
+                        {selectedOption === "français" 
+                            ? "Valider" 
+                            : selectedOption === "english" 
+                            ? "Validate" 
+                            : selectedOption === "deutsch" 
+                            ? "Validieren" 
+                            : selectedOption === "italiano" 
+                            ? "Validare" 
+                            : null
+                        }
+                    </button>
                 </div>
              
                 <div className='div-card-item'>
@@ -139,7 +171,18 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
 
                     {response === false ? (
                         <div className='div-responseBtn'>
-                            <button type="button" onClick={handleResponse}>Response</button>
+                            <button type="button" onClick={handleResponse}>
+                                {selectedOption === "français" 
+                                    ? "Description" 
+                                    : selectedOption === "english" 
+                                    ? "Description" 
+                                    : selectedOption === "deutsch" 
+                                    ? "Beschreibung" 
+                                    : selectedOption === "italiano" 
+                                    ? "Descrizione" 
+                                    : null
+                                }
+                            </button>
                         </div>
                     ) : null}
 

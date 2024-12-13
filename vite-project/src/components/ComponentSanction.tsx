@@ -109,7 +109,18 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                 </div>
 
                 <div className={`div-validateBtn ${response ? '' : 'collapsed'}`}>
-                    <button type="button" onClick={handleValidate}>Validate</button>
+                    <button type="button" onClick={handleValidate}>
+                        {selectedOption === "français" 
+                            ? "Valider" 
+                            : selectedOption === "english" 
+                            ? "Validate" 
+                            : selectedOption === "deutsch" 
+                            ? "Validieren" 
+                            : selectedOption === "italiano" 
+                            ? "Validare" 
+                            : null
+                        }
+                    </button>
                 </div>
                 
                 <div className='div-card-item'>
@@ -124,20 +135,31 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                             : findCardSanction.consequence === "reset" && selectedOption === "italiano" 
                             ? "Torna al punto di partenza"
                             : selectedOption === "français" 
-                                ? "Reculez de " + findCardSanction.consequence + " case(s)" || "Réponse indisponible" 
+                            ? "Reculez de " + findCardSanction.consequence + " case(s)" || "Réponse indisponible" 
                             : selectedOption === "english" 
-                                ? "Move back " + findCardSanction.consequence + " square(s)" || "Response unavailable"
+                            ? "Move back " + findCardSanction.consequence + " square(s)" || "Response unavailable"
                             : selectedOption === "deutsch" 
-                                ? "Gehe " + findCardSanction.consequence + " Felder zurück" || "Antwort nicht verfügbar"
+                            ? "Gehe " + findCardSanction.consequence + " Felder zurück" || "Antwort nicht verfügbar"
                             : selectedOption === "italiano" 
-                                ? "Torna indietro di " + findCardSanction.consequence + " caselle" || "Risposta non disponibile"
+                            ? "Torna indietro di " + findCardSanction.consequence + " caselle" || "Risposta non disponibile"
                             : null
                         }
                     </p>
 
                     {response === false ? (
                         <div className='div-responseBtn'>
-                            <button type="button" onClick={handleResponse}>Conséquence</button>
+                            <button type="button" onClick={handleResponse}>
+                                {selectedOption === "français" 
+                                    ? "Conséquence" 
+                                    : selectedOption === "english" 
+                                    ? "Consequence" 
+                                    : selectedOption === "deutsch" 
+                                    ? "Konsequenz" 
+                                    : selectedOption === "italiano" 
+                                    ? "Conseguenza" 
+                                    : null
+                                }
+                            </button>
                         </div>
                     ) : null}
                     
