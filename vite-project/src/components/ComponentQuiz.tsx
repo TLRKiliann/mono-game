@@ -173,13 +173,13 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                         <div className='div-responseBtn'>
                             <button type="button" onClick={handleResponse}>
                                 {selectedOption === "français" 
-                                    ? "Description" 
+                                    ? "Réponse" 
                                     : selectedOption === "english" 
-                                    ? "Description" 
+                                    ? "Answer" 
                                     : selectedOption === "deutsch" 
-                                    ? "Beschreibung" 
+                                    ? "Antwort" 
                                     : selectedOption === "italiano" 
-                                    ? "Descrizione" 
+                                    ? "Risposta" 
                                     : null
                                 }
                             </button>

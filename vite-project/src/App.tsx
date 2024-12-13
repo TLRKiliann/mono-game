@@ -603,7 +603,11 @@ function App(): JSX.Element {
           <p className="first-squares-ptwo">Start</p>
 
           <div className="span-pawn-firstcase">{playersChoosen.map((players: PlayerProps) => {
-            if (players.caseNumber === 0) return <p style={{ background: players.color }} className="span-pawn">{players.id} {players.icon}</p>;
+            if (players.caseNumber === 0) return (
+              <p style={{ background: players.color }} className="span-pawn">
+                {players.id} {players.icon}
+              </p>
+            );
             else return null;
           })}
           </div>
@@ -675,7 +679,8 @@ function App(): JSX.Element {
 
           <div className="number-laps">
             <h2>
-              {selectedOption === "français" ? "Nombre de tour : " + nbrOfLap : selectedOption === "english" 
+              {selectedOption === "français" 
+                ? "Nombre de tour : " + nbrOfLap : selectedOption === "english" 
                 ? "Number of laps : " + nbrOfLap : selectedOption === "deutsch" 
                 ? "Rundenzahl : " + nbrOfLap : "Numero di giri : " + nbrOfLap
               }
