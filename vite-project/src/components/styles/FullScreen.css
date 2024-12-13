@@ -1,4 +1,12 @@
-.fullscreen-div {
+@keyframes ecogame {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+
+.div-fullscreen {
     position: fixed;
     top: 0;
     right: 0;
@@ -8,65 +16,138 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 1);
 
+    background: #f5eeeb;
     z-index: 100;
 }
 
-@keyframes ecogame {
-    0% {
-        opacity: 0;
-    } 100% {
-        opacity: 1;
-    }
-}
-
-.div-ecopotimg {
-    width: 600px;
-    height: 600px;
+.main-container {
+    width: 100%;
     margin: auto;
+
     animation-name: ecogame;
     animation-delay: 0s;
     animation-duration: 2s;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
-
-    z-index: 110;
 }
 
-.ecopotGame {
+.container-h1h2 {
+    width: 80%;
+    height: auto;
+    margin: auto;
+    color: #115348;
+    text-shadow: 1px 1px 2px #777;
+}
+
+.div-h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: auto;
+}
+
+.div-h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 1.0rem;
+    font-weight: bold;
+    margin: auto;
+}
+
+.div-imgbtnp {
+    width: 100%;
+    margin: auto;
+    margin-top: 0;
+}
+
+/* img bg */
+.div-ecopotimg {
+    width: 450px;
+    height: 450px;
+    margin: auto;
+
+    animation-name: ecogame;
+    animation-delay: 0s;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+.ecopotimg {
+    display: flex;
     width: 100%;
     height: 100%;
+
     opacity: 0.8;
     object-fit: cover;
 }
 
-.fullscreen-div button {
-    position: absolute;
+.div-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+
+
+    animation-name: ecogame;
+    animation-delay: 0s;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+.div-btn button {
     font-size: 1.0rem;
     font-weight: 600;
-    background: rgba(0, 0, 255, 0.2);
+    background: rgba(17, 83, 72, 1);
     border: none;
     border-radius: 7px;
     box-shadow: inset 0 0 10px rgba(211, 211, 211, 1);
-    color: rgba(211, 211, 211, 0.5);
+    color: #c1c1c1;
     padding: 15px 30px;
 
-    transition: all 0.1s ease-in-out;
+    transition: all 0.25s ease-in-out;
     transform: scale(1.0);
-    z-index: 110;
 }
 
-.fullscreen-div button:hover {
+.div-btn button:hover {
+    border: none;
     background: rgba(17, 83, 72, 1);
-    box-shadow: 0 0 10px aqua;
+    box-shadow: inset 0 0 10px rgba(17, 83, 72, 1);
     color: #f5f5f5;
     transform: scale(1.0);
 }
 
-.fullscreen-div button:active {
-    background: rgba(0, 0, 255, 0.2);
-    box-shadow: 0 0 0px lightgrey;
-    color: rgba(211, 211, 211, 0.5);
-    transform: scale(0.95);
+.div-btn button:active {
+    background: rgba(17, 83, 72, 0.5);
+    box-shadow: 0 0 0 rgba(17, 83, 72, 1);
+    color: #c1c1c1;
+    transform: scale(0.975);
+}
+
+.div-p {
+    text-align: center;
+
+    /* border: 1px solid #333; */
+}
+
+.div-p p {
+    color: #115348;
+}
+
+.div-p a {
+    text-decoration: none;
+    color: blue;
+}
+
+.div-p a:hover {
+    color: midnightblue;
+}
+
+.div-p a:active {
+    color: skyblue;
 }
