@@ -250,13 +250,44 @@ function App(): JSX.Element {
 
     switch (type) {
       case "quiz":
-        return <ComponentQuiz findCardQuiz={findCard as QuizProps} player={player} setPlayersChoosen={setPlayersChoosen} setReplay={setReplay} />;
+        return (
+          <ComponentQuiz 
+            findCardQuiz={findCard as QuizProps}
+            player={player}
+            setPlayersChoosen={setPlayersChoosen}
+            setReplay={setReplay}
+            selectedOption={selectedOption} 
+          />
+        );
       case "defi":
-        return <ComponentDefi findCardDefi={findCard as DefiProps} player={player} setPlayersChoosen={setPlayersChoosen} setReplay={setReplay} />;
+        return (
+          <ComponentDefi
+            findCardDefi={findCard as DefiProps}
+            player={player}
+            setPlayersChoosen={setPlayersChoosen}
+            setReplay={setReplay}
+            selectedOption={selectedOption}
+          />
+        );
       case "action":
-        return <ComponentBonneAction findCardAction={findCard as BonneActionProps} player={player} setPlayersChoosen={setPlayersChoosen} selectedOption={selectedOption} />;
+        return (
+          <ComponentBonneAction 
+            findCardAction={findCard as BonneActionProps}
+            player={player}
+            setPlayersChoosen={setPlayersChoosen}
+            selectedOption={selectedOption}
+          />
+        );
       case "sanction":
-        return <ComponentSanction findCardSanction={findCard as SanctionsProps} player={player} setPlayersChoosen={setPlayersChoosen} setReplay={setReplay} selectedOption={selectedOption} />;
+        return (
+          <ComponentSanction 
+            findCardSanction={findCard as SanctionsProps}
+            player={player}
+            setPlayersChoosen={setPlayersChoosen}
+            setReplay={setReplay}
+            selectedOption={selectedOption} 
+          />
+        );
       default:
         return null;
     }
