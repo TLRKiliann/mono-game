@@ -561,7 +561,7 @@ function App(): JSX.Element {
       }
 
       {selectedOption === "" && displayCloseBox.closeFullScreen === false ? (
-        <WelcomeComponent selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+        <WelcomeComponent setSelectedOption={setSelectedOption} />
         ) : null
       }
 
