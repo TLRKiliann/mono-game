@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaCirclePlay } from "react-icons/fa6";
 import { FaCirclePause } from "react-icons/fa6";
 import { FaStopCircle } from "react-icons/fa";
@@ -8,6 +8,8 @@ const AudioPlayer = (): JSX.Element => {
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const audioSrc = new URL('../assets/audio/Colorful-Flowers.mp3', import.meta.url).href;
+
+    const [isVisible, setIsVisible] = useState<boolean>(false);
 
     const musicName = "Colorful-Flowers.mp3";
 
@@ -53,22 +55,31 @@ const AudioPlayer = (): JSX.Element => {
         console.log('La musique est terminée.');
     };
 
+    const handleVisibility = (): void => {
+        setIsVisible((prev) => !prev);
+        //console.log(isVisible, "Is visible");
+    };
+
     return (
         <div className="audio-container">
             
-            <audio ref={audioRef} src={audioSrc} onEnded={onEnded}></audio>
+            <div onMouseEnter={handleVisibility} onMouseLeave={handleVisibility} className={`${isVisible ? "audio-display" : "audio-hide"}`}>
 
-            <div className="box-params">
+                <audio ref={audioRef} src={audioSrc} onEnded={onEnded}></audio>
 
-                <div className="div-audiop">
-                    <p>Music</p>
-                </div>
+                <div className="box-params">
 
-                <div className="params">
-                    <span onClick={play}><FaCirclePlay size={24} /></span>
-                    <span onClick={pause}><FaCirclePause size={24} /></span>
-                    <span onClick={stop}><FaStopCircle size={24} /></span>
-                    <p>{musicName}</p>
+                    <div className="div-audiop">
+                        <p>Music</p>
+                    </div>
+
+                    <div className="params">
+                        <span onClick={play}><FaCirclePlay size={24} /></span>
+                        <span onClick={pause}><FaCirclePause size={24} /></span>
+                        <span onClick={stop}><FaStopCircle size={24} /></span>
+                        <p>{musicName}</p>
+                    </div>
+
                 </div>
 
             </div>
