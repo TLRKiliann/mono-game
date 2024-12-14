@@ -1,9 +1,10 @@
 import type { PlayerProps } from '../lib/types';
 import { useEffect, useState } from 'react';
-//import DonationComponent from './DonationComponent';
+import EndOfGame from './EndOfGame';
 //import gifDice from "../assets/dice.gif";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import './styles/Dices.css';
+
 
 type ValProps = {
   playersChoosen: PlayerProps[];
@@ -12,6 +13,7 @@ type ValProps = {
   setReplay: React.Dispatch<React.SetStateAction<boolean>>;
   nbPlayer: number;
   nbrOfLap: number;
+  selectedOption: string;
   setCount: React.Dispatch<React.SetStateAction<number>>;
   value: number;
   setValue: React.Dispatch<React.SetStateAction<number>>;
@@ -36,7 +38,7 @@ const Dices = ({
   nbPlayer,
   nbrOfLap,
   activePlayerId,
-  
+  selectedOption,
   setActivePlayerId,
   setCountPlayerOne,
   setCountPlayerTwo,
@@ -56,7 +58,6 @@ const Dices = ({
   // action replay if player is in the square of "quiz"
   useEffect(() => {
     const handleReplay = () => {
-      //setReplay(false);
       const findPlayerToReplay = playersChoosen.map((playerGame: PlayerProps) => playerGame.caseQuiz === true 
         ? rollDice(playerGame.id)
         : playerGame
@@ -83,7 +84,7 @@ const Dices = ({
       setIsRolling(false);
       setCount((prev) => prev + newVal);
 
-      // one more lap to go (max 3 laps)
+      // one more lap to go (max 5 laps)
       setPlayersChoosen((prevPlayers) => prevPlayers.map((gamer: PlayerProps) => {
         
         if (gamer.id === id) {
@@ -150,17 +151,19 @@ const Dices = ({
     }, 1000);
   };
 
-  console.log(replay, "+++ replay +++");
+  //console.log(replay, "+++ replay +++");
 
-  //console.log(playersChoosen, "playersChoosen from dice");
+  console.log(playersChoosen, "playersChoosen from dice");
   //console.log(activePlayerId, "activePlayerId from dice");
 
-  /* const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
+  const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
   if (winner) {
     return (
-      <DonationComponent winner={winner.name} />
+      <div className="div-endofgame">
+        <EndOfGame selectedOption={selectedOption} winner={winner.name} />
+      </div>
     );
-  }; */
+  };
 
   return (
     <div className='dice-container'>
