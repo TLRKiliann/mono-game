@@ -41,7 +41,6 @@
     text-shadow: 1px 1px 1px #333;
 }
 
-
 .react-select {
     margin-bottom: 20px;
 }
@@ -53,7 +52,7 @@
     justify-content: start;
 
     color: #333;
-    padding: 10px;
+    padding: 5px 10px;
     cursor: pointer;
 }
 
