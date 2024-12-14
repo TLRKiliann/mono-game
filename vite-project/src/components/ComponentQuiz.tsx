@@ -55,7 +55,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
     }, [quizNumber]);
 
     const handleResponse = (): void => {
-        setResponse(!response);
+        setResponse((prev) => !prev);
     };
 
     const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -63,7 +63,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
         setIsChecked(optionValue);
     };
 
-    // player should be able to replay if response is correct. Otherwise, he must move back to 3 or 4 squares. 
+    // throw dice again if response is correct. Otherwise, he must move back to 3 or 4 squares. 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
