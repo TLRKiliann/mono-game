@@ -28,6 +28,7 @@ import ComponentQuiz from "./components/ComponentQuiz";
 import ComponentDefi from "./components/ComponentDefi";
 import ComponentBonneAction from "./components/ComponentBonneAction";
 import ComponentSanction from "./components/ComponentSanction";
+import AudioPlayer from "./components/AudioPlayer";
 import { FaChessPawn } from "react-icons/fa6";
 import natureImg from "./assets/nature_1.jpg"
 import mascotte from "./assets/mascotte-resize.png";
@@ -554,6 +555,8 @@ function App(): JSX.Element {
 
   return (
     <div className='frame'>
+
+      <AudioPlayer />
 
       {displayCloseBox.closeFullScreen === true ? (
         <FullScreen setDisplayCloseBox={setDisplayCloseBox} />
