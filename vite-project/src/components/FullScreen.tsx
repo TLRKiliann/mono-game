@@ -21,12 +21,12 @@ const FullScreen = ({ setDisplayCloseBox }: FullScreenCloseProps): JSX.Element =
         const element = document.documentElement;
         if (element.requestFullscreen) {
             element.requestFullscreen();
-        } else if (element.mozRequestFullScreen) { // Firefox
-            element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullscreen) { // Safari
-            element.webkitRequestFullscreen();
-        } else if (element.msRequestFullscreen) { // IE/Edge
-            element.msRequestFullscreen();
+        } else if ((element as any).mozRequestFullScreen) { // Firefox
+            (element as any).mozRequestFullScreen();
+        } else if ((element as any).webkitRequestFullscreen) { // Safari
+            (element as any).webkitRequestFullscreen();
+        } else if ((element as any).msRequestFullscreen) { // IE/Edge
+            (element as any).msRequestFullscreen();
         }
         setDisplayCloseBox((prev) => ({
             ...prev,
