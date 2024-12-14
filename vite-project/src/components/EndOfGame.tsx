@@ -5,7 +5,7 @@ type WinnerProps = {
     winner: string;
 };
 
-const DonationComponent = ({selectedOption, winner}: WinnerProps): JSX.Element => {
+const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
 
     const handleRestart = (): void => {
         window.location.reload();
@@ -60,4 +60,4 @@ const DonationComponent = ({selectedOption, winner}: WinnerProps): JSX.Element =
         </div>
     )
 };
-export default DonationComponent;
+export default EndOfGame;
