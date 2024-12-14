@@ -1,8 +1,8 @@
 .audio-container {
     position: absolute;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
     display: flex;
     flex-direction: row;
@@ -12,8 +12,20 @@
     width: auto;
     height: auto;
     margin: auto;
-
+    overflow: hidden;
     z-index: 130;
+}
+
+.audio-display {
+    opacity: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease-in-out;
+    transform: translateY(0px); 
+}
+
+.audio-hide {
+    opacity: 0.5;
+    transition: transform 0.3s ease, opacity 0.3s ease-in-out;
+    transform: translateY(50px);
 }
 
 .div-audiop p {

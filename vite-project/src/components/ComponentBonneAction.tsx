@@ -50,15 +50,18 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
     const imgBonneActionId = imgBonneActions[bonneActionNumber - 1];
 
     const handleResponse = (): void => {
-        setResponse(!response);
+        setResponse((prev) => !prev);
     };
 
     // player can stay in square "bonne action" if "joker". Otherwise, he can advance according to the number of rewards.
     const handleValidate = (): void => {
         setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => {
             if (playerGame.id === player.id) {
-                if (findCardAction.recompense === "joker") {
-                    playerGame.joker = true;
+                if (findCardAction.recompense === "joker" && playerGame.joker === false) {
+                    //playerGame.joker = true;
+                    return { ...playerGame, caseNumber: playerGame.caseNumber + 1, joker: !playerGame.joker };
+                } else if (findCardAction.recompense === "joker" && playerGame.joker === true) {
+                    return { ...playerGame, caseNumber: playerGame.caseNumber + 1 };
                 } else {
                     return { ...playerGame, caseNumber: playerGame.caseNumber + Number(findCardAction.recompense) };
                 }
@@ -105,7 +108,7 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
 
                     <p className={`p-card-third ${response === true ? "" : "collapsed-third"}`}>
                         {findCardAction.recompense === "joker" && selectedOption === "français"  
-                            ? "Attendez encore un peu"
+                            ? "Joker gagné pour une éventuelle sanction + 1"
                             :findCardAction.recompense === "joker" && selectedOption === "english"
                             ? "Wait a little longer"
                             :findCardAction.recompense === "joker" && selectedOption === "deutsch" 

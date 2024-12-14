@@ -64,7 +64,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
     };
 
     const handleResponse = (): void => {
-        setResponse(!response);
+        setResponse((prev) => !prev);
     };
 
     // player must move back to start square if consequence is equal to 0. Otherwise, he must move back of number of squares...
