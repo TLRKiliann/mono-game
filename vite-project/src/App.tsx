@@ -6,7 +6,7 @@ import RulesComponent from "./components/RulesComponent";
 import NbrOfPlayers from "./components/NbrOfPlayers";
 import NbrOfLapComponent from "./components/NbrOfLapComponent";
 import ReadyComponent from "./components/ReadyComponent";
-import EndOfGame from "./components/EndOfGame";
+//import EndOfGame from "./components/EndOfGame";
 import Dices from "./components/Dices";
 import { quizQuestions_fr } from "./lib/quiz_fr";
 import { quizQuestions_en } from "./lib/quiz_en";
@@ -50,7 +50,7 @@ function App(): JSX.Element {
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   // count nbre of case by player
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(55);
 
   // display value of dice
   const [value, setValue] = useState<number>(1);
@@ -544,14 +544,14 @@ function App(): JSX.Element {
 
   console.log(nbrOfLap, "nbr of lap");
 
-  const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
+  /* const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
   if (winner) {
     return (
       <div className="div-endofgame">
         <EndOfGame selectedOption={selectedOption} winner={winner.name} />
       </div>
     );
-  };
+  }; */
 
   return (
     <div className='frame'>
@@ -607,7 +607,7 @@ function App(): JSX.Element {
 
           <div className="span-pawn-firstcase">{playersChoosen.map((players: PlayerProps) => {
             if (players.caseNumber === 0) return (
-              <p style={{ background: players.color }} className="span-pawn">
+              <p key={players.id} style={{ background: players.color }} className="span-pawn">
                 {players.id} {players.icon}
               </p>
             );
@@ -626,19 +626,31 @@ function App(): JSX.Element {
               additionalContent = <h4>Quiz</h4>;
               break;
             case 42:
-              additionalContent = <h4>Défi</h4>;
+              additionalContent = <h4>{selectedOption === "français" ? "Défi"
+                : selectedOption === "english" ? "Challenges" 
+                : selectedOption === "deutsch" ? "Herausforderungen" 
+                : selectedOption === "italiano" ? "Sfide" : null}</h4>;
               break;
             case 45:
-              additionalContent = <h4>Bonne Action</h4>;
+              additionalContent = <h4>{selectedOption === "français" ? "Bonne Action"
+                : selectedOption === "english" ? "Good Deed" 
+                : selectedOption === "deutsch" ? "Gute Tat" 
+                : selectedOption === "italiano" ? "Buona Azione" : null}</h4>;
               break;
             case 48:
-              additionalContent = <h4>Sanction</h4>;
+              additionalContent = <h4>{selectedOption === "français" ? "Sanction" 
+                : selectedOption === "english" ? "Sanction" 
+                : selectedOption === "deutsch" ? "Sanktion" 
+                : selectedOption === "italiano" ? "sanzione" : null}</h4>;
               break;
             case 51:
               additionalContent = <h4>Quiz</h4>;
               break;
             case 54:
-              additionalContent = <h4>Défi</h4>;
+              additionalContent = <h4>{selectedOption === "français" ? "Défi"
+                : selectedOption === "english" ? "Challenges" 
+                : selectedOption === "deutsch" ? "Herausforderungen" 
+                : selectedOption === "italiano" ? "Sfide" : null}</h4>;
               break;
             default:
               additionalContent = null;
@@ -661,10 +673,16 @@ function App(): JSX.Element {
                 additionalContent = <h4>Quiz</h4>;
                 break;
               case 6:
-                additionalContent = <h4>Défi</h4>;
+                additionalContent = <h4>{selectedOption === "français" ? "Défi"
+                  : selectedOption === "english" ? "Challenges" 
+                  : selectedOption === "deutsch" ? "Herausforderungen" 
+                  : selectedOption === "italiano" ? "Sfide" : null}</h4>;
                 break;
               case 9:
-                additionalContent = <h4>Bonne Action</h4>;
+                additionalContent = <h4>{selectedOption === "français" ? "Bonne Action"
+                  : selectedOption === "english" ? "Good Deed" 
+                  : selectedOption === "deutsch" ? "Gute Tat" 
+                  : selectedOption === "italiano" ? "Buona Azione" : null}</h4>;
                 break;
               default:
                 additionalContent = null;
@@ -692,7 +710,10 @@ function App(): JSX.Element {
           
           <div className='cards-box cards-box-left'>
             
-            <div className="card card-one">Défis</div>
+            <div className="card card-one">{selectedOption === "français" ? "Défi"
+                  : selectedOption === "english" ? "Challenges" 
+                  : selectedOption === "deutsch" ? "Herausforderungen" 
+                  : selectedOption === "italiano" ? "Sfide" : null}</div>
 
             <div className="div-jeudesociete">
               <h2>JEU DE SOCIETE</h2>
@@ -718,6 +739,7 @@ function App(): JSX.Element {
               setReplay={setReplay}
               nbPlayer={nbPlayer}
               nbrOfLap={nbrOfLap}
+              selectedOption={selectedOption}
               playersChoosen={playersChoosen}
               setPlayersChoosen={setPlayersChoosen}
               setCountPlayerOne={setCountPlayerOne}
@@ -734,14 +756,20 @@ function App(): JSX.Element {
 
           <div className='cards-box cards-box-right'>
           
-            <div className="card card-three">Sanctions</div>
+            <div className="card card-three">{selectedOption === "français" ? "Sanction" 
+                : selectedOption === "english" ? "Sanction" 
+                : selectedOption === "deutsch" ? "Sanktion" 
+                : selectedOption === "italiano" ? "sanzione" : null}</div>
             
             <div className="div-monecopote">
               <h2>MON ECO POTE</h2>
               <img src={myEcoBest} width={564} height={564} alt="img myecobestfriend" className="myecobestfriend-img" />
             </div>
 
-            <div className="card card-four">Bonnes Actions</div>
+            <div className="card card-four">{selectedOption === "français" ? "Bonne Action"
+                : selectedOption === "english" ? "Good Deed" 
+                : selectedOption === "deutsch" ? "Gute Tat" 
+                : selectedOption === "italiano" ? "Buona Azione" : null}</div>
 
           </div>
 
@@ -754,13 +782,22 @@ function App(): JSX.Element {
 
             switch (caseNumber) {
               case 30:
-                additionalContent = <h4>Défi</h4>;
+                additionalContent = <h4>{selectedOption === "français" ? "Défi"
+                  : selectedOption === "english" ? "Challenges" 
+                  : selectedOption === "deutsch" ? "Herausforderungen" 
+                  : selectedOption === "italiano" ? "Sfide" : null}</h4>;
                 break;
               case 33:
-                additionalContent = <h4>Bonne Action</h4>;
+                additionalContent = <h4>{selectedOption === "français" ? "Bonne Action"
+                  : selectedOption === "english" ? "Good Deed" 
+                  : selectedOption === "deutsch" ? "Gute Tat" 
+                  : selectedOption === "italiano" ? "Buona Azione" : null}</h4>;
                 break;
               case 36:
-                additionalContent = <h4>Sanction</h4>;
+                additionalContent = <h4>{selectedOption === "français" ? "Sanction" 
+                  : selectedOption === "english" ? "Sanction" 
+                  : selectedOption === "deutsch" ? "Sanktion" 
+                  : selectedOption === "italiano" ? "sanzione" : null}</h4>;
                 break;
               default:
                 additionalContent = null;
@@ -779,19 +816,31 @@ function App(): JSX.Element {
 
           switch (caseNumber) {
             case 12:
-              additionalContent = <h4>Sanction</h4>;
+              additionalContent = <h4>{selectedOption === "français" ? "Sanction" 
+                : selectedOption === "english" ? "Sanction" 
+                : selectedOption === "deutsch" ? "Sanktion" 
+                : selectedOption === "italiano" ? "sanzione" : null}</h4>;
               break;
             case 15:
               additionalContent = <h4>Quiz</h4>;
               break;
             case 18:
-              additionalContent = <h4>Défi</h4>;
+              additionalContent = <h4>{selectedOption === "français" ? "Défi"
+                : selectedOption === "english" ? "Challenges" 
+                : selectedOption === "deutsch" ? "Herausforderungen" 
+                : selectedOption === "italiano" ? "Sfide" : null}</h4>;
               break;
             case 21:
-              additionalContent = <h4>Bonne Action</h4>;
+              additionalContent = <h4>{selectedOption === "français" ? "Bonne Action"
+                : selectedOption === "english" ? "Good Deed" 
+                : selectedOption === "deutsch" ? "Gute Tat" 
+                : selectedOption === "italiano" ? "Buona Azione" : null}</h4>;
               break;
             case 24:
-              additionalContent = <h4>Sanction</h4>;
+              additionalContent = <h4>{selectedOption === "français" ? "Sanction" 
+                : selectedOption === "english" ? "Sanction" 
+                : selectedOption === "deutsch" ? "Sanktion" 
+                : selectedOption === "italiano" ? "sanzione" : null}</h4>;
               break;
             case 27:
               additionalContent = <h4>Quiz</h4>;
