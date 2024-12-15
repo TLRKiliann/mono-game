@@ -31,7 +31,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
     const [response, setResponse] = useState<boolean>(false);
     const [isChecked, setIsChecked] = useState<string>("");
 
-    // cards
+    // cards img
     const imgQuiz: string[] = [
         img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, 
         img_9, img_10, img_11, img_12, img_13, img_14, img_15
