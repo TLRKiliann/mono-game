@@ -706,7 +706,12 @@ function App(): JSX.Element {
                   : selectedOption === "italiano" ? "Sfide" : null}</div>
 
             <div className="div-jeudesociete">
-              <h2>JEU DE SOCIETE</h2>
+              <h2>
+                {selectedOption === "français" ? "JEU DE SOCIETE"
+                  : selectedOption === "english" ? "BOARD GAME" 
+                  : selectedOption === "deutsch" ? "BRETTSPIEL" 
+                  : selectedOption === "italiano" ? "GIOCO DA TAVOLO" : null}
+              </h2>
               <img src={mascotte} width={564} height={564} alt="img mascotte" className="mascotte-img" />
             </div>
 
@@ -752,7 +757,12 @@ function App(): JSX.Element {
                 : selectedOption === "italiano" ? "sanzione" : null}</div>
             
             <div className="div-monecopote">
-              <h2>MON ECO POTE</h2>
+              <h2>
+                {selectedOption === "français" ? "MON ECO POTE"
+                  : selectedOption === "english" ? "MY ECO FRIEND" 
+                  : selectedOption === "deutsch" ? "MEIN ÖKO-FREUND" 
+                  : selectedOption === "italiano" ? "IL MIO AMICO ECOLOGICO" : null}        
+                </h2>
               <img src={myEcoBest} width={564} height={564} alt="img myecobestfriend" className="myecobestfriend-img" />
             </div>
 
@@ -760,7 +770,6 @@ function App(): JSX.Element {
                 : selectedOption === "english" ? "Good Deed" 
                 : selectedOption === "deutsch" ? "Gute Tat" 
                 : selectedOption === "italiano" ? "Buona Azione" : null}</div>
-
           </div>
 
         </div>

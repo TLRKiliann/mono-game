@@ -153,7 +153,7 @@ const Dices = ({
 
   //console.log(replay, "+++ replay +++");
 
-  console.log(playersChoosen, "playersChoosen from dice");
+  //console.log(playersChoosen, "playersChoosen from dice");
   //console.log(activePlayerId, "activePlayerId from dice");
 
   const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
@@ -246,7 +246,11 @@ const Dices = ({
       {playersChoosen.map((play: PlayerProps) => ( 
         play.id === activePlayerId ? (
           <div key={play.id} className='dice-player'>
-            <p>{play.name}&nbsp;<FaLongArrowAltRight size={44} />&nbsp;case: {play.caseNumber}</p>
+            <p>{selectedOption === "français" ? "Joueur" 
+              : selectedOption === "english" ? "Player" 
+              : selectedOption === "deutsch" ? "Spieler" 
+              : selectedOption === "italiano" ? "Giocatore" : null}&nbsp;
+              {play.id}&nbsp;<FaLongArrowAltRight size={44} />&nbsp;case: {play.caseNumber}</p>
           </div> 
         ) : null
       ))}
