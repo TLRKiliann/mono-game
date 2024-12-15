@@ -23,7 +23,7 @@ export const defiQuestions_de: DefiProps[] = [
         id: 4,
         title: "Ökologische Wortassoziationen",
         objectif: "Nenne ein Wort, das mit Nachhaltigkeit/Natur/Umwelt zu tun hat.",
-        criteres: "Ein Spieler des gleichen Teams antwortet mit einem verwandten Wort (Assoziation). Finde bis zu 5 Wörter - 3 Minuten"
+        criteres: "Ein Spieler des gleichen Teams antwortet mit einem verwandten Wort (Kontext). Finde bis zu 5 Wörter - 3 Minuten"
     },
     {
         id: 5,

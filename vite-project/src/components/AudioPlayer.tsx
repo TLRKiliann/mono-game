@@ -52,12 +52,15 @@ const AudioPlayer = (): JSX.Element => {
     };
 
     const onEnded = () => {
-        console.log('La musique est terminée.');
+        console.log('Musique is finished.');
+        if (audioRef.current) {
+            audioRef.current.currentTime = 0;
+            audioRef.current.play();
+        }
     };
 
     const handleVisibility = (): void => {
         setIsVisible((prev) => !prev);
-        //console.log(isVisible, "Is visible");
     };
 
     return (

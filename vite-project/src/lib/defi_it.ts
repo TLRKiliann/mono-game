@@ -23,7 +23,7 @@ export const defiQuestions_it: DefiProps[] = [
         id: 4,
         title: "Associazione di Parole Ecologiche",
         objectif: "Dì una parola legata alla sostenibilità/natura/ambiente.",
-        criteres: "Un giocatore della stessa squadra risponde con una parola correlata (connessione). Trova fino a 5 parole - 3 minuti"
+        criteres: "Un giocatore della stessa squadra risponde con una parola correlata (contesto). Trova fino a 5 parole - 3 minuti"
     },
     {
         id: 5,

@@ -52,7 +52,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
     const [response, setResponse] = useState<boolean>(false);
     const [isChecked, setIsChecked] = useState<string>("");
 
-    // cards
+    // cards img
     const imgDefis: string[] = [
         img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9, img_10, 
         img_11, img_12, img_13, img_14, img_15, img_16, img_17, img_18, img_19, 
@@ -73,7 +73,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
         setIsChecked(optionValue);
     };
 
-    // throw dice again if response is correct. Otherwise, he must move back to 4 squares. 
+    // throw dice again automatically, if response is correct. Otherwise, he must move back to 4 squares. 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 

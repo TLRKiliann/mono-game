@@ -6,7 +6,6 @@ import RulesComponent from "./components/RulesComponent";
 import NbrOfPlayers from "./components/NbrOfPlayers";
 import NbrOfLapComponent from "./components/NbrOfLapComponent";
 import ReadyComponent from "./components/ReadyComponent";
-//import EndOfGame from "./components/EndOfGame";
 import Dices from "./components/Dices";
 import { quizQuestions_fr } from "./lib/quiz_fr";
 import { quizQuestions_en } from "./lib/quiz_en";
@@ -50,7 +49,7 @@ function App(): JSX.Element {
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   // count nbre of case by player
-  const [count, setCount] = useState<number>(55);
+  const [count, setCount] = useState<number>(0);
 
   // display value of dice
   const [value, setValue] = useState<number>(1);
@@ -542,16 +541,7 @@ function App(): JSX.Element {
     </div>
   );
 
-  console.log(nbrOfLap, "nbr of lap");
-
-  /* const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
-  if (winner) {
-    return (
-      <div className="div-endofgame">
-        <EndOfGame selectedOption={selectedOption} winner={winner.name} />
-      </div>
-    );
-  }; */
+  //console.log(nbrOfLap, "nbr of lap");
 
   return (
     <div className='frame'>
@@ -716,7 +706,12 @@ function App(): JSX.Element {
                   : selectedOption === "italiano" ? "Sfide" : null}</div>
 
             <div className="div-jeudesociete">
-              <h2>JEU DE SOCIETE</h2>
+              <h2>
+                {selectedOption === "français" ? "JEU DE SOCIETE"
+                  : selectedOption === "english" ? "BOARD GAME" 
+                  : selectedOption === "deutsch" ? "BRETTSPIEL" 
+                  : selectedOption === "italiano" ? "GIOCO DA TAVOLO" : null}
+              </h2>
               <img src={mascotte} width={564} height={564} alt="img mascotte" className="mascotte-img" />
             </div>
 
@@ -762,7 +757,12 @@ function App(): JSX.Element {
                 : selectedOption === "italiano" ? "sanzione" : null}</div>
             
             <div className="div-monecopote">
-              <h2>MON ECO POTE</h2>
+              <h2>
+                {selectedOption === "français" ? "MON ECO POTE"
+                  : selectedOption === "english" ? "MY ECO FRIEND" 
+                  : selectedOption === "deutsch" ? "MEIN ÖKO-FREUND" 
+                  : selectedOption === "italiano" ? "IL MIO AMICO ECOLOGICO" : null}        
+                </h2>
               <img src={myEcoBest} width={564} height={564} alt="img myecobestfriend" className="myecobestfriend-img" />
             </div>
 
@@ -770,7 +770,6 @@ function App(): JSX.Element {
                 : selectedOption === "english" ? "Good Deed" 
                 : selectedOption === "deutsch" ? "Gute Tat" 
                 : selectedOption === "italiano" ? "Buona Azione" : null}</div>
-
           </div>
 
         </div>

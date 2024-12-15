@@ -23,7 +23,7 @@ export const defiQuestions_en: DefiProps[] = [
         id: 4,
         title: "Ecological Word Association",
         objectif: "Say a word related to sustainability/nature/environment.",
-        criteres: "A player from the same team responds with a related word (connection). Find up to 5 words - 3 minutes"
+        criteres: "A player from the same team responds with a related word (context). Find up to 5 words - 3 minutes"
     },
     {
         id: 5,
