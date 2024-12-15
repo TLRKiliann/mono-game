@@ -44,7 +44,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
 
-    // cards
+    // cards img
     const imgSanctions: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, 
         img_9, img_10, img_11, img_12, img_13, img_14, img_15, img_16, img_17, img_18, img_19,
         img_20, img_21, img_22, img_23, img_24, img_25, img_26, img_27, img_28, img_29
@@ -67,15 +67,18 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
         setResponse((prev) => !prev);
     };
 
-    // player must move back to start square if consequence is equal to 0. Otherwise, he must move back of number of squares...
+    /* 
+        Player must move back to start square if consequence is equal to "reset". 
+        Player replay if joker is equal to true.
+        Otherwise, he must move back of number of squares...
+    */
     const handleValidate = (): void => {
         setPlayersChoosen((prev) => 
             prev.map((playerGame: PlayerProps) => {
                 if (playerGame.id === player.id) {
                     if (playerGame.joker === true) {
-                        playerGame.caseQuiz = true;
-                        playerGame.joker = false;
                         setReplay(true);
+                        return { ...playerGame, caseNumber: playerGame.caseNumber, caseQuiz: true, joker: false };
                     }
                     if (findCardSanction.consequence === "reset") {
                         return { ...playerGame, caseNumber: 0 };
