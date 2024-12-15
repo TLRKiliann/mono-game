@@ -6,7 +6,6 @@ import RulesComponent from "./components/RulesComponent";
 import NbrOfPlayers from "./components/NbrOfPlayers";
 import NbrOfLapComponent from "./components/NbrOfLapComponent";
 import ReadyComponent from "./components/ReadyComponent";
-//import EndOfGame from "./components/EndOfGame";
 import Dices from "./components/Dices";
 import { quizQuestions_fr } from "./lib/quiz_fr";
 import { quizQuestions_en } from "./lib/quiz_en";
@@ -50,7 +49,7 @@ function App(): JSX.Element {
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   // count nbre of case by player
-  const [count, setCount] = useState<number>(55);
+  const [count, setCount] = useState<number>(0);
 
   // display value of dice
   const [value, setValue] = useState<number>(1);
@@ -542,16 +541,7 @@ function App(): JSX.Element {
     </div>
   );
 
-  console.log(nbrOfLap, "nbr of lap");
-
-  /* const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
-  if (winner) {
-    return (
-      <div className="div-endofgame">
-        <EndOfGame selectedOption={selectedOption} winner={winner.name} />
-      </div>
-    );
-  }; */
+  //console.log(nbrOfLap, "nbr of lap");
 
   return (
     <div className='frame'>
