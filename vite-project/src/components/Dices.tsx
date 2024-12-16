@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import EndOfGame from './EndOfGame';
 //import gifDice from "../assets/dice.gif";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import pawnAudio from '../assets/audio/pawn.mp3';
+import endOfGameAudio from '../assets/audio/endOfGame.mp3';
 import './styles/Dices.css';
 
 
@@ -97,6 +99,10 @@ const Dices = ({
 
             if (newCounter === nbrOfLap) {
               const updatePlayer = { ...gamer, caseNumber: newCaseNumber % 56, lap: newCounter, gameOver: true };
+              const audio = new Audio(endOfGameAudio);
+              audio.play().catch((error) => {
+                console.error("Erreur lors de la lecture du son :", error);
+              });
               return updatePlayer;
             }
             return { ...gamer, caseNumber: newCaseNumber % 56, lap: newCounter };
@@ -146,6 +152,10 @@ const Dices = ({
           setCountPlayerSix((prev) => prev + newVal);
         }
       }
+      const audio = new Audio(pawnAudio);
+      audio.play().catch((error) => {
+        console.error("Erreur lors de la lecture du son :", error);
+      });
       setActiveCard({ type: null, cardData: null });
       setReplay(false);
     }, 1000);
