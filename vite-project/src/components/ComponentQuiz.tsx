@@ -15,6 +15,8 @@ import img_12 from '../assets/quiz/12.jpg';
 import img_13 from '../assets/quiz/13.jpg';
 import img_14 from '../assets/quiz/14.jpg';
 import img_15 from '../assets/quiz/15.jpg';
+import winAudio from '../assets/audio/win.mp3';
+import lostAudio from '../assets/audio/lost.mp3';
 import './styles/CardDisplayer.css';
 
 type ComponentQuizProps = {
@@ -70,10 +72,18 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                 ? {...playerGame, caseNumber: playerGame.caseNumber, caseQuiz: true}
                 : playerGame));
             setReplay(true);
+            const audio = new Audio(winAudio);
+            audio.play().catch((error) => {
+              console.error("Erreur lors de la lecture du son :", error);
+            });
         } else {
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
                 ? {...playerGame, caseNumber: playerGame.caseNumber === 3 ? playerGame.caseNumber - 3 : playerGame.caseNumber - 4}
                 : playerGame));
+            const audio = new Audio(lostAudio);
+            audio.play().catch((error) => {
+                console.error("Erreur lors de la lecture du son :", error);
+            });
         };
         setOnShow(false);
     };
