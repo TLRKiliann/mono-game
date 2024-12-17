@@ -33,12 +33,15 @@ Récompense quiz et défi => rejouer.
 
 1) refactoriser les state + code splitting ???
 
-2) Fonts (choisir 2x)
+2) favicon dans le signet en-haut (plus tard)
 
-3) favicon dans le signet en-haut (plus tard)
+3) 3 lvl à implémenter + fichiers
 
-4) traductions
+4) animation pour les cards
 
+5) pop-up pour dire que c'est au next player 
+
+6) design des pawns
 
 ---
 
