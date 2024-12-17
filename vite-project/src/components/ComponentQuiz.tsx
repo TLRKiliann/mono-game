@@ -84,6 +84,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
             audio.play().catch((error) => {
                 console.error("Erreur lors de la lecture du son :", error);
             });
+            // setDisplayPlayer(true);
         };
         setOnShow(false);
     };

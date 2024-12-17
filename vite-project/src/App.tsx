@@ -6,7 +6,7 @@ import RulesComponent from "./components/RulesComponent";
 import NbrOfPlayers from "./components/NbrOfPlayers";
 import NbrOfLapComponent from "./components/NbrOfLapComponent";
 import ReadyComponent from "./components/ReadyComponent";
-import Dices from "./components/Dices";
+import Dice from "./components/Dice";
 import { quizQuestions_fr } from "./lib/quiz_fr";
 import { quizQuestions_en } from "./lib/quiz_en";
 import { quizQuestions_de } from "./lib/quiz_de";
@@ -726,7 +726,7 @@ function App(): JSX.Element {
           )}
 
           <div className="div-dice">
-            <Dices 
+            <Dice
               value={value} 
               setValue={setValue} 
               setCount={setCount}

@@ -36,6 +36,8 @@ import img_33 from '../assets/defis/33.jpg';
 import img_34 from '../assets/defis/34.jpg';
 import img_35 from '../assets/defis/35.jpg';
 import img_36 from '../assets/defis/36.jpg';
+import winAudio from '../assets/audio/win.mp3';
+import lostAudio from '../assets/audio/lost.mp3';
 import './styles/CardDisplayer.css';
 
 interface ComponentDefiProps {
@@ -81,12 +83,21 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
                 : playerGame
             ));
             setReplay(true);
+            const audio = new Audio(winAudio);
+            audio.play().catch((error) => {
+              console.error("Erreur lors de la lecture du son :", error);
+            });
         } else {
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
                 ? {...playerGame, caseNumber: playerGame.caseNumber - 4}
                 : playerGame
             ));
+            const audio = new Audio(lostAudio);
+            audio.play().catch((error) => {
+                console.error("Erreur lors de la lecture du son :", error);
+            });
         }
+        // setDisplayPlayer(true);
         setOnShow(false);
     };
 
@@ -202,7 +213,6 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
                     ) : null}
                 </div>
             </div>
-
         </div>
     );
 };

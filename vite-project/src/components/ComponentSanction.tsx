@@ -94,6 +94,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
         audio.play().catch((error) => {
             console.error("Erreur lors de la lecture du son :", error);
         });
+        // setDisplayPlayer(true);
         setOnShow(false);
     };
 
