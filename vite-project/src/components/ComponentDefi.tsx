@@ -36,6 +36,8 @@ import img_33 from '../assets/defis/33.jpg';
 import img_34 from '../assets/defis/34.jpg';
 import img_35 from '../assets/defis/35.jpg';
 import img_36 from '../assets/defis/36.jpg';
+import winFrog from '../assets/win-frog.png';
+import lostFrog from '../assets/sad-frog.png';
 import winAudio from '../assets/audio/win.mp3';
 import lostAudio from '../assets/audio/lost.mp3';
 import './styles/CardDisplayer.css';
@@ -53,6 +55,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
     const [isChecked, setIsChecked] = useState<string>("");
+    const [result, setResult] = useState<"win" | "loose" | null>(null);
 
     // cards img
     const imgDefis: string[] = [
@@ -75,6 +78,22 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
         setIsChecked(optionValue);
     };
 
+    const handleWin = (): JSX.Element => {
+        return (
+            <div className='display-winloose'>
+                <img src={winFrog} width={451} height={612} alt="win frog img" />
+            </div>
+        )
+    };
+
+    const handleLoose = (): JSX.Element => {
+        return (
+            <div className='display-winloose'>
+                <img src={lostFrog} width={451} height={612} alt="lost frog img" />
+            </div>
+        )
+    };
+
     // throw dice again automatically, if response is correct. Otherwise, he must move back to 4 squares. 
     const handleValidate = (): void => {
         if (isChecked === "option1") {
@@ -87,6 +106,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
             audio.play().catch((error) => {
               console.error("Erreur lors de la lecture du son :", error);
             });
+            setResult("win");
         } else {
             setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => playerGame.id === player.id 
                 ? {...playerGame, caseNumber: playerGame.caseNumber - 4}
@@ -96,9 +116,13 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
             audio.play().catch((error) => {
                 console.error("Erreur lors de la lecture du son :", error);
             });
+            setResult("loose");
         }
         // setDisplayPlayer(true);
-        setOnShow(false);
+        setTimeout(() => {
+            setOnShow(false);
+            setResult(null);
+        }, 3000)
     };
 
     if (!imgDefiId) {
@@ -116,6 +140,11 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
                 alt={`Illustration pour la question ${findCardDefi.id}`} 
                 className='img-card' 
             />
+
+            <div>
+                {result === "win" && handleWin()}
+                {result === "loose" && handleLoose()}
+            </div>
 
             <div className='para-box-card'>
                 <div className='div-card-item'>
