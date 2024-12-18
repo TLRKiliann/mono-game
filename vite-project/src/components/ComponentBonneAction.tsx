@@ -72,6 +72,7 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
         audio.play().catch((error) => {
           console.error("Erreur lors de la lecture du son :", error);
         });
+        // setDisplayPlayer(true);
         setOnShow(false);
     };
 
@@ -150,7 +151,6 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
                     
                 </div>
             </div>
-
         </div>
     );
 };
