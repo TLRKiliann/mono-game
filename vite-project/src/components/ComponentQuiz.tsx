@@ -71,7 +71,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
     const handleWin = (): JSX.Element => {
         return (
             <div className='display-winloose'>
-                <img src={winFrog} width={451} height={612} alt="win frog img" />
+                <img src={winFrog} width={460} height={620} alt="win frog img" />
             </div>
         )
     };
@@ -79,7 +79,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
     const handleLoose = (): JSX.Element => {
         return (
             <div className='display-winloose'>
-                <img src={lostFrog} width={451} height={612} alt="lost frog img" />
+                <img src={lostFrog} width={460} height={620} alt="lost frog img" />
             </div>
         )
     };
