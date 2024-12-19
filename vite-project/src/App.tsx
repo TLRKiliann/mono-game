@@ -1,7 +1,7 @@
 import type { BonneActionProps, DefiProps, DisplayCloseProps, PlayerProps, QuizProps, SanctionsProps } from "./lib/types";
 import React, { useEffect, useState } from "react";
 import FullScreen from "./components/FullScreen";
-import WelcomeComponent from "./components/WelcomeComponent";
+import TranslationComponent from "./components/TranslationComponent";
 import RulesComponent from "./components/RulesComponent";
 import NbrOfPlayers from "./components/NbrOfPlayers";
 import NbrOfLapComponent from "./components/NbrOfLapComponent";
@@ -32,6 +32,7 @@ import { FaChessPawn } from "react-icons/fa6";
 import natureImg from "./assets/nature_1.jpg"
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
+
 import './App.css';
 
 function App(): JSX.Element {
@@ -46,6 +47,7 @@ function App(): JSX.Element {
   });
 
   // languages choosen
+  //const [selectedOption, setSelectedOption] = useState<string>("");
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   // count nbre of case by player
@@ -554,7 +556,7 @@ function App(): JSX.Element {
       }
 
       {selectedOption === "" && displayCloseBox.closeFullScreen === false ? (
-        <WelcomeComponent setSelectedOption={setSelectedOption} />
+        <TranslationComponent setSelectedOption={setSelectedOption} />
         ) : null
       }
 

@@ -25,7 +25,7 @@ import img_22 from '../assets/actions/22.jpg';
 import img_23 from '../assets/actions/23.jpg';
 import img_24 from '../assets/actions/24.jpg';
 import img_25 from '../assets/actions/25.jpg';
-import winAudio from '../assets/audio/win.mp3';
+import bonneActionAudio from '../assets/audio/bonne-action.mp3';
 import './styles/CardDisplayer.css';
 
 type ComponentQuizProps = {
@@ -68,7 +68,7 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
             }
             return playerGame;
         }));
-        const audio = new Audio(winAudio);
+        const audio = new Audio(bonneActionAudio);
         audio.play().catch((error) => {
           console.error("Erreur lors de la lecture du son :", error);
         });

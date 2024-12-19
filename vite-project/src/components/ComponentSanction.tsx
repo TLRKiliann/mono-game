@@ -29,7 +29,8 @@ import img_26 from '../assets/sanctions/26.jpg';
 import img_27 from '../assets/sanctions/27.jpg';
 import img_28 from '../assets/sanctions/28.jpg';
 import img_29 from '../assets/sanctions/29.jpg';
-import lostAudio from '../assets/audio/lost.mp3';
+import sanctionAudio from '../assets/audio/sanctions.mp3';
+import resetAudio from '../assets/audio/reset.mp3';
 import './styles/CardDisplayer.css';
 
 type ComponentQuizProps = {
@@ -79,21 +80,29 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                 if (playerGame.id === player.id) {
                     if (playerGame.joker === true) {
                         setReplay(true);
+                        const audio = new Audio(sanctionAudio);
+                        audio.play().catch((error) => {
+                            console.error("Erreur lors de la lecture du son :", error);
+                        });
                         return { ...playerGame, caseNumber: playerGame.caseNumber, caseQuiz: true, joker: false };
                     }
                     if (findCardSanction.consequence === "reset") {
+                        const audio = new Audio(resetAudio);
+                        audio.play().catch((error) => {
+                            console.error("Erreur lors de la lecture du son :", error);
+                        });
                         return { ...playerGame, caseNumber: 0 };
                     } else {
+                        const audio = new Audio(sanctionAudio);
+                        audio.play().catch((error) => {
+                            console.error("Erreur lors de la lecture du son :", error);
+                        });
                         return { ...playerGame, caseNumber: playerGame.caseNumber - Number(findCardSanction.consequence) };
                     }
                 }
                 return playerGame;
             })
         );
-        const audio = new Audio(lostAudio);
-        audio.play().catch((error) => {
-            console.error("Erreur lors de la lecture du son :", error);
-        });
         // setDisplayPlayer(true);
         setOnShow(false);
     };

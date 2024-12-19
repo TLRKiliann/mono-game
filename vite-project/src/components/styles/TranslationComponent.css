@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     
     background: linear-gradient(30deg, rgba(17, 83, 72, 0.6) 10%, rgba(17, 83, 72, 1) 50%, rgba(17, 83, 72, 0.6) 90%);
     border: none;
@@ -42,18 +42,22 @@
 }
 
 .react-select {
+    width: 110px;
     margin-bottom: 20px;
 }
 
 .custom-option {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: start;
 
+    font-size: 0.8rem;
     color: #333;
-    padding: 5px 10px;
     cursor: pointer;
+    padding: 5px 0;
 }
 
 .custom-option:hover {
