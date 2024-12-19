@@ -29,7 +29,7 @@ import img_26 from '../assets/sanctions/26.jpg';
 import img_27 from '../assets/sanctions/27.jpg';
 import img_28 from '../assets/sanctions/28.jpg';
 import img_29 from '../assets/sanctions/29.jpg';
-import lostAudio from '../assets/audio/lost.mp3';
+import sanctionAudio from '../assets/audio/sanctions.mp3';
 import './styles/CardDisplayer.css';
 
 type ComponentQuizProps = {
@@ -90,7 +90,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                 return playerGame;
             })
         );
-        const audio = new Audio(lostAudio);
+        const audio = new Audio(sanctionAudio);
         audio.play().catch((error) => {
             console.error("Erreur lors de la lecture du son :", error);
         });
