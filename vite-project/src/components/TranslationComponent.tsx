@@ -53,7 +53,7 @@ const WelcomeComponent = ({ setSelectedOption }: SelectOptionProps): JSX.Element
     return (
         <div className="div-languages">
 
-            <h1>Languages</h1>
+            <h1>Choisir une langue: </h1>
 
             <Select
                 styles={{
