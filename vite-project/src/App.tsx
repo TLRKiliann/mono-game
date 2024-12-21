@@ -29,10 +29,9 @@ import ComponentBonneAction from "./components/ComponentBonneAction";
 import ComponentSanction from "./components/ComponentSanction";
 import AudioPlayer from "./components/AudioPlayer";
 import { FaChessPawn } from "react-icons/fa6";
-import natureImg from "./assets/nature_1.jpg"
+import natureImg from "./assets/nature_1.jpg";
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
-
 import './App.css';
 
 function App(): JSX.Element {
@@ -46,12 +45,11 @@ function App(): JSX.Element {
     closeReady: true
   });
 
-  // languages choosen
-  //const [selectedOption, setSelectedOption] = useState<string>("");
+  // for translation
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   // count nbre of case by player
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(2);
 
   // display value of dice
   const [value, setValue] = useState<number>(1);
@@ -90,7 +88,7 @@ function App(): JSX.Element {
       gameOver: false,
       caseQuiz: false,
       joker: false,
-      icon: <FaChessPawn size={16} />
+      icon: <FaChessPawn size={40} className="pawn-player-1" />
     },
     {
       id: 2,
@@ -101,7 +99,7 @@ function App(): JSX.Element {
       gameOver: false,
       caseQuiz: false,
       joker: false,
-      icon: <FaChessPawn size={16} />
+      icon: <FaChessPawn size={40} className="pawn-player-2" />
     },
     {
       id: 3,
@@ -112,7 +110,7 @@ function App(): JSX.Element {
       gameOver: false,
       caseQuiz: false,
       joker: false,
-      icon: <FaChessPawn size={16} />
+      icon: <FaChessPawn size={40} className="pawn-player-3" />
     },
     {
       id: 4,
@@ -123,7 +121,7 @@ function App(): JSX.Element {
       gameOver: false,
       caseQuiz: false,
       joker: false,
-      icon: <FaChessPawn size={16} />
+      icon: <FaChessPawn size={40} className="pawn-player-4" />
     },
     {
       id: 5,
@@ -134,7 +132,7 @@ function App(): JSX.Element {
       gameOver: false,
       caseQuiz: false,
       joker: false,
-      icon: <FaChessPawn size={16} />
+      icon: <FaChessPawn size={40} className="pawn-player-5" />
     },
     {
       id: 6,
@@ -145,7 +143,7 @@ function App(): JSX.Element {
       gameOver: false,
       caseQuiz: false,
       joker: false,
-      icon: <FaChessPawn size={16} />
+      icon: <FaChessPawn size={40} className="pawn-player-6" />
     }
   ]);
 
@@ -332,13 +330,13 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{
-        background: player.color,
-        width: activePlayerId === player.id ? "36px" : "24px",
-        height: activePlayerId === player.id ? "36px" : "24px"}} 
-        className="span-pawn"
-      >
-        {player.id} {player.icon}
+      <div style={{background: activePlayerId === player.id ? player.color : "none"}} className="div-pawn">
+        <span className="number-span">
+          {player.id}
+        </span>
+        <span className="pawn-span">
+          {player.icon}
+        </span>
       </div>
     )
   };
@@ -390,13 +388,13 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
   
     return (
-      <div style={{
-        background: player.color,
-        width: activePlayerId === player.id ? "36px" : "24px",
-        height: activePlayerId === player.id ? "36px" : "24px"}} 
-        className="span-pawn"
-      >
-        {player.id} {player.icon}
+      <div style={{background: activePlayerId === player.id ? player.color : "none"}} className="div-pawn">
+        <span className="number-span">
+          {player.id}
+        </span>
+        <span className="pawn-span">
+          {player.icon}
+        </span>
       </div>
     );
   };
@@ -449,13 +447,13 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{
-        background: player.color,
-        width: activePlayerId === player.id ? "36px" : "24px",
-        height: activePlayerId === player.id ? "36px" : "24px"}} 
-        className="span-pawn"
-      >
-        {player.id} {player.icon}
+      <div style={{background: activePlayerId === player.id ? player.color : "none"}} className="div-pawn">
+        <span className="number-span">
+          {player.id}
+        </span>
+        <span className="pawn-span">
+          {player.icon}
+        </span>
       </div>
     )
   };
@@ -513,13 +511,13 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{
-        background: player.color,
-        width: activePlayerId === player.id ? "36px" : "24px",
-        height: activePlayerId === player.id ? "36px" : "24px"}} 
-        className="span-pawn"
-      >
-        {player.id} {player.icon}
+      <div style={{background: activePlayerId === player.id ? player.color : "none"}} className="div-pawn">
+        <span className="number-span">
+          {player.id}
+        </span>
+        <span className="pawn-span">
+          {player.icon}
+        </span>
       </div>
     )
   };
@@ -597,11 +595,18 @@ function App(): JSX.Element {
         
           <p className="first-squares-ptwo">Start</p>
 
-          <div className="span-pawn-firstcase">{playersChoosen.map((players: PlayerProps) => {
+          <div className="span-pawn-case">{playersChoosen.map((players: PlayerProps) => {
             if (players.caseNumber === 0) return (
-              <p key={players.id} style={{ background: players.color }} className="span-pawn">
-                {players.id} {players.icon}
-              </p>
+
+              <div key={players.id} style={{ background: players.color }} className="div-pawn">
+                <span className="number-span">
+                  {players.id}
+                </span> 
+                <span className="pawn-span">
+                  {players.icon}
+                </span>
+              </div>
+              
             );
             else return null;
           })}

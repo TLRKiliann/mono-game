@@ -381,22 +381,74 @@
   opacity: 0.8;
 }
 
-.span-pawn {
-  width: 24px;
-  height: 24px;
+.span-pawn-firstcase {
+  display: flex;
+  flex-direction: row;
+}
+
+/* width - height adjusted */
+.div-pawn {
+  position: relative;
+
+  width: 40px;
+  height: 40px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border: 1px solid #333;
+  font-size: 1.0rem;
+  font-weight: bold;
+
+  background: none;
   border-radius: 100%;
-  box-shadow: 5px 5px 5px -2px #333;
-  color: #333;
+  filter: drop-shadow(7px -5px 1px rgba(0, 0, 0, 0.3));
+
+  color: #fff;
   margin: auto;
+
+  /* border: 1px solid cyan; */
 }
 
-.span-pawn-firstcase {
+.div-pawn .number-span {
+  position: absolute;
+
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 100%;
+  filter: drop-shadow(2px -2px 1px rgba(0, 0, 0, 0.3));
+  /* border: 1px solid violet; */
+}
+
+.div-pawn .pawn-span {
+  /* border: 1px solid lightgreen; */
+}
+
+.pawn-player-1 {
+  color: #ff4500;
+}
+
+.pawn-player-2 {
+  color: orange;
+}
+
+.pawn-player-3 {
+  color: green;
+}
+
+.pawn-player-4 {
+  color: blueviolet;
+}
+
+.pawn-player-5 {
+  color: cadetblue;
+}
+
+.pawn-player-6 {
+  color: dodgerblue;
 }
