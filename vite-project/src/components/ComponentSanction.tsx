@@ -103,7 +103,6 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, pla
                 return playerGame;
             })
         );
-        // setDisplayPlayer(true);
         setOnShow(false);
     };
 

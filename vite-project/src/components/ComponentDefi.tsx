@@ -69,15 +69,18 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
     let defiNumber: number = findCardDefi.id;
     const imgDefiId = imgDefis[defiNumber - 1];
     
+    // display response of question
     const handleResponse = (): void => {
         setResponse((prev) => !prev);
     };
 
+    // correct or wrong option of select
     const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const optionValue = event.target.value;
         setIsChecked(optionValue);
     };
 
+    // img if player win
     const handleWin = (): JSX.Element => {
         return (
             <div className='display-winloose'>
@@ -86,6 +89,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
         )
     };
 
+    // img if player loose
     const handleLoose = (): JSX.Element => {
         return (
             <div className='display-winloose'>
@@ -118,7 +122,6 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
             });
             setResult("loose");
         }
-        // setDisplayPlayer(true);
         setTimeout(() => {
             setOnShow(false);
             setResult(null);
