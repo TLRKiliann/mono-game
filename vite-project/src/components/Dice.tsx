@@ -235,17 +235,19 @@ const Dice = ({
           ))}
         </div>
       )}
-      {playersChoosen.map((play: PlayerProps) => ( 
-        play.id === activePlayerId ? (
-          <div key={play.id} className='dice-player'>
-            <p>{selectedOption === "français" ? "Joueur" 
-              : selectedOption === "english" ? "Player" 
-              : selectedOption === "deutsch" ? "Spieler" 
-              : selectedOption === "italiano" ? "Giocatore" : null}&nbsp;
-              {play.id}&nbsp;<FaLongArrowAltRight size={44} />&nbsp;It's your turn!</p>
-          </div> 
-        ) : null
-      ))}
+      <div>
+        {playersChoosen.map((play: PlayerProps) => ( 
+          play.id === activePlayerId ? (
+            <div key={play.id} className='dice-player'>
+              <p>{selectedOption === "français" ? "Joueur" 
+                : selectedOption === "english" ? "Player" 
+                : selectedOption === "deutsch" ? "Spieler" 
+                : selectedOption === "italiano" ? "Giocatore" : null}&nbsp;
+                {play.id}&nbsp;<FaLongArrowAltRight size={44} />&nbsp;It's your turn!</p>
+            </div> 
+          ) : null
+        ))}
+      </div>
 
     </div>
   );
