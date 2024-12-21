@@ -1,12 +1,10 @@
 import type { PlayerProps } from '../lib/types';
 import { useEffect, useState } from 'react';
 import EndOfGame from './EndOfGame';
-//import gifDice from "../assets/dice.gif";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import pawnAudio from '../assets/audio/pawn.mp3';
 import endOfGameAudio from '../assets/audio/endOfGame.mp3';
 import './styles/Dice.css';
-
 
 type ValProps = {
   playersChoosen: PlayerProps[];
@@ -156,7 +154,7 @@ const Dice = ({
         console.error("Erreur lors de la lecture du son :", error);
       });
       setActiveCard({ type: null, cardData: null });
-      setReplay(false);
+      setReplay(false);      
     }, 1000);
   };
 
@@ -178,16 +176,10 @@ const Dice = ({
     <div className='dice-container'>
       {isRolling === true ? (
         <div>
-          <div>
-            {/* <img src={gifDice} width={120} height={120} className="dice-gif" alt="dice anim" /> */}
-          </div>
           <div className='dice-box'>
             {playersChoosen.map((player: PlayerProps) => (
               player.id === activePlayerId ? (
-                <div
-                  key={player.id}
-                  className="dice_2"
-                >
+                <div key={player.id} className="dice_2">
                   <div className="front faceOfDice1">
                     <span></span>
                   </div>
