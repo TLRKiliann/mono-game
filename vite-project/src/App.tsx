@@ -49,7 +49,7 @@ function App(): JSX.Element {
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   // count nbre of case by player
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(55);
 
   // display value of dice
   const [value, setValue] = useState<number>(1);
