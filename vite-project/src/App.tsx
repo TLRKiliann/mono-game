@@ -255,7 +255,6 @@ function App(): JSX.Element {
             findCardQuiz={findCard as QuizProps}
             player={player}
             setPlayersChoosen={setPlayersChoosen}
-            replay={replay}
             setReplay={setReplay}
             selectedOption={selectedOption} 
           />
@@ -266,7 +265,6 @@ function App(): JSX.Element {
             findCardDefi={findCard as DefiProps}
             player={player}
             setPlayersChoosen={setPlayersChoosen}
-            replay={replay}
             setReplay={setReplay}
             selectedOption={selectedOption}
           />
@@ -404,17 +402,17 @@ function App(): JSX.Element {
   const LeftSquares: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, playersChoosen, additionalContent }) => (
     <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" : caseNumber === 9 ? "action-color" : null}`}>
-        <div className="caseNumber">
-          {caseNumber}
-          {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
-            ? <PlayerSpanLeft 
-                key={player.id} 
-                player={player}
-              /> 
-            : null
-          )}
-        </div>
-        {additionalContent}
+      <div className="caseNumber">
+        {caseNumber}
+        {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
+          ? <PlayerSpanLeft 
+              key={player.id} 
+              player={player}
+            /> 
+          : null
+        )}
+      </div>
+      {additionalContent}
     </div>
   );
   
@@ -599,7 +597,6 @@ function App(): JSX.Element {
 
           <div className="span-pawn-firstcase">{playersChoosen.map((player: PlayerProps) => {
             if (player.caseNumber === 0) return (
-
               <div key={player.id} style={{ background: player.bgColor }} className="div-pawn">
                 <span className="number-span">
                   {player.id}

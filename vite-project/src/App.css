@@ -41,9 +41,6 @@
 }
 
 .squares {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
   width: 12%;
   height: 100%;
   
@@ -56,10 +53,6 @@
 .squares-side {
   width: 99%;
   height: 20%;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
   background: #f5eeeb;
   border: none;
@@ -69,30 +62,51 @@
 }
 
 .square-top {
+  display: flex;
+  flex-direction: column;
+
   border-bottom: 1px solid #c1c1c1;
   border-radius: 0 0 7px 7px;
 }
 
+.square-top h4 {
+  margin: auto;
+}
+
 .square-bottom {
+  display: flex;
+  flex-direction: column;
+
   border-top: 1px solid #c1c1c1;
   border-radius: 7px 7px 0 0;
 }
 
+.square-bottom h4 {
+  margin: auto;
+}
+
 .squares-lside {
+  display: flex;
+  flex-direction: column;
+
   border-right: 1px solid #c1c1c1;
   border-radius: 0 7px 7px 0;
 }
 
+.squares-lside h4 {
+  text-align: center;
+}
+
 .squares-rside {
+  display: flex;
+  flex-direction: column;
+
   border-left: 1px solid #c1c1c1;
   border-radius: 7px 0 0 7px;
 }
 
-.first-square {
-  background: rgba(0, 0, 255, 0.25);
-  border: none;
-  border-bottom: 1px solid #c1c1c1;
-  border-radius: 0px;
+.squares-rside h4 {
+  text-align: center;
 }
 
 .squares:last-child {
@@ -100,29 +114,25 @@
   border-radius: 0px;
 }
 
-/* left & right square */
-/* .squares-side a {
+/* sounds good */
+.caseNumber {
+  /* display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  width: 90%;
-  margin: auto;
-  margin-top: 4px;
-  margin-left: 4px;
-
-  border: 1px solid #333;
-} */
-
-.squares-side h4 {
-  text-align: center;
-  margin: 4px;
+  max-height: 60%;
 }
 
 .first-squares {
   width: 12%;
   height: 100%;
+
   background: #f5f5f5;
   border-right: 1px solid #c1c1c1;
+  border-radius: 0px;
   color: #333;
 }
 
@@ -140,15 +150,7 @@
   text-shadow: 1px 1px 2px #777;
 
   margin: auto;
-  margin-bottom: 8px;
-  margin-left: 4px;
-}
-
-.caseNumber {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  margin: 4px;
+  margin-top: 10px;
 }
 
 .squares h4 {
@@ -345,7 +347,7 @@
 .span-pawn-firstcase {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   margin-top: -50px;
 }
 
