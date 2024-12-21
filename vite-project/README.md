@@ -2,48 +2,12 @@
 
 ## Rules
 
-1. Un defi gagné permet de pouvoir rejouer.
-  
-2. Un Quiz bien repondu permet de rejouer
-
-3. Un sanction vous fait reculer de 5 cases
-
-4. Un bonne cause vous fait avancer de 5 cases.
-
-5. Principe du jeu est de faire X fois le tour du jeu (A decider à l'avance selon la longueur du jeu).
-
-Pour les défis, si vous refusez de jouer, vous reculez de 4 cases
-
-"good actions" et "sanctions" tu verras pour chacun la conséquence. il faudrait donc une regle par carte.
-Récompense quiz et défi => rejouer.
-
----
-
-- quiz réussi - le même player peut rejouer.
-- quiz loupé - ???
-
-- défi réussi - le même player peut rejouer - (ou + 4 ?)
-## défi loupé - 4 ? (applied)
-
-## sanction loupé - 5 (applied)
-- sanction réussi - nbre de case à avancer
-
-## bonne action réussi + 5 (applied)
-- bonne action loupé - ???
-
-1) refactoriser les state + code splitting ???
-
-2) favicon dans le signet en-haut (plus tard)
-
-3) 3 lvl à implémenter + fichiers
-
-4) animation pour les cards
-
-5) pop-up pour dire que c'est au next player 
-
-6) design des pawns
-
----
+1. ajouter avec le joker obtenu sur une bonne action pour une sanction
+2. bug à résoudre avec affichage du next player
+3. texte à faire ressortir
+4. refactoriser les state + code splitting ???
+5. favicon dans le signet en-haut (plus tard)
+6. 3 lvl à implémenter + fichiers
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
