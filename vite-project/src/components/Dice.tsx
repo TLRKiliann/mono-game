@@ -73,27 +73,20 @@ const Dice = ({
     setIsRolling(true);
     const newVal = Math.floor(Math.random() * 6) + 1;
     setValue(newVal);
-
     // reset to false the replay value if player is in the square of "quiz"
     setPlayersChoosen((prevPlayers) => prevPlayers.map((gamer: PlayerProps) => gamer.id === id && gamer.caseQuiz === true 
       ? {...gamer, caseQuiz: false} : gamer
     ));
-
     setTimeout(() => {
       setIsRolling(false);
       setCount((prev) => prev + newVal);
-
       // one more lap to go (max 5 laps)
       setPlayersChoosen((prevPlayers) => prevPlayers.map((gamer: PlayerProps) => {
-        
         if (gamer.id === id) {
-          
           const newCaseNumber = gamer.caseNumber + newVal;
           let newCounter = gamer.lap || 0;
-
           if (newCaseNumber > 55) {
             newCounter += 1;
-
             if (newCounter === nbrOfLap) {
               const updatePlayer = { ...gamer, caseNumber: newCaseNumber % 56, lap: newCounter, gameOver: true };
               const audio = new Audio(endOfGameAudio);
@@ -108,7 +101,6 @@ const Dice = ({
         }
         return gamer;
       }));
-    
       // change score
       if (activePlayerId === 1) {
         replay === false ? setActivePlayerId(2) : setActivePlayerId(1);
@@ -159,7 +151,6 @@ const Dice = ({
   };
 
   //console.log(replay, "+++ replay +++");
-
   //console.log(playersChoosen, "playersChoosen from dice");
   //console.log(activePlayerId, "activePlayerId from dice");
 
@@ -251,7 +242,7 @@ const Dice = ({
               : selectedOption === "english" ? "Player" 
               : selectedOption === "deutsch" ? "Spieler" 
               : selectedOption === "italiano" ? "Giocatore" : null}&nbsp;
-              {play.id}&nbsp;<FaLongArrowAltRight size={44} />&nbsp;case: {play.caseNumber}</p>
+              {play.id}&nbsp;<FaLongArrowAltRight size={44} />&nbsp;It's your turn!</p>
           </div> 
         ) : null
       ))}

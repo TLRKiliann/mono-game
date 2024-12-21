@@ -110,10 +110,12 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
             });
             setResult("loose");
         };
-        /* setTimeout(() => {
-            setOnShow(false);
+        // some trouble
+        setTimeout(() => {
             setResult(null);
-        }, 3000) */
+            setOnShow(false);
+            //setNextPlayer(true);
+        }, 3000);
     };
 
     if (!imgQuizId) {
@@ -125,7 +127,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
             <img 
                 src={imgQuizId} 
                 width={1024} 
-                height={1024} 
+                height={1024}
                 alt={`Illustration pour la question ${findCardQuiz.id}`} 
                 className='img-card' 
             />
@@ -134,8 +136,6 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                 {result === "win" && handleWin()}
                 {result === "loose" && handleLoose()}
             </div>
-
-
 
             <div className='para-box-card'>
                 <div className='div-card-item'>
