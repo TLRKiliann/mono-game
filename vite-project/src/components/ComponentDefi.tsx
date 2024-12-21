@@ -68,16 +68,19 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
     // card corresponds of question nbr (36 cards - 20 questions)
     let defiNumber: number = findCardDefi.id;
     const imgDefiId = imgDefis[defiNumber - 1];
-    
+
+    // display response of question
     const handleResponse = (): void => {
         setResponse((prev) => !prev);
     };
 
+    // correct or wrong option of select
     const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const optionValue = event.target.value;
         setIsChecked(optionValue);
     };
 
+    // img if player win
     const handleWin = (): JSX.Element => {
         return (
             <div className='display-winloose'>
@@ -86,6 +89,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
         )
     };
 
+    // img if player loose
     const handleLoose = (): JSX.Element => {
         return (
             <div className='display-winloose'>
@@ -118,18 +122,17 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
             });
             setResult("loose");
         }
-        // setDisplayPlayer(true);
+        // some trouble
         setTimeout(() => {
-            setOnShow(false);
             setResult(null);
-        }, 3000)
+            setOnShow(false);
+            //setNextPlayer(true);
+        }, 3000);
     };
 
     if (!imgDefiId) {
         return <p>Image non trouvée pour cette question.</p>;
     };
-
-    console.log(player.caseNumber, "player.caseNumber");
 
     return (
         <div className={`${onShow === true ? 'card-displayer' : 'card-hidden'}`}>

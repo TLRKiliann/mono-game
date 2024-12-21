@@ -59,15 +59,18 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
         };
     }, [quizNumber]);
 
+    // display response of question
     const handleResponse = (): void => {
         setResponse((prev) => !prev);
     };
 
+    // correct or wrong option of select
     const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const optionValue = event.target.value;
         setIsChecked(optionValue);
     };
 
+    // img if player win
     const handleWin = (): JSX.Element => {
         return (
             <div className='display-winloose'>
@@ -76,6 +79,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
         )
     };
 
+    // img if player loose
     const handleLoose = (): JSX.Element => {
         return (
             <div className='display-winloose'>
@@ -105,13 +109,13 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                 console.error("Erreur lors de la lecture du son :", error);
             });
             setResult("loose");
-            // setDisplayPlayer(true);
         };
+        // some trouble
         setTimeout(() => {
-            setOnShow(false);
             setResult(null);
-        }, 3000)
-        //clearTimeout(timer);
+            setOnShow(false);
+            //setNextPlayer(true);
+        }, 3000);
     };
 
     if (!imgQuizId) {
@@ -123,7 +127,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
             <img 
                 src={imgQuizId} 
                 width={1024} 
-                height={1024} 
+                height={1024}
                 alt={`Illustration pour la question ${findCardQuiz.id}`} 
                 className='img-card' 
             />

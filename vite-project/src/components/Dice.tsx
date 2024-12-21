@@ -1,12 +1,10 @@
 import type { PlayerProps } from '../lib/types';
 import { useEffect, useState } from 'react';
 import EndOfGame from './EndOfGame';
-//import gifDice from "../assets/dice.gif";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import pawnAudio from '../assets/audio/pawn.mp3';
 import endOfGameAudio from '../assets/audio/endOfGame.mp3';
 import './styles/Dice.css';
-
 
 type ValProps = {
   playersChoosen: PlayerProps[];
@@ -75,27 +73,20 @@ const Dice = ({
     setIsRolling(true);
     const newVal = Math.floor(Math.random() * 6) + 1;
     setValue(newVal);
-
     // reset to false the replay value if player is in the square of "quiz"
     setPlayersChoosen((prevPlayers) => prevPlayers.map((gamer: PlayerProps) => gamer.id === id && gamer.caseQuiz === true 
       ? {...gamer, caseQuiz: false} : gamer
     ));
-
     setTimeout(() => {
       setIsRolling(false);
       setCount((prev) => prev + newVal);
-
       // one more lap to go (max 5 laps)
       setPlayersChoosen((prevPlayers) => prevPlayers.map((gamer: PlayerProps) => {
-        
         if (gamer.id === id) {
-          
           const newCaseNumber = gamer.caseNumber + newVal;
           let newCounter = gamer.lap || 0;
-
           if (newCaseNumber > 55) {
             newCounter += 1;
-
             if (newCounter === nbrOfLap) {
               const updatePlayer = { ...gamer, caseNumber: newCaseNumber % 56, lap: newCounter, gameOver: true };
               const audio = new Audio(endOfGameAudio);
@@ -110,7 +101,6 @@ const Dice = ({
         }
         return gamer;
       }));
-    
       // change score
       if (activePlayerId === 1) {
         replay === false ? setActivePlayerId(2) : setActivePlayerId(1);
@@ -156,12 +146,11 @@ const Dice = ({
         console.error("Erreur lors de la lecture du son :", error);
       });
       setActiveCard({ type: null, cardData: null });
-      setReplay(false);
+      setReplay(false);      
     }, 1000);
   };
 
   //console.log(replay, "+++ replay +++");
-
   //console.log(playersChoosen, "playersChoosen from dice");
   //console.log(activePlayerId, "activePlayerId from dice");
 
@@ -178,16 +167,10 @@ const Dice = ({
     <div className='dice-container'>
       {isRolling === true ? (
         <div>
-          <div>
-            {/* <img src={gifDice} width={120} height={120} className="dice-gif" alt="dice anim" /> */}
-          </div>
           <div className='dice-box'>
             {playersChoosen.map((player: PlayerProps) => (
               player.id === activePlayerId ? (
-                <div
-                  key={player.id}
-                  className="dice_2"
-                >
+                <div key={player.id} className="dice_2">
                   <div className="front faceOfDice1">
                     <span></span>
                   </div>
@@ -259,7 +242,7 @@ const Dice = ({
               : selectedOption === "english" ? "Player" 
               : selectedOption === "deutsch" ? "Spieler" 
               : selectedOption === "italiano" ? "Giocatore" : null}&nbsp;
-              {play.id}&nbsp;<FaLongArrowAltRight size={44} />&nbsp;case: {play.caseNumber}</p>
+              {play.id}&nbsp;<FaLongArrowAltRight size={44} />&nbsp;It's your turn!</p>
           </div> 
         ) : null
       ))}

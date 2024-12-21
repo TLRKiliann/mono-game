@@ -29,10 +29,9 @@ import ComponentBonneAction from "./components/ComponentBonneAction";
 import ComponentSanction from "./components/ComponentSanction";
 import AudioPlayer from "./components/AudioPlayer";
 import { FaChessPawn } from "react-icons/fa6";
-import natureImg from "./assets/nature_1.jpg"
+import natureImg from "./assets/nature_1.jpg";
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
-
 import './App.css';
 
 function App(): JSX.Element {
@@ -46,8 +45,7 @@ function App(): JSX.Element {
     closeReady: true
   });
 
-  // languages choosen
-  //const [selectedOption, setSelectedOption] = useState<string>("");
+  // for translation
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   // count nbre of case by player
@@ -84,68 +82,68 @@ function App(): JSX.Element {
     {
       id: 1,
       name: "Player 1",
-      color: "#A2D2DF",
+      bgColor: "#ffc6b1",
       caseNumber: count,
       lap: 0,
       gameOver: false,
       caseQuiz: false,
       joker: false,
-      icon: <FaChessPawn size={16} />
+      icon: <FaChessPawn size={40} className="pawn-player-1" />
     },
     {
       id: 2,
       name: "Player 2",
-      color: "#dcbbdb",
+      bgColor: "#ffff9d",
       caseNumber: count,
       lap: 0,
       gameOver: false,
       caseQuiz: false,
       joker: false,
-      icon: <FaChessPawn size={16} />
+      icon: <FaChessPawn size={40} className="pawn-player-2" />
     },
     {
       id: 3,
       name: "Player 3",
-      color: "#ffb2ae",
+      bgColor: "#dbffa5",
       caseNumber: count,
       lap: 0,
       gameOver: false,
       caseQuiz: false,
       joker: false,
-      icon: <FaChessPawn size={16} />
+      icon: <FaChessPawn size={40} className="pawn-player-3" />
     },
     {
       id: 4,
       name: "Player 4",
-      color: "#cac7ff",
+      bgColor: "#f7c5f7",
       caseNumber: count,
       lap: 0,
       gameOver: false,
       caseQuiz: false,
       joker: false,
-      icon: <FaChessPawn size={16} />
+      icon: <FaChessPawn size={40} className="pawn-player-4" />
     },
     {
       id: 5,
       name: "Player 5",
-      color: "#fefee3",
+      bgColor: "#c1dada",
       caseNumber: count,
       lap: 0,
       gameOver: false,
       caseQuiz: false,
       joker: false,
-      icon: <FaChessPawn size={16} />
+      icon: <FaChessPawn size={40} className="pawn-player-5" />
     },
     {
       id: 6,
       name: "Player 6",
-      color: "#A7D477",
+      bgColor: "#bbddff",
       caseNumber: count,
       lap: 0,
       gameOver: false,
       caseQuiz: false,
       joker: false,
-      icon: <FaChessPawn size={16} />
+      icon: <FaChessPawn size={40} className="pawn-player-6" />
     }
   ]);
 
@@ -332,13 +330,13 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{
-        background: player.color,
-        width: activePlayerId === player.id ? "36px" : "24px",
-        height: activePlayerId === player.id ? "36px" : "24px"}} 
-        className="span-pawn"
-      >
-        {player.id} {player.icon}
+      <div style={{background: activePlayerId === player.id ? player.bgColor : "none"}} className="div-pawn">
+        <span className="number-span">
+          {player.id}
+        </span>
+        <span className="pawn-span">
+          {player.icon}
+        </span>
       </div>
     )
   };
@@ -390,13 +388,13 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
   
     return (
-      <div style={{
-        background: player.color,
-        width: activePlayerId === player.id ? "36px" : "24px",
-        height: activePlayerId === player.id ? "36px" : "24px"}} 
-        className="span-pawn"
-      >
-        {player.id} {player.icon}
+      <div style={{background: activePlayerId === player.id ? player.bgColor : "none"}} className="div-pawn">
+        <span className="number-span">
+          {player.id}
+        </span>
+        <span className="pawn-span">
+          {player.icon}
+        </span>
       </div>
     );
   };
@@ -404,17 +402,17 @@ function App(): JSX.Element {
   const LeftSquares: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
     { caseNumber, playersChoosen, additionalContent }) => (
     <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" : caseNumber === 9 ? "action-color" : null}`}>
-        <div className="caseNumber">
-          {caseNumber}
-          {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
-            ? <PlayerSpanLeft 
-                key={player.id} 
-                player={player}
-              /> 
-            : null
-          )}
-        </div>
-        {additionalContent}
+      <div className="caseNumber">
+        {caseNumber}
+        {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
+          ? <PlayerSpanLeft 
+              key={player.id} 
+              player={player}
+            /> 
+          : null
+        )}
+      </div>
+      {additionalContent}
     </div>
   );
   
@@ -449,13 +447,13 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{
-        background: player.color,
-        width: activePlayerId === player.id ? "36px" : "24px",
-        height: activePlayerId === player.id ? "36px" : "24px"}} 
-        className="span-pawn"
-      >
-        {player.id} {player.icon}
+      <div style={{background: activePlayerId === player.id ? player.bgColor : "none"}} className="div-pawn">
+        <span className="number-span">
+          {player.id}
+        </span>
+        <span className="pawn-span">
+          {player.icon}
+        </span>
       </div>
     )
   };
@@ -513,13 +511,13 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{
-        background: player.color,
-        width: activePlayerId === player.id ? "36px" : "24px",
-        height: activePlayerId === player.id ? "36px" : "24px"}} 
-        className="span-pawn"
-      >
-        {player.id} {player.icon}
+      <div style={{background: activePlayerId === player.id ? player.bgColor : "none"}} className="div-pawn">
+        <span className="number-span">
+          {player.id}
+        </span>
+        <span className="pawn-span">
+          {player.icon}
+        </span>
       </div>
     )
   };
@@ -597,11 +595,17 @@ function App(): JSX.Element {
         
           <p className="first-squares-ptwo">Start</p>
 
-          <div className="span-pawn-firstcase">{playersChoosen.map((players: PlayerProps) => {
-            if (players.caseNumber === 0) return (
-              <p key={players.id} style={{ background: players.color }} className="span-pawn">
-                {players.id} {players.icon}
-              </p>
+          <div className="span-pawn-firstcase">{playersChoosen.map((player: PlayerProps) => {
+            if (player.caseNumber === 0) return (
+              <div key={player.id} style={{ background: player.bgColor }} className="div-pawn">
+                <span className="number-span">
+                  {player.id}
+                </span> 
+                <span className="pawn-span">
+                  {player.icon}
+                </span>
+              </div>
+              
             );
             else return null;
           })}

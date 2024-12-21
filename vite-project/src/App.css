@@ -18,7 +18,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* background: #333; */
 }
 
 .left-frame {
@@ -42,16 +41,10 @@
 }
 
 .squares {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
   width: 12%;
   height: 100%;
   
-  /* background: #f5f5f5; */
-  /* background: #F2CEC0; */
   background: #f5eeeb;
-
   border: none;
   border-right: 1px solid #c1c1c1;
   color: #333;
@@ -60,15 +53,8 @@
 .squares-side {
   width: 99%;
   height: 20%;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
-  /* background: #f5f5f5; */
-  /* background: #F2CEC0; */
   background: #f5eeeb;
-
   border: none;
   border-top: 1px solid #c1c1c1;
   color: #333;
@@ -76,30 +62,51 @@
 }
 
 .square-top {
+  display: flex;
+  flex-direction: column;
+
   border-bottom: 1px solid #c1c1c1;
   border-radius: 0 0 7px 7px;
 }
 
+.square-top h4 {
+  margin: auto;
+}
+
 .square-bottom {
+  display: flex;
+  flex-direction: column;
+
   border-top: 1px solid #c1c1c1;
   border-radius: 7px 7px 0 0;
 }
 
+.square-bottom h4 {
+  margin: auto;
+}
+
 .squares-lside {
+  display: flex;
+  flex-direction: column;
+
   border-right: 1px solid #c1c1c1;
   border-radius: 0 7px 7px 0;
 }
 
+.squares-lside h4 {
+  text-align: center;
+}
+
 .squares-rside {
+  display: flex;
+  flex-direction: column;
+
   border-left: 1px solid #c1c1c1;
   border-radius: 7px 0 0 7px;
 }
 
-.first-square {
-  background: rgba(0, 0, 255, 0.25);
-  border: none;
-  border-bottom: 1px solid #c1c1c1;
-  border-radius: 0px;
+.squares-rside h4 {
+  text-align: center;
 }
 
 .squares:last-child {
@@ -107,31 +114,25 @@
   border-radius: 0px;
 }
 
-/* left & right square */
-/* .squares-side a {
+/* sounds good */
+.caseNumber {
+  /* display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  width: 90%;
-  margin: auto;
-  margin-top: 4px;
-  margin-left: 4px;
-
-  border: 1px solid #333;
-} */
-
-.squares-side h4 {
-  text-align: center;
-  margin: 4px;
-
-  /* border: 1px solid orangered; */
+  max-height: 60%;
 }
 
 .first-squares {
   width: 12%;
   height: 100%;
+
   background: #f5f5f5;
   border-right: 1px solid #c1c1c1;
+  border-radius: 0px;
   color: #333;
 }
 
@@ -139,8 +140,6 @@
   margin-top: 4px;
   margin-bottom: 8px;
   margin-left: 4px;
-
-  /* border: 1px solid #000; */
 }
 
 .first-squares-ptwo {
@@ -151,19 +150,7 @@
   text-shadow: 1px 1px 2px #777;
 
   margin: auto;
-  margin-bottom: 8px;
-  margin-left: 4px;
-
-  /* border: 1px solid #000; */
-}
-
-.caseNumber {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-
-  margin: 4px;
-  /* border: 1px solid #333; */
+  margin-top: 10px;
 }
 
 .squares h4 {
@@ -173,7 +160,6 @@
 
   text-wrap: nowrap;
   text-align: justify;
-  /* border: 1px solid #333; */
 }
 
 /*Cards*/
@@ -193,12 +179,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  /* background: #f5eeeb; */
   background: #fefee3;
-  /* background: #cac7ff; */
-  /* background: #F2CEC0; */
-
   z-index: -10;
 }
 
@@ -213,21 +194,16 @@
   width: 100%;
   height: 100%;
   display: flex;
-
   flex-direction: column;
   justify-content: space-between;
 }
 
 .cards-box-left {
   align-items: start;
-
-  /* border: 1px dashed orange; */
 }
 
 .cards-box-right {
   align-items: end;
-
-  /* border: 1px dashed orange; */
 }
 
 .card {
@@ -273,8 +249,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  /* border: 3px dashed purple; */
 }
 
 /* number of laps */
@@ -282,7 +256,6 @@
   position: absolute;
   top: 16%;
   left: 50%;
-
   width: auto;
   z-index: 10;
   transform: translate(-50%, -50%);
@@ -291,9 +264,8 @@
 .number-laps h2 {
   font-size: 3.0rem;
   font-weight: bold;
-  color: darkgreen;
   text-shadow: 0px 1px 2px #000;
-  
+  color: darkgreen;
   margin: auto;
 }
 
@@ -304,13 +276,10 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-
-  /* border: 3px dashed orange; */
 }
 
 .div-jeudesociete h2 {
   font-size: 2rem;
-  /* color: #f5f5f5; */
   color: darkgreen;
   text-shadow: 0px 1px 2px #000;
   margin: auto;
@@ -322,8 +291,6 @@
   display: flex;
   flex-direction: column;
   align-items: end;
-  
-  /* border: 3px dashed orange; */
 }
 
 .div-monecopote h2 {
@@ -339,8 +306,6 @@
   height: 50%;
   margin-bottom: 15%;
   margin-left: 25%;
-  
-  /* border: 1px solid grey; */
 }
 
 .myecobestfriend-img {
@@ -348,55 +313,97 @@
   height: 50%;
   margin-bottom: 15%;
   margin-right: 25%;
-
-  /* border: 1px solid grey; */
 }
 
 /* colors special cases */
 .sanction-color {
+  text-shadow: 1px 1px 1px #333;
   background: linear-gradient(30deg, rgba(17, 83, 72, 0.6), rgba(17, 83, 72, 1));
   color: #f5f5f5;
-  text-shadow: 1px 1px 1px #333;
   opacity: 0.8;
 }
 
 .action-color {
+  text-shadow: 1px 1px 1px #333;
   background: linear-gradient(30deg, rgba(17, 83, 72, 0.6), rgba(17, 83, 72, 1));
   color: #f5f5f5;
-  text-shadow: 1px 1px 1px #333;
   opacity: 0.8;
 }
 
 .quiz-color {
+  text-shadow: 1px 1px 1px #333;
   background: linear-gradient(30deg, rgba(17, 83, 72, 0.6), rgba(17, 83, 72, 1));
   color: #f5f5f5;
-  text-shadow: 1px 1px 1px #333;
   opacity: 0.8;
 }
 
 .defi-color {
+  text-shadow: 1px 1px 1px #333;
   background: linear-gradient(30deg, rgba(17, 83, 72, 0.6), rgba(17, 83, 72, 1));
   color: #f5f5f5;
-  text-shadow: 1px 1px 1px #333;
   opacity: 0.8;
 }
 
-.span-pawn {
-  width: 24px;
-  height: 24px;
+.span-pawn-firstcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin-top: -50px;
+}
+
+/* width - height adjusted */
+.div-pawn {
+  position: relative;
+
+  width: 40px;
+  height: 40px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border: 1px solid #333;
+  font-size: 1.0rem;
+  font-weight: bold;
+
+  background: none;
   border-radius: 100%;
-  box-shadow: 5px 5px 5px -2px #333;
-  color: #333;
+  filter: drop-shadow(7px -5px 1px rgba(0, 0, 0, 0.3));
+
+  color: #fff;
   margin: auto;
 }
 
-.span-pawn-firstcase {
+.div-pawn .number-span {
+  position: absolute;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  filter: drop-shadow(2px -2px 1px rgba(0, 0, 0, 0.3));
+}
+
+.pawn-player-1 {
+  color: #ff4500;
+}
+
+.pawn-player-2 {
+  color: orange;
+}
+
+.pawn-player-3 {
+  color: green;
+}
+
+.pawn-player-4 {
+  color: blueviolet;
+}
+
+.pawn-player-5 {
+  color: cadetblue;
+}
+
+.pawn-player-6 {
+  color: dodgerblue;
 }
