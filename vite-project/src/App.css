@@ -343,8 +343,10 @@
 }
 
 .span-pawn-firstcase {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin-top: -50px;
 }
 
 /* width - height adjusted */

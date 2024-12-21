@@ -255,6 +255,7 @@ function App(): JSX.Element {
             findCardQuiz={findCard as QuizProps}
             player={player}
             setPlayersChoosen={setPlayersChoosen}
+            replay={replay}
             setReplay={setReplay}
             selectedOption={selectedOption} 
           />
@@ -265,6 +266,7 @@ function App(): JSX.Element {
             findCardDefi={findCard as DefiProps}
             player={player}
             setPlayersChoosen={setPlayersChoosen}
+            replay={replay}
             setReplay={setReplay}
             selectedOption={selectedOption}
           />
