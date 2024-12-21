@@ -44,8 +44,8 @@ const WelcomeComponent = ({ setSelectedOption }: SelectOptionProps): JSX.Element
     const customSingleValue = (props: any): JSX.Element => {
         const { data } = props;
         return (
-            <div>
-                <img src={data.flag} alt={`${data.label} flag`} style={{ width: 40, marginTop: -25, paddingBottom: 0 }} />
+            <div className='main-flag'>
+                <img src={data.flag} alt={`${data.label} flag`} className='flag' />
             </div>
         );
     }
@@ -56,11 +56,14 @@ const WelcomeComponent = ({ setSelectedOption }: SelectOptionProps): JSX.Element
             <h1>Choisir une langue: </h1>
 
             <Select
+                unstyled
                 styles={{
                     control: (base) => ({
                         ...base,
                         border: "none",
-                        background: "#000",
+                        background: "#277a6dbf",
+                        padding: "4px",
+                        marginBottom: "20px"
                     }),
                 }}
                 options={options}
@@ -68,7 +71,6 @@ const WelcomeComponent = ({ setSelectedOption }: SelectOptionProps): JSX.Element
                 components={{ Option: customOption, SingleValue: customSingleValue }}
                 getOptionValue={(option) => option.value}
                 value={options[0]}
-                className='react-select'
                 classNamePrefix="select"
             />
 
