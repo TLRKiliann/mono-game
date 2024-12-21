@@ -1,7 +1,7 @@
 export type PlayerProps = {
     id: number;
     name: string;
-    color: string;
+    bgColor: string;
     caseNumber: number;
     lap: number;
     gameOver: boolean;

@@ -49,7 +49,7 @@ function App(): JSX.Element {
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   // count nbre of case by player
-  const [count, setCount] = useState<number>(2);
+  const [count, setCount] = useState<number>(0);
 
   // display value of dice
   const [value, setValue] = useState<number>(1);
@@ -82,7 +82,7 @@ function App(): JSX.Element {
     {
       id: 1,
       name: "Player 1",
-      color: "#A2D2DF",
+      bgColor: "#ffc6b1",
       caseNumber: count,
       lap: 0,
       gameOver: false,
@@ -93,7 +93,7 @@ function App(): JSX.Element {
     {
       id: 2,
       name: "Player 2",
-      color: "#dcbbdb",
+      bgColor: "#ffff9d",
       caseNumber: count,
       lap: 0,
       gameOver: false,
@@ -104,7 +104,7 @@ function App(): JSX.Element {
     {
       id: 3,
       name: "Player 3",
-      color: "#ffb2ae",
+      bgColor: "#dbffa5",
       caseNumber: count,
       lap: 0,
       gameOver: false,
@@ -115,7 +115,7 @@ function App(): JSX.Element {
     {
       id: 4,
       name: "Player 4",
-      color: "#cac7ff",
+      bgColor: "#f7c5f7",
       caseNumber: count,
       lap: 0,
       gameOver: false,
@@ -126,7 +126,7 @@ function App(): JSX.Element {
     {
       id: 5,
       name: "Player 5",
-      color: "#fefee3",
+      bgColor: "#c1dada",
       caseNumber: count,
       lap: 0,
       gameOver: false,
@@ -137,7 +137,7 @@ function App(): JSX.Element {
     {
       id: 6,
       name: "Player 6",
-      color: "#A7D477",
+      bgColor: "#bbddff",
       caseNumber: count,
       lap: 0,
       gameOver: false,
@@ -330,7 +330,7 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{background: activePlayerId === player.id ? player.color : "none"}} className="div-pawn">
+      <div style={{background: activePlayerId === player.id ? player.bgColor : "none"}} className="div-pawn">
         <span className="number-span">
           {player.id}
         </span>
@@ -388,7 +388,7 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
   
     return (
-      <div style={{background: activePlayerId === player.id ? player.color : "none"}} className="div-pawn">
+      <div style={{background: activePlayerId === player.id ? player.bgColor : "none"}} className="div-pawn">
         <span className="number-span">
           {player.id}
         </span>
@@ -447,7 +447,7 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{background: activePlayerId === player.id ? player.color : "none"}} className="div-pawn">
+      <div style={{background: activePlayerId === player.id ? player.bgColor : "none"}} className="div-pawn">
         <span className="number-span">
           {player.id}
         </span>
@@ -511,7 +511,7 @@ function App(): JSX.Element {
     }, [player.caseNumber, activeCard.type]);
 
     return (
-      <div style={{background: activePlayerId === player.id ? player.color : "none"}} className="div-pawn">
+      <div style={{background: activePlayerId === player.id ? player.bgColor : "none"}} className="div-pawn">
         <span className="number-span">
           {player.id}
         </span>
@@ -595,15 +595,15 @@ function App(): JSX.Element {
         
           <p className="first-squares-ptwo">Start</p>
 
-          <div className="span-pawn-case">{playersChoosen.map((players: PlayerProps) => {
-            if (players.caseNumber === 0) return (
+          <div className="span-pawn-firstcase">{playersChoosen.map((player: PlayerProps) => {
+            if (player.caseNumber === 0) return (
 
-              <div key={players.id} style={{ background: players.color }} className="div-pawn">
+              <div key={player.id} style={{ background: player.bgColor }} className="div-pawn">
                 <span className="number-span">
-                  {players.id}
+                  {player.id}
                 </span> 
                 <span className="pawn-span">
-                  {players.icon}
+                  {player.icon}
                 </span>
               </div>
               
