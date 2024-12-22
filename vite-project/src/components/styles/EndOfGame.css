@@ -72,11 +72,11 @@
     }
     40% {
         text-shadow: 
-            0 0 5px #ffcc00,
-            0 0 10px #ffcc00, 
-            0 0 15px #ff9900, 
-            0 0 20px #ff9900, 
-            0 0 25px #ff9900;
+            0 0 5px #00ffcc, 
+            0 0 10px #00ffcc, 
+            0 0 15px #00ccff, 
+            0 0 20px #00ccff, 
+            0 0 25px #00ccff;
         opacity: 0.3;
     }
     50% {
@@ -96,11 +96,11 @@
     }
     80% {
         text-shadow: 
-            0 0 5px #ff0033,
-            0 0 10px #ff0033, 
-            0 0 15px #cc0000, 
-            0 0 20px #cc0000, 
-            0 0 25px #cc0000;
+            0 0 5px #00ffcc, 
+            0 0 10px #00ffcc, 
+            0 0 15px #00ccff, 
+            0 0 20px #00ccff, 
+            0 0 25px #00ccff;
         opacity: 0.2;
     }
     90% {
