@@ -34,7 +34,7 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
         setShowConfetti(true);
         const timer = setTimeout(() => {
             setShowConfetti(false);
-        }, 5000);
+        }, 10000);
         return () => clearTimeout(timer);
     }, []);
 

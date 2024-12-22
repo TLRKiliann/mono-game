@@ -35,8 +35,8 @@ const WelcomeComponent = ({ setSelectedOption }: SelectOptionProps): JSX.Element
         const { innerRef, innerProps, data } = props;
         return (
             <div ref={innerRef} {...innerProps} className='custom-option'>
-                <img src={data.flag} alt={`${data.label} flag`} style={{ width: 20, paddingRight: 10, paddingLeft: 10 }} />
-                {data.label}
+                <img src={data.flag} alt={`${data.label} flag`} style={{ width: 25, paddingRight: 10, paddingLeft: 10 }} />
+                {data.label.slice(0, 2)}
             </div>
         );
     };
@@ -63,7 +63,6 @@ const WelcomeComponent = ({ setSelectedOption }: SelectOptionProps): JSX.Element
                         border: "none",
                         background: "#277a6dbf",
                         padding: "4px",
-                        marginBottom: "20px"
                     }),
                 }}
                 options={options}

@@ -22,7 +22,7 @@
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 10px #000;
-    
+    padding-bottom: 20px;
     z-index: 60;
     transform: translate(-50%, -50%);
 
@@ -42,7 +42,7 @@
 }
 
 .main-flag {
-    width: 80px;
+    width: 50px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -51,11 +51,10 @@
 }
 
 .flag {
-    width: 40px;
+    width: 35px;
 }
 
 .custom-option {
-    width: 100px;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -63,12 +62,16 @@
     justify-content: start;
 
     font-size: 0.8rem;
-    color: #333;
+    font-weight: bold;
+    background: rgba(17, 83, 72, 0.5);
+    
+    color: #f5f5f5;
     cursor: pointer;
     padding: 5px 0;
+    transition: background 0.25s ease-in-out;
 }
 
 .custom-option:hover {
-    background: #115348bf;
+    background: rgba(17, 83, 72, 0.75);
     color: #fff;
 }
