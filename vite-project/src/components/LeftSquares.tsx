@@ -1,6 +1,7 @@
 import type { PlayerProps, SquaresProps } from "../lib/types";
 import { useEffect } from "react";
 import { getRandomNumber } from '../utils/GetRandom';
+import './styles/LeftBottomRightTop.css';
 
 const LeftSquares = ({
     activeCard, 
