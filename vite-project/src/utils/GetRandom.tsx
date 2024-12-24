@@ -1,5 +1,4 @@
 import type { BonneActionProps, DefiProps, PlayerProps, QuizProps, SanctionsProps } from "../lib/types";
-
 import { quizQuestions_fr } from "../lib/quiz_fr";
 import { quizQuestions_en } from "../lib/quiz_en";
 import { quizQuestions_de } from "../lib/quiz_de";
@@ -16,7 +15,6 @@ import { sanctionQuestions_fr } from "../lib/sanctions_fr";
 import { sanctionQuestions_en } from "../lib/sanctions_en";
 import { sanctionQuestions_de } from "../lib/sanctions_de";
 import { sanctionQuestions_it } from "../lib/sanctions_it";
-
 import ComponentBonneAction from "../components/ComponentBonneAction";
 import ComponentDefi from "../components/ComponentDefi";
 import ComponentQuiz from "../components/ComponentQuiz";
