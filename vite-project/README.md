@@ -2,12 +2,12 @@
 
 ## Rules
 
-1. ajouter avec le joker obtenu sur une bonne action pour une sanction
-2. bug à résoudre avec affichage du next player
-3. texte à faire ressortir
+1. bug à résoudre avec affichage du next player...
+3. texte à faire ressortir pour les cartes
 4. refactoriser les state + code splitting ???
 5. favicon dans le signet en-haut (plus tard)
-6. 3 lvl à implémenter + fichiers
+6. revoir les layers !
+7. 3 lvl à implémenter + fichiers
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

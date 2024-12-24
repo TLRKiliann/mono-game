@@ -34,7 +34,7 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
         setShowConfetti(true);
         const timer = setTimeout(() => {
             setShowConfetti(false);
-        }, 5000);
+        }, 10000);
         return () => clearTimeout(timer);
     }, []);
 
@@ -47,8 +47,8 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
                 
                 <h1>Game-Over</h1>
                 
-                <div className="div-rotation">
-                    <h2 className="rotation-winner">!!! {winner} WIN !!!</h2>
+                <div className="div-winner">
+                    <h2 className="winner">!!! {winner} WIN !!!</h2>
                 </div>
 
 

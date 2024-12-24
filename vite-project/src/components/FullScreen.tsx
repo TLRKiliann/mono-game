@@ -59,7 +59,7 @@ const FullScreen = ({ setDisplayCloseBox }: FullScreenCloseProps): JSX.Element =
                     </div>
 
                     <div className="div-btn">
-                        <button type="button" onClick={handleFullScreen}>Lancer le jeu</button>
+                        <button type="button" onClick={handleFullScreen} className="btn-fullscreen">Lancer le jeu</button>
                     </div>
 
                     <div className="div-p">
