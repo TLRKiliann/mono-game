@@ -1,22 +1,6 @@
-import type { PlayerProps } from "../lib/types";
+import type { PlayerProps, SquaresProps } from "../lib/types";
 import { useEffect } from "react";
-import { getRandomNumber } from './GetRandom';
-
-type ActiveCard = {
-    type: 'quiz' | 'defi' | 'action' | 'sanction' | null;
-    cardData: JSX.Element | null;
-    isCardActive: boolean;
-};
-
-type LeftProps = {
-    playersChoosen: PlayerProps[];
-    setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
-    setReplay: React.Dispatch<React.SetStateAction<boolean>>;
-    activeCard: ActiveCard;
-    setActiveCard: React.Dispatch<React.SetStateAction<ActiveCard>>;
-    activePlayerId: number; 
-    selectedOption: string;
-};
+import { getRandomNumber } from '../utils/GetRandom';
 
 const RightSquares = ({
     activeCard, 
@@ -25,8 +9,7 @@ const RightSquares = ({
     selectedOption, 
     playersChoosen,
     setPlayersChoosen,
-    setReplay }: LeftProps): JSX.Element => {
-
+    setReplay }: SquaresProps): JSX.Element => {
 
     const PlayerSpanRight: React.FC<{ player: PlayerProps }> = ({ player }) => {
         
@@ -67,10 +50,10 @@ const RightSquares = ({
         )
     };
 
-    const RightSquares: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
+    const RightSquare: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
         { caseNumber, playersChoosen, additionalContent }) => (
-            <div className={`squares-side squares-rside ${caseNumber === 30 ? "defi-color" : caseNumber === 33 ? "action-color" : caseNumber === 36 
-                ? "sanction-color" : null}`}>
+            <div className={`squares-side squares-rside ${caseNumber === 30 ? "defi-color" : caseNumber === 33 ? "action-color" 
+                : caseNumber === 36 ? "sanction-color" : null}`}>
                 <div className="caseNumber">
                 {caseNumber}
                 {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
@@ -113,7 +96,12 @@ const RightSquares = ({
                     additionalContent = null;
                 }
 
-                return <RightSquares key={caseNumber} caseNumber={caseNumber} playersChoosen={playersChoosen} additionalContent={additionalContent} />;
+                return <RightSquare
+                    key={caseNumber}
+                    caseNumber={caseNumber}
+                    playersChoosen={playersChoosen}
+                    additionalContent={additionalContent} 
+                />;
             })}
         </div>
     )

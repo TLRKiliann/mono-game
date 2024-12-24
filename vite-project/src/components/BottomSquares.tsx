@@ -1,31 +1,15 @@
-import type { PlayerProps } from "../lib/types";
+import type { PlayerProps, SquaresProps } from "../lib/types";
 import { useEffect } from "react";
-import { getRandomNumber } from './GetRandom';
+import { getRandomNumber } from '../utils/GetRandom';
 
-type ActiveCard = {
-    type: 'quiz' | 'defi' | 'action' | 'sanction' | null;
-    cardData: JSX.Element | null;
-    isCardActive: boolean;
-};
-
-type LeftProps = {
-    playersChoosen: PlayerProps[];
-    setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
-    setReplay: React.Dispatch<React.SetStateAction<boolean>>;
-    activeCard: ActiveCard;
-    setActiveCard: React.Dispatch<React.SetStateAction<ActiveCard>>;
-    activePlayerId: number; 
-    selectedOption: string;
-};
-
-const BottomSquaresRow = ({
+const BottomSquares = ({
     activeCard, 
     setActiveCard, 
     activePlayerId, 
     selectedOption, 
     playersChoosen,
     setPlayersChoosen,
-    setReplay }: LeftProps): JSX.Element => {
+    setReplay }: SquaresProps): JSX.Element => {
 
     const PlayerSpanBottom: React.FC<{ player: PlayerProps }> = ({ player }) => {
         
@@ -72,7 +56,7 @@ const BottomSquaresRow = ({
         )
     };
 
-    const BottomSquares: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
+    const BottomSquare: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
         { caseNumber, playersChoosen, additionalContent }) => (
         <div className={`squares square-bottom ${caseNumber === 12 ? "sanction-color" : caseNumber === 15 ? "quiz-color" : caseNumber === 18 
             ? "defi-color" : caseNumber === 21 ? "action-color" : caseNumber === 24 ? "sanction-color" : caseNumber === 27 ? "quiz-color" : null}`}>
@@ -133,9 +117,9 @@ const BottomSquaresRow = ({
                     additionalContent = null;
                 }
 
-                return <BottomSquares key={caseNumber} caseNumber={caseNumber} playersChoosen={playersChoosen} additionalContent={additionalContent} />;
+                return <BottomSquare key={caseNumber} caseNumber={caseNumber} playersChoosen={playersChoosen} additionalContent={additionalContent} />;
             })}
         </div>
     )
 }
-export default BottomSquaresRow;
+export default BottomSquares;

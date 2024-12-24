@@ -1,31 +1,15 @@
-import type { PlayerProps } from "../lib/types";
+import type { PlayerProps, SquaresProps } from "../lib/types";
 import { useEffect } from "react";
-import { getRandomNumber } from './GetRandom';
+import { getRandomNumber } from '../utils/GetRandom';
 
-type ActiveCard = {
-    type: 'quiz' | 'defi' | 'action' | 'sanction' | null;
-    cardData: JSX.Element | null;
-    isCardActive: boolean;
-};
-
-type LeftProps = {
-    playersChoosen: PlayerProps[];
-    setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
-    setReplay: React.Dispatch<React.SetStateAction<boolean>>;
-    activeCard: ActiveCard;
-    setActiveCard: React.Dispatch<React.SetStateAction<ActiveCard>>;
-    activePlayerId: number; 
-    selectedOption: string;
-};
-
-const LeftSquaresRow = ({
+const LeftSquares = ({
     activeCard, 
     setActiveCard, 
     activePlayerId, 
     selectedOption, 
     playersChoosen,
     setPlayersChoosen,
-    setReplay }: LeftProps): JSX.Element => {
+    setReplay }: SquaresProps): JSX.Element => {
 
     const PlayerSpanLeft: React.FC<{ player: PlayerProps }> = ({ player }) => {
 
@@ -66,9 +50,10 @@ const LeftSquaresRow = ({
         );
     };
   
-    const LeftSquares: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
+    const LeftSquare: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
         { caseNumber, playersChoosen, additionalContent }) => (
-            <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" : caseNumber === 9 ? "action-color" : null}`}>
+            <div className={`squares-side squares-lside ${caseNumber === 3 ? "quiz-color" : caseNumber === 6 ? "defi-color" 
+                : caseNumber === 9 ? "action-color" : null}`}>
                 <div className="caseNumber">
                     {caseNumber}
                     {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
@@ -109,9 +94,14 @@ const LeftSquaresRow = ({
                     additionalContent = null;
                 }
 
-                return <LeftSquares key={caseNumber} caseNumber={caseNumber} playersChoosen={playersChoosen} additionalContent={additionalContent} />;
+                return <LeftSquare
+                    key={caseNumber}
+                    caseNumber={caseNumber}
+                    playersChoosen={playersChoosen}
+                    additionalContent={additionalContent} 
+                />;
             })}
         </div>
     )
 }
-export default LeftSquaresRow;
+export default LeftSquares;

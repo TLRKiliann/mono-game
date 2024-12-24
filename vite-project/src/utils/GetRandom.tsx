@@ -17,10 +17,10 @@ import { sanctionQuestions_en } from "../lib/sanctions_en";
 import { sanctionQuestions_de } from "../lib/sanctions_de";
 import { sanctionQuestions_it } from "../lib/sanctions_it";
 
-import ComponentBonneAction from "./ComponentBonneAction";
-import ComponentDefi from "./ComponentDefi";
-import ComponentQuiz from "./ComponentQuiz";
-import ComponentSanction from "./ComponentSanction";
+import ComponentBonneAction from "../components/ComponentBonneAction";
+import ComponentDefi from "../components/ComponentDefi";
+import ComponentQuiz from "../components/ComponentQuiz";
+import ComponentSanction from "../components/ComponentSanction";
 
 export const getRandomNumber = (
     type: string,

@@ -6,10 +6,10 @@ import RulesComponent from "./components/RulesComponent";
 import NbrOfPlayers from "./components/NbrOfPlayers";
 import NbrOfLapComponent from "./components/NbrOfLapComponent";
 import ReadyComponent from "./components/ReadyComponent";
-import LeftSquaresRow from "./components/LeftSquaresRow";
-import BottomSquaresRow from "./components/BottomSquaresRow";
-import RightSquaresRow from "./components/RightSquaresRow";
-import TopSquaresRow from "./components/TopSquaresRow";
+import LeftSquares from "./components/LeftSquares";
+import BottomSquares from "./components/BottomSquares";
+import RightSquares from "./components/RightSquares";
+import TopSquares from "./components/TopSquares";
 import Dice from "./components/Dice";
 import AudioPlayer from "./components/AudioPlayer";
 import { FaChessPawn } from "react-icons/fa6";
@@ -33,7 +33,7 @@ function App(): JSX.Element {
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   // count nbre of case by player
-  const [count, setCount] = useState<number>(55);
+  const [count, setCount] = useState<number>(0);
 
   // display value of dice
   const [value, setValue] = useState<number>(1);
@@ -131,9 +131,6 @@ function App(): JSX.Element {
     }
   ]);
 
-  //---
-  // define number of players to start & nbr of lap for the game.
-
   // derivated state
   const derivatedStatePlayers: PlayerProps[] = players;
 
@@ -195,7 +192,7 @@ function App(): JSX.Element {
         <ReadyComponent setDisplayCloseBox={setDisplayCloseBox} selectedOption={selectedOption} />
       ) : null}
 
-      <TopSquaresRow 
+      <TopSquares 
         playersChoosen={playersChoosen}
         setPlayersChoosen={setPlayersChoosen}
         setReplay={setReplay}
@@ -207,7 +204,7 @@ function App(): JSX.Element {
 
       <div className="middle-frames">
 
-        <LeftSquaresRow 
+        <LeftSquares 
           playersChoosen={playersChoosen}
           setPlayersChoosen={setPlayersChoosen}
           setReplay={setReplay}
@@ -309,7 +306,7 @@ function App(): JSX.Element {
 
         </div>
         
-        <RightSquaresRow 
+        <RightSquares 
           playersChoosen={playersChoosen}
           setPlayersChoosen={setPlayersChoosen}
           setReplay={setReplay}
@@ -321,7 +318,7 @@ function App(): JSX.Element {
 
       </div>
       
-      <BottomSquaresRow 
+      <BottomSquares 
           playersChoosen={playersChoosen}
           setPlayersChoosen={setPlayersChoosen}
           setReplay={setReplay}

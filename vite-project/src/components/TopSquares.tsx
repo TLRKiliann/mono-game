@@ -1,31 +1,15 @@
-import type { PlayerProps } from "../lib/types";
+import type { PlayerProps, SquaresProps } from "../lib/types";
 import { useEffect } from "react";
-import { getRandomNumber } from './GetRandom';
+import { getRandomNumber } from '../utils/GetRandom';
 
-type ActiveCard = {
-    type: 'quiz' | 'defi' | 'action' | 'sanction' | null;
-    cardData: JSX.Element | null;
-    isCardActive: boolean;
-};
-
-type LeftProps = {
-    playersChoosen: PlayerProps[];
-    setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
-    setReplay: React.Dispatch<React.SetStateAction<boolean>>;
-    activeCard: ActiveCard;
-    setActiveCard: React.Dispatch<React.SetStateAction<ActiveCard>>;
-    activePlayerId: number; 
-    selectedOption: string;
-};
-
-const TopSquaresRow = ({
+const TopSquares = ({
     activeCard, 
     setActiveCard, 
     activePlayerId, 
     selectedOption, 
     playersChoosen,
     setPlayersChoosen,
-    setReplay }: LeftProps): JSX.Element => {
+    setReplay }: SquaresProps): JSX.Element => {
 
     const PlayerSpanTop: React.FC<{ player: PlayerProps }> = ({ player }) => {
         
@@ -72,10 +56,11 @@ const TopSquaresRow = ({
         )
     };
 
-    const TopSquares: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
+    const TopSquare: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
         { caseNumber, playersChoosen, additionalContent }) => (
-            <div className={`squares square-top ${caseNumber === 39 ? "quiz-color" : caseNumber === 42 ? "defi-color" : caseNumber === 45  
-                ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" : caseNumber === 54 ? "defi-color" : null}`}>
+            <div className={`squares square-top ${caseNumber === 39 ? "quiz-color" : caseNumber === 42 ? "defi-color" 
+                : caseNumber === 45 ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" 
+                : caseNumber === 54 ? "defi-color" : null}`}>
                     <div className="caseNumber">
                         {caseNumber}
                         {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
@@ -117,48 +102,52 @@ const TopSquaresRow = ({
             </div>
 
             {Array.from({ length: 17 }, (_, index) => {
-            const caseNumber = 55 - index;
-            let additionalContent;
+                const caseNumber = 55 - index;
+                let additionalContent;
 
-            switch (caseNumber) {
-                case 39:
-                additionalContent = <h4>Quiz</h4>;
-                break;
-                case 42:
-                additionalContent = <h4>{selectedOption === "français" ? "Défi"
-                    : selectedOption === "english" ? "Challenges" 
-                    : selectedOption === "deutsch" ? "Herausforderungen" 
-                    : selectedOption === "italiano" ? "Sfide" : null}</h4>;
-                break;
-                case 45:
-                additionalContent = <h4>{selectedOption === "français" ? "Bonne Action"
-                    : selectedOption === "english" ? "Good Deed" 
-                    : selectedOption === "deutsch" ? "Gute Tat" 
-                    : selectedOption === "italiano" ? "Buona Azione" : null}</h4>;
-                break;
-                case 48:
-                additionalContent = <h4>{selectedOption === "français" ? "Sanction" 
-                    : selectedOption === "english" ? "Sanction" 
-                    : selectedOption === "deutsch" ? "Sanktion" 
-                    : selectedOption === "italiano" ? "sanzione" : null}</h4>;
-                break;
-                case 51:
-                additionalContent = <h4>Quiz</h4>;
-                break;
-                case 54:
-                additionalContent = <h4>{selectedOption === "français" ? "Défi"
-                    : selectedOption === "english" ? "Challenges" 
-                    : selectedOption === "deutsch" ? "Herausforderungen" 
-                    : selectedOption === "italiano" ? "Sfide" : null}</h4>;
-                break;
-                default:
-                additionalContent = null;
-            }
+                switch (caseNumber) {
+                    case 39:
+                    additionalContent = <h4>Quiz</h4>;
+                    break;
+                    case 42:
+                    additionalContent = <h4>{selectedOption === "français" ? "Défi"
+                        : selectedOption === "english" ? "Challenges" 
+                        : selectedOption === "deutsch" ? "Herausforderungen" 
+                        : selectedOption === "italiano" ? "Sfide" : null}</h4>;
+                    break;
+                    case 45:
+                    additionalContent = <h4>{selectedOption === "français" ? "Bonne Action"
+                        : selectedOption === "english" ? "Good Deed" 
+                        : selectedOption === "deutsch" ? "Gute Tat" 
+                        : selectedOption === "italiano" ? "Buona Azione" : null}</h4>;
+                    break;
+                    case 48:
+                    additionalContent = <h4>{selectedOption === "français" ? "Sanction" 
+                        : selectedOption === "english" ? "Sanction" 
+                        : selectedOption === "deutsch" ? "Sanktion" 
+                        : selectedOption === "italiano" ? "sanzione" : null}</h4>;
+                    break;
+                    case 51:
+                    additionalContent = <h4>Quiz</h4>;
+                    break;
+                    case 54:
+                    additionalContent = <h4>{selectedOption === "français" ? "Défi"
+                        : selectedOption === "english" ? "Challenges" 
+                        : selectedOption === "deutsch" ? "Herausforderungen" 
+                        : selectedOption === "italiano" ? "Sfide" : null}</h4>;
+                    break;
+                    default:
+                    additionalContent = null;
+                }
 
-            return <TopSquares key={caseNumber} caseNumber={caseNumber} playersChoosen={playersChoosen} additionalContent={additionalContent} />;
+                return <TopSquare
+                    key={caseNumber}
+                    caseNumber={caseNumber}
+                    playersChoosen={playersChoosen}
+                    additionalContent={additionalContent}
+                />;
             })}
-
         </div>
     )
 };
-export default TopSquaresRow;
+export default TopSquares;
