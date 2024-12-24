@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { getRandomNumber } from '../utils/GetRandom';
 import './styles/LeftBottomRightTop.css';
 
-const LeftSquares = ({
+const SquaresOfLeft = ({
     activeCard, 
     setActiveCard, 
     activePlayerId, 
@@ -105,4 +105,4 @@ const LeftSquares = ({
         </div>
     )
 }
-export default LeftSquares;
+export default SquaresOfLeft;

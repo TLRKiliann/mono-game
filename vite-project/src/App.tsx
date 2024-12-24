@@ -6,10 +6,10 @@ import RulesComponent from "./components/RulesComponent";
 import NbrOfPlayers from "./components/NbrOfPlayers";
 import NbrOfLapComponent from "./components/NbrOfLapComponent";
 import ReadyComponent from "./components/ReadyComponent";
-import LeftSquares from "./components/LeftSquares";
-import BottomSquares from "./components/BottomSquares";
-import RightSquares from "./components/RightSquares";
-import TopSquares from "./components/TopSquares";
+import SquaresOfTop from "./components/SquaresOfTop";
+import SquaresOfLeft from "./components/SquaresOfLeft";
+import SquaresOfRight from "./components/SquaresOfRight";
+import SquaresOfBottom from "./components/SquaresOfBottom";
 import Dice from "./components/Dice";
 import AudioPlayer from "./components/AudioPlayer";
 import { FaChessPawn } from "react-icons/fa6";
@@ -192,7 +192,7 @@ function App(): JSX.Element {
         <ReadyComponent setDisplayCloseBox={setDisplayCloseBox} selectedOption={selectedOption} />
       ) : null}
 
-      <TopSquares 
+      <SquaresOfTop 
         playersChoosen={playersChoosen}
         setPlayersChoosen={setPlayersChoosen}
         setReplay={setReplay}
@@ -204,7 +204,7 @@ function App(): JSX.Element {
 
       <div className="middle-frames">
 
-        <LeftSquares 
+        <SquaresOfLeft 
           playersChoosen={playersChoosen}
           setPlayersChoosen={setPlayersChoosen}
           setReplay={setReplay}
@@ -306,7 +306,7 @@ function App(): JSX.Element {
 
         </div>
         
-        <RightSquares 
+        <SquaresOfRight 
           playersChoosen={playersChoosen}
           setPlayersChoosen={setPlayersChoosen}
           setReplay={setReplay}
@@ -318,7 +318,7 @@ function App(): JSX.Element {
 
       </div>
       
-      <BottomSquares 
+      <SquaresOfBottom 
           playersChoosen={playersChoosen}
           setPlayersChoosen={setPlayersChoosen}
           setReplay={setReplay}
