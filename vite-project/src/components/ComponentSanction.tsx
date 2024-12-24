@@ -41,7 +41,12 @@ type ComponentQuizProps = {
     selectedOption: string;
 };
 
-const ComponentSanction: React.FC<ComponentQuizProps> = ({ findCardSanction, player, setPlayersChoosen, setReplay, selectedOption }): JSX.Element => {
+const ComponentSanction: React.FC<ComponentQuizProps> = ({
+    findCardSanction,
+    player,
+    setPlayersChoosen,
+    setReplay,
+    selectedOption }): JSX.Element => {
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
