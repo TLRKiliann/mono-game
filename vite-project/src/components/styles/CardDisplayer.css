@@ -53,7 +53,7 @@
     font-size: 1.4rem;
     font-weight: bold;
     color: #fff;
-    text-shadow: 1px 1px 1px #777;
+    text-shadow: 1px 1px 1px #333;
 }
 
 .div-card-item {
@@ -111,7 +111,7 @@
     background: rgba(245, 238, 235, 0.7);
     border-radius: 7px;
     color: #fff;
-    text-shadow: 1px 1px 1px #777;
+    text-shadow: 1px 1px 1px #333;
     padding: 5px 20px;
 }
 
@@ -165,7 +165,7 @@
     text-align: justify;
 
     color: rgb(6, 128, 77);
-    text-shadow: 1px 1px 1px #777;
+    text-shadow: 1px 1px 1px #555;
 
     background: rgba(245, 238, 235, 0.7);    
     border-radius: 7px;
