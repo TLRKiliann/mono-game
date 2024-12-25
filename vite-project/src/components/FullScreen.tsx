@@ -55,7 +55,7 @@ const FullScreen = ({ setDisplayCloseBox }: FullScreenCloseProps): JSX.Element =
                 
                 <div className="div-imgbtnp">
                     <div className="div-ecopotimg">
-                        <img src={ecopotGame} width={850} height={850} className="ecopotimg" alt="ecopot-img" />
+                        <img src={ecopotGame} className="ecopotimg" alt="ecopot-img" />
                     </div>
 
                     <div className="div-btn">
