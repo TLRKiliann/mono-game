@@ -243,7 +243,11 @@ const Dice = ({
                 : selectedOption === "english" ? "Player" 
                 : selectedOption === "deutsch" ? "Spieler" 
                 : selectedOption === "italiano" ? "Giocatore" : null}&nbsp;
-                {play.id}&nbsp;<FaLongArrowAltRight size={44} />&nbsp;It's your turn!</p>
+                {play.id}&nbsp;<FaLongArrowAltRight size={44} />&nbsp;
+                {selectedOption === "français" ? "C'est ton tour!" 
+                : selectedOption === "english" ? "It's your turn!" 
+                : selectedOption === "deutsch" ? "Du bist dran!"
+                : selectedOption === "italiano" ? "È il tuo turno!" : null}</p>
             </div> 
           ) : null
         ))}
