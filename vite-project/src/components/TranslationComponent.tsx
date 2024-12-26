@@ -61,7 +61,6 @@ const WelcomeComponent = ({ setSelectedOption }: SelectOptionProps): JSX.Element
                     control: (base) => ({
                         ...base,
                         border: "none",
-                        background: "#277a6dbf",
                         padding: "4px",
                     }),
                 }}

@@ -225,8 +225,8 @@ function App(): JSX.Element {
               {selectedOption === "français" 
                 ? "Nombre de tour : " + nbrOfLap : selectedOption === "english" 
                 ? "Number of laps : " + nbrOfLap : selectedOption === "deutsch" 
-                ? "Rundenzahl : " + nbrOfLap : "Numero di giri : " + nbrOfLap
-              }
+                ? "Rundenzahl : " + nbrOfLap : selectedOption === "italiano" 
+                ? "Numero di giri : " + nbrOfLap : null}
             </h2>
           </div>
           
