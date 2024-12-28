@@ -1,12 +1,12 @@
 import type { DisplayCloseProps } from "../lib/types";
 import { useState } from "react";
-import "./styles/NbrOfPlayers.css";
+import "./styles/NbrPlayerNbrLapLvl.css";
 
 type NbPlayerProps = {
     selectedOption: string;
-    setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>;
     nbPlayer: number;
     setNbPlayer: React.Dispatch<React.SetStateAction<number>>;
+    setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>;
 };
 
 const NbrOfPlayers = ({selectedOption, setDisplayCloseBox, nbPlayer, setNbPlayer} : NbPlayerProps): JSX.Element => {
@@ -41,11 +41,11 @@ const NbrOfPlayers = ({selectedOption, setDisplayCloseBox, nbPlayer, setNbPlayer
                     {selectedOption === "français" 
                         ? "Choisir entre 2 et 6 joueurs :" : selectedOption === "english" 
                         ? "Choose between 2 and 6 players :" : selectedOption === "deutsch" 
-                        ? "Zwischen 2 und 6 Spielern wählen :" 
-                        : "Scegliere tra 2 e 6 giocatori :"}
+                        ? "Zwischen 2 und 6 Spielern wählen :" : selectedOption === "italiano"
+                        ? "Scegliere tra 2 e 6 giocatori :" : null}
                     <input 
                         type="text" 
-                        id="nbPlayers" 
+                        id="nbPlayer" 
                         value="" 
                         onChange={handleNbPlayer}
                         placeholder={String(nbPlayer)} 
@@ -61,11 +61,11 @@ const NbrOfPlayers = ({selectedOption, setDisplayCloseBox, nbPlayer, setNbPlayer
                     {selectedOption === "français" 
                         ? "Valider" : selectedOption === "english" 
                         ? "Validate" : selectedOption === "deutsch" 
-                        ? "Validieren" : "Validare"}
+                        ? "Validieren" : selectedOption === "italiano" 
+                        ? "Validare" : null}
                 </button>
             </div>
         </div>
     );
 }
-
 export default NbrOfPlayers;

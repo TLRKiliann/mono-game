@@ -1,12 +1,36 @@
 import type { BonneActionProps, DefiProps, PlayerProps, QuizProps, SanctionsProps } from "../lib/types";
 import { quizQuestions_fr } from "../lib/quiz_fr";
+import { quizQuestions_fr_lvl2 } from "../lib/quiz_fr_lvl2";
+import { quizQuestions_fr_lvl1 } from "../lib/quiz_fr_lvl1";
+
 import { quizQuestions_en } from "../lib/quiz_en";
+import { quizQuestions_en_lvl2 } from "../lib/quiz_en_lvl2";
+import { quizQuestions_en_lvl1 } from "../lib/quiz_en_lvl1";
+
 import { quizQuestions_de } from "../lib/quiz_de";
+import { quizQuestions_de_lvl2 } from "../lib/quiz_de_lvl2";
+import { quizQuestions_de_lvl1 } from "../lib/quiz_de_lvl1";
+
 import { quizQuestions_it } from "../lib/quiz_it";
+import { quizQuestions_it_lvl2 } from "../lib/quiz_it_lvl2";
+import { quizQuestions_it_lvl1 } from "../lib/quiz_it_lvl1";
+
 import { defiQuestions_fr } from "../lib/defi_fr";
+import { defiQuestions_fr_lvl2 } from "../lib/defi_fr_lvl2";
+import { defiQuestions_fr_lvl1 } from "../lib/defi_fr_lvl1";
+
 import { defiQuestions_en } from "../lib/defi_en";
+import { defiQuestions_en_lvl2 } from "../lib/defi_en_lvl2";
+import { defiQuestions_en_lvl1 } from "../lib/defi_en_lvl1";
+
 import { defiQuestions_de } from "../lib/defi_de";
+import { defiQuestions_de_lvl2 } from "../lib/defi_de_lvl2";
+import { defiQuestions_de_lvl1 } from "../lib/defi_de_lvl1";
+
 import { defiQuestions_it } from "../lib/defi_it";
+import { defiQuestions_it_lvl2 } from "../lib/defi_it_lvl2";
+import { defiQuestions_it_lvl1 } from "../lib/defi_it_lvl1";
+
 import { bonneActionQuestions_fr } from "../lib/bonnes-actions_fr";
 import { bonneActionQuestions_en } from "../lib/bonnes-actions_en";
 import { bonneActionQuestions_de } from "../lib/bonnes-actions_de";
@@ -25,7 +49,8 @@ export const getRandomNumber = (
     player: PlayerProps,
     selectedOption: string,
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>, 
-    setReplay: React.Dispatch<React.SetStateAction<boolean>>) => {
+    setReplay: React.Dispatch<React.SetStateAction<boolean>>,
+    lvlQuizDefi: number) => {
     
     // open card for corresponding player & square
     const allQuizIdToDelete: number[] = [];
@@ -36,20 +61,52 @@ export const getRandomNumber = (
     // delete quiz question
     let randomNumQuiz: number;
 
-    do {
-        randomNumQuiz = Math.floor(Math.random() * 100) + 1;
-    } while (allQuizIdToDelete.includes(randomNumQuiz));
-
-    allQuizIdToDelete.push(randomNumQuiz);
+    if (lvlQuizDefi === 3) {
+        do {
+            randomNumQuiz = Math.floor(Math.random() * 100) + 1;
+        } while (allQuizIdToDelete.includes(randomNumQuiz));
+    
+        allQuizIdToDelete.push(randomNumQuiz);
+    } else if (lvlQuizDefi === 2) {
+        // need to be changed
+        do {
+            randomNumQuiz = Math.floor(Math.random() * 3) + 1;
+        } while (allQuizIdToDelete.includes(randomNumQuiz));
+    
+        allQuizIdToDelete.push(randomNumQuiz);
+    } else {
+        // need to be changed
+        do {
+            randomNumQuiz = Math.floor(Math.random() * 3) + 1;
+        } while (allQuizIdToDelete.includes(randomNumQuiz));
+    
+        allQuizIdToDelete.push(randomNumQuiz);
+    };
 
     // delete defi question
     let randomNumDefi: number;
 
-    do {
-        randomNumDefi = Math.floor(Math.random() * 20) + 1;
-    } while (allDefiIdToDelete.includes(randomNumDefi));
-
-    allDefiIdToDelete.push(randomNumDefi);
+    if (lvlQuizDefi === 3) {
+        do {
+            randomNumDefi = Math.floor(Math.random() * 20) + 1;
+        } while (allDefiIdToDelete.includes(randomNumDefi));
+    
+        allDefiIdToDelete.push(randomNumDefi);
+    } else if (lvlQuizDefi === 2) {
+        // need to be changed
+        do {
+            randomNumDefi = Math.floor(Math.random() * 3) + 1;
+        } while (allDefiIdToDelete.includes(randomNumDefi));
+    
+        allDefiIdToDelete.push(randomNumDefi);
+    } else {
+        // need to be changed
+        do {
+            randomNumDefi = Math.floor(Math.random() * 3) + 1;
+        } while (allDefiIdToDelete.includes(randomNumDefi));
+    
+        allDefiIdToDelete.push(randomNumDefi);
+    };
 
     // delete bonneAction question
     let randomNumBonneAction: number;
@@ -72,34 +129,98 @@ export const getRandomNumber = (
     let findCard: any = null;
 
     if (selectedOption === "français") {
-        findCard = {
-            quiz: quizQuestions_fr.find((quiz) => quiz.id === randomNumQuiz),
-            defi: defiQuestions_fr.find((defi) => defi.id === randomNumDefi),
-            action: bonneActionQuestions_fr.find((action) => action.id === randomNumBonneAction),
-            sanction: sanctionQuestions_fr.find((sanction) => sanction.id === randomNumSanction),
-        }[type];
+        lvlQuizDefi === 3 ?
+            findCard = {
+                quiz: quizQuestions_fr.find((quiz) => quiz.id === randomNumQuiz),
+                defi: defiQuestions_fr.find((defi) => defi.id === randomNumDefi),
+                action: bonneActionQuestions_fr.find((action) => action.id === randomNumBonneAction),
+                sanction: sanctionQuestions_fr.find((sanction) => sanction.id === randomNumSanction),
+            }[type] 
+        : lvlQuizDefi === 2 ?
+            findCard = {
+                quiz: quizQuestions_fr_lvl2.find((quiz) => quiz.id === randomNumQuiz),
+                defi: defiQuestions_fr_lvl2.find((defi) => defi.id === randomNumDefi),
+                action: bonneActionQuestions_fr.find((action) => action.id === randomNumBonneAction),
+                sanction: sanctionQuestions_fr.find((sanction) => sanction.id === randomNumSanction),
+            }[type] 
+        : lvlQuizDefi === 1 ?
+            findCard = {
+                quiz: quizQuestions_fr_lvl1.find((quiz) => quiz.id === randomNumQuiz),
+                defi: defiQuestions_fr_lvl1.find((defi) => defi.id === randomNumDefi),
+                action: bonneActionQuestions_fr.find((action) => action.id === randomNumBonneAction),
+                sanction: sanctionQuestions_fr.find((sanction) => sanction.id === randomNumSanction),
+            }[type] 
+        : null;
     } else if (selectedOption === "english") {
-        findCard = {
-            quiz: quizQuestions_en.find((quiz) => quiz.id === randomNumQuiz),
-            defi: defiQuestions_en.find((defi) => defi.id === randomNumDefi),
-            action: bonneActionQuestions_en.find((action) => action.id === randomNumBonneAction),
-            sanction: sanctionQuestions_en.find((sanction) => sanction.id === randomNumSanction),
-        }[type];
+        lvlQuizDefi === 3 ?
+            findCard = {
+                quiz: quizQuestions_en.find((quiz) => quiz.id === randomNumQuiz),
+                defi: defiQuestions_en.find((defi) => defi.id === randomNumDefi),
+                action: bonneActionQuestions_en.find((action) => action.id === randomNumBonneAction),
+                sanction: sanctionQuestions_en.find((sanction) => sanction.id === randomNumSanction),
+            }[type]
+        : lvlQuizDefi === 2 ?
+            findCard = {
+                quiz: quizQuestions_en_lvl2.find((quiz) => quiz.id === randomNumQuiz),
+                defi: defiQuestions_en_lvl2.find((defi) => defi.id === randomNumDefi),
+                action: bonneActionQuestions_en.find((action) => action.id === randomNumBonneAction),
+                sanction: sanctionQuestions_en.find((sanction) => sanction.id === randomNumSanction),
+            }[type]
+        : lvlQuizDefi === 1 ?
+            findCard = {
+                quiz: quizQuestions_en_lvl1.find((quiz) => quiz.id === randomNumQuiz),
+                defi: defiQuestions_en_lvl1.find((defi) => defi.id === randomNumDefi),
+                action: bonneActionQuestions_en.find((action) => action.id === randomNumBonneAction),
+                sanction: sanctionQuestions_en.find((sanction) => sanction.id === randomNumSanction),
+            }[type] 
+        : null;
     } else if (selectedOption === "deutsch") {
-        findCard = {
-            quiz: quizQuestions_de.find((quiz) => quiz.id === randomNumQuiz),
-            defi: defiQuestions_de.find((defi) => defi.id === randomNumDefi),
-            action: bonneActionQuestions_de.find((action) => action.id === randomNumBonneAction),
-            sanction: sanctionQuestions_de.find((sanction) => sanction.id === randomNumSanction),
-        }[type];
+        lvlQuizDefi === 3 ?
+            findCard = {
+                quiz: quizQuestions_de.find((quiz) => quiz.id === randomNumQuiz),
+                defi: defiQuestions_de.find((defi) => defi.id === randomNumDefi),
+                action: bonneActionQuestions_de.find((action) => action.id === randomNumBonneAction),
+                sanction: sanctionQuestions_de.find((sanction) => sanction.id === randomNumSanction),
+            }[type]
+        : lvlQuizDefi === 2 ?
+            findCard = {
+                quiz: quizQuestions_de_lvl2.find((quiz) => quiz.id === randomNumQuiz),
+                defi: defiQuestions_de_lvl2.find((defi) => defi.id === randomNumDefi),
+                action: bonneActionQuestions_de.find((action) => action.id === randomNumBonneAction),
+                sanction: sanctionQuestions_de.find((sanction) => sanction.id === randomNumSanction),
+            }[type]
+        :lvlQuizDefi === 1 ?
+            findCard = {
+                quiz: quizQuestions_de_lvl1.find((quiz) => quiz.id === randomNumQuiz),
+                defi: defiQuestions_de_lvl1.find((defi) => defi.id === randomNumDefi),
+                action: bonneActionQuestions_de.find((action) => action.id === randomNumBonneAction),
+                sanction: sanctionQuestions_de.find((sanction) => sanction.id === randomNumSanction),
+            }[type] 
+        : null;
     } else if (selectedOption === "italiano") {
-        findCard = {
-            quiz: quizQuestions_it.find((quiz) => quiz.id === randomNumQuiz),
-            defi: defiQuestions_it.find((defi) => defi.id === randomNumDefi),
-            action: bonneActionQuestions_it.find((action) => action.id === randomNumBonneAction),
-            sanction: sanctionQuestions_it.find((sanction) => sanction.id === randomNumSanction),
-        }[type];
-    }
+        lvlQuizDefi === 3 ?
+            findCard = {
+                quiz: quizQuestions_it.find((quiz) => quiz.id === randomNumQuiz),
+                defi: defiQuestions_it.find((defi) => defi.id === randomNumDefi),
+                action: bonneActionQuestions_it.find((action) => action.id === randomNumBonneAction),
+                sanction: sanctionQuestions_it.find((sanction) => sanction.id === randomNumSanction),
+            }[type]
+        : lvlQuizDefi === 2 ?
+            findCard = {
+                quiz: quizQuestions_it_lvl2.find((quiz) => quiz.id === randomNumQuiz),
+                defi: defiQuestions_it_lvl2.find((defi) => defi.id === randomNumDefi),
+                action: bonneActionQuestions_it.find((action) => action.id === randomNumBonneAction),
+                sanction: sanctionQuestions_it.find((sanction) => sanction.id === randomNumSanction),
+            }[type]
+        : lvlQuizDefi === 1 ?
+            findCard = {
+                quiz: quizQuestions_it_lvl1.find((quiz) => quiz.id === randomNumQuiz),
+                defi: defiQuestions_it_lvl1.find((defi) => defi.id === randomNumDefi),
+                action: bonneActionQuestions_it.find((action) => action.id === randomNumBonneAction),
+                sanction: sanctionQuestions_it.find((sanction) => sanction.id === randomNumSanction),
+            }[type]
+        : null;
+    };
 
     if (!findCard) return null;
 

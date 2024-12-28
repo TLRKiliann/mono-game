@@ -1,6 +1,6 @@
 import type { DisplayCloseProps } from "../lib/types";
 import { useState } from "react";
-import "./styles/NbrOfPlayers.css";
+import "./styles/NbrPlayerNbrLapLvl.css";
 
 type NbrOfLapProps = {
     nbrOfLap: number;
@@ -37,15 +37,15 @@ const NbrOfLapComponent = ({ selectedOption, nbrOfLap, setNbrOfLap, setDisplayCl
     return (
         <div className="player-displayer">
             <div className="div-labelInputPlayer">
-                <label htmlFor="nbPlayer">
+                <label htmlFor="lap">
                     {selectedOption === "français" 
                         ? "Choisir entre 1 et 5 tours pour une partie :" : selectedOption === "english"
                         ? "Choose between 1 and 5 rounds for a game :" : selectedOption === "deutsch" 
-                        ? "Wählen Sie zwischen 1 und 5 Runden für ein Spiel :" 
-                        : "Scegliere tra 1 e 5 turni per una partita :"}
+                        ? "Wählen Sie zwischen 1 und 5 Runden für ein Spiel :" : selectedOption === "italiano"
+                        ? "Scegliere tra 1 e 5 turni per una partita :" : null}
                     <input 
                         type="text" 
-                        id="nbPlayers" 
+                        id="lap" 
                         value="" 
                         onChange={handleNbLap}
                         placeholder={String(nbrOfLap)} 
@@ -61,7 +61,8 @@ const NbrOfLapComponent = ({ selectedOption, nbrOfLap, setNbrOfLap, setDisplayCl
                     {selectedOption === "français" 
                         ? "Valider" : selectedOption === "english" 
                         ? "Validate" : selectedOption === "deutsch" 
-                        ? "Validieren" : "Validare"}
+                        ? "Validieren" : selectedOption === "italiano" 
+                        ? "Validare" : null}
                 </button>
             </div>
         </div>

@@ -10,7 +10,8 @@ const SquaresOfTop = ({
     selectedOption, 
     playersChoosen,
     setPlayersChoosen,
-    setReplay }: SquaresProps): JSX.Element => {
+    setReplay,
+    lvlQuizDefi }: SquaresProps): JSX.Element => {
 
     const PlayerSpanTop: React.FC<{ player: PlayerProps }> = ({ player }) => {
         
@@ -21,25 +22,25 @@ const SquaresOfTop = ({
             if (player.caseNumber === 39 || player.caseNumber === 51 && activeCard.type !== "quiz") {
                 setActiveCard({
                     type: "quiz",
-                    cardData: getRandomNumber("quiz", player, selectedOption, setPlayersChoosen, setReplay),
+                    cardData: getRandomNumber("quiz", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
                     isCardActive: true,
                 });
             } else if (player.caseNumber === 42 || player.caseNumber === 54 && activeCard.type !== "defi") {
                 setActiveCard({
                     type: "defi",
-                    cardData: getRandomNumber("defi", player, selectedOption, setPlayersChoosen, setReplay),
+                    cardData: getRandomNumber("defi", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
                     isCardActive: true,
                 });
             } else if (player.caseNumber === 45 && activeCard.type !== "action") {
                 setActiveCard({
                     type: "action",
-                    cardData: getRandomNumber("action", player, selectedOption, setPlayersChoosen, setReplay),
+                    cardData: getRandomNumber("action", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
                     isCardActive: true,
                 });
             } else if (player.caseNumber === 48 && activeCard.type !== "sanction") {
                 setActiveCard({
                     type: "sanction",
-                    cardData: getRandomNumber("sanction", player, selectedOption, setPlayersChoosen, setReplay),
+                    cardData: getRandomNumber("sanction", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
                     isCardActive: true,
                 });
             }

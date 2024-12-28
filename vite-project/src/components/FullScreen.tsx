@@ -1,14 +1,8 @@
+import type { DisplayCloseProps } from "../lib/types";
 import ecopotGame from "../assets/ecopotimg.png";
 /* import ecopotGame from "../assets/dice.gif"; */
 import "./styles/FullScreen.css";
 
-type DisplayCloseProps = {
-    closeFullScreen: boolean;
-    viewRules: boolean;
-    closeNbrOfPlayers: boolean;
-    closeNbrOfLap: boolean;
-    closeReady: boolean;
-};
 
 type FullScreenCloseProps = {
     setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>;
