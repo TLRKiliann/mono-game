@@ -21,7 +21,7 @@ import LvlQuizDefi from "./components/LvlQuizDefi";
 
 function App(): JSX.Element {
 
-  // hide/display boxes before game start
+  // hide/display boxes before game start (all states together)
   const [displayCloseBox, setDisplayCloseBox] = useState<DisplayCloseProps>({
     closeFullScreen: true,
     viewRules: true,
@@ -248,6 +248,12 @@ function App(): JSX.Element {
                 ? "Number of laps : " + nbrOfLap : selectedOption === "deutsch" 
                 ? "Rundenzahl : " + nbrOfLap : selectedOption === "italiano" 
                 ? "Numero di giri : " + nbrOfLap : null}
+            </h2>
+          </div>
+
+          <div className="number-lvl">
+            <h2>
+              Level : {lvlQuizDefi}
             </h2>
           </div>
           
