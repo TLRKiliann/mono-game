@@ -17,6 +17,7 @@ import natureImg from "./assets/nature_1.jpg";
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
 import './App.css';
+import LvlQuizDefi from "./components/LvlQuizDefi";
 
 function App(): JSX.Element {
 
@@ -26,6 +27,7 @@ function App(): JSX.Element {
     viewRules: true,
     closeNbrOfPlayers: true,
     closeNbrOfLap: true,
+    closeLvl: true,
     closeReady: true
   });
 
@@ -49,11 +51,14 @@ function App(): JSX.Element {
   // counter by player after throwing dice
   const [activePlayerId, setActivePlayerId] = useState<number>(1);
   
+  // choose players number at the begining of game
+  const [nbPlayer, setNbPlayer] = useState<number>(2);
+
   // choose nbr of lap for the game
   const [nbrOfLap, setNbrOfLap] = useState<number>(1);
 
-  // choose players number at the begining of game
-  const [nbPlayer, setNbPlayer] = useState<number>(2);
+  // choose lvl for quiz & defi
+  const [lvlQuizDefi, setLvlQuizDefi] = useState<number>(3);
 
   // player is able to replay
   const [replay, setReplay] = useState<boolean>(false);
@@ -140,7 +145,11 @@ function App(): JSX.Element {
 
   useEffect(() => {
     setNbrOfLap(nbrOfLap);
-  }, [nbrOfLap])
+  }, [nbrOfLap]);
+
+  useEffect(() => {
+    setLvlQuizDefi(lvlQuizDefi);
+  }, [lvlQuizDefi]);
 
   const [activeCard, setActiveCard] = useState<{
     type: 'quiz' | 'defi' | 'action' | 'sanction' | null;
@@ -170,10 +179,10 @@ function App(): JSX.Element {
 
       {displayCloseBox.viewRules === false && displayCloseBox.closeNbrOfPlayers === true ? (
         <NbrOfPlayers 
-          selectedOption={selectedOption} 
+          selectedOption={selectedOption}
+          nbPlayer={nbPlayer}
+          setNbPlayer={setNbPlayer}
           setDisplayCloseBox={setDisplayCloseBox} 
-          nbPlayer={nbPlayer} 
-          setNbPlayer={setNbPlayer} 
         />
         ) : null
       }
@@ -181,14 +190,24 @@ function App(): JSX.Element {
       {displayCloseBox.closeNbrOfPlayers === false && displayCloseBox.closeNbrOfLap === true ? (
         <NbrOfLapComponent 
           selectedOption={selectedOption}
-          setDisplayCloseBox={setDisplayCloseBox} 
           nbrOfLap={nbrOfLap} 
           setNbrOfLap={setNbrOfLap}
+          setDisplayCloseBox={setDisplayCloseBox} 
         />
         ) : null
       }
 
-      {displayCloseBox.closeNbrOfLap === false && displayCloseBox.closeReady === true ? (
+      {displayCloseBox.closeNbrOfLap === false && displayCloseBox.closeLvl === true ? (
+        <LvlQuizDefi 
+          selectedOption={selectedOption}  
+          lvlQuizDefi={lvlQuizDefi}
+          setLvlQuizDefi={setLvlQuizDefi}
+          setDisplayCloseBox={setDisplayCloseBox}
+        />
+        ) : null
+      }
+
+      {displayCloseBox.closeLvl === false && displayCloseBox.closeReady === true ? (
         <ReadyComponent setDisplayCloseBox={setDisplayCloseBox} selectedOption={selectedOption} />
       ) : null}
 
@@ -200,6 +219,7 @@ function App(): JSX.Element {
         setActiveCard={setActiveCard} 
         activePlayerId={activePlayerId} 
         selectedOption={selectedOption} 
+        lvlQuizDefi={lvlQuizDefi}
       />
 
       <div className="middle-frames">
@@ -212,6 +232,7 @@ function App(): JSX.Element {
           setActiveCard={setActiveCard} 
           activePlayerId={activePlayerId} 
           selectedOption={selectedOption} 
+          lvlQuizDefi={lvlQuizDefi}
         />
 
         <div className="container-cards">
@@ -313,7 +334,8 @@ function App(): JSX.Element {
           activeCard={activeCard} 
           setActiveCard={setActiveCard} 
           activePlayerId={activePlayerId} 
-          selectedOption={selectedOption} 
+          selectedOption={selectedOption}
+          lvlQuizDefi={lvlQuizDefi}
         />
 
       </div>
@@ -325,7 +347,8 @@ function App(): JSX.Element {
           activeCard={activeCard} 
           setActiveCard={setActiveCard} 
           activePlayerId={activePlayerId} 
-          selectedOption={selectedOption} 
+          selectedOption={selectedOption}
+          lvlQuizDefi={lvlQuizDefi}
       />
 
     </div>
