@@ -1,35 +1,35 @@
 import type { BonneActionProps, DefiProps, PlayerProps, QuizProps, SanctionsProps } from "../lib/types";
-import { quizQuestions_fr } from "../lib/quiz_fr";
-import { quizQuestions_fr_lvl2 } from "../lib/quiz_fr_lvl2";
-import { quizQuestions_fr_lvl1 } from "../lib/quiz_fr_lvl1";
+import { quizQuestions_fr } from "../lib/quiz/quiz_fr";
+import { quizQuestions_fr_lvl2 } from "../lib/quiz/quiz_fr_lvl2";
+import { quizQuestions_fr_lvl1 } from "../lib/quiz/quiz_fr_lvl1";
 
-import { quizQuestions_en } from "../lib/quiz_en";
-import { quizQuestions_en_lvl2 } from "../lib/quiz_en_lvl2";
-import { quizQuestions_en_lvl1 } from "../lib/quiz_en_lvl1";
+import { quizQuestions_en } from "../lib/quiz/quiz_en";
+import { quizQuestions_en_lvl2 } from "../lib/quiz/quiz_en_lvl2";
+import { quizQuestions_en_lvl1 } from "../lib/quiz/quiz_en_lvl1";
 
-import { quizQuestions_de } from "../lib/quiz_de";
-import { quizQuestions_de_lvl2 } from "../lib/quiz_de_lvl2";
-import { quizQuestions_de_lvl1 } from "../lib/quiz_de_lvl1";
+import { quizQuestions_de } from "../lib/quiz/quiz_de";
+import { quizQuestions_de_lvl2 } from "../lib/quiz/quiz_de_lvl2";
+import { quizQuestions_de_lvl1 } from "../lib/quiz/quiz_de_lvl1";
 
-import { quizQuestions_it } from "../lib/quiz_it";
-import { quizQuestions_it_lvl2 } from "../lib/quiz_it_lvl2";
-import { quizQuestions_it_lvl1 } from "../lib/quiz_it_lvl1";
+import { quizQuestions_it } from "../lib/quiz/quiz_it";
+import { quizQuestions_it_lvl2 } from "../lib/quiz/quiz_it_lvl2";
+import { quizQuestions_it_lvl1 } from "../lib/quiz/quiz_it_lvl1";
 
-import { defiQuestions_fr } from "../lib/defi_fr";
-import { defiQuestions_fr_lvl2 } from "../lib/defi_fr_lvl2";
-import { defiQuestions_fr_lvl1 } from "../lib/defi_fr_lvl1";
+import { defiQuestions_fr } from "../lib/defi/defi_fr";
+import { defiQuestions_fr_lvl2 } from "../lib/defi/defi_fr_lvl2";
+import { defiQuestions_fr_lvl1 } from "../lib/defi/defi_fr_lvl1";
 
-import { defiQuestions_en } from "../lib/defi_en";
-import { defiQuestions_en_lvl2 } from "../lib/defi_en_lvl2";
-import { defiQuestions_en_lvl1 } from "../lib/defi_en_lvl1";
+import { defiQuestions_en } from "../lib/defi/defi_en";
+import { defiQuestions_en_lvl2 } from "../lib/defi/defi_en_lvl2";
+import { defiQuestions_en_lvl1 } from "../lib/defi/defi_en_lvl1";
 
-import { defiQuestions_de } from "../lib/defi_de";
-import { defiQuestions_de_lvl2 } from "../lib/defi_de_lvl2";
-import { defiQuestions_de_lvl1 } from "../lib/defi_de_lvl1";
+import { defiQuestions_de } from "../lib/defi/defi_de";
+import { defiQuestions_de_lvl2 } from "../lib/defi/defi_de_lvl2";
+import { defiQuestions_de_lvl1 } from "../lib/defi/defi_de_lvl1";
 
-import { defiQuestions_it } from "../lib/defi_it";
-import { defiQuestions_it_lvl2 } from "../lib/defi_it_lvl2";
-import { defiQuestions_it_lvl1 } from "../lib/defi_it_lvl1";
+import { defiQuestions_it } from "../lib/defi/defi_it";
+import { defiQuestions_it_lvl2 } from "../lib/defi/defi_it_lvl2";
+import { defiQuestions_it_lvl1 } from "../lib/defi/defi_it_lvl1";
 
 import { bonneActionQuestions_fr } from "../lib/bonnes-actions_fr";
 import { bonneActionQuestions_en } from "../lib/bonnes-actions_en";
