@@ -24,6 +24,7 @@ export type SquaresProps = {
     setActiveCard: React.Dispatch<React.SetStateAction<ActiveCard>>;
     activePlayerId: number; 
     selectedOption: string;
+    lvlQuizDefi: number;
 };
 
 export type QuizProps = {
@@ -59,5 +60,6 @@ export type DisplayCloseProps = {
     viewRules: boolean;
     closeNbrOfPlayers: boolean;
     closeNbrOfLap: boolean;
+    closeLvl: boolean;
     closeReady: boolean;
 };
