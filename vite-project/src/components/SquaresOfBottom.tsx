@@ -10,7 +10,8 @@ const SquaresOfBottom = ({
     selectedOption, 
     playersChoosen,
     setPlayersChoosen,
-    setReplay }: SquaresProps): JSX.Element => {
+    setReplay,
+    lvlQuizDefi }: SquaresProps): JSX.Element => {
 
     const PlayerSpanBottom: React.FC<{ player: PlayerProps }> = ({ player }) => {
         
@@ -21,25 +22,25 @@ const SquaresOfBottom = ({
             if (player.caseNumber === 18 && activeCard.type !== "defi") {
                 setActiveCard({
                 type: "defi",
-                cardData: getRandomNumber("defi", player, selectedOption, setPlayersChoosen, setReplay),
+                cardData: getRandomNumber("defi", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
                 isCardActive: true,
                 });
             } else if (player.caseNumber === 21 && activeCard.type !== "action") {
                 setActiveCard({
                 type: "action",
-                cardData: getRandomNumber("action", player, selectedOption, setPlayersChoosen, setReplay),
+                cardData: getRandomNumber("action", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
                 isCardActive: true,
                 });
             } else if (player.caseNumber === 15 || player.caseNumber === 27 && activeCard.type !== "quiz") {
                 setActiveCard({
                 type: "quiz",
-                cardData: getRandomNumber("quiz", player, selectedOption, setPlayersChoosen, setReplay),
+                cardData: getRandomNumber("quiz", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
                 isCardActive: true,
                 });
             } else if (player.caseNumber === 12 || player.caseNumber === 24 && activeCard.type !== "sanction") {
                 setActiveCard({
                 type: "sanction",
-                cardData: getRandomNumber("sanction", player, selectedOption, setPlayersChoosen, setReplay),
+                cardData: getRandomNumber("sanction", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
                 isCardActive: true,
                 });
             }
@@ -59,8 +60,9 @@ const SquaresOfBottom = ({
 
     const BottomSquare: React.FC<{ caseNumber: number, playersChoosen: PlayerProps[], additionalContent: React.ReactNode }> = (
         { caseNumber, playersChoosen, additionalContent }) => (
-        <div className={`squares square-bottom ${caseNumber === 12 ? "sanction-color" : caseNumber === 15 ? "quiz-color" : caseNumber === 18 
-            ? "defi-color" : caseNumber === 21 ? "action-color" : caseNumber === 24 ? "sanction-color" : caseNumber === 27 ? "quiz-color" : null}`}>
+        <div className={`squares square-bottom ${caseNumber === 12 ? "sanction-color" : caseNumber === 15 
+            ? "quiz-color" : caseNumber === 18 ? "defi-color" : caseNumber === 21 ? "action-color" : caseNumber === 24 
+            ? "sanction-color" : caseNumber === 27 ? "quiz-color" : null}`}>
             
             <div className="caseNumber">
             {caseNumber}
@@ -118,7 +120,14 @@ const SquaresOfBottom = ({
                     additionalContent = null;
                 }
 
-                return <BottomSquare key={caseNumber} caseNumber={caseNumber} playersChoosen={playersChoosen} additionalContent={additionalContent} />;
+                return (
+                    <BottomSquare 
+                        key={caseNumber}
+                        caseNumber={caseNumber}
+                        playersChoosen={playersChoosen}
+                        additionalContent={additionalContent}
+                    />
+                )
             })}
         </div>
     )
