@@ -3,13 +3,13 @@ import { useState } from "react";
 import "./styles/NbrPlayerNbrLapLvl.css";
 
 type LevelProps = {
-    lvlQuizDefi: number;
     selectedOption: string;
+    lvlQuizDefi: number;
     setLvlQuizDefi: React.Dispatch<React.SetStateAction<number>>;
     setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>;
 };
 
-const LvlQuizDefi = ({selectedOption, setDisplayCloseBox, lvlQuizDefi, setLvlQuizDefi} : LevelProps): JSX.Element => {
+const LvlQuizDefi = ({selectedOption, lvlQuizDefi, setLvlQuizDefi, setDisplayCloseBox} : LevelProps): JSX.Element => {
 
     const [error, setError] = useState<string>("");
 

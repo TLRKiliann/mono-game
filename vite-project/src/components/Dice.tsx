@@ -1,4 +1,4 @@
-import type { PlayerProps } from '../lib/types';
+import type { ActiveCardState, PlayerProps } from '../lib/types';
 import { useEffect, useState } from 'react';
 import EndOfGame from './EndOfGame';
 import { FaLongArrowAltRight } from "react-icons/fa";
@@ -7,38 +7,39 @@ import endOfGameAudio from '../assets/audio/endOfGame.mp3';
 import './styles/Dice.css';
 
 type ValProps = {
+  selectedOption: string;
+  nbPlayer: number;
+  nbrOfLap: number;
   playersChoosen: PlayerProps[];
   setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
   replay: boolean;
   setReplay: React.Dispatch<React.SetStateAction<boolean>>;
-  nbPlayer: number;
-  nbrOfLap: number;
-  selectedOption: string;
   setCount: React.Dispatch<React.SetStateAction<number>>;
   value: number;
   setValue: React.Dispatch<React.SetStateAction<number>>;
-
+  activePlayerId: number;
+  setActivePlayerId: React.Dispatch<React.SetStateAction<number>>;
   setCountPlayerOne: React.Dispatch<React.SetStateAction<number>>;
   setCountPlayerTwo: React.Dispatch<React.SetStateAction<number>>;
   setCountPlayerThree: React.Dispatch<React.SetStateAction<number>>;
   setCountPlayerFour: React.Dispatch<React.SetStateAction<number>>;
   setCountPlayerFive: React.Dispatch<React.SetStateAction<number>>;
   setCountPlayerSix: React.Dispatch<React.SetStateAction<number>>;
-
-  activePlayerId: number;
-  setActivePlayerId: React.Dispatch<React.SetStateAction<number>>;
-  setActiveCard: any;
+  setActiveCard: React.Dispatch<React.SetStateAction<ActiveCardState>>;
 };
 
 const Dice = ({
+  selectedOption,
+  nbPlayer,
+  nbrOfLap,
   playersChoosen,
   setPlayersChoosen,
   replay,
   setReplay,
-  nbPlayer,
-  nbrOfLap,
+  setCount,
+  value,
+  setValue,
   activePlayerId,
-  selectedOption,
   setActivePlayerId,
   setCountPlayerOne,
   setCountPlayerTwo,
@@ -46,9 +47,6 @@ const Dice = ({
   setCountPlayerFour,
   setCountPlayerFive,
   setCountPlayerSix,
-  setCount,
-  value,
-  setValue,
   setActiveCard
 }: ValProps): JSX.Element => {
 
@@ -145,7 +143,7 @@ const Dice = ({
       audio.play().catch((error) => {
         console.error("Erreur lors de la lecture du son :", error);
       });
-      setActiveCard({ type: null, cardData: null });
+      setActiveCard({ type: null, cardData: null, isCardActive: false });
       setReplay(false);      
     }, 1000);
   };
