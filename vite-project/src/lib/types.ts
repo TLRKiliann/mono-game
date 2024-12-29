@@ -10,20 +10,20 @@ export type PlayerProps = {
     icon: JSX.Element;
 };
 
-type ActiveCard = {
+export type ActiveCardState = {
     type: 'quiz' | 'defi' | 'action' | 'sanction' | null;
     cardData: JSX.Element | null;
     isCardActive: boolean;
 };
 
 export type SquaresProps = {
+    selectedOption: string;
     playersChoosen: PlayerProps[];
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
-    setReplay: React.Dispatch<React.SetStateAction<boolean>>;
-    activeCard: ActiveCard;
-    setActiveCard: React.Dispatch<React.SetStateAction<ActiveCard>>;
+    activeCard: ActiveCardState;
+    setActiveCard: React.Dispatch<React.SetStateAction<ActiveCardState>>;
     activePlayerId: number; 
-    selectedOption: string;
+    setReplay: React.Dispatch<React.SetStateAction<boolean>>;
     lvlQuizDefi: number;
 };
 

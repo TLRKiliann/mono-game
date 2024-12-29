@@ -119,6 +119,24 @@
   margin: auto;
 }
 
+/* number of lvl */
+.number-lvl {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  width: auto;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}
+
+.number-lvl h2 {
+  font-size: 3.0rem;
+  font-weight: bold;
+  text-shadow: 0px 1px 2px #000;
+  color: darkgreen;
+  margin: auto;
+}
+
 /* div design logo */
 .div-jeudesociete {
   width: 100%;

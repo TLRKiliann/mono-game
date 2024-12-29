@@ -4,14 +4,14 @@ import { getRandomNumber } from '../utils/GetRandom';
 import './styles/LeftBottomRightTop.css';
 
 const SquaresOfLeft = ({
-    activeCard, 
-    setActiveCard, 
-    activePlayerId, 
     selectedOption, 
-    lvlQuizDefi,
     playersChoosen,
     setPlayersChoosen,
-    setReplay }: SquaresProps): JSX.Element => {
+    activeCard,
+    setActiveCard,
+    activePlayerId,
+    setReplay,
+    lvlQuizDefi }: SquaresProps): JSX.Element => {
 
     const PlayerSpanLeft: React.FC<{ player: PlayerProps }> = ({ player }) => {
 

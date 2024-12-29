@@ -1,4 +1,4 @@
-import { QuizProps } from "./types";
+import { QuizProps } from "../types";
 
 export const quizQuestions_fr: QuizProps[] = [
     {

@@ -1,4 +1,4 @@
-import { DefiProps } from "./types";
+import { DefiProps } from "../types";
 
 export const defiQuestions_fr_lvl2: DefiProps[] = [
     {

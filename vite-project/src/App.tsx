@@ -1,4 +1,4 @@
-import type { DisplayCloseProps, PlayerProps } from "./lib/types";
+import type { ActiveCardState, DisplayCloseProps, PlayerProps } from "./lib/types";
 import React, { useEffect, useState } from "react";
 import FullScreen from "./components/FullScreen";
 import TranslationComponent from "./components/TranslationComponent";
@@ -21,7 +21,7 @@ import LvlQuizDefi from "./components/LvlQuizDefi";
 
 function App(): JSX.Element {
 
-  // hide/display boxes before game start
+  // hide/display boxes before game start (all states together)
   const [displayCloseBox, setDisplayCloseBox] = useState<DisplayCloseProps>({
     closeFullScreen: true,
     viewRules: true,
@@ -143,20 +143,13 @@ function App(): JSX.Element {
     setPlayersChoosen(derivatedStatePlayers.slice(0, nbPlayer));
   }, [nbPlayer]);
 
-  useEffect(() => {
-    setNbrOfLap(nbrOfLap);
-  }, [nbrOfLap]);
+  const [activeCard, setActiveCard] = useState<ActiveCardState>(
+    { type: null, 
+      cardData: null, 
+      isCardActive: false
+    }
+  );
 
-  useEffect(() => {
-    setLvlQuizDefi(lvlQuizDefi);
-  }, [lvlQuizDefi]);
-
-  const [activeCard, setActiveCard] = useState<{
-    type: 'quiz' | 'defi' | 'action' | 'sanction' | null;
-    cardData: JSX.Element | null;
-    isCardActive: boolean;
-  }>({ type: null, cardData: null, isCardActive: false });
-  
   return (
     <div className='frame'>
 
@@ -208,30 +201,30 @@ function App(): JSX.Element {
       }
 
       {displayCloseBox.closeLvl === false && displayCloseBox.closeReady === true ? (
-        <ReadyComponent setDisplayCloseBox={setDisplayCloseBox} selectedOption={selectedOption} />
+        <ReadyComponent selectedOption={selectedOption} setDisplayCloseBox={setDisplayCloseBox} />
       ) : null}
 
       <SquaresOfTop 
+        selectedOption={selectedOption} 
         playersChoosen={playersChoosen}
         setPlayersChoosen={setPlayersChoosen}
-        setReplay={setReplay}
         activeCard={activeCard} 
         setActiveCard={setActiveCard} 
         activePlayerId={activePlayerId} 
-        selectedOption={selectedOption} 
+        setReplay={setReplay}
         lvlQuizDefi={lvlQuizDefi}
       />
 
       <div className="middle-frames">
 
         <SquaresOfLeft 
+          selectedOption={selectedOption}
           playersChoosen={playersChoosen}
           setPlayersChoosen={setPlayersChoosen}
-          setReplay={setReplay}
           activeCard={activeCard} 
           setActiveCard={setActiveCard} 
           activePlayerId={activePlayerId} 
-          selectedOption={selectedOption} 
+          setReplay={setReplay}
           lvlQuizDefi={lvlQuizDefi}
         />
 
@@ -250,20 +243,32 @@ function App(): JSX.Element {
                 ? "Numero di giri : " + nbrOfLap : null}
             </h2>
           </div>
+
+          <div className="number-lvl">
+            <h2>
+              Level : {lvlQuizDefi}
+            </h2>
+          </div>
           
           <div className='cards-box cards-box-left'>
             
-            <div className="card card-one">{selectedOption === "français" ? "Défi"
-                  : selectedOption === "english" ? "Challenges" 
-                  : selectedOption === "deutsch" ? "Herausforderungen" 
-                  : selectedOption === "italiano" ? "Sfide" : null}</div>
+            <div className="card card-one">
+              {selectedOption === "français" ? "Défi"
+                : selectedOption === "english" ? "Challenges" 
+                : selectedOption === "deutsch" ? "Herausforderungen" 
+                : selectedOption === "italiano" ? "Sfide" 
+                : null
+              }
+            </div>
 
             <div className="div-jeudesociete">
               <h2>
                 {selectedOption === "français" ? "JEU DE SOCIETE"
                   : selectedOption === "english" ? "BOARD GAME" 
                   : selectedOption === "deutsch" ? "BRETTSPIEL" 
-                  : selectedOption === "italiano" ? "GIOCO DA TAVOLO" : null}
+                  : selectedOption === "italiano" ? "GIOCO DA TAVOLO" 
+                  : null
+                }
               </h2>
               <img src={mascotte} width={564} height={564} alt="img mascotte" className="mascotte-img" />
             </div>
@@ -280,24 +285,24 @@ function App(): JSX.Element {
 
           <div className="div-dice">
             <Dice
-              value={value} 
-              setValue={setValue} 
-              setCount={setCount}
-              replay={replay}
-              setReplay={setReplay}
+              selectedOption={selectedOption}
               nbPlayer={nbPlayer}
               nbrOfLap={nbrOfLap}
-              selectedOption={selectedOption}
               playersChoosen={playersChoosen}
               setPlayersChoosen={setPlayersChoosen}
+              replay={replay}
+              setReplay={setReplay}
+              setCount={setCount}
+              value={value} 
+              setValue={setValue} 
+              activePlayerId={activePlayerId}
+              setActivePlayerId={setActivePlayerId}
               setCountPlayerOne={setCountPlayerOne}
               setCountPlayerTwo={setCountPlayerTwo}
               setCountPlayerThree={setCountPlayerThree}
               setCountPlayerFour={setCountPlayerFour}
               setCountPlayerFive={setCountPlayerFive}
               setCountPlayerSix={setCountPlayerSix}
-              activePlayerId={activePlayerId}
-              setActivePlayerId={setActivePlayerId}
               setActiveCard={setActiveCard}
             />
           </div>
@@ -314,40 +319,46 @@ function App(): JSX.Element {
                 {selectedOption === "français" ? "MON ECO POTE"
                   : selectedOption === "english" ? "MY ECO FRIEND" 
                   : selectedOption === "deutsch" ? "MEIN ÖKO-FREUND" 
-                  : selectedOption === "italiano" ? "IL MIO AMICO ECOLOGICO" : null}        
+                  : selectedOption === "italiano" ? "IL MIO AMICO ECOLOGICO" 
+                  : null
+                }        
                 </h2>
               <img src={myEcoBest} width={564} height={564} alt="img myecobestfriend" className="myecobestfriend-img" />
             </div>
 
-            <div className="card card-four">{selectedOption === "français" ? "Bonne Action"
+            <div className="card card-four">
+              {selectedOption === "français" ? "Bonne Action"
                 : selectedOption === "english" ? "Good Deed" 
                 : selectedOption === "deutsch" ? "Gute Tat" 
-                : selectedOption === "italiano" ? "Buona Azione" : null}</div>
+                : selectedOption === "italiano" ? "Buona Azione" 
+                : null
+              }
+            </div>
           </div>
 
         </div>
         
         <SquaresOfRight 
+          selectedOption={selectedOption}
           playersChoosen={playersChoosen}
           setPlayersChoosen={setPlayersChoosen}
-          setReplay={setReplay}
           activeCard={activeCard} 
           setActiveCard={setActiveCard} 
           activePlayerId={activePlayerId} 
-          selectedOption={selectedOption}
+          setReplay={setReplay}
           lvlQuizDefi={lvlQuizDefi}
         />
 
       </div>
       
       <SquaresOfBottom 
+          selectedOption={selectedOption}
           playersChoosen={playersChoosen}
           setPlayersChoosen={setPlayersChoosen}
-          setReplay={setReplay}
           activeCard={activeCard} 
           setActiveCard={setActiveCard} 
           activePlayerId={activePlayerId} 
-          selectedOption={selectedOption}
+          setReplay={setReplay}
           lvlQuizDefi={lvlQuizDefi}
       />
 

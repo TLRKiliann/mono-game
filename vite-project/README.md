@@ -2,9 +2,9 @@
 
 ## Rules
 
-1. texte à faire ressortir pour les cartes
-2. favicon dans le signet en-haut (plus tard)
-3. 3 lvl à implémenter + fichiers
+1. Sanction avancer plutôt que reculer... Pbm avec JOKER ???
+2. Attendre dans cases Bonne Action et +1... ???
+3. favicon dans le signet en-haut (plus tard)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

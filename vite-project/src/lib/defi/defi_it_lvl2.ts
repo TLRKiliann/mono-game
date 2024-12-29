@@ -1,6 +1,6 @@
-import { DefiProps } from "./types";
+import { DefiProps } from "../types";
 
-export const defiQuestions_it_lvl1: DefiProps[] = [
+export const defiQuestions_it_lvl2: DefiProps[] = [
     {
         id: 1,
         title: "Racconti Ecologici",

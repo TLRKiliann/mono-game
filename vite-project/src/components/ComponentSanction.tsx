@@ -76,7 +76,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
 
     /* 
         Player must move back to start square if consequence is equal to "reset". 
-        Player replay if joker is equal to true.
+        Player plays again (replays) if joker is equal to true & changes value to false.
         Otherwise, he must move back of number of squares...
     */
     const handleValidate = (): void => {
@@ -151,7 +151,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
                         {findCardSanction.consequence === "reset" && selectedOption === "français" 
                             ? "Retour case départ" 
                             : findCardSanction.consequence === "reset" && selectedOption === "english" 
-                            ? "Go back to square one" 
+                            ? "Go back to square start" 
                             : findCardSanction.consequence === "reset" && selectedOption === "deutsch" 
                             ? "Zurück zum Ausgangspunkt"
                             : findCardSanction.consequence === "reset" && selectedOption === "italiano" 

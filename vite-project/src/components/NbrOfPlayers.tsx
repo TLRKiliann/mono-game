@@ -9,7 +9,7 @@ type NbPlayerProps = {
     setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>;
 };
 
-const NbrOfPlayers = ({selectedOption, setDisplayCloseBox, nbPlayer, setNbPlayer} : NbPlayerProps): JSX.Element => {
+const NbrOfPlayers = ({selectedOption, nbPlayer, setNbPlayer, setDisplayCloseBox} : NbPlayerProps): JSX.Element => {
 
     const [error, setError] = useState<string>("");
 

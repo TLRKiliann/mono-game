@@ -4,12 +4,12 @@ import { getRandomNumber } from '../utils/GetRandom';
 import './styles/LeftBottomRightTop.css';
 
 const SquaresOfBottom = ({
-    activeCard, 
-    setActiveCard, 
-    activePlayerId, 
     selectedOption, 
     playersChoosen,
     setPlayersChoosen,
+    activeCard, 
+    setActiveCard, 
+    activePlayerId, 
     setReplay,
     lvlQuizDefi }: SquaresProps): JSX.Element => {
 
