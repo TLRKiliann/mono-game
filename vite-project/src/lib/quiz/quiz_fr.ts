@@ -601,4 +601,4 @@ export const quizQuestions_fr: QuizProps[] = [
         question: "Ces amphibiens colorés vivent dans les forêts de nuages. Comment le changement climatique impacte-t-il leur survie ?",
 		response: "Les températures changeantes affectent leur peau sensible et leur habitat"
     }
-];											
+];
