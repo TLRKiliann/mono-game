@@ -1,6 +1,6 @@
 import { QuizProps } from "../types";
 
-export const quizQuestions_de: QuizProps[] = [
+export const quizQuestions_de_lvl3: QuizProps[] = [
     {
         id: 1,
         title: "Mobilität",
