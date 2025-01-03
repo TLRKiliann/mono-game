@@ -21,7 +21,11 @@ const NbrOfLapComponent = ({ selectedOption, nbrOfLap, setNbrOfLap, setDisplayCl
             setNbrOfLap(numberValue);
             setError("");
         } else {
-            setError("Choisissez un chiffre entre 1 et 5.");
+            selectedOption === "français" ? setError("Choisissez un chiffre entre 1 et 5.")
+            : selectedOption === "english" ? setError("Choose a number between 1 and 5.")
+            : selectedOption === "deutsch" ? setError("Wählen Sie eine Zahl zwischen 1 und 5.")
+            : selectedOption === "italiano" ? setError("Scegli un numero tra 1 e 5.")
+            : null
         }
     };
 
@@ -30,7 +34,7 @@ const NbrOfLapComponent = ({ selectedOption, nbrOfLap, setNbrOfLap, setDisplayCl
             console.log("Nombre de tour :", nbrOfLap);
             setDisplayCloseBox((prev) => ({...prev, closeNbrOfLap: false}));
         } else {
-            setError("Veuillez choisir un nombre de tour valide.");
+            console.error("nbrOfLap is not valid !");
         }
     };
  
@@ -42,7 +46,8 @@ const NbrOfLapComponent = ({ selectedOption, nbrOfLap, setNbrOfLap, setDisplayCl
                         ? "Choisir entre 1 et 5 tours pour une partie :" : selectedOption === "english"
                         ? "Choose between 1 and 5 rounds for a game :" : selectedOption === "deutsch" 
                         ? "Wählen Sie zwischen 1 und 5 Runden für ein Spiel :" : selectedOption === "italiano"
-                        ? "Scegliere tra 1 e 5 turni per una partita :" : null}
+                        ? "Scegliere tra 1 e 5 turni per una partita :" : null
+                    }
                     <input 
                         type="text" 
                         id="lap" 
@@ -62,7 +67,8 @@ const NbrOfLapComponent = ({ selectedOption, nbrOfLap, setNbrOfLap, setDisplayCl
                         ? "Valider" : selectedOption === "english" 
                         ? "Validate" : selectedOption === "deutsch" 
                         ? "Validieren" : selectedOption === "italiano" 
-                        ? "Validare" : null}
+                        ? "Validare" : null
+                    }
                 </button>
             </div>
         </div>

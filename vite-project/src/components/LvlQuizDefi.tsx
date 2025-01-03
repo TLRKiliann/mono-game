@@ -21,7 +21,11 @@ const LvlQuizDefi = ({selectedOption, lvlQuizDefi, setLvlQuizDefi, setDisplayClo
             setLvlQuizDefi(numberValue);
             setError("");
         } else {
-            setError("Choisissez un chiffre entre 1 et 3.");
+            selectedOption === "français" ? setError("Choisissez un chiffre entre 1 et 3.")
+            : selectedOption === "english" ? setError("Choose a number between 1 and 3.")
+            : selectedOption === "deutsch" ? setError("Wählen Sie eine Zahl zwischen 1 und 3.")
+            : selectedOption === "italiano" ? setError("Scegli un numero tra 1 e 3.")
+            : null
         }
     };
 
@@ -30,7 +34,7 @@ const LvlQuizDefi = ({selectedOption, lvlQuizDefi, setLvlQuizDefi, setDisplayClo
             console.log("Level choosen:", lvlQuizDefi);
             setDisplayCloseBox((prev) => ({...prev, closeLvl: false}));
         } else {
-            setError("Veuillez choisir un level valide.");
+            console.error("lvlQuizDefi is not valid !");
         }
     };
 
@@ -42,7 +46,8 @@ const LvlQuizDefi = ({selectedOption, lvlQuizDefi, setLvlQuizDefi, setDisplayClo
                         ? "Choisir le level entre 1 et 3 :" : selectedOption === "english" 
                         ? "Choose level between 1 & 3 :" : selectedOption === "deutsch" 
                         ? "Wählen Sie das Level zwischen 1 und 3 :" : selectedOption === "italiano"
-                        ? "Scegli il livello tra 1 e 3 :" : null}
+                        ? "Scegli il livello tra 1 e 3 :" : null    
+                    }
                     <input 
                         type="text" 
                         id="level" 
@@ -62,7 +67,8 @@ const LvlQuizDefi = ({selectedOption, lvlQuizDefi, setLvlQuizDefi, setDisplayClo
                         ? "Valider" : selectedOption === "english" 
                         ? "Validate" : selectedOption === "deutsch" 
                         ? "Validieren" : selectedOption === "italiano" 
-                        ? "Validare" : null}
+                        ? "Validare" : null
+                    }
                 </button>
             </div>
         </div>
