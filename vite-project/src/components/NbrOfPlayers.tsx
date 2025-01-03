@@ -21,16 +21,19 @@ const NbrOfPlayers = ({selectedOption, nbPlayer, setNbPlayer, setDisplayCloseBox
             setNbPlayer(numberValue);
             setError("");
         } else {
-            setError("Choisissez un chiffre entre 2 et 6.");
+            selectedOption === "français" ? setError("Choisissez un chiffre entre 2 et 6.")
+            : selectedOption === "english" ? setError("Choose a number between 2 and 6.")
+            : selectedOption === "deutsch" ? setError("Wählen Sie eine Zahl zwischen 2 und 6.")
+            : selectedOption === "italiano" ? setError("Scegli un numero tra 2 e 6.")
+            : null
         }
     };
 
     const handleValidateNbPlayers = (): void => {
         if (nbPlayer >= 2 && nbPlayer <= 6) {
-            console.log("Nombre de joueurs:", nbPlayer);
             setDisplayCloseBox((prev) => ({...prev, closeNbrOfPlayers: false}));
         } else {
-            setError("Veuillez choisir un nombre de joueurs valide.");
+            console.error("nbPlayer is not valid !");
         }
     };
 
@@ -42,7 +45,8 @@ const NbrOfPlayers = ({selectedOption, nbPlayer, setNbPlayer, setDisplayCloseBox
                         ? "Choisir entre 2 et 6 joueurs :" : selectedOption === "english" 
                         ? "Choose between 2 and 6 players :" : selectedOption === "deutsch" 
                         ? "Zwischen 2 und 6 Spielern wählen :" : selectedOption === "italiano"
-                        ? "Scegliere tra 2 e 6 giocatori :" : null}
+                        ? "Scegliere tra 2 e 6 giocatori :" : null
+                    }
                     <input 
                         type="text" 
                         id="nbPlayer" 
@@ -51,7 +55,6 @@ const NbrOfPlayers = ({selectedOption, nbPlayer, setNbPlayer, setDisplayCloseBox
                         placeholder={String(nbPlayer)} 
                     />
                 </label>
-                
             </div>
 
             {error && <p className="error">{error}</p>}
@@ -62,7 +65,8 @@ const NbrOfPlayers = ({selectedOption, nbPlayer, setNbPlayer, setDisplayCloseBox
                         ? "Valider" : selectedOption === "english" 
                         ? "Validate" : selectedOption === "deutsch" 
                         ? "Validieren" : selectedOption === "italiano" 
-                        ? "Validare" : null}
+                        ? "Validare" : null
+                    }
                 </button>
             </div>
         </div>
