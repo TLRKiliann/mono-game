@@ -1,5 +1,5 @@
-/* @import '@fontsource-variable/raleway'; */
-@import '@fontsource/bebas-neue';
+@import '@fontsource-variable/raleway';
+/* @import '@fontsource/bebas-neue'; */
 
 :root {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -21,8 +21,7 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* font-family: 'Raleway Variable', sans-serif; */
-  font-family: 'Bebas Neue', sans-serif;
-  
+  font-family: 'Raleway Variable', sans-serif;
+  /* font-family: 'Bebas Neue', sans-serif; */
 }
 
