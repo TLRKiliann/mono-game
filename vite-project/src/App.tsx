@@ -5,6 +5,7 @@ import TranslationComponent from "./components/TranslationComponent";
 import RulesComponent from "./components/RulesComponent";
 import NbrOfPlayers from "./components/NbrOfPlayers";
 import NbrOfLapComponent from "./components/NbrOfLapComponent";
+import LvlQuizDefi from "./components/LvlQuizDefi";
 import ReadyComponent from "./components/ReadyComponent";
 import SquaresOfTop from "./components/SquaresOfTop";
 import SquaresOfLeft from "./components/SquaresOfLeft";
@@ -17,7 +18,6 @@ import natureImg from "./assets/nature_1.jpg";
 import mascotte from "./assets/mascotte-resize.png";
 import myEcoBest from "./assets/myecobestfriend-logo.png";
 import './App.css';
-import LvlQuizDefi from "./components/LvlQuizDefi";
 
 function App(): JSX.Element {
 
