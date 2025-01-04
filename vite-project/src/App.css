@@ -107,6 +107,7 @@
   top: 16%;
   left: 50%;
   width: auto;
+  font-family: 'Open Sans', sans-serif;
   z-index: 10;
   transform: translate(-50%, -50%);
 }
@@ -125,6 +126,7 @@
   bottom: 10%;
   left: 50%;
   width: auto;
+  font-family: 'Open Sans', sans-serif;
   z-index: 10;
   transform: translate(-50%, -50%);
 }
