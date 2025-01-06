@@ -2,10 +2,9 @@
 
 ## Rules
 
-1. CSS background à revoir 3-4x rgba(green)...
-2. ComponentSanction.tsx => !!! Joker to display !!!
-3. Joueur 1 c'est à vous ! border en couleur rouge ???
-4. favicon dans le signet en-haut (plus tard)
+1. ComponentSanction.tsx => !!! Joker to display !!!
+2. Joueur 1 c'est à vous ! border en couleur rouge ???
+3. favicon dans le signet en-haut
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
