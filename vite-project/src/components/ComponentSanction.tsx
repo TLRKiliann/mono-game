@@ -50,6 +50,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
+    const [displayJoker, setDisplayJoker] = useState<boolean>(false);
 
     // cards img
     const imgSanctions: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, 
@@ -85,6 +86,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
                 if (playerGame.id === player.id) {
                     if (playerGame.joker === true) {
                         setReplay(true);
+                        setDisplayJoker((prev) => !prev);
                         const audio = new Audio(sanctionAudio);
                         audio.play().catch((error) => {
                             console.error("Erreur lors de la lecture du son :", error);
@@ -111,6 +113,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
         setOnShow(false);
     };
 
+    // JOKER à tester !!!
     return (
         <div className={`${onShow === true ? 'card-displayer' : 'card-hidden'}`}>
             <img 
@@ -120,6 +123,12 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
                 alt={`Illustration pour la question ${findCardSanction.id}`} 
                 className='img-card' 
             />
+
+            {displayJoker === true ? (
+                <div className='display-winloose'>
+                    <h2>!!! JOKER !!!</h2>
+                </div>
+            ): null}
             
             <div className='para-box-card'>
                 <div className='div-card-item'>
