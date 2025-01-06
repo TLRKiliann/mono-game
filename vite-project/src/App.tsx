@@ -31,14 +31,11 @@ function App(): JSX.Element {
     closeReady: true
   });
 
-  // for translation
+  // state for translation
   const [selectedOption, setSelectedOption] = useState<string>("");
 
-  // count nbre of case by player
+  // count nbr of case by player
   const [count, setCount] = useState<number>(0);
-
-  // display value of dice
-  const [value, setValue] = useState<number>(1);
 
   // all players start at square 0
   const [, setCountPlayerOne] = useState<number>(0);
@@ -63,10 +60,7 @@ function App(): JSX.Element {
   // player is able to replay
   const [replay, setReplay] = useState<boolean>(false);
 
-  // allows to define number of players
-  const [playersChoosen, setPlayersChoosen] = useState<PlayerProps[]>([]);
-
-  // initial players state
+  // initial players state (use the state count)
   const [players] = useState<PlayerProps[]>([
     {
       id: 1,
@@ -136,6 +130,9 @@ function App(): JSX.Element {
     }
   ]);
 
+  // allows to define number of players
+  const [playersChoosen, setPlayersChoosen] = useState<PlayerProps[]>([]);
+
   // derivated state
   const derivatedStatePlayers: PlayerProps[] = players;
 
@@ -143,12 +140,11 @@ function App(): JSX.Element {
     setPlayersChoosen(derivatedStatePlayers.slice(0, nbPlayer));
   }, [nbPlayer]);
 
-  const [activeCard, setActiveCard] = useState<ActiveCardState>(
-    { type: null, 
-      cardData: null, 
-      isCardActive: false
-    }
-  );
+  const [activeCard, setActiveCard] = useState<ActiveCardState>({ 
+    type: null, 
+    cardData: null, 
+    isCardActive: false
+  });
 
   return (
     <div className='frame'>
@@ -240,7 +236,9 @@ function App(): JSX.Element {
                 ? "Nombre de tour : " + nbrOfLap : selectedOption === "english" 
                 ? "Number of laps : " + nbrOfLap : selectedOption === "deutsch" 
                 ? "Rundenzahl : " + nbrOfLap : selectedOption === "italiano" 
-                ? "Numero di giri : " + nbrOfLap : null}
+                ? "Numero di giri : " + nbrOfLap 
+                : null
+              }
             </h2>
           </div>
 
@@ -293,8 +291,6 @@ function App(): JSX.Element {
               replay={replay}
               setReplay={setReplay}
               setCount={setCount}
-              value={value} 
-              setValue={setValue} 
               activePlayerId={activePlayerId}
               setActivePlayerId={setActivePlayerId}
               setCountPlayerOne={setCountPlayerOne}
@@ -309,10 +305,14 @@ function App(): JSX.Element {
 
           <div className='cards-box cards-box-right'>
           
-            <div className="card card-three">{selectedOption === "français" ? "Sanction" 
+            <div className="card card-three">
+              {selectedOption === "français" ? "Sanction" 
                 : selectedOption === "english" ? "Sanction" 
                 : selectedOption === "deutsch" ? "Sanktion" 
-                : selectedOption === "italiano" ? "sanzione" : null}</div>
+                : selectedOption === "italiano" ? "sanzione" 
+                : null
+              }
+            </div>
             
             <div className="div-monecopote">
               <h2>
@@ -352,14 +352,14 @@ function App(): JSX.Element {
       </div>
       
       <SquaresOfBottom 
-          selectedOption={selectedOption}
-          playersChoosen={playersChoosen}
-          setPlayersChoosen={setPlayersChoosen}
-          activeCard={activeCard} 
-          setActiveCard={setActiveCard} 
-          activePlayerId={activePlayerId} 
-          setReplay={setReplay}
-          lvlQuizDefi={lvlQuizDefi}
+        selectedOption={selectedOption}
+        playersChoosen={playersChoosen}
+        setPlayersChoosen={setPlayersChoosen}
+        activeCard={activeCard} 
+        setActiveCard={setActiveCard} 
+        activePlayerId={activePlayerId} 
+        setReplay={setReplay}
+        lvlQuizDefi={lvlQuizDefi}
       />
 
     </div>

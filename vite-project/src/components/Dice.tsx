@@ -15,8 +15,6 @@ type ValProps = {
   replay: boolean;
   setReplay: React.Dispatch<React.SetStateAction<boolean>>;
   setCount: React.Dispatch<React.SetStateAction<number>>;
-  value: number;
-  setValue: React.Dispatch<React.SetStateAction<number>>;
   activePlayerId: number;
   setActivePlayerId: React.Dispatch<React.SetStateAction<number>>;
   setCountPlayerOne: React.Dispatch<React.SetStateAction<number>>;
@@ -37,8 +35,6 @@ const Dice = ({
   replay,
   setReplay,
   setCount,
-  value,
-  setValue,
   activePlayerId,
   setActivePlayerId,
   setCountPlayerOne,
@@ -50,6 +46,9 @@ const Dice = ({
   setActiveCard
 }: ValProps): JSX.Element => {
 
+  // display value of dice
+  const [value, setValue] = useState<number>(1);
+  // to see dice rolling
   const [isRolling, setIsRolling] = useState<boolean>(false);
 
   // action replay if player is in the square of "quiz"
@@ -99,7 +98,7 @@ const Dice = ({
         }
         return gamer;
       }));
-      // change score
+      // add number of squares to be advanced & set activePlayerId to 1 or to next (depending on total number of players)
       if (activePlayerId === 1) {
         replay === false ? setActivePlayerId(2) : setActivePlayerId(1);
         setCountPlayerOne((prev) => prev + newVal);
@@ -148,10 +147,7 @@ const Dice = ({
     }, 1000);
   };
 
-  //console.log(replay, "+++ replay +++");
-  //console.log(playersChoosen, "playersChoosen from dice");
-  //console.log(activePlayerId, "activePlayerId from dice");
-
+  // at the end of lap, there is a winner
   const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
   if (winner) {
     return (
@@ -215,8 +211,7 @@ const Dice = ({
         </div>
       ) : (
         <div className='dice-box'>
-          {playersChoosen.map((player: PlayerProps) => (
-            player.id === activePlayerId ? (
+          {playersChoosen.map((player: PlayerProps) => player.id === activePlayerId ? (
               <div
                 key={player.id}
                 className="dice" 
@@ -230,12 +225,11 @@ const Dice = ({
                   ? <div className='faceOfDice6'><span></span><span></span><span></span><span></span><span></span><span></span></div> : null}
               </div>
             ) : null
-          ))}
+          )}
         </div>
       )}
       <div>
-        {playersChoosen.map((play: PlayerProps) => ( 
-          play.id === activePlayerId ? (
+        {playersChoosen.map((play: PlayerProps) => play.id === activePlayerId ? (
             <div key={play.id} className='dice-player'>
               <p>{selectedOption === "français" ? "Joueur" 
                 : selectedOption === "english" ? "Player" 
@@ -248,7 +242,7 @@ const Dice = ({
                 : selectedOption === "italiano" ? "È il tuo turno!" : null}</p>
             </div> 
           ) : null
-        ))}
+        )}
       </div>
 
     </div>
