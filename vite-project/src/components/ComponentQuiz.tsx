@@ -110,11 +110,9 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
             });
             setResult("loose");
         };
-        // some trouble
         setTimeout(() => {
             setResult(null);
             setOnShow(false);
-            //setNextPlayer(true);
         }, 3000);
     };
 

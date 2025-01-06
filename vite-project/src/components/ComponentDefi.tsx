@@ -122,11 +122,9 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
             });
             setResult("loose");
         }
-        // some trouble
         setTimeout(() => {
             setResult(null);
             setOnShow(false);
-            //setNextPlayer(true);
         }, 3000);
     };
 
