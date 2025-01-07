@@ -54,7 +54,10 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
         setResponse((prev) => !prev);
     };
 
-    // player can stay in square "good action" if "joker". Otherwise, he can advance according to the number of rewards.
+    /*
+        In the event of a joker, the player advances one square. 
+        If not, he can advance according to the number of rewards.
+    */
     const handleValidate = (): void => {
         setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => {
             if (playerGame.id === player.id) {
