@@ -91,7 +91,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
         is equal to “reset”, otherwise he must move back a number of squares...
         If the player uses his joker, the value of the joker changes to false.
     */
-    const handleValidate = (): void => {
+    const handleValidate = (id: number): any => {
         const playAudio = (audioSrc: string) => {
             const audio = new Audio(audioSrc);
             audio.play().catch((error) => {
@@ -105,9 +105,8 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
                 : selectedOption === "italiano" ? "Vuoi usare il jolly?" : "something went wrong");
         };
         setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => {
-            if (playerGame.id === player.id) {
+            if (playerGame.id === id) {
                 if (playerGame.joker === true) {
-                    const isReset = findCardSanction.consequence === "reset";
                     const useJoker = confirmJokerUsage();
                     if (useJoker) {
                         setReplay(true);
@@ -115,12 +114,19 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
                         playAudio(bonneActionAudio);
                         return {...playerGame, caseNumber: playerGame.caseNumber, caseQuiz: true, joker: false};
                     } else {
-                        const audioToPlay = isReset ? resetAudio : sanctionAudio;
-                        playAudio(audioToPlay);
-                        return isReset 
-                            ? {...playerGame, caseNumber: 0} 
-                            : {...playerGame, caseNumber: playerGame.caseNumber, caseQuiz: true};
+                        if (findCardSanction.consequence === "reset") {
+                            setReplay(true);
+                            playAudio(resetAudio);
+                            return {...playerGame, caseNumber: 0};
+                        } else {
+                            playAudio(sanctionAudio);
+                            return {...playerGame, caseNumber: playerGame.caseNumber - Number(findCardSanction.consequence)};
+                        }
                     }
+                } else if (findCardSanction.consequence === "reset") {
+                    setReplay(true);
+                    playAudio(resetAudio);
+                    return {...playerGame, caseNumber: 0};
                 } else {
                     playAudio(sanctionAudio);
                     return {...playerGame, caseNumber: playerGame.caseNumber - Number(findCardSanction.consequence)};
@@ -128,10 +134,15 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
             }
             return playerGame;
         }));
-        setTimeout(() => {
-            setDisplayJoker(false);
+        // à revoir !
+        if (displayJoker === true) {
+            setTimeout(() => {
+                setDisplayJoker(false);
+                setOnShow(false);
+            }, 3000);
+        } else {
             setOnShow(false);
-        }, 3000);
+        }
     };
 
     return (
@@ -158,7 +169,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
                 </div>
 
                 <div className={`div-validateBtn ${response ? '' : 'collapsed'}`}>
-                    <button type="button" onClick={handleValidate}>
+                    <button type="button" onClick={() => handleValidate(player.id)}>
                         {selectedOption === "français" 
                             ? "Valider" 
                             : selectedOption === "english" 
