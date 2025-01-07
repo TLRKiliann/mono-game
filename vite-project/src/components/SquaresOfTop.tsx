@@ -81,25 +81,25 @@ const SquaresOfTop = ({
 
             <div className='first-squares square-top'>
             
-            <p className="first-squares-pone">0</p>
-            
-            <p className="first-squares-ptwo">Start</p>
-
-            <div className="span-pawn-firstcase">{playersChoosen.map((player: PlayerProps) => {
-                if (player.caseNumber === 0) return (
-                <div key={player.id} style={{ background: player.bgColor }} className="div-pawn">
-                    <span className="number-span">
-                    {player.id}
-                    </span> 
-                    <span className="pawn-span">
-                    {player.icon}
-                    </span>
-                </div>
+                <p className="first-squares-pone">0</p>
                 
-                );
-                else return null;
-            })}
-            </div>
+                <p className="first-squares-ptwo">Start</p>
+
+                <div className="span-pawn-firstcase">
+                    {playersChoosen.map((player: PlayerProps) => {
+                        if (player.caseNumber === 0) return (
+                            <div key={player.id} style={{ background: player.bgColor }} className="div-pawn">
+                                <span className="number-span">
+                                    {player.id}
+                                </span> 
+                                <span className="pawn-span">
+                                    {player.icon}
+                                </span>
+                            </div>
+                        );
+                        else return null;
+                    })}
+                </div>
             
             </div>
 

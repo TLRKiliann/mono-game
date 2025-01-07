@@ -5,7 +5,7 @@ export const sanctionQuestions_de: SanctionsProps[] = [
         id: 1,	
         title: "Waldbrandzone",
         info: "Ihr Lagerplatz brennt! Rücke drei Felder zurück.",
-        consequence: 3
+        consequence: 5
     },
     {
         id: 2,
@@ -65,7 +65,7 @@ export const sanctionQuestions_de: SanctionsProps[] = [
         id: 11,	
         title: "Korallenbleiche",
         info: "Das Korallenriff stirbt.",
-        consequence: 3
+        consequence: 5
     },
     {
         id: 12,

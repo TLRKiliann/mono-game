@@ -29,6 +29,7 @@ import img_26 from '../assets/sanctions/26.jpg';
 import img_27 from '../assets/sanctions/27.jpg';
 import img_28 from '../assets/sanctions/28.jpg';
 import img_29 from '../assets/sanctions/29.jpg';
+import bonneActionAudio from '../assets/audio/bonne-action.mp3';
 import sanctionAudio from '../assets/audio/sanctions.mp3';
 import resetAudio from '../assets/audio/reset.mp3';
 import './styles/CardDisplayer.css';
@@ -75,45 +76,75 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
         setResponse((prev) => !prev);
     };
 
-    /* 
-        Player must move back to start square if consequence is equal to "reset". 
-        Player plays again (replays) if joker is equal to true & changes value to false.
-        Otherwise, he must move back of number of squares...
-    */
-    const handleValidate = (): void => {
-        setPlayersChoosen((prev) => 
-            prev.map((playerGame: PlayerProps) => {
-                if (playerGame.id === player.id) {
-                    if (playerGame.joker === true) {
-                        setReplay(true);
-                        setDisplayJoker((prev) => !prev);
-                        const audio = new Audio(sanctionAudio);
-                        audio.play().catch((error) => {
-                            console.error("Erreur lors de la lecture du son :", error);
-                        });
-                        return { ...playerGame, caseNumber: playerGame.caseNumber, caseQuiz: true, joker: false };
-                    }
-                    if (findCardSanction.consequence === "reset") {
-                        const audio = new Audio(resetAudio);
-                        audio.play().catch((error) => {
-                            console.error("Erreur lors de la lecture du son :", error);
-                        });
-                        return { ...playerGame, caseNumber: 0 };
-                    } else {
-                        const audio = new Audio(sanctionAudio);
-                        audio.play().catch((error) => {
-                            console.error("Erreur lors de la lecture du son :", error);
-                        });
-                        return { ...playerGame, caseNumber: playerGame.caseNumber - Number(findCardSanction.consequence) };
-                    }
-                }
-                return playerGame;
-            })
-        );
-        setOnShow(false);
+    // if jocker display it !
+    const handleDisplayJoker = (): JSX.Element => {
+        return (
+            <div className='display-joker'>
+                <h2>!!! JOKER !!!</h2>
+            </div>
+        )
     };
 
-    // JOKER à tester !!!
+    /* 
+        The player can choose whether to use his joker or not, whether there is a reset or not. 
+        If the player refuses to use his joker, he must return to the starting square if the consequence 
+        is equal to “reset”, otherwise he must move back a number of squares...
+        If the player uses his joker, the value of the joker changes to false.
+    */
+    const handleValidate = (id: number): any => {
+        const playAudio = (audioSrc: string) => {
+            const audio = new Audio(audioSrc);
+            audio.play().catch((error) => {
+                console.error("Erreur lors de la lecture du son :", error);
+            });
+        };
+        const confirmJokerUsage = () => {
+            return confirm(selectedOption === "français" ? "Voulez-vous utiliser le joker ?" 
+                : selectedOption === "english" ? "Do you want to use the joker?" 
+                : selectedOption === "deutsch" ? "Möchten Sie den Joker verwenden?" 
+                : selectedOption === "italiano" ? "Vuoi usare il jolly?" : "something went wrong");
+        };
+        setPlayersChoosen((prev) => prev.map((playerGame: PlayerProps) => {
+            if (playerGame.id === id) {
+                if (playerGame.joker === true) {
+                    const useJoker = confirmJokerUsage();
+                    if (useJoker) {
+                        setReplay(true);
+                        setDisplayJoker((prev) => !prev);
+                        playAudio(bonneActionAudio);
+                        return {...playerGame, caseNumber: playerGame.caseNumber, caseQuiz: true, joker: false};
+                    } else {
+                        if (findCardSanction.consequence === "reset") {
+                            setReplay(true);
+                            playAudio(resetAudio);
+                            return {...playerGame, caseNumber: 0};
+                        } else {
+                            playAudio(sanctionAudio);
+                            return {...playerGame, caseNumber: playerGame.caseNumber - Number(findCardSanction.consequence)};
+                        }
+                    }
+                } else if (findCardSanction.consequence === "reset") {
+                    setReplay(true);
+                    playAudio(resetAudio);
+                    return {...playerGame, caseNumber: 0};
+                } else {
+                    playAudio(sanctionAudio);
+                    return {...playerGame, caseNumber: playerGame.caseNumber - Number(findCardSanction.consequence)};
+                }
+            }
+            return playerGame;
+        }));
+        // à revoir !
+        if (displayJoker === true) {
+            setTimeout(() => {
+                setDisplayJoker(false);
+                setOnShow(false);
+            }, 3000);
+        } else {
+            setOnShow(false);
+        }
+    };
+
     return (
         <div className={`${onShow === true ? 'card-displayer' : 'card-hidden'}`}>
             <img 
@@ -124,11 +155,9 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
                 className='img-card' 
             />
 
-            {displayJoker === true ? (
-                <div className='display-winloose'>
-                    <h2>!!! JOKER !!!</h2>
-                </div>
-            ): null}
+            <div>
+                {displayJoker === true ? handleDisplayJoker() : null}
+            </div>
             
             <div className='para-box-card'>
                 <div className='div-card-item'>
@@ -140,7 +169,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
                 </div>
 
                 <div className={`div-validateBtn ${response ? '' : 'collapsed'}`}>
-                    <button type="button" onClick={handleValidate}>
+                    <button type="button" onClick={() => handleValidate(player.id)}>
                         {selectedOption === "français" 
                             ? "Valider" 
                             : selectedOption === "english" 
