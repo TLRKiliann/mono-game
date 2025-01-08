@@ -88,7 +88,7 @@ const SquaresOfTop = ({
                 <div className="span-pawn-firstcase">
                     {playersChoosen.map((player: PlayerProps) => {
                         if (player.caseNumber === 0) return (
-                            <div key={player.id} style={{ background: player.bgColor }} className="div-pawn">
+                            <div key={player.id} className="div-pawn">
                                 <span className="number-span">
                                     {player.id}
                                 </span> 
