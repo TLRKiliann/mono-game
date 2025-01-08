@@ -63,14 +63,17 @@ const SquaresOfTop = ({
             <div className={`squares square-top ${caseNumber === 39 ? "quiz-color" : caseNumber === 42 ? "defi-color" 
                 : caseNumber === 45 ? "action-color" : caseNumber === 48 ? "sanction-color" : caseNumber === 51 ? "quiz-color" 
                 : caseNumber === 54 ? "defi-color" : null}`}>
-                    <div className="caseNumber">
-                        {caseNumber}
-                        {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
-                            ? <PlayerSpanTop 
-                                key={player.id} 
-                                player={player} 
-                            /> 
-                            : null)}
+                    <div className="caseNumberpawn-container">
+                        <span className="caseNumber-box">{caseNumber}</span>
+                        <span className="pawns-box">
+                            {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
+                                ? <PlayerSpanTop 
+                                    key={player.id} 
+                                    player={player} 
+                                /> 
+                                : null
+                            )}
+                        </span>
                     </div>
                 {additionalContent}
             </div>
