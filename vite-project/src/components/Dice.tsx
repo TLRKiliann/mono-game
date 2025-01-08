@@ -151,7 +151,7 @@ const Dice = ({
   const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
   if (winner) {
     return (
-      <div className="div-endofgame">
+      <div className="endofgame-box">
         <EndOfGame selectedOption={selectedOption} winner={winner.name} />
       </div>
     );
