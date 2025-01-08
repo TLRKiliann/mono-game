@@ -1,10 +1,12 @@
-.dice-gif {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 7px;
-    z-index: 10;
+.endofgame-box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    background: #f5eeeb;
+    z-index: 200;
 }
 
 .dice-container {
@@ -327,8 +329,11 @@
     width: 100%;
     font-size: 3.0rem;
     font-weight: 600;
-    text-shadow: 1px 1px 1px #777;
-    color: #f5eeeb;
+    text-shadow: 1px 1px 1px #115348;
+    color: #f5f5f5;
     margin: auto;
 }
 
+.dice-player-span {
+    text-shadow: 1px 1px 20px #ff4500;
+}

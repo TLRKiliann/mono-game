@@ -151,7 +151,7 @@ const Dice = ({
   const winner = playersChoosen.find((gamer) => gamer.gameOver === true);
   if (winner) {
     return (
-      <div className="div-endofgame">
+      <div className="endofgame-box">
         <EndOfGame selectedOption={selectedOption} winner={winner.name} />
       </div>
     );
@@ -218,11 +218,36 @@ const Dice = ({
                 onClick={() => rollDice(player.id)}
               >
                 {value === 1 ? <div className='faceOfDice1'><span></span></div> : value === 2 
-                  ? <div className='faceOfDice2'><span className="span-nbr1"></span><span className="span-nbr2"></span></div> : value === 3 
-                  ? <div className='faceOfDice3'><span className='span-nbr1'></span><span className='span-nbr2'></span><span className='span-nbr3'></span></div> : value === 4 
-                  ? <div className='faceOfDice4'><span></span><span></span><span></span><span></span></div> : value === 5 
-                  ? <div className='faceOfDice5'><span className='span-nbr'></span><span className='span-nbr'></span><span className='span-nbr_3'></span><span className='span-nbr'></span><span className='span-nbr'></span></div> : value === 6 
-                  ? <div className='faceOfDice6'><span></span><span></span><span></span><span></span><span></span><span></span></div> : null}
+                  ? <div className='faceOfDice2'>
+                      <span className="span-nbr1"></span>
+                      <span className="span-nbr2"></span>
+                    </div> : value === 3 
+                  ? <div className='faceOfDice3'>
+                      <span className='span-nbr1'></span>
+                      <span className='span-nbr2'></span>
+                      <span className='span-nbr3'></span>
+                    </div> : value === 4 
+                  ? <div className='faceOfDice4'>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div> : value === 5 
+                  ? <div className='faceOfDice5'>
+                      <span className='span-nbr'></span>
+                      <span className='span-nbr'></span>
+                      <span className='span-nbr_3'></span>
+                      <span className='span-nbr'></span>
+                      <span className='span-nbr'></span>
+                    </div> : value === 6 
+                  ? <div className='faceOfDice6'>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div> : null}
               </div>
             ) : null
           )}
@@ -235,7 +260,7 @@ const Dice = ({
                 : selectedOption === "english" ? "Player" 
                 : selectedOption === "deutsch" ? "Spieler" 
                 : selectedOption === "italiano" ? "Giocatore" : null}&nbsp;
-                {play.id}&nbsp;<FaLongArrowAltRight size={44} />&nbsp;
+                <span className='dice-player-span'>{play.id}</span>&nbsp;<FaLongArrowAltRight size={44} />
                 {selectedOption === "français" ? "C'est ton tour!" 
                 : selectedOption === "english" ? "It's your turn!" 
                 : selectedOption === "deutsch" ? "Du bist dran!"

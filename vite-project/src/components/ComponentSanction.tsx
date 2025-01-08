@@ -51,7 +51,9 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
 
     const [onShow, setOnShow] = useState<boolean>(true);
     const [response, setResponse] = useState<boolean>(false);
+    const [showBtn, setShowBtn] = useState<boolean>(false);
     const [displayJoker, setDisplayJoker] = useState<boolean>(false);
+
 
     // cards img
     const imgSanctions: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, 
@@ -92,6 +94,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
         If the player uses his joker, the value of the joker changes to false.
     */
     const handleValidate = (id: number): any => {
+        setShowBtn((prev) => !prev);
         const playAudio = (audioSrc: string) => {
             const audio = new Audio(audioSrc);
             audio.play().catch((error) => {
@@ -134,15 +137,11 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
             }
             return playerGame;
         }));
-        // à revoir !
-        if (displayJoker === true) {
-            setTimeout(() => {
-                setDisplayJoker(false);
-                setOnShow(false);
-            }, 3000);
-        } else {
+        setTimeout(() => {
+            setDisplayJoker(false);
             setOnShow(false);
-        }
+            setShowBtn(false);
+        }, 3000);
     };
 
     return (
@@ -169,7 +168,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
                 </div>
 
                 <div className={`div-validateBtn ${response ? '' : 'collapsed'}`}>
-                    <button type="button" onClick={() => handleValidate(player.id)}>
+                    <button type="button" onClick={() => handleValidate(player.id)} disabled={showBtn}>
                         {selectedOption === "français" 
                             ? "Valider" 
                             : selectedOption === "english" 

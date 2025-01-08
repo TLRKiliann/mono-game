@@ -56,14 +56,17 @@ const SquaresOfRight = ({
         { caseNumber, playersChoosen, additionalContent }) => (
             <div className={`squares-side squares-rside ${caseNumber === 30 ? "defi-color" : caseNumber === 33 ? "action-color" 
                 : caseNumber === 36 ? "sanction-color" : null}`}>
-                <div className="caseNumber">
-                {caseNumber}
-                {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
-                    ? <PlayerSpanRight
-                        key={player.id} 
-                        player={player}
-                    /> 
-                    : null)}
+                <div className="caseNumberpawn-container">
+                    <span className="caseNumber-box">{caseNumber}</span>
+                    <span className="pawns-box">
+                        {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
+                            ? <PlayerSpanRight
+                                key={player.id} 
+                                player={player}
+                            /> 
+                            : null
+                        )}
+                    </span>
                 </div>
                 {additionalContent}
             </div>

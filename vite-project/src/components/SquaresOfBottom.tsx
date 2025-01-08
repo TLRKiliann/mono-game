@@ -64,15 +64,17 @@ const SquaresOfBottom = ({
             ? "quiz-color" : caseNumber === 18 ? "defi-color" : caseNumber === 21 ? "action-color" : caseNumber === 24 
             ? "sanction-color" : caseNumber === 27 ? "quiz-color" : null}`}>
             
-            <div className="caseNumber">
-            {caseNumber}
-            {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
-                ? <PlayerSpanBottom 
-                    key={player.id} 
-                    player={player}
-                /> 
-                : null
-            )}
+            <div className="caseNumberpawn-container">
+                <span className="caseNumber-box">{caseNumber}</span>
+                <span className="pawns-box">
+                    {playersChoosen.map((player: PlayerProps) => player.caseNumber === caseNumber 
+                        ? <PlayerSpanBottom 
+                            key={player.id} 
+                            player={player}
+                        /> 
+                        : null
+                    )}
+                </span>
             </div>
             {additionalContent}
         </div>
