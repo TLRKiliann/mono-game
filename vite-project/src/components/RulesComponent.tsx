@@ -25,6 +25,9 @@ const RulesComponent = ({ selectedOption, setDisplayCloseBox }: RulesProps): JSX
                     <ol>
                         <li>Choisissez le nombre de joueurs.</li>
                         <li>Choisissez les nombre de tour pour une partie.</li>
+                        
+                        <li>Choisir le level 1 (8-10 ans) - 2 (10-12 ans) - 3 (12-14 ans)</li>
+
                         <li>Le joueur 1 commence par lancé le dés.</li>
                         <li>
                             Les cases "Quiz", "Défi", "Sanction", "Bonne Action" affichent une carte dont le joueur doit 
@@ -42,6 +45,9 @@ const RulesComponent = ({ selectedOption, setDisplayCloseBox }: RulesProps): JSX
                     <ol>
                         <li>Choose the number of players.</li>
                         <li>Choose the number of rounds for a game.</li>
+                        
+                        <li>...</li>
+
                         <li>Player 1 starts by rolling the dice.</li>
                         <li>
                             The "Quiz," "Challenge," "Penalty," and "Good Action" boxes display a card that the player must either answer 
@@ -58,6 +64,9 @@ const RulesComponent = ({ selectedOption, setDisplayCloseBox }: RulesProps): JSX
                     <ol>
                         <li>Wählen Sie die Anzahl der Spieler.</li>
                         <li>Wählen Sie die Anzahl der Runden für ein Spiel.</li>
+                        
+                        <li>...</li>
+
                         <li>Spieler 1 beginnt, indem er die Würfel wirft.</li>
                         <li>
                             Die Felder "Quiz", "Herausforderung", "Strafe" und "Gute Tat" zeigen eine Karte an, auf die der Spieler entweder 
@@ -75,6 +84,9 @@ const RulesComponent = ({ selectedOption, setDisplayCloseBox }: RulesProps): JSX
                     <ol>
                         <li>Scegli il numero di giocatori.</li>
                         <li>Scegli il numero di turni per una partita.</li>
+                        
+                        <li>...</li>
+
                         <li>Il giocatore 1 inizia lanciando i dadi.</li>
                         <li>
                             Le caselle "Quiz", "Sfida", "Sanzione" e "Buona Azione" mostrano una carta alla quale il giocatore deve 
