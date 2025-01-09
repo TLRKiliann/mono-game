@@ -21,10 +21,10 @@ const LvlQuizDefi = ({selectedOption, lvlQuizDefi, setLvlQuizDefi, setDisplayClo
             setLvlQuizDefi(numberValue);
             setError("");
         } else {
-            selectedOption === "français" ? setError("Choisissez un chiffre entre 1 et 3.")
-            : selectedOption === "english" ? setError("Choose a number between 1 and 3.")
-            : selectedOption === "deutsch" ? setError("Wählen Sie eine Zahl zwischen 1 und 3.")
-            : selectedOption === "italiano" ? setError("Scegli un numero tra 1 e 3.")
+            selectedOption === "français" ? setError("Choisissez un chiffre entre 1 et 3 !")
+            : selectedOption === "english" ? setError("Choose a number between 1 and 3 !")
+            : selectedOption === "deutsch" ? setError("Wählen Sie eine Zahl zwischen 1 und 3 !")
+            : selectedOption === "italiano" ? setError("Scegli un numero tra 1 e 3 !")
             : null
         }
     };

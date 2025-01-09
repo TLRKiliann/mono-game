@@ -21,10 +21,10 @@ const NbrOfPlayers = ({selectedOption, nbPlayer, setNbPlayer, setDisplayCloseBox
             setNbPlayer(numberValue);
             setError("");
         } else {
-            selectedOption === "français" ? setError("Choisissez un chiffre entre 2 et 6.")
-            : selectedOption === "english" ? setError("Choose a number between 2 and 6.")
-            : selectedOption === "deutsch" ? setError("Wählen Sie eine Zahl zwischen 2 und 6.")
-            : selectedOption === "italiano" ? setError("Scegli un numero tra 2 e 6.")
+            selectedOption === "français" ? setError("Choisissez un chiffre entre 2 et 6 !")
+            : selectedOption === "english" ? setError("Choose a number between 2 and 6 !")
+            : selectedOption === "deutsch" ? setError("Wählen Sie eine Zahl zwischen 2 und 6 !")
+            : selectedOption === "italiano" ? setError("Scegli un numero tra 2 e 6 !")
             : null
         }
     };
