@@ -159,11 +159,9 @@
 
 .div-validateBtn button {
     font-size: 1.0rem;
-    font-weight: 600;
+    font-weight: bold;
     
-    /* background: rgba(17, 83, 72, 1); */
     background: linear-gradient(30deg, rgba(17, 83, 72, 0.5) 10%, rgba(17, 83, 72, 1) 90%);
-
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 7px #777;
@@ -196,9 +194,7 @@
     font-size: 1.0rem;
     font-weight: 600;
 
-    /* background: rgba(17, 83, 72, 1); */
     background: linear-gradient(30deg, rgba(17, 83, 72, 0.5) 10%, rgba(17, 83, 72, 1) 90%);
-
     border: none;
     border-radius: 5px;
 
