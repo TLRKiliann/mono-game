@@ -3,8 +3,9 @@
 ## Rules
 
 1. Rules à revoir !
-2. box de présentation avec gestion des erreurs
-3. favicon dans le signet en-haut
+2. Nbre de tour à indiquer
+3. Deutsch pose pbm pour défi (trop long le mot)
+4. favicon dans le signet en-haut
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
