@@ -240,6 +240,19 @@ function App(): JSX.Element {
                 : null
               }
             </h2>
+
+            {playersChoosen.slice(0, 1).map((playerRound: PlayerProps) => playerRound.lap <= nbrOfLap ? (
+              <h3>
+                {selectedOption === "français" ? "(Tour actuel : " + playerRound.lap + ")" 
+                  : selectedOption === "english" ? "(Current round : " + playerRound.lap + ")"  
+                  : selectedOption === "deutsch" ? "(Aktuelle Tour : " + playerRound.lap + ")" 
+                  : selectedOption === "italiano" ? "(Tour attuale : " + playerRound.lap + ")" 
+                  : null
+                }
+              </h3>
+              ) : null
+            )}
+          
           </div>
 
           <div className="number-lvl">
