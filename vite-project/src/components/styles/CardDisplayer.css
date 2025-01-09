@@ -21,12 +21,12 @@
     align-items: center;
     justify-content: center; 
 
-    background: rgba(0,0,0, 1);
+    background: rgba(0, 0, 0, 1);
     border: none;
-    border-radius: 7px;
-    box-shadow: 0 0 50px rgba(17, 83, 72, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
 
-    color: #fff;
+    color: #f5f5f5;
     margin: auto;
     z-index: 50;
     transform: scale(1.0) rotate3d(0, 0, 0, 0deg);
@@ -42,6 +42,19 @@
     display: none;
 }
 
+.img-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    margin: auto;
+    opacity: 0.6;
+    z-index: -1;
+}
+
 .para-box-card {
     width: 100%;
     height: 100%;
@@ -52,8 +65,8 @@
 
     font-size: 1.4rem;
     font-weight: bold;
-    color: #fff;
-    text-shadow: 1px 1px 1px #333;
+    color: #f5f5f5;
+    text-shadow: 0px 1px 1px #333;
 }
 
 .div-card-item {
@@ -62,16 +75,16 @@
 
 /* top question number + title */
 .p-card-first {
-    background: rgba(245, 238, 235, 0.7);
-
+    background: rgba(245, 238, 235, 0.6);
+    border-radius: 5px 5px 0 0;
     margin: auto;
     padding: 20px;
 }
 
 /* under top Question */
 .p-card-second {
-    background: rgba(245, 238, 235, 0.7);
-    border-radius: 7px;
+    background: rgba(245, 238, 235, 0.6);
+    border-radius: 3px;
     text-align: justify;
     
     margin: 20px;
@@ -79,13 +92,14 @@
     padding: 20px;
 }
 
+/* label input btn validation */
 .div-mainValidate {
     display: flex;
     align-items: center;
     justify-content: space-around;
 
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 7px;
+    background: rgba(245, 238, 235, 0.3);
+    border-radius: 3px;
 
     margin: auto 20px;
     margin-bottom: 40px;
@@ -105,14 +119,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background: rgba(245, 238, 235, 0.6);
+    border-radius: 5px;
+    box-shadow: 0 0 7px #777;
+    color: #f5f5f5;
+    text-shadow: 0px 1px 1px #333;
 }
 
 .validate-error label {
-    background: rgba(245, 238, 235, 0.7);
-    border-radius: 7px;
-    color: #fff;
-    text-shadow: 1px 1px 1px #333;
-    padding: 5px 20px;
+    margin: 10px 20px;
+    margin-right: 0px;
+}
+
+.validate-error input {
+    margin: 10px 20px;
+    margin-left: 10px;
 }
 
 .div-validateBtn {
@@ -120,8 +142,8 @@
     align-items: center;
     justify-content: center;
     max-height: 100px;
-    background: rgba(245, 238, 235, 0.7);
-    border-radius: 7px;
+    background: rgba(245, 238, 235, 0.3);
+    border-radius: 3px;
     margin: auto 20px;
     margin-bottom: 40px;
     padding: 20px;
@@ -137,11 +159,11 @@
 
 .div-validateBtn button {
     font-size: 1.0rem;
-    font-weight: 600;
-
-    background: rgba(17, 83, 72, 1);
+    font-weight: bold;
+    
+    background: linear-gradient(30deg, rgba(17, 83, 72, 0.5) 10%, rgba(17, 83, 72, 1) 90%);
     border: none;
-    border-radius: 7px;
+    border-radius: 5px;
     box-shadow: 0 0 7px #777;
     padding: 12px 30px;
     transition: 0.2s ease-in-out;
@@ -160,41 +182,6 @@
     transform: scale(0.95);
 }
 
-/* response */
-.p-card-third {
-    text-align: justify;
-
-    color: rgb(6, 128, 77);
-    text-shadow: 1px 1px 1px #555;
-
-    background: rgba(245, 238, 235, 0.7);    
-    border-radius: 7px;
-
-    margin: 20px;
-    padding: 20px;
-    opacity: 1;
-    overflow: hidden;
-    transition: padding 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-
-.p-card-third.collapsed-third {
-    padding: 0;
-    opacity: 0;
-}
-
-.img-card {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    border-radius: 7px;
-    margin: auto;
-    opacity: 0.6;
-    z-index: -1;
-}
-
 /* btn response */
 .div-responseBtn {
     display: flex;
@@ -207,9 +194,9 @@
     font-size: 1.0rem;
     font-weight: 600;
 
-    background: rgba(17, 83, 72, 1);
+    background: linear-gradient(30deg, rgba(17, 83, 72, 0.5) 10%, rgba(17, 83, 72, 1) 90%);
     border: none;
-    border-radius: 7px;
+    border-radius: 5px;
 
     box-shadow: 0 0 20px lightgrey;
     padding: 12px 30px;
@@ -227,6 +214,28 @@
     background: rgba(17, 83, 72, 1);
     box-shadow: inset 0 0 50px rgba(211, 211, 211, 1);
     transform: scale(0.95);
+}
+
+/* response */
+.p-card-third {
+    text-align: justify;
+    color: rgb(6, 128, 77);
+    text-shadow: 0px 1px 1px #333;
+
+    background: rgba(245, 238, 235, 0.6);    
+    border-radius: 0 0 5px 5px;
+
+    margin-top: 20px;
+    margin-bottom: 0;
+    padding: 20px;
+    opacity: 1;
+    overflow: hidden;
+    transition: padding 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.p-card-third.collapsed-third {
+    padding: 0;
+    opacity: 0;
 }
 
 .display-winloose {

@@ -115,15 +115,30 @@
 .number-laps h2 {
   font-size: 3.0rem;
   font-weight: bold;
-  text-shadow: 0px 1px 2px #000;
-  color: darkgreen;
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.7) 10%, rgba(17, 83, 72, 1) 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent; 
+  margin: auto;
+}
+
+.number-laps h3 {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.7) 10%, rgba(17, 83, 72, 1) 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent; 
   margin: auto;
 }
 
 /* number of lvl */
 .number-lvl {
   position: absolute;
-  bottom: 10%;
+  bottom: 9%;
   left: 50%;
   width: auto;
   font-family: 'Open Sans', sans-serif;
@@ -134,8 +149,11 @@
 .number-lvl h2 {
   font-size: 3.0rem;
   font-weight: bold;
-  text-shadow: 0px 1px 2px #000;
-  color: darkgreen;
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.7) 10%, rgba(17, 83, 72, 1) 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent; 
   margin: auto;
 }
 
@@ -150,12 +168,15 @@
 
 .div-jeudesociete h2 {
   font-size: 2rem;
-  color: darkgreen;
-  text-shadow: 0px 1px 2px #000;
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.7) 10%, rgba(17, 83, 72, 1) 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent; 
   margin: auto;
 }
 
-.div-monecopote {
+.div-monecopote {  
   width: 100%;
   height: 100%;
   display: flex;
@@ -165,8 +186,11 @@
 
 .div-monecopote h2 {
   font-size: 2rem;
-  color: darkgreen;
-  text-shadow: 0px 1px 2px #000;
+  background: linear-gradient(30deg, rgba(17, 83, 72, 0.7) 10%, rgba(17, 83, 72, 1) 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent; 
   margin: auto;
 }
 

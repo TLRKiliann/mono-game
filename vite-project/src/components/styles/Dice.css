@@ -310,6 +310,10 @@
     align-items: center;
     justify-content: space-between;
 
+    font-size: 3.0rem;
+    font-weight: bold;
+    color: #f5f5f5;
+
     opacity: 0;
     visibility: hidden;
     z-index: 40;
@@ -327,13 +331,12 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    font-size: 3.0rem;
-    font-weight: 600;
-    text-shadow: 1px 1px 1px #115348;
-    color: #f5f5f5;
+
+    text-shadow: 0px 1px 1px #115348;
     margin: auto;
 }
 
-.dice-player-span {
-    text-shadow: 1px 1px 20px #ff4500;
+.dice-player .dice-player-span {
+    text-shadow: 1px 1px 20px #115348;
+    padding: 15px;
 }

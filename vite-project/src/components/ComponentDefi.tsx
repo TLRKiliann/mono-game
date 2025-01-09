@@ -170,15 +170,15 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
                                 ? "Giusto" 
                                 : null
                             }
-                            <input
-                                type="radio"
-                                id="validate"
-                                name="validate"
-                                value="option1"
-                                checked={isChecked === 'option1'} 
-                                onChange={handleCheck} 
-                            />
                         </label>
+                        <input
+                            type="radio"
+                            id="validate"
+                            name="validate"
+                            value="option1"
+                            checked={isChecked === 'option1'} 
+                            onChange={handleCheck} 
+                        />
                     </div>
 
                     <div className='validate-error'>
@@ -193,15 +193,15 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
                                 ? "Falso" 
                                 : null
                             }
-                            <input
-                                type="radio"
-                                id="error"
-                                name="error"
-                                value="option2"
-                                checked={isChecked === 'option2'} 
-                                onChange={handleCheck}
-                            />
                         </label>
+                        <input
+                            type="radio"
+                            id="error"
+                            name="error"
+                            value="option2"
+                            checked={isChecked === 'option2'} 
+                            onChange={handleCheck}
+                        />
                     </div>
 
                 </div>

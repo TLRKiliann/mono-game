@@ -3,10 +3,9 @@
 ## Rules
 
 1. Rules à revoir !
-2. joker à tester
-3. EndOfGame.tsx
-4. Joueur 1 c'est à vous ! border en couleur rouge ???
-5. favicon dans le signet en-haut
+2. Nbre de tour à indiquer
+3. Deutsch pose pbm pour défi (trop long le mot)
+4. favicon dans le signet en-haut
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
