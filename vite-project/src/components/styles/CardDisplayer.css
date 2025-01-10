@@ -26,7 +26,6 @@
     border-radius: 5px;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
 
-    color: #f5f5f5;
     margin: auto;
     z-index: 50;
     transform: scale(1.0) rotate3d(0, 0, 0, 0deg);
@@ -55,7 +54,7 @@
     z-index: -1;
 }
 
-.para-box-card {
+.card-container {
     width: 100%;
     height: 100%;
 
@@ -65,8 +64,8 @@
 
     font-size: 1.4rem;
     font-weight: bold;
-    color: #f5f5f5;
-    text-shadow: 0px 1px 1px #333;
+    color: #06804d;
+    text-shadow: 0px 1px 1px #005332;
 }
 
 .div-card-item {
@@ -123,8 +122,8 @@
     background: rgba(245, 238, 235, 0.6);
     border-radius: 5px;
     box-shadow: 0 0 7px #777;
-    color: #f5f5f5;
-    text-shadow: 0px 1px 1px #333;
+    color: #06804d;
+    text-shadow: 0px 1px 1px #005332;
 }
 
 .validate-error label {
@@ -137,7 +136,7 @@
     margin-left: 10px;
 }
 
-.div-validateBtn {
+.btn-validate-div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,65 +151,79 @@
     transition: padding 0.3s ease-in-out, opacity 0.3s ease-in-out; 
 }
 
-.div-validateBtn.collapsed {
+.btn-validate-div.collapsed {
     padding: 0;
     opacity: 0;
 }
 
-.div-validateBtn button {
-    font-size: 1.0rem;
+.btn-validate-div button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 120px;
+    height: 40px;
+
+    font-size: 1rem;
     font-weight: bold;
-    
+
     background: linear-gradient(30deg, rgba(17, 83, 72, 0.5) 10%, rgba(17, 83, 72, 1) 90%);
     border: none;
     border-radius: 5px;
-    box-shadow: 0 0 7px #777;
-    padding: 12px 30px;
-    transition: 0.2s ease-in-out;
+    box-shadow: 0 0 10px lightgrey;
+
     transform: scale(1.0);
+    transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
-.div-validateBtn button:hover {
+.btn-validate-div button:hover {
     background: rgba(17, 83, 72, 1);
     box-shadow: inset 0 0 5px rgba(211, 211, 211, 1);
     transform: scale(1.05);
 }
 
-.div-validateBtn button:active {
+.btn-validate-div button:active {
     background: rgba(17, 83, 72, 1);
     box-shadow: inset 0 0 50px rgba(211, 211, 211, 1);
     transform: scale(0.95);
 }
 
 /* btn response */
-.div-responseBtn {
+.btn-response-div {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: auto;
+    height: 50px;
     margin: 20px;
 }
 
-.div-responseBtn button {
-    font-size: 1.0rem;
-    font-weight: 600;
+.btn-response-div button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 1rem;
+    font-weight: bold;
 
     background: linear-gradient(30deg, rgba(17, 83, 72, 0.5) 10%, rgba(17, 83, 72, 1) 90%);
     border: none;
     border-radius: 5px;
-
     box-shadow: 0 0 20px lightgrey;
-    padding: 12px 30px;
-    transition: 0.2s ease-in-out;
+
+    padding: 1.5% 3%;
+
     transform: scale(1.0);
+    transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
-.div-responseBtn button:hover {
+.btn-response-div button:hover {
     background: rgba(17, 83, 72, 1);
     box-shadow: inset 0 0 5px rgba(211, 211, 211, 1);
     transform: scale(1.05);
 }
 
-.div-responseBtn button:active {
+.btn-response-div button:active {
     background: rgba(17, 83, 72, 1);
     box-shadow: inset 0 0 50px rgba(211, 211, 211, 1);
     transform: scale(0.95);
@@ -219,8 +232,8 @@
 /* response */
 .p-card-third {
     text-align: justify;
-    color: rgb(6, 128, 77);
-    text-shadow: 0px 1px 1px #333;
+    color: #06804d;
+    text-shadow: 0px 1px 1px #005332;
 
     background: rgba(245, 238, 235, 0.6);    
     border-radius: 0 0 5px 5px;

@@ -135,7 +135,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                 {result === "loose" && handleLoose()}
             </div>
 
-            <div className='para-box-card'>
+            <div className='card-container'>
                 <div className='div-card-item'>
                     <p className='p-card-first'>{findCardQuiz.id} {findCardQuiz.title}</p>
                 </div>
@@ -194,7 +194,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                     
                 </div>
                
-                <div className={`div-validateBtn ${isChecked ? '' : 'collapsed'}`}>
+                <div className={`btn-validate-div ${isChecked ? '' : 'collapsed'}`}>
                     <button type="button" onClick={handleValidate}>
                         {selectedOption === "français" 
                             ? "Valider" 
@@ -214,7 +214,7 @@ const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, set
                     <p className={`p-card-third ${response === true ? "" : 'collapsed-third'}`}>{findCardQuiz.response || "Réponse indisponible"}</p>
 
                     {response === false ? (
-                        <div className='div-responseBtn'>
+                        <div className='btn-response-div'>
                             <button type="button" onClick={handleResponse}>
                                 {selectedOption === "français" 
                                     ? "Réponse" 

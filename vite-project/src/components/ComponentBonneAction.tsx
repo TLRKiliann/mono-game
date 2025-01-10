@@ -88,7 +88,7 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
                 className='img-card' 
             />
             
-            <div className='para-box-card'>
+            <div className='card-container'>
                 <div className='div-card-item'>
                     <p className='p-card-first'>{findCardAction.id} {findCardAction.title}</p>
                 </div>
@@ -96,7 +96,7 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
                     <p className='p-card-second'>{findCardAction.info || "Question indisponible"}</p>
                 </div>
 
-                <div className={`div-validateBtn ${response ? '' : 'collapsed'}`}>
+                <div className={`btn-validate-div ${response ? '' : 'collapsed'}`}>
                     <button type="button" onClick={handleValidate}>
                         {selectedOption === "français" 
                             ? "Valider" 
@@ -135,7 +135,7 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
                     </p>
 
                     {response === false ? (
-                        <div className='div-responseBtn'>
+                        <div className='btn-response-div'>
                             <button type="button" onClick={handleResponse}>
                                 {selectedOption === "français" 
                                     ? "Récompense" 

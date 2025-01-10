@@ -83,10 +83,10 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
                     ) : null
                 }
                 
-                <div>
+                <div className="donation-container">
                     <a href="https://myecobestfriend.com/fr/produit/make-a-donation-to-our-association/" 
                         target="_blank" rel="noopener noreferrer"
-                        className="donation"
+                        className="btn-donation"
                     >
                         Donation
                     </a>

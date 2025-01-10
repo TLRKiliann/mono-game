@@ -54,7 +54,6 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
     const [showBtn, setShowBtn] = useState<boolean>(false);
     const [displayJoker, setDisplayJoker] = useState<boolean>(false);
 
-
     // cards img
     const imgSanctions: string[] = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, 
         img_9, img_10, img_11, img_12, img_13, img_14, img_15, img_16, img_17, img_18, img_19,
@@ -158,7 +157,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
                 {displayJoker === true ? handleDisplayJoker() : null}
             </div>
             
-            <div className='para-box-card'>
+            <div className='card-container'>
                 <div className='div-card-item'>
                     <p className='p-card-first'>{findCardSanction.id} {findCardSanction.title}</p>
                 </div>
@@ -167,8 +166,12 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
                     <p className='p-card-second'>{findCardSanction.info || "Question indisponible"}</p>
                 </div>
 
-                <div className={`div-validateBtn ${response ? '' : 'collapsed'}`}>
-                    <button type="button" onClick={() => handleValidate(player.id)} disabled={showBtn}>
+                <div className={`btn-validate-div ${response ? '' : 'collapsed'}`}>
+                    <button 
+                        type="button" 
+                        onClick={() => handleValidate(player.id)}
+                        disabled={showBtn}
+                    >
                         {selectedOption === "français" 
                             ? "Valider" 
                             : selectedOption === "english" 
@@ -206,7 +209,7 @@ const ComponentSanction: React.FC<ComponentQuizProps> = ({
                     </p>
 
                     {response === false ? (
-                        <div className='div-responseBtn'>
+                        <div className='btn-response-div'>
                             <button type="button" onClick={handleResponse}>
                                 {selectedOption === "français" 
                                     ? "Conséquence" 

@@ -147,14 +147,13 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
                 {result === "loose" && handleLoose()}
             </div>
 
-            <div className='para-box-card'>
+            <div className='card-container'>
                 <div className='div-card-item'>
                     <p className='p-card-first'>{findCardDefi.id} {findCardDefi.title}</p>
                 </div>
                 <div className='div-card-item'>
                     <p className='p-card-second'>{findCardDefi.objectif || "Question indisponible"}</p>
                 </div>
-
 
                 <div className={`div-mainValidate ${response === true ? "" : "collapsed-second"}`}>
 
@@ -206,7 +205,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
 
                 </div>
 
-                <div className={`div-validateBtn ${isChecked ? '' : 'collapsed'}`}>
+                <div className={`btn-validate-div ${isChecked ? '' : 'collapsed'}`}>
                     <button type="button" onClick={handleValidate}>
                         {selectedOption === "français" 
                             ? "Valider" 
@@ -226,7 +225,7 @@ const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, set
                     <p className={`p-card-third ${response === true ? "" : "collapsed-third"}`}>{findCardDefi.criteres || "Réponse indisponible"}</p>
 
                     {response === false ? (
-                        <div className='div-responseBtn'>
+                        <div className='btn-response-div'>
                             <button type="button" onClick={handleResponse}>
                                 {selectedOption === "français" 
                                     ? "Critères" 
