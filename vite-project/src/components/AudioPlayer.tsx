@@ -72,7 +72,7 @@ const AudioPlayer = (): JSX.Element => {
 
                 <div className="box-params">
 
-                    <div className="div-audiop">
+                    <div className="div-audio">
                         <p>Music</p>
                     </div>
 
