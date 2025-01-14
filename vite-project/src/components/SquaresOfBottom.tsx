@@ -100,7 +100,7 @@ const SquaresOfBottom = ({
                     case 18:
                     additionalContent = <h4>{selectedOption === "français" ? "Défi"
                         : selectedOption === "english" ? "Challenges" 
-                        : selectedOption === "deutsch" ? "Herausforderungen" 
+                        : selectedOption === "deutsch" ? "Aufgabe" 
                         : selectedOption === "italiano" ? "Sfide" : null}</h4>;
                     break;
                     case 21:

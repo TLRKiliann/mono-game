@@ -29,9 +29,9 @@ const FullScreen = ({ setDisplayCloseBox }: FullScreenCloseProps): JSX.Element =
     };
 
     return (
-        <div className="div-fullscreen">
+        <div className="fullscreen-container">
             
-            <div className="main-container">
+            <div className="fullscreen-box">
 
                 <div className="container-h1h2">
                     <div className="div-h1">
@@ -48,6 +48,7 @@ const FullScreen = ({ setDisplayCloseBox }: FullScreenCloseProps): JSX.Element =
                 </div>
                 
                 <div className="div-imgbtnp">
+
                     <div className="div-ecopotimg">
                         <img src={ecopotGame} className="ecopotimg" alt="ecopot-img" />
                     </div>
@@ -62,6 +63,7 @@ const FullScreen = ({ setDisplayCloseBox }: FullScreenCloseProps): JSX.Element =
                             ) - Tous droits réservés -
                         </p>
                     </div>
+                    
                 </div>
 
             </div>

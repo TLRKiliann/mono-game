@@ -266,7 +266,7 @@ function App(): JSX.Element {
             <div className="card card-one">
               {selectedOption === "français" ? "Défi"
                 : selectedOption === "english" ? "Challenges" 
-                : selectedOption === "deutsch" ? "Herausforderungen" 
+                : selectedOption === "deutsch" ? "Aufgabe" 
                 : selectedOption === "italiano" ? "Sfide" 
                 : null
               }
