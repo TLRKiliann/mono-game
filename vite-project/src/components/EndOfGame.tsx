@@ -39,7 +39,7 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
     }, []);
 
     return (
-        <div className="div-endofgame">
+        <div className="endofgame-container">
 
             {showConfetti && <Confetti width={width} height={height} />}
 
@@ -47,7 +47,7 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
                 
                 <h1>Game-Over</h1>
                 
-                <div className="div-winner">
+                <div className="winner-box">
                     <h2 className="winner">!!! {winner} WIN !!!</h2>
                 </div>
 
@@ -83,7 +83,7 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
                     ) : null
                 }
 
-                <div className="donation-container">
+                <div className="donation-box">
                     <a href="https://myecobestfriend.com/fr/produit/make-a-donation-to-our-association/" 
                         target="_blank" rel="noopener noreferrer"
                         className="btn-donation"
@@ -92,7 +92,7 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
                     </a>
                 </div>
 
-                <div className="restart-container">
+                <div className="restart-box">
                     <button type="button" onClick={handleRestart} className="btn-restart">Restart the GAME</button>
                 </div>
             

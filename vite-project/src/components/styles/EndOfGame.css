@@ -42,7 +42,7 @@
     margin-top: 20px;
 }
 
-.div-winner { 
+.winner-box { 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,7 +142,7 @@
     padding: 20px;
 }
 
-.donation-container {
+.donation-box {
     display: flex;
     align-items: center;
     justify-content: center;

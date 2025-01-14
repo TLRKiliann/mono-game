@@ -89,9 +89,11 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
             />
             
             <div className='card-container'>
+
                 <div className='div-card-item'>
                     <p className='p-card-first'>{findCardAction.id} {findCardAction.title}</p>
                 </div>
+
                 <div className='div-card-item'>
                     <p className='p-card-second'>{findCardAction.info || "Question indisponible"}</p>
                 </div>
@@ -152,6 +154,7 @@ const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, pl
                     ) : null}
                     
                 </div>
+                
             </div>
         </div>
     );
