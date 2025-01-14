@@ -117,7 +117,7 @@ const SquaresOfTop = ({
                     case 42:
                     additionalContent = <h4>{selectedOption === "français" ? "Défi"
                         : selectedOption === "english" ? "Challenges" 
-                        : selectedOption === "deutsch" ? "Herausforderungen" 
+                        : selectedOption === "deutsch" ? "Aufgabe" 
                         : selectedOption === "italiano" ? "Sfide" : null}</h4>;
                     break;
                     case 45:
@@ -138,7 +138,7 @@ const SquaresOfTop = ({
                     case 54:
                     additionalContent = <h4>{selectedOption === "français" ? "Défi"
                         : selectedOption === "english" ? "Challenges" 
-                        : selectedOption === "deutsch" ? "Herausforderungen" 
+                        : selectedOption === "deutsch" ? "Aufgabe" 
                         : selectedOption === "italiano" ? "Sfide" : null}</h4>;
                     break;
                     default:

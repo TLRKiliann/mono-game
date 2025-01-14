@@ -82,7 +82,7 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
                     </p>
                     ) : null
                 }
-                
+
                 <div className="donation-container">
                     <a href="https://myecobestfriend.com/fr/produit/make-a-donation-to-our-association/" 
                         target="_blank" rel="noopener noreferrer"
@@ -92,9 +92,8 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
                     </a>
                 </div>
 
-
-                <div>
-                    <button type="button" onClick={handleRestart}>Restart the GAME</button>
+                <div className="restart-container">
+                    <button type="button" onClick={handleRestart} className="btn-restart">Restart the GAME</button>
                 </div>
             
             </div>
