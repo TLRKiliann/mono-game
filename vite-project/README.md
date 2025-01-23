@@ -4,7 +4,8 @@
 
 1. Rules à revoir (première box ok !!!) !
 2. Allemand ok pour lvl 1 !!! (en + it)
-3. favicon dans le signet en-haut
+3. Defi => 2 lvl ???
+4. favicon dans le signet en-haut
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
