@@ -17,20 +17,20 @@ const LvlQuizDefi = ({selectedOption, lvlQuizDefi, setLvlQuizDefi, setDisplayClo
         const value = event.target.value;
         const numberValue = parseInt(value, 10);
 
-        if (!isNaN(numberValue) && numberValue >= 1 && numberValue <= 3) {
+        if (!isNaN(numberValue) && numberValue >= 1 && numberValue <= 2) {
             setLvlQuizDefi(numberValue);
             setError("");
         } else {
-            selectedOption === "français" ? setError("Choisissez un chiffre entre 1 et 3 !")
-            : selectedOption === "english" ? setError("Choose a number between 1 and 3 !")
-            : selectedOption === "deutsch" ? setError("Wählen Sie eine Zahl zwischen 1 und 3 !")
-            : selectedOption === "italiano" ? setError("Scegli un numero tra 1 e 3 !")
+            selectedOption === "français" ? setError("Choisissez un chiffre entre 1 et 2 !")
+            : selectedOption === "english" ? setError("Choose a number between 1 and 2 !")
+            : selectedOption === "deutsch" ? setError("Wählen Sie eine Zahl zwischen 1 und 2 !")
+            : selectedOption === "italiano" ? setError("Scegli un numero tra 1 e 2 !")
             : null
         }
     };
 
     const handleValidateLevel = (): void => {
-        if (lvlQuizDefi >= 1 && lvlQuizDefi <= 3) {
+        if (lvlQuizDefi >= 1 && lvlQuizDefi <= 2) {
             console.log("Level choosen:", lvlQuizDefi);
             setDisplayCloseBox((prev) => ({...prev, closeLvl: false}));
         } else {
@@ -43,10 +43,10 @@ const LvlQuizDefi = ({selectedOption, lvlQuizDefi, setLvlQuizDefi, setDisplayClo
             <div className="div-labelInputPlayer">
                 <label htmlFor="level">
                     {selectedOption === "français" 
-                        ? "Choisir le level entre 1 et 3 :" : selectedOption === "english" 
-                        ? "Choose level between 1 & 3 :" : selectedOption === "deutsch" 
-                        ? "Wählen Sie das Level zwischen 1 und 3 :" : selectedOption === "italiano"
-                        ? "Scegli il livello tra 1 e 3 :" : null    
+                        ? "Choisir le level entre 1 et 2 :" : selectedOption === "english" 
+                        ? "Choose level between 1 & 2 :" : selectedOption === "deutsch" 
+                        ? "Wählen Sie das Level zwischen 1 und 2 :" : selectedOption === "italiano"
+                        ? "Scegli il livello tra 1 e 2 :" : null    
                     }
                     <input 
                         type="text" 
