@@ -8,14 +8,10 @@ import { quizQuestions_de_lvl1 } from "../lib/quiz/quiz_de_lvl1";
 import { quizQuestions_it_lvl2 } from "../lib/quiz/quiz_it_lvl2";
 import { quizQuestions_it_lvl1 } from "../lib/quiz/quiz_it_lvl1";
 
-import { defiQuestions_fr_lvl2 } from "../lib/defi/defi_fr_lvl2";
-import { defiQuestions_fr_lvl1 } from "../lib/defi/defi_fr_lvl1";
-import { defiQuestions_en_lvl2 } from "../lib/defi/defi_en_lvl2";
-import { defiQuestions_en_lvl1 } from "../lib/defi/defi_en_lvl1";
-import { defiQuestions_de_lvl2 } from "../lib/defi/defi_de_lvl2";
-import { defiQuestions_de_lvl1 } from "../lib/defi/defi_de_lvl1";
-import { defiQuestions_it_lvl2 } from "../lib/defi/defi_it_lvl2";
-import { defiQuestions_it_lvl1 } from "../lib/defi/defi_it_lvl1";
+import { defiQuestions_fr} from "../lib/defi/defi_fr";
+import { defiQuestions_en} from "../lib/defi/defi_en";
+import { defiQuestions_de} from "../lib/defi/defi_de";
+import { defiQuestions_it} from "../lib/defi/defi_it";
 
 import { bonneActionQuestions_fr } from "../lib/bonnes-actions_fr";
 import { bonneActionQuestions_en } from "../lib/bonnes-actions_en";
@@ -36,17 +32,17 @@ export const getRandomNumber = (
     selectedOption: string,
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>, 
     setReplay: React.Dispatch<React.SetStateAction<boolean>>,
-    lvlQuizDefi: number): JSX.Element | null => {
+    lvlQuiz: string): JSX.Element | null => {
     
-    // open card for corresponding player & square
+    // avoid to repeat same number/qestion of...
     const allQuizIdToDelete: number[] = [];
     const allDefiIdToDelete: number[] = [];
     const allBonneActionIdToDelete: number[] = [];
     const allSanctionIdToDelete: number[] = [];
+    
     // delete quiz question
     let randomNumQuiz: number;
-
-    if (lvlQuizDefi === 2) {
+    if (lvlQuiz === "adultes") {
         do {
             randomNumQuiz = Math.floor(Math.random() * 87) + 1;
         } while (allQuizIdToDelete.includes(randomNumQuiz));
@@ -58,98 +54,90 @@ export const getRandomNumber = (
         } while (allQuizIdToDelete.includes(randomNumQuiz));
         allQuizIdToDelete.push(randomNumQuiz);
     };
+
     // delete defi question
     let randomNumDefi: number;
+    do {
+        randomNumDefi = Math.floor(Math.random() * 20) + 1;
+    } while (allDefiIdToDelete.includes(randomNumDefi));
+    allDefiIdToDelete.push(randomNumDefi);
 
-    if (lvlQuizDefi === 2) {
-        do {
-            randomNumDefi = Math.floor(Math.random() * 20) + 1;
-        } while (allDefiIdToDelete.includes(randomNumDefi));
-        allDefiIdToDelete.push(randomNumDefi);
-    } else {
-        // need to be changed
-        do {
-            randomNumDefi = Math.floor(Math.random() * 3) + 1;
-        } while (allDefiIdToDelete.includes(randomNumDefi));
-        allDefiIdToDelete.push(randomNumDefi);
-    };
     // delete bonneAction question
     let randomNumBonneAction: number;
-
     do {
         randomNumBonneAction = Math.floor(Math.random() * 25) + 1;
     } while (allBonneActionIdToDelete.includes(randomNumBonneAction));
     allBonneActionIdToDelete.push(randomNumBonneAction);
+    
     // delete sanction question
     let randomNumSanction: number;
-
     do {
         randomNumSanction = Math.floor(Math.random() * 29) + 1;
     } while (allSanctionIdToDelete.includes(randomNumSanction));
     allSanctionIdToDelete.push(randomNumSanction);
 
-    let findCard: any | null = null;
+    let findCard: any = null;
 
     if (selectedOption === "français") {
-        lvlQuizDefi === 2 ?
+        lvlQuiz === "adultes" ?
             findCard = {
                 quiz: quizQuestions_fr_lvl2.find((quiz: QuizProps) => quiz.id === randomNumQuiz),
-                defi: defiQuestions_fr_lvl2.find((defi: DefiProps) => defi.id === randomNumDefi),
+                defi: defiQuestions_fr.find((defi: DefiProps) => defi.id === randomNumDefi),
                 action: bonneActionQuestions_fr.find((action: BonneActionProps) => action.id === randomNumBonneAction),
                 sanction: sanctionQuestions_fr.find((sanction: SanctionsProps) => sanction.id === randomNumSanction),
             }[type]
-        : lvlQuizDefi === 1 ?
+        : lvlQuiz === "enfants" ?
             findCard = {
                 quiz: quizQuestions_fr_lvl1.find((quiz: QuizProps) => quiz.id === randomNumQuiz),
-                defi: defiQuestions_fr_lvl1.find((defi: DefiProps) => defi.id === randomNumDefi),
+                defi: defiQuestions_fr.find((defi: DefiProps) => defi.id === randomNumDefi),
                 action: bonneActionQuestions_fr.find((action: BonneActionProps) => action.id === randomNumBonneAction),
                 sanction: sanctionQuestions_fr.find((sanction: SanctionsProps) => sanction.id === randomNumSanction),
             }[type] 
         : null;
     } else if (selectedOption === "english") {
-        lvlQuizDefi === 2 ?
+        lvlQuiz === "adultes" ?
             findCard = {
                 quiz: quizQuestions_en_lvl2.find((quiz: QuizProps) => quiz.id === randomNumQuiz),
-                defi: defiQuestions_en_lvl2.find((defi: DefiProps) => defi.id === randomNumDefi),
+                defi: defiQuestions_en.find((defi: DefiProps) => defi.id === randomNumDefi),
                 action: bonneActionQuestions_en.find((action: BonneActionProps) => action.id === randomNumBonneAction),
                 sanction: sanctionQuestions_en.find((sanction: SanctionsProps) => sanction.id === randomNumSanction),
             }[type]
-        : lvlQuizDefi === 1 ?
+        : lvlQuiz === "enfants" ?
             findCard = {
                 quiz: quizQuestions_en_lvl1.find((quiz: QuizProps) => quiz.id === randomNumQuiz),
-                defi: defiQuestions_en_lvl1.find((defi: DefiProps) => defi.id === randomNumDefi),
+                defi: defiQuestions_en.find((defi: DefiProps) => defi.id === randomNumDefi),
                 action: bonneActionQuestions_en.find((action: BonneActionProps) => action.id === randomNumBonneAction),
                 sanction: sanctionQuestions_en.find((sanction: SanctionsProps) => sanction.id === randomNumSanction),
             }[type] 
         : null;
     } else if (selectedOption === "deutsch") {
-        lvlQuizDefi === 2 ?
+        lvlQuiz === "adultes" ?
             findCard = {
                 quiz: quizQuestions_de_lvl2.find((quiz: QuizProps) => quiz.id === randomNumQuiz),
-                defi: defiQuestions_de_lvl2.find((defi: DefiProps) => defi.id === randomNumDefi),
+                defi: defiQuestions_de.find((defi: DefiProps) => defi.id === randomNumDefi),
                 action: bonneActionQuestions_de.find((action: BonneActionProps) => action.id === randomNumBonneAction),
                 sanction: sanctionQuestions_de.find((sanction: SanctionsProps) => sanction.id === randomNumSanction),
             }[type]
-        :lvlQuizDefi === 1 ?
+        :lvlQuiz === "enfants" ?
             findCard = {
                 quiz: quizQuestions_de_lvl1.find((quiz: QuizProps) => quiz.id === randomNumQuiz),
-                defi: defiQuestions_de_lvl1.find((defi: DefiProps) => defi.id === randomNumDefi),
+                defi: defiQuestions_de.find((defi: DefiProps) => defi.id === randomNumDefi),
                 action: bonneActionQuestions_de.find((action: BonneActionProps) => action.id === randomNumBonneAction),
                 sanction: sanctionQuestions_de.find((sanction: SanctionsProps) => sanction.id === randomNumSanction),
             }[type] 
         : null;
     } else if (selectedOption === "italiano") {
-        lvlQuizDefi === 2 ?
+        lvlQuiz === "adultes" ?
             findCard = {
                 quiz: quizQuestions_it_lvl2.find((quiz: QuizProps) => quiz.id === randomNumQuiz),
-                defi: defiQuestions_it_lvl2.find((defi: DefiProps) => defi.id === randomNumDefi),
+                defi: defiQuestions_it.find((defi: DefiProps) => defi.id === randomNumDefi),
                 action: bonneActionQuestions_it.find((action: BonneActionProps) => action.id === randomNumBonneAction),
                 sanction: sanctionQuestions_it.find((sanction: SanctionsProps) => sanction.id === randomNumSanction),
             }[type]
-        : lvlQuizDefi === 1 ?
+        : lvlQuiz === "enfants" ?
             findCard = {
                 quiz: quizQuestions_it_lvl1.find((quiz: QuizProps) => quiz.id === randomNumQuiz),
-                defi: defiQuestions_it_lvl1.find((defi: DefiProps) => defi.id === randomNumDefi),
+                defi: defiQuestions_it.find((defi: DefiProps) => defi.id === randomNumDefi),
                 action: bonneActionQuestions_it.find((action: BonneActionProps) => action.id === randomNumBonneAction),
                 sanction: sanctionQuestions_it.find((sanction: SanctionsProps) => sanction.id === randomNumSanction),
             }[type]
