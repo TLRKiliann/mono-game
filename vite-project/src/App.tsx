@@ -55,7 +55,7 @@ function App(): JSX.Element {
   const [nbrOfLap, setNbrOfLap] = useState<number>(1);
 
   // choose lvl for quiz & defi
-  const [lvlQuizDefi, setLvlQuizDefi] = useState<number>(3);
+  const [lvlQuiz, setLvlQuiz] = useState<string>("");
 
   // player is able to replay
   const [replay, setReplay] = useState<boolean>(false);
@@ -188,9 +188,8 @@ function App(): JSX.Element {
 
       {displayCloseBox.closeNbrOfLap === false && displayCloseBox.closeLvl === true ? (
         <LvlQuizDefi 
-          selectedOption={selectedOption}  
-          lvlQuizDefi={lvlQuizDefi}
-          setLvlQuizDefi={setLvlQuizDefi}
+          selectedOption={selectedOption}
+          setLvlQuiz={setLvlQuiz}
           setDisplayCloseBox={setDisplayCloseBox}
         />
         ) : null
@@ -208,7 +207,7 @@ function App(): JSX.Element {
         setActiveCard={setActiveCard} 
         activePlayerId={activePlayerId} 
         setReplay={setReplay}
-        lvlQuizDefi={lvlQuizDefi}
+        lvlQuiz={lvlQuiz}
       />
 
       <div className="middle-frames">
@@ -221,7 +220,7 @@ function App(): JSX.Element {
           setActiveCard={setActiveCard} 
           activePlayerId={activePlayerId} 
           setReplay={setReplay}
-          lvlQuizDefi={lvlQuizDefi}
+          lvlQuiz={lvlQuiz}
         />
 
         <div className="container-cards">
@@ -257,7 +256,13 @@ function App(): JSX.Element {
 
           <div className="number-lvl">
             <h2>
-              Level : {lvlQuizDefi}
+              Level:&nbsp;
+              {selectedOption === "français" ? lvlQuiz 
+                : selectedOption === "english" ? lvlQuiz === "adultes" ? "adults" : "children"
+                : selectedOption === "deutsch" ? lvlQuiz === "adultes" ? "Erwachsene" : "Kinder"
+                : selectedOption === "italiano" ? lvlQuiz === "adultes" ? "adulti" : "bambini"
+                : null
+              }
             </h2>
           </div>
           
@@ -359,7 +364,7 @@ function App(): JSX.Element {
           setActiveCard={setActiveCard} 
           activePlayerId={activePlayerId} 
           setReplay={setReplay}
-          lvlQuizDefi={lvlQuizDefi}
+          lvlQuiz={lvlQuiz}
         />
 
       </div>
@@ -372,7 +377,7 @@ function App(): JSX.Element {
         setActiveCard={setActiveCard} 
         activePlayerId={activePlayerId} 
         setReplay={setReplay}
-        lvlQuizDefi={lvlQuizDefi}
+        lvlQuiz={lvlQuiz}
       />
 
     </div>
