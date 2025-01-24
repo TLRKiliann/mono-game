@@ -11,7 +11,7 @@ const SquaresOfBottom = ({
     setActiveCard, 
     activePlayerId, 
     setReplay,
-    lvlQuizDefi }: SquaresProps): JSX.Element => {
+    lvlQuiz }: SquaresProps): JSX.Element => {
 
     const PlayerSpanBottom: React.FC<{ player: PlayerProps }> = ({ player }) => {
         
@@ -22,25 +22,25 @@ const SquaresOfBottom = ({
             if (player.caseNumber === 18 && activeCard.type !== "defi") {
                 setActiveCard({
                 type: "defi",
-                cardData: getRandomNumber("defi", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
+                cardData: getRandomNumber("defi", player, selectedOption, setPlayersChoosen, setReplay, lvlQuiz),
                 isCardActive: true,
                 });
             } else if (player.caseNumber === 21 && activeCard.type !== "action") {
                 setActiveCard({
                 type: "action",
-                cardData: getRandomNumber("action", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
+                cardData: getRandomNumber("action", player, selectedOption, setPlayersChoosen, setReplay, lvlQuiz),
                 isCardActive: true,
                 });
             } else if (player.caseNumber === 15 || player.caseNumber === 27 && activeCard.type !== "quiz") {
                 setActiveCard({
                 type: "quiz",
-                cardData: getRandomNumber("quiz", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
+                cardData: getRandomNumber("quiz", player, selectedOption, setPlayersChoosen, setReplay, lvlQuiz),
                 isCardActive: true,
                 });
             } else if (player.caseNumber === 12 || player.caseNumber === 24 && activeCard.type !== "sanction") {
                 setActiveCard({
                 type: "sanction",
-                cardData: getRandomNumber("sanction", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
+                cardData: getRandomNumber("sanction", player, selectedOption, setPlayersChoosen, setReplay, lvlQuiz),
                 isCardActive: true,
                 });
             }
