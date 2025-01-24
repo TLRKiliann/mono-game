@@ -11,7 +11,7 @@ const SquaresOfRight = ({
     setActiveCard, 
     activePlayerId, 
     setReplay,
-    lvlQuizDefi }: SquaresProps): JSX.Element => {
+    lvlQuiz }: SquaresProps): JSX.Element => {
 
     const PlayerSpanRight: React.FC<{ player: PlayerProps }> = ({ player }) => {
         
@@ -22,19 +22,19 @@ const SquaresOfRight = ({
             if (player.caseNumber === 30 && activeCard.type !== "defi") {
                 setActiveCard({
                     type: "defi",
-                    cardData: getRandomNumber("defi", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
+                    cardData: getRandomNumber("defi", player, selectedOption, setPlayersChoosen, setReplay, lvlQuiz),
                     isCardActive: true,
                 });
             } else if (player.caseNumber === 33 && activeCard.type !== "action") {
                 setActiveCard({
                     type: "action",
-                    cardData: getRandomNumber("action", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
+                    cardData: getRandomNumber("action", player, selectedOption, setPlayersChoosen, setReplay, lvlQuiz),
                     isCardActive: true,
                 });
             } else if (player.caseNumber === 36 && activeCard.type !== "sanction") {
                 setActiveCard({
                     type: "sanction",
-                    cardData: getRandomNumber("sanction", player, selectedOption, setPlayersChoosen, setReplay, lvlQuizDefi),
+                    cardData: getRandomNumber("sanction", player, selectedOption, setPlayersChoosen, setReplay, lvlQuiz),
                     isCardActive: true,
                 });
             }

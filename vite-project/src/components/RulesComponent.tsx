@@ -26,7 +26,7 @@ const RulesComponent = ({ selectedOption, setDisplayCloseBox }: RulesProps): JSX
                         <li>Choisissez le nombre de joueurs.</li>
                         <li>Choisissez les nombre de tour pour une partie.</li>
                         
-                        <li>Choisissez le level : <br/>lvl 1=8-10 ans - lvl 2=11-14 ans - lvl 3=adultes</li>
+                        <li>Choisissez le level : enfants ou adultes.</li>
 
                         <li>Le joueur 1 commence par lancé le dés.</li>
                         <li>
@@ -46,7 +46,7 @@ const RulesComponent = ({ selectedOption, setDisplayCloseBox }: RulesProps): JSX
                         <li>Choose the number of players.</li>
                         <li>Choose the number of rounds for a game.</li>
                         
-                        <li>Choose the level : <br/>lvl 1=8-10 ans - lvl 2=11-14 ans - lvl 3=adultes</li>
+                        <li>Choose the level : children or adults.</li>
 
                         <li>Player 1 starts by rolling the dice.</li>
                         <li>
@@ -65,7 +65,7 @@ const RulesComponent = ({ selectedOption, setDisplayCloseBox }: RulesProps): JSX
                         <li>Wählen Sie die Anzahl der Spieler.</li>
                         <li>Wählen Sie die Anzahl der Runden für ein Spiel.</li>
                         
-                        <li>Wählen Sie das Level : <br/>lvl 1=8-10 ans - lvl 2=11-14 ans - lvl 3=adultes</li>
+                        <li>Wählen Sie das Level : Kinder oder Erwachsene.</li>
 
                         <li>Spieler 1 beginnt, indem er die Würfel wirft.</li>
                         <li>
@@ -85,7 +85,7 @@ const RulesComponent = ({ selectedOption, setDisplayCloseBox }: RulesProps): JSX
                         <li>Scegli il numero di giocatori.</li>
                         <li>Scegli il numero di turni per una partita.</li>
                         
-                        <li>Scegli il livello : <br/>lvl 1=8-10 ans - lvl 2=11-14 ans - lvl 3=adultes</li>
+                        <li>Scegli il livello : bambini o adulti.</li>
 
                         <li>Il giocatore 1 inizia lanciando i dadi.</li>
                         <li>

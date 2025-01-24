@@ -4,62 +4,89 @@ import "./styles/NbrPlayerNbrLapLvl.css";
 
 type LevelProps = {
     selectedOption: string;
-    lvlQuizDefi: number;
-    setLvlQuizDefi: React.Dispatch<React.SetStateAction<number>>;
+    setLvlQuiz: React.Dispatch<React.SetStateAction<string>>;
     setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>;
 };
 
-const LvlQuizDefi = ({selectedOption, lvlQuizDefi, setLvlQuizDefi, setDisplayCloseBox} : LevelProps): JSX.Element => {
+const LvlQuizDefi = ({selectedOption, setLvlQuiz, setDisplayCloseBox} : LevelProps): JSX.Element => {
 
-    const [error, setError] = useState<string>("");
+    const [isCheck, setIsCheck] = useState<string>("enfants");
 
-    const handleLevel = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        const value = event.target.value;
-        const numberValue = parseInt(value, 10);
+    const derivatedCheck: string = isCheck;
 
-        if (!isNaN(numberValue) && numberValue >= 1 && numberValue <= 3) {
-            setLvlQuizDefi(numberValue);
-            setError("");
-        } else {
-            selectedOption === "français" ? setError("Choisissez un chiffre entre 1 et 3 !")
-            : selectedOption === "english" ? setError("Choose a number between 1 and 3 !")
-            : selectedOption === "deutsch" ? setError("Wählen Sie eine Zahl zwischen 1 und 3 !")
-            : selectedOption === "italiano" ? setError("Scegli un numero tra 1 e 3 !")
-            : null
-        }
+    const handleCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const optionValue = event.target.value;
+        console.log(optionValue, "optionValue");
+        setIsCheck(optionValue);
     };
 
     const handleValidateLevel = (): void => {
-        if (lvlQuizDefi >= 1 && lvlQuizDefi <= 3) {
-            console.log("Level choosen:", lvlQuizDefi);
-            setDisplayCloseBox((prev) => ({...prev, closeLvl: false}));
-        } else {
-            console.error("lvlQuizDefi is not valid !");
-        }
+        setLvlQuiz(derivatedCheck);
+        setDisplayCloseBox((prev) => ({...prev, closeLvl: false}));
     };
 
     return (        
         <div className="player-displayer">
-            <div className="div-labelInputPlayer">
-                <label htmlFor="level">
-                    {selectedOption === "français" 
-                        ? "Choisir le level entre 1 et 3 :" : selectedOption === "english" 
-                        ? "Choose level between 1 & 3 :" : selectedOption === "deutsch" 
-                        ? "Wählen Sie das Level zwischen 1 und 3 :" : selectedOption === "italiano"
-                        ? "Scegli il livello tra 1 e 3 :" : null    
-                    }
-                    <input 
-                        type="text" 
-                        id="level" 
-                        value="" 
-                        onChange={handleLevel}
-                        placeholder={String(lvlQuizDefi)} 
-                    />
-                </label>
-                
-            </div>
 
-            {error && <p className="error">{error}</p>}
+            <h1 className="lvl-title">
+                {selectedOption === "français" 
+                    ? "Choisissez votre level :" : selectedOption === "english" 
+                    ? "Choose your level :" : selectedOption === "deutsch" 
+                    ? "Wählen Sie Ihr Niveau :" : selectedOption === "italiano"
+                    ? "Scegli il tuo livello :" : null
+                }
+            </h1>
+
+            <div className="lvl-container">
+
+                <div className='validate-children'>
+                    <label htmlFor="validate">
+                        {selectedOption === "français" 
+                            ? "enfants" 
+                            : selectedOption === "english" 
+                            ? "children" 
+                            : selectedOption === "deutsch" 
+                            ? "Kinder" 
+                            : selectedOption === "italiano" 
+                            ? "bambini" 
+                            : null
+                        }
+                    </label>
+                    <input
+                        type="radio"
+                        id="enfants"
+                        name="enfants"
+                        value="enfants"
+                        checked={isCheck === 'enfants'} 
+                        onChange={handleCheck}
+                    />
+
+                </div>
+
+                <div className='validate-adultes'>
+                    <label htmlFor="adultes">
+                        {selectedOption === "français" 
+                            ? "adultes" 
+                            : selectedOption === "english" 
+                            ? "adults" 
+                            : selectedOption === "deutsch" 
+                            ? "Erwachsene" 
+                            : selectedOption === "italiano" 
+                            ? "adulti" 
+                            : null
+                        }
+                    </label>
+                    <input
+                        type="radio"
+                        id="adultes"
+                        name="adultes"
+                        value="adultes"
+                        checked={isCheck === 'adultes'} 
+                        onChange={handleCheck}
+                    />
+                </div>
+
+            </div>
 
             <div className="div-btnPlayer">
                 <button type="button" onClick={handleValidateLevel}>

@@ -24,7 +24,7 @@ export type SquaresProps = {
     setActiveCard: React.Dispatch<React.SetStateAction<ActiveCardState>>;
     activePlayerId: number; 
     setReplay: React.Dispatch<React.SetStateAction<boolean>>;
-    lvlQuizDefi: number;
+    lvlQuiz: string;
 };
 
 export type QuizProps = {
