@@ -100,6 +100,7 @@
     border: none;
     border-radius: 7px;
     box-shadow: inset 0 0 10px rgba(211, 211, 211, 1);
+    margin-bottom: 10px;
     padding: 10px 20px;
     transition: all 0.25s ease-in-out; 
     transform: scale(1.0);
@@ -118,15 +119,12 @@
 }
 
 .lvl-title {
+    width: 500px;
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
     color: #fff;
     text-shadow: 1px 1px 1px #333;
-
-    width: 500px;
-
-    border: 1px solid red;
 }
 
 .lvl-container {
@@ -139,22 +137,14 @@
 
     margin-top: 10px;
     margin-bottom: 20px;
-
-
-    border: 1px solid aqua;
 }
 
 .lvl-container label {
     text-align: center;
-
     font-size: 1.6rem;
-    
     font-weight: bold;
     color: #fff;
-    
     text-shadow: 1px 1px 1px #333;
-
-    border: 1px solid #fff;
 }
 
 .lvl-container input {
@@ -169,6 +159,4 @@
     margin: 0px 10px;
 
     transition: border-color 0.3s, box-shadow 0.3s;
-
-    border: 1px solid #fff;
 }
