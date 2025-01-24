@@ -55,7 +55,7 @@ function App(): JSX.Element {
   const [nbrOfLap, setNbrOfLap] = useState<number>(1);
 
   // choose lvl for quiz & defi
-  const [lvlQuiz, setLvlQuiz] = useState<string>("");
+  const [lvlQuiz, setLvlQuiz] = useState<string>("enfants");
 
   // player is able to replay
   const [replay, setReplay] = useState<boolean>(false);

@@ -10,7 +10,7 @@ type LevelProps = {
 
 const LvlQuizDefi = ({selectedOption, setLvlQuiz, setDisplayCloseBox} : LevelProps): JSX.Element => {
 
-    const [isCheck, setIsCheck] = useState<string>("");
+    const [isCheck, setIsCheck] = useState<string>("enfants");
 
     const derivatedCheck: string = isCheck;
 
