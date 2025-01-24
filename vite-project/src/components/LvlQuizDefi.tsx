@@ -60,7 +60,6 @@ const LvlQuizDefi = ({selectedOption, setLvlQuiz, setDisplayCloseBox} : LevelPro
                         checked={isCheck === 'enfants'} 
                         onChange={handleCheck}
                     />
-
                 </div>
 
                 <div className='validate-adultes'>

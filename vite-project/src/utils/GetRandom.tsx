@@ -8,19 +8,21 @@ import { quizQuestions_de_lvl1 } from "../lib/quiz/quiz_de_lvl1";
 import { quizQuestions_it_lvl2 } from "../lib/quiz/quiz_it_lvl2";
 import { quizQuestions_it_lvl1 } from "../lib/quiz/quiz_it_lvl1";
 
-import { defiQuestions_fr} from "../lib/defi/defi_fr";
-import { defiQuestions_en} from "../lib/defi/defi_en";
-import { defiQuestions_de} from "../lib/defi/defi_de";
-import { defiQuestions_it} from "../lib/defi/defi_it";
+import { defiQuestions_fr} from "../lib/defis/defi_fr";
+import { defiQuestions_en} from "../lib/defis/defi_en";
+import { defiQuestions_de} from "../lib/defis/defi_de";
+import { defiQuestions_it} from "../lib/defis/defi_it";
 
-import { bonneActionQuestions_fr } from "../lib/bonnes-actions_fr";
-import { bonneActionQuestions_en } from "../lib/bonnes-actions_en";
-import { bonneActionQuestions_de } from "../lib/bonnes-actions_de";
-import { bonneActionQuestions_it } from "../lib/bonnes-actions_it";
-import { sanctionQuestions_fr } from "../lib/sanctions_fr";
-import { sanctionQuestions_en } from "../lib/sanctions_en";
-import { sanctionQuestions_de } from "../lib/sanctions_de";
-import { sanctionQuestions_it } from "../lib/sanctions_it";
+import { bonneActionQuestions_fr } from "../lib/actions/bonnes-actions_fr";
+import { bonneActionQuestions_en } from "../lib/actions/bonnes-actions_en";
+import { bonneActionQuestions_de } from "../lib/actions/bonnes-actions_de";
+import { bonneActionQuestions_it } from "../lib/actions/bonnes-actions_it";
+
+import { sanctionQuestions_fr } from "../lib/sanctions/sanctions_fr";
+import { sanctionQuestions_en } from "../lib/sanctions/sanctions_en";
+import { sanctionQuestions_de } from "../lib/sanctions/sanctions_de";
+import { sanctionQuestions_it } from "../lib/sanctions/sanctions_it";
+
 import ComponentBonneAction from "../components/ComponentBonneAction";
 import ComponentDefi from "../components/ComponentDefi";
 import ComponentQuiz from "../components/ComponentQuiz";
