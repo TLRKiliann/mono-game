@@ -171,7 +171,7 @@
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 10px lightgrey;
-
+    cursor: pointer;
     transform: scale(1.0);
     transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
@@ -210,7 +210,7 @@
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 20px lightgrey;
-
+    cursor: pointer;
     padding: 1.5% 3%;
 
     transform: scale(1.0);
