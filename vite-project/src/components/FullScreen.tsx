@@ -1,6 +1,5 @@
 import type { DisplayCloseProps } from "../lib/types";
 import ecopotGame from "../assets/ecopotimg.png";
-/* import ecopotGame from "../assets/dice.gif"; */
 import "./styles/FullScreen.css";
 
 
