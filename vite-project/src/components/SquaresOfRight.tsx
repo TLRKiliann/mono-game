@@ -80,32 +80,34 @@ const SquaresOfRight = ({
 
                 switch (caseNumber) {
                 case 30:
-                    additionalContent = <h4>{selectedOption === "français" ? "Défi"
+                    additionalContent = selectedOption === "français" ? "Défi"
                     : selectedOption === "english" ? "Challenges" 
                     : selectedOption === "deutsch" ? "Aufgabe" 
-                    : selectedOption === "italiano" ? "Sfide" : null}</h4>;
+                    : selectedOption === "italiano" ? "Sfide" : null;
                     break;
                 case 33:
-                    additionalContent = <h4>{selectedOption === "français" ? "Bonne Action"
+                    additionalContent = selectedOption === "français" ? "Bonne Action"
                     : selectedOption === "english" ? "Good Deed" 
                     : selectedOption === "deutsch" ? "Gute Tat" 
-                    : selectedOption === "italiano" ? "Buona Azione" : null}</h4>;
+                    : selectedOption === "italiano" ? "Buona Azione" : null;
                     break;
                 case 36:
-                    additionalContent = <h4>{selectedOption === "français" ? "Sanction" 
+                    additionalContent = selectedOption === "français" ? "Sanction" 
                     : selectedOption === "english" ? "Sanction" 
                     : selectedOption === "deutsch" ? "Sanktion" 
-                    : selectedOption === "italiano" ? "sanzione" : null}</h4>;
+                    : selectedOption === "italiano" ? "sanzione" : null;
                     break;
                 default:
                     additionalContent = null;
                 }
+                
+                const renderedContent = additionalContent ? <h4>{additionalContent}</h4> : null;
 
                 return <RightSquare
                     key={caseNumber}
                     caseNumber={caseNumber}
                     playersChoosen={playersChoosen}
-                    additionalContent={additionalContent} 
+                    additionalContent={renderedContent} 
                 />;
             })}
         </div>
