@@ -63,7 +63,7 @@
 }
 
 /* img bg */
-.div-ecopotimg {
+.div-ecopot-img {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,7 +78,7 @@
     animation-timing-function: ease-in-out;
 }
 
-.ecopotimg {
+.ecopot-img {
     width: 100%;
     height: auto;
 
@@ -154,7 +154,7 @@
 }
 
 @media screen and (min-width: 400px) and (max-width: 1000px) {
-    .ecopotimg {
+    .ecopot-img {
         max-width: 300px;
         height: auto;
     }
