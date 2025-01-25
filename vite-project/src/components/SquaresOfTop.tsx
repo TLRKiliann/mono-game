@@ -112,44 +112,46 @@ const SquaresOfTop = ({
 
                 switch (caseNumber) {
                     case 39:
-                    additionalContent = <h4>Quiz</h4>;
+                    additionalContent = "Quiz";
                     break;
                     case 42:
-                    additionalContent = <h4>{selectedOption === "français" ? "Défi"
+                    additionalContent = selectedOption === "français" ? "Défi"
                         : selectedOption === "english" ? "Challenges" 
                         : selectedOption === "deutsch" ? "Aufgabe" 
-                        : selectedOption === "italiano" ? "Sfide" : null}</h4>;
+                        : selectedOption === "italiano" ? "Sfide" : null;
                     break;
                     case 45:
-                    additionalContent = <h4>{selectedOption === "français" ? "Bonne Action"
+                    additionalContent = selectedOption === "français" ? "Bonne Action"
                         : selectedOption === "english" ? "Good Deed" 
                         : selectedOption === "deutsch" ? "Gute Tat" 
-                        : selectedOption === "italiano" ? "Buona Azione" : null}</h4>;
+                        : selectedOption === "italiano" ? "Buona Azione" : null;
                     break;
                     case 48:
-                    additionalContent = <h4>{selectedOption === "français" ? "Sanction" 
+                    additionalContent = selectedOption === "français" ? "Sanction" 
                         : selectedOption === "english" ? "Sanction" 
                         : selectedOption === "deutsch" ? "Sanktion" 
-                        : selectedOption === "italiano" ? "sanzione" : null}</h4>;
+                        : selectedOption === "italiano" ? "sanzione" : null;
                     break;
                     case 51:
-                    additionalContent = <h4>Quiz</h4>;
+                    additionalContent = "Quiz";
                     break;
                     case 54:
-                    additionalContent = <h4>{selectedOption === "français" ? "Défi"
+                    additionalContent = selectedOption === "français" ? "Défi"
                         : selectedOption === "english" ? "Challenges" 
                         : selectedOption === "deutsch" ? "Aufgabe" 
-                        : selectedOption === "italiano" ? "Sfide" : null}</h4>;
+                        : selectedOption === "italiano" ? "Sfide" : null;
                     break;
                     default:
                     additionalContent = null;
                 }
 
+                const renderedContent = additionalContent ? <h4>{additionalContent}</h4> : null;
+
                 return <TopSquare
                     key={caseNumber}
                     caseNumber={caseNumber}
                     playersChoosen={playersChoosen}
-                    additionalContent={additionalContent}
+                    additionalContent={renderedContent}
                 />;
             })}
         </div>

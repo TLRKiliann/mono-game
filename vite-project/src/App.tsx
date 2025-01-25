@@ -241,7 +241,7 @@ function App(): JSX.Element {
             </h2>
 
             {playersChoosen.slice(0, 1).map((playerRound: PlayerProps) => playerRound.lap <= nbrOfLap ? (
-              <h3>
+              <h3 key={playerRound.id}>
                 {selectedOption === "français" ? "(Tour actuel : " + playerRound.lap + ")" 
                   : selectedOption === "english" ? "(Current round : " + playerRound.lap + ")"  
                   : selectedOption === "deutsch" ? "(Aktuelle Tour : " + playerRound.lap + ")" 

@@ -1,6 +1,5 @@
 import type { DisplayCloseProps } from "../lib/types";
 import ecopotGame from "../assets/ecopotimg.png";
-/* import ecopotGame from "../assets/dice.gif"; */
 import "./styles/FullScreen.css";
 
 
@@ -49,8 +48,8 @@ const FullScreen = ({ setDisplayCloseBox }: FullScreenCloseProps): JSX.Element =
                 
                 <div className="div-imgbtnp">
 
-                    <div className="div-ecopotimg">
-                        <img src={ecopotGame} className="ecopotimg" alt="ecopot-img" />
+                    <div className="div-ecopot-img">
+                        <img src={ecopotGame} width={800} height={800} className="ecopot-img" alt="ecopot-img" />
                     </div>
 
                     <div className="div-btn">

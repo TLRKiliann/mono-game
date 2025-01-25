@@ -41,11 +41,11 @@ const NbrOfPlayers = ({selectedOption, nbPlayer, setNbPlayer, setDisplayCloseBox
         <div className="player-displayer">
             <div className="div-labelInputPlayer">
                 <label htmlFor="nbPlayer">
-                    {selectedOption === "français" 
-                        ? "Choisir entre 2 et 6 joueurs :" : selectedOption === "english" 
-                        ? "Choose between 2 and 6 players :" : selectedOption === "deutsch" 
-                        ? "Zwischen 2 und 6 Spielern wählen :" : selectedOption === "italiano"
-                        ? "Scegliere tra 2 e 6 giocatori :" : null
+                    {selectedOption === "français" ? "Choisir entre 2 et 6 joueurs :" 
+                        : selectedOption === "english" ? "Choose between 2 and 6 players :" 
+                        : selectedOption === "deutsch" ? "Zwischen 2 und 6 Spielern wählen :" 
+                        : selectedOption === "italiano" ? "Scegliere tra 2 e 6 giocatori :" 
+                        : null
                     }
                     <input 
                         type="text" 
@@ -55,17 +55,18 @@ const NbrOfPlayers = ({selectedOption, nbPlayer, setNbPlayer, setDisplayCloseBox
                         placeholder={String(nbPlayer)} 
                     />
                 </label>
+                
             </div>
 
             {error && <p className="error">{error}</p>}
 
             <div className="div-btnPlayer">
                 <button type="button" onClick={handleValidateNbPlayers}>
-                    {selectedOption === "français" 
-                        ? "Valider" : selectedOption === "english" 
-                        ? "Validate" : selectedOption === "deutsch" 
-                        ? "Validieren" : selectedOption === "italiano" 
-                        ? "Validare" : null
+                    {selectedOption === "français" ? "Valider" 
+                        : selectedOption === "english" ? "Validate" 
+                        : selectedOption === "deutsch" ? "Validieren" 
+                        : selectedOption === "italiano" ? "Validare" 
+                        : null
                     }
                 </button>
             </div>
