@@ -32,7 +32,7 @@ type ComponentQuizProps = {
     findCardAction: BonneActionProps;
     player: PlayerProps;
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
-    selectedOption: string;
+    selectedOption: string | undefined;
 };
 
 const ComponentBonneAction: React.FC<ComponentQuizProps> = ({ findCardAction, player, setPlayersChoosen, selectedOption }): JSX.Element => {

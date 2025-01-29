@@ -7,7 +7,7 @@ import endOfGameAudio from '../assets/audio/endOfGame.mp3';
 import './styles/Dice.css';
 
 type ValProps = {
-  selectedOption: string;
+  selectedOption: string | undefined;
   nbPlayer: number;
   nbrOfLap: number;
   playersChoosen: PlayerProps[];

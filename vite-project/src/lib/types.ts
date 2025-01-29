@@ -17,7 +17,7 @@ export type ActiveCardState = {
 };
 
 export type SquaresProps = {
-    selectedOption: string;
+    selectedOption: string | undefined;
     playersChoosen: PlayerProps[];
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
     activeCard: ActiveCardState;

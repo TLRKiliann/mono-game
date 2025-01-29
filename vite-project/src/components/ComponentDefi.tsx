@@ -47,7 +47,7 @@ interface ComponentDefiProps {
     player: PlayerProps;
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
     setReplay: React.Dispatch<React.SetStateAction<boolean>>;
-    selectedOption: string;
+    selectedOption: string | undefined;
 };
 
 const ComponentQuiz: React.FC<ComponentDefiProps> = ({ findCardDefi, player, setPlayersChoosen, setReplay, selectedOption }): JSX.Element => {

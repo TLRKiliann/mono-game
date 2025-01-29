@@ -3,7 +3,7 @@ import Confetti from 'react-confetti';
 import "./styles/EndOfGame.css";
 
 type WinnerProps = {
-    selectedOption: string;
+    selectedOption: string | undefined;
     winner: string;
 };
 
@@ -45,41 +45,79 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
 
             <div className="game-over">
                 
-                <h1>Game-Over</h1>
+                <h1>
+                    {selectedOption === "français" ? "Fin de partie" 
+                        : selectedOption === "english" ? "Game-Over"
+                        : selectedOption === "deutsch" ? "Spiel vorbei"
+                        : selectedOption === "italiano" ? "Gioco finito"
+                        : null
+                     }
+                </h1>
                 
                 <div className="winner-box">
-                    <h2 className="winner">!!! {winner} WIN !!!</h2>
+                    <h2 className="winner">!!! {winner}&nbsp;
+                        {selectedOption === "français" ? "gagne"
+                            : selectedOption === "english" ? "win"
+                            : selectedOption === "deutsch" ? "gewinnt"
+                            : selectedOption === "italiano" ? "vince" 
+                            : null
+                        }
+                        !!!</h2>
                 </div>
 
 
                 {selectedOption === "français" ? (
-                    <p>
-                        Vous avez aimé ce jeu ? N'hésitez pas à faire un don à l'association 
-                        qui l'a developpé sans aucune aide publique.
-                    </p>
+                    <div>
+                        <p>
+                            Vous avez aimé ce jeu ? N'hésitez pas à faire un don à l'association 
+                            qui l'a developpé sans aucune aide publique.
+                        <br />
+                        <br />
+                            L'association est reconnue d'utilité publique en Suisse et vos dons peuvent 
+                            être déduits de vos impôts.
+                        </p>
+                    </div>
                     ) : null
                 }
 
                 {selectedOption === "english" ? (
-                    <p>
-                        Did you enjoy this game? Feel free to make a donation to the organization 
-                        that developed it without any public funding.
-                    </p>
+                    <div>
+                        <p>
+                            Did you enjoy this game? Feel free to make a donation to the organization 
+                            that developed it without any public funding.
+                        <br />
+                        <br />
+                            The association is recognized as a public utility in Switzerland and your 
+                            donations can be deducted from your taxes.
+                        </p>
+                    </div>
                     ) : null
                 }
                 {selectedOption === "deutsch" ? (
-                    <p>
-                        Hat Ihnen dieses Spiel gefallen? Zögern Sie nicht, einen Beitrag an die 
-                        Organisation zu leisten, die es ohne öffentliche Hilfe entwickelt hat.
-                    </p>
+                    <div>
+                        <p>
+                            Hat Ihnen dieses Spiel gefallen? Zögern Sie nicht, einen Beitrag an die 
+                            Organisation zu leisten, die es ohne öffentliche Hilfe entwickelt hat.
+                        <br />
+                        <br />
+                            Der Verein ist in der Schweiz als gemeinnützig anerkannt und Ihre Spenden 
+                            können von Ihren Steuern abgezogen werden.
+                        </p>
+                    </div>
                     ) : null
                 }
 
                 {selectedOption === "italiano" ? (
-                    <p>
-                        Ti è piaciuto questo gioco? Non esitare a fare una donazione all'associazione 
-                        che lo ha sviluppato senza alcun aiuto pubblico.
-                    </p>
+                    <div>
+                        <p>
+                            Ti è piaciuto questo gioco? Non esitare a fare una donazione all'associazione 
+                            che lo ha sviluppato senza alcun aiuto pubblico.
+                        <br />
+                        <br />
+                            L'associazione è riconosciuta di pubblica utilità in Svizzera e le vostre donazioni 
+                            possono essere dedotte dalle vostre tasse.
+                        </p>
+                    </div>
                     ) : null
                 }
 
@@ -88,12 +126,24 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
                         target="_blank" rel="noopener noreferrer"
                         className="btn-donation"
                     >
-                        Donation
+                        {selectedOption === "français" ? "Cliquez ici pour faire un don !" 
+                            : selectedOption === "english" ? "Click here to make a donation!"
+                            : selectedOption === "deutsch" ? "Klicken Sie hier, um eine Spende zu machen!"
+                            : selectedOption === "italiano" ? "Clicca per fare una donazione!" 
+                            : null
+                        }
                     </a>
                 </div>
 
                 <div className="restart-box">
-                    <button type="button" onClick={handleRestart} className="btn-restart">Restart the GAME</button>
+                    <button type="button" onClick={handleRestart} className="btn-restart">
+                        {selectedOption === "français" ? "Redémarrer le jeu"
+                            : selectedOption === "english" ? "Restart the game"
+                            : selectedOption === "deutsch" ? "Spiel neu starten"
+                            : selectedOption === "italiano" ? "Riavvia il gioco"
+                            : null
+                        }
+                    </button>
                 </div>
             
             </div>

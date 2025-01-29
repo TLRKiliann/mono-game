@@ -26,7 +26,7 @@ type ComponentQuizProps = {
     player: PlayerProps;
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
     setReplay: React.Dispatch<React.SetStateAction<boolean>>;
-    selectedOption: string;
+    selectedOption: string | undefined;
 };
 
 const ComponentQuiz: React.FC<ComponentQuizProps> = ({ findCardQuiz, player, setPlayersChoosen, setReplay, selectedOption }): JSX.Element => {
