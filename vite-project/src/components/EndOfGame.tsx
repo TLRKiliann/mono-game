@@ -63,7 +63,7 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
                             : null
                         }
                         &nbsp;{winner}&nbsp;
-                        {selectedOption === "français" ? "gagne"
+                        {selectedOption === "français" ? "a gagné"
                             : selectedOption === "english" ? "win"
                             : selectedOption === "deutsch" ? "gewinnt"
                             : selectedOption === "italiano" ? "vince" 
@@ -71,7 +71,6 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
                         }
                         &nbsp;!!!</h2>
                 </div>
-
 
                 {selectedOption === "français" ? (
                     <div>
