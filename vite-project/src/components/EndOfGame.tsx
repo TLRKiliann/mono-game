@@ -3,8 +3,8 @@ import Confetti from 'react-confetti';
 import "./styles/EndOfGame.css";
 
 type WinnerProps = {
-    selectedOption: string | undefined;
-    winner: string;
+    selectedOption: string;
+    winner: number;
 };
 
 const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
@@ -55,14 +55,21 @@ const EndOfGame = ({selectedOption, winner}: WinnerProps): JSX.Element => {
                 </h1>
                 
                 <div className="winner-box">
-                    <h2 className="winner">!!! {winner}&nbsp;
+                    <h2 className="winner">!!!&nbsp;
+                        {selectedOption === "français" ? "Joueur" 
+                            : selectedOption === "english" ? "Player" 
+                            : selectedOption === "deutsch" ? "Spieler" 
+                            : selectedOption === "italiano" ? "Giocatore" 
+                            : null
+                        }
+                        &nbsp;{winner}&nbsp;
                         {selectedOption === "français" ? "gagne"
                             : selectedOption === "english" ? "win"
                             : selectedOption === "deutsch" ? "gewinnt"
                             : selectedOption === "italiano" ? "vince" 
                             : null
                         }
-                        !!!</h2>
+                        &nbsp;!!!</h2>
                 </div>
 
 

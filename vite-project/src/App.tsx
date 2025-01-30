@@ -32,7 +32,7 @@ function App(): JSX.Element {
   });
 
   // state for translation
-  const [selectedOption, setSelectedOption] = useState<string | undefined>(undefined);
+  const [selectedOption, setSelectedOption] = useState<string>("");
 
   // count nbr of case by player
   const [count, setCount] = useState<number>(55);
@@ -60,23 +60,11 @@ function App(): JSX.Element {
   // player is able to replay
   const [replay, setReplay] = useState<boolean>(false);
 
-  //const derivatedStateSelectOpt: string | undefined = selectedOption;
-  const [playerName, setPlayerName] = useState<string | undefined>(undefined);
-
-  useEffect(() => {
-    const newPlayerName = selectedOption === "français" ? "Joueur "
-      : selectedOption === "english" ? "Player "
-      : selectedOption === "deutsch" ? "Spieler "
-      : selectedOption === "italiano" ? "Giocatore " : undefined;
-    setPlayerName(newPlayerName);
-    return () => console.log("playerName clean-up !");
-  }, [selectedOption]);
-
   // initial players state (use the state count)
   const [players] = useState<PlayerProps[]>([
     {
       id: 1,
-      name: playerName + "1",
+      name: "Player 1",
       bgColor: "#ffc6b1",
       caseNumber: count,
       lap: 0,
@@ -87,7 +75,7 @@ function App(): JSX.Element {
     },
     {
       id: 2,
-      name: playerName + "2",
+      name: "Player 2",
       bgColor: "#ffff9d",
       caseNumber: count,
       lap: 0,
@@ -98,7 +86,7 @@ function App(): JSX.Element {
     },
     {
       id: 3,
-      name: playerName + "3",
+      name: "Player 3",
       bgColor: "#dbffa5",
       caseNumber: count,
       lap: 0,
@@ -109,7 +97,7 @@ function App(): JSX.Element {
     },
     {
       id: 4,
-      name: playerName + "4",
+      name: "Player 4",
       bgColor: "#f7c5f7",
       caseNumber: count,
       lap: 0,
@@ -120,7 +108,7 @@ function App(): JSX.Element {
     },
     {
       id: 5,
-      name: playerName + "5",
+      name: "Player 5",
       bgColor: "#c1dada",
       caseNumber: count,
       lap: 0,
@@ -131,7 +119,7 @@ function App(): JSX.Element {
     },
     {
       id: 6,
-      name: playerName + "6",
+      name: "Player 6",
       bgColor: "#bbddff",
       caseNumber: count,
       lap: 0,
@@ -168,12 +156,12 @@ function App(): JSX.Element {
         ) : null
       }
 
-      {selectedOption === undefined && displayCloseBox.closeFullScreen === false ? (
+      {selectedOption === "" && displayCloseBox.closeFullScreen === false ? (
         <TranslationComponent setSelectedOption={setSelectedOption} />
         ) : null
       }
 
-      {selectedOption !== undefined && displayCloseBox.viewRules === true ? (
+      {selectedOption !== "" && displayCloseBox.viewRules === true ? (
         <RulesComponent selectedOption={selectedOption} setDisplayCloseBox={setDisplayCloseBox} />
         ) : null
       }

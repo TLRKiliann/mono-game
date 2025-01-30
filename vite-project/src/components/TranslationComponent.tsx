@@ -13,7 +13,7 @@ type OptionsProps = {
 };
 
 type SelectOptionProps = {
-    setSelectedOption: React.Dispatch<React.SetStateAction<string | undefined>>;
+    setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const options: OptionsProps[] = [

@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./styles/NbrPlayerNbrLapLvl.css";
 
 type NbrOfLapProps = {
-    selectedOption: string | undefined;
+    selectedOption: string;
     nbrOfLap: number;
     setNbrOfLap: React.Dispatch<React.SetStateAction<number>>;
     setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>;

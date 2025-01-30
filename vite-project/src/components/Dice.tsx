@@ -7,7 +7,7 @@ import endOfGameAudio from '../assets/audio/endOfGame.mp3';
 import './styles/Dice.css';
 
 type ValProps = {
-  selectedOption: string | undefined;
+  selectedOption: string;
   nbPlayer: number;
   nbrOfLap: number;
   playersChoosen: PlayerProps[];
@@ -152,7 +152,7 @@ const Dice = ({
   if (winner) {
     return (
       <div className="endofgame-box">
-        <EndOfGame selectedOption={selectedOption} winner={winner.name} />
+        <EndOfGame selectedOption={selectedOption} winner={winner.id} />
       </div>
     );
   };

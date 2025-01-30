@@ -31,7 +31,7 @@ import ComponentSanction from "../components/ComponentSanction";
 export const getRandomNumber = (
     type: string,
     player: PlayerProps,
-    selectedOption: string | undefined,
+    selectedOption: string,
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>, 
     setReplay: React.Dispatch<React.SetStateAction<boolean>>,
     lvlQuiz: string): JSX.Element | null => {

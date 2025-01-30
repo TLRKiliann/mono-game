@@ -2,7 +2,7 @@ import type { DisplayCloseProps } from "../lib/types";
 import "./styles/ReadyComponent.css";
 
 type SelectOptionProps = {
-    selectedOption: string | undefined;
+    selectedOption: string;
     setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>; 
 };
 

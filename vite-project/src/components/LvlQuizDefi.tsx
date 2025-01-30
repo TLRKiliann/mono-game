@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./styles/NbrPlayerNbrLapLvl.css";
 
 type LevelProps = {
-    selectedOption: string | undefined;
+    selectedOption: string;
     setLvlQuiz: React.Dispatch<React.SetStateAction<string>>;
     setDisplayCloseBox: React.Dispatch<React.SetStateAction<DisplayCloseProps>>;
 };

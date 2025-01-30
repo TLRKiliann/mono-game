@@ -39,7 +39,7 @@ type ComponentQuizProps = {
     player: PlayerProps;
     setPlayersChoosen: React.Dispatch<React.SetStateAction<PlayerProps[]>>;
     setReplay: React.Dispatch<React.SetStateAction<boolean>>;
-    selectedOption: string | undefined;
+    selectedOption: string;
 };
 
 const ComponentSanction: React.FC<ComponentQuizProps> = ({
