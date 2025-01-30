@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import flagEngland from "../assets/flags/england_icon.png";
+import flagEngland from "../assets/flags/united-king.png";
 import flagFrance from "../assets/flags/france_icon.png";
 import flagGermany from "../assets/flags/germany_icon.png";
 import flagItaly from "../assets/flags/italy_icon.png";

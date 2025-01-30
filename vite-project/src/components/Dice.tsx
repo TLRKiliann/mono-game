@@ -152,7 +152,7 @@ const Dice = ({
   if (winner) {
     return (
       <div className="endofgame-box">
-        <EndOfGame selectedOption={selectedOption} winner={winner.name} />
+        <EndOfGame selectedOption={selectedOption} winner={winner.id} />
       </div>
     );
   };
