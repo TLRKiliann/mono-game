@@ -16,11 +16,10 @@ $ cd mono-game/vite-project/
 
 $ pnpm install
 
-$ pnpm run dev
+$ pnpm run build
 
 ## To change questions
 
 `vite-project > src > lib`
 
 Don't forget that you have to translate in every file !
-
