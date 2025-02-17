@@ -35,7 +35,7 @@ function App(): JSX.Element {
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   // count nbr of case by player
-  const [count, setCount] = useState<number>(55);
+  const [count, setCount] = useState<number>(0);
 
   // all players start at square 0
   const [, setCountPlayerOne] = useState<number>(0);
