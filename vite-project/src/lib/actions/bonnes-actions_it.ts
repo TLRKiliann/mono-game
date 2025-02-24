@@ -1,4 +1,4 @@
-import { BonneActionProps } from "./types";
+import { BonneActionProps } from "../types";
 
 export const bonneActionQuestions_it: BonneActionProps[] = [
     {
