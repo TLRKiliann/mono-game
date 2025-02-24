@@ -1,4 +1,4 @@
-import { SanctionsProps } from "./types";
+import { SanctionsProps } from "../types";
 
 export const sanctionQuestions_it: SanctionsProps[] = [
     {
